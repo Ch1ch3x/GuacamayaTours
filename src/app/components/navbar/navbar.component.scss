@@ -10,7 +10,7 @@
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #111;
+  background-color: rgb(48, 6, 6);
   overflow-x: hidden;
   padding-top: 2%;
   text-align: center;
@@ -35,6 +35,19 @@
 .ul{
   width: 1%;
 }
+
+.size{
+    height: 40%;
+    width: 40%;
+    
+}
+
+.sizeHome{
+    height: 55%;
+    width: 55%;
+}
+
+
 
  
 /* Add media queries for small screens (when the height of the screen is less than 450px, add a smaller padding and font-size) */
