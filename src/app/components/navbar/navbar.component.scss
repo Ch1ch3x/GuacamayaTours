@@ -1,35 +1,44 @@
-  
-  li a {
-    display: block;
-    color: rgb(248, 246, 246);
-    padding: 10%;
-    text-align: center;
-    text-decoration: none;
-  }
-  
-  /* Change the link color on hover */
-  li a:hover {
-    background-color: #555;
-    color: white;
-  }
+.logo{
+    margin: 2%;
+}
 
- nav {
-    list-style-type: none;
-    margin: 0.3%;
-    padding: 0;
-    width: 10%;
-    background-color: #f1f1f1;
-    height: 100%; /* Full height */
-    position: fixed; /* Make it stick, even on scroll */
-    overflow: auto; /* Enable scrolling if the sidenav has too much content */
-    border-radius: 3%;
-  }
-  
-.active {
-    background-color: rgb(64, 134, 192);
-    color: white;
-  }
+/* Style the sidebar - fixed full height */
+.sidebar {
+  height: 100%;
+  width: 8%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 2%;
+  text-align: center;
+  position: fixed;
+}
 
-  .size{
-      font-size-adjust: 50%;
-  }
+/* Style sidebar links */
+.sidebar a {
+  
+  padding-bottom: 45%;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+}
+
+/* Style links on mouse-over */
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.ul{
+  width: 1%;
+}
+
+ 
+/* Add media queries for small screens (when the height of the screen is less than 450px, add a smaller padding and font-size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
