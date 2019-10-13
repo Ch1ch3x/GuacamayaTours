@@ -1,0 +1,35 @@
+  
+  li a {
+    display: block;
+    color: rgb(248, 246, 246);
+    padding: 10%;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  /* Change the link color on hover */
+  li a:hover {
+    background-color: #555;
+    color: white;
+  }
+
+ nav {
+    list-style-type: none;
+    margin: 0.3%;
+    padding: 0;
+    width: 10%;
+    background-color: #f1f1f1;
+    height: 100%; /* Full height */
+    position: fixed; /* Make it stick, even on scroll */
+    overflow: auto; /* Enable scrolling if the sidenav has too much content */
+    border-radius: 3%;
+  }
+  
+.active {
+    background-color: rgb(64, 134, 192);
+    color: white;
+  }
+
+  .size{
+      font-size-adjust: 50%;
+  }
