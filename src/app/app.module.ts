@@ -7,6 +7,7 @@ import { HotelListComponent } from './components/user/hotel-list/hotel-list.comp
 import { RegionListComponent } from './components/user/region-list/region-list.component';
 import { HomeHeaderComponent } from './components/home-header/home-header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { NgImageSliderModule } from 'ng-image-slider';
 
 
 @NgModule({
@@ -17,10 +18,10 @@ import { FooterComponent } from './components/footer/footer.component';
     RegionListComponent,
     HomeHeaderComponent,
     FooterComponent,
-    
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    NgImageSliderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
