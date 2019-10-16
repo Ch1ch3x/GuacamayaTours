@@ -7,5 +7,5 @@ export interface itinerario {
     fechaSalida:[string];
     tipoDeHabitacion:[string];
     costoTotal: number;
-    persona: [persona];
+    integrantes: [persona];
 }

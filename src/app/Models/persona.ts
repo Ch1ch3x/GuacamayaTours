@@ -1,6 +1,6 @@
 export interface persona {
     nombre: string;
-    apellido?: string;
+    apellido ?: string;
     cedula: number;
     edad ?: number;
 }
