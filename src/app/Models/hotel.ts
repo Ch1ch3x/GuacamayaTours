@@ -11,7 +11,7 @@ export interface hotel{
     fotos:[string];
     ciudad:[string];
     fullday: [boolean, number];
-    servicios: [string, number, ];
+    servicios: [boolean, boolean, boolean, boolean];
     tipoHabitaciones: [string, [string], string, number, [string]];
     // nombre, fotos, tipo de vista, maxPersonas, Comodidades
 }
