@@ -1,6 +1,4 @@
 import { fullday } from './fullday';
-import { habitaciones } from './tipo-de-habitaciones';
-import { itinerario } from './itinerario';
 
 export interface hotel{
     hotelId: [number];
@@ -12,7 +10,8 @@ export interface hotel{
     estado:[string];
     fotos:[string];
     ciudad:[string];
-    fullday: fullday;
-    servicios: [];
-    tipoHabitaciones: [habitaciones];
+    fullday: [boolean, number];
+    servicios: [string, number, ];
+    tipoHabitaciones: [string, [string], string, number, [string]];
+    // nombre, fotos, tipo de vista, maxPersonas, Comodidades
 }

@@ -1,13 +1,13 @@
-import { itinerario } from './itinerario';
 import { persona } from './persona';
 
 export interface orden {
-    persona: persona;
+    cliente: persona;
     correo: string;
     telefono: number;
     direccion: string;
-    ordenId: [string];
+    ordenId: number;
     estatus: boolean;
     localizador: number;
-    itinerario: itinerario;
+    itinerario: [number, number, string, string, string, number, persona ?];
+    //localizador, id, fechaLlegada, fechaSalida, TipoHabitacion, CostoTotal, Integrantes
 }
