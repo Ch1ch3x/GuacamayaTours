@@ -7,13 +7,14 @@
   padding-top: 10px;
   padding-right: 20px;
 }
+
 #searchform{
-  display:inline;
-  font-size:1em;
+  display: inline;
+  font-size: 1em;
   border-radius: 8em;
-  border:0.1em solid rgba(218,208,190,1);
-  box-shadow:0 0 0.3em rgba(60,60,60,0.4);
-  padding:0.3em;
+  border: 0.1em solid rgba(218,208,190,1);
+  box-shadow: 0 0 0.3em rgba(60,60,60,0.4);
+  padding: 0.2em 0.4em 0.4em 0.3em;
   background:white;
 }
 #s{
@@ -22,7 +23,7 @@
   border-radius:0;
   box-shadow:none;
   outline: none;
-  padding:0;
+  padding: 0.5em 0em 0em 0.3em;
   margin:0;
   border:0;
   background-color: transparent;
