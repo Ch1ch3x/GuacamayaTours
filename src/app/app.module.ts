@@ -8,6 +8,7 @@ import { RegionListComponent } from './components/user/region-list/region-list.c
 import { HomeHeaderComponent } from './components/home-header/home-header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { SliderComponent } from './components/home-header/slider/slider.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
     RegionListComponent,
     HomeHeaderComponent,
     FooterComponent,
+    SliderComponent,
   ],
   imports: [
     BrowserModule,
