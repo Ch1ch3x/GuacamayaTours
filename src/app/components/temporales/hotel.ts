@@ -6,7 +6,7 @@ export class Hotel{
     longitud:[string];
     direccion:[string];
     estado:[string];
-    fotos:[string];
+    imagenes:[string];
     ciudad:[string];
     fullday: [boolean, number];
     servicios: [boolean, boolean, boolean, boolean];

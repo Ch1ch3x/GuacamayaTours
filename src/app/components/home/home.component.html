@@ -1,5 +1,36 @@
 <app-navbar> </app-navbar>
 <app-home-header></app-home-header>
-<h1> VISITA LOS HOTELES MAS BUSCADOS </h1>
-<app-list-hotel></app-list-hotel>
+<h1> LO MAS TRENDY </h1>
+<div class="container-fluid"> 
+    <div class="row">
+        <div *ngFor="let t of top" class="col-lg-3 col-md-4 col-sm-6 hotel polaroid">            
+           <a href=""><img src={{t.imagenes}} class="img rounded img-thumbnail img-fluid"></a>            
+           <div class='contenedor'><p class='info bigger'>{{t.nombre}}</p>
+           <p class='info'>{{t.direccion}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<h1> CONOCE VENEZUELA </h1>
+<div class="container-fluid"> 
+    <div class="row">
+        <div *ngFor="let t of destinos" class="col-lg-3 col-md-4 col-sm-6 hotel polaroid">            
+           <a href=""><img src={{t.imagenes}} class="img rounded img-thumbnail img-fluid"></a>            
+           <div class='contenedor'><p class='info bigger'>{{t.nombre}}</p>
+           <p class='info'>{{t.direccion}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<h1> QUEDATE EN LOS MEJORES HOTELES </h1>
+<div class="container-fluid"> 
+    <div class="row">
+        <div *ngFor="let t of hoteles" class="col-lg-3 col-md-4 col-sm-6 hotel polaroid">            
+           <a href=""><img src={{t.imagenes}} class="img rounded img-thumbnail img-fluid"></a>            
+           <div class='contenedor'><p class='info bigger'>{{t.nombre}}</p>
+           <p class='info'>{{t.direccion}}</p>
+            </div>
+        </div>
+    </div>
+</div>
 <app-footer></app-footer>
