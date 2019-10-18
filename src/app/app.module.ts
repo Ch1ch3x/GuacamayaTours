@@ -6,6 +6,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';;
 import { HomeHeaderComponent } from './components/home-header/home-header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ListHotelComponent } from './components/list-hotel/list-hotel.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 
@@ -17,6 +18,7 @@ import { ListHotelComponent } from './components/list-hotel/list-hotel.component
     HomeHeaderComponent,
     FooterComponent,
     ListHotelComponent,
+    HomeComponent,
 
    ],
   imports: [
