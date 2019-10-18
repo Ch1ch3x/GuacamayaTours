@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Hotel } from '../temporales/hotel';
-import { HOTELES } from '../temporales/hoteles'
+import { Estado } from '../temporales/estado';
+import { HOTELES } from '../temporales/temporales';
+import { ESTADOS } from '../temporales/temporales'
 
 @Component({
   selector: 'app-list-hotel',
@@ -11,6 +13,7 @@ import { HOTELES } from '../temporales/hoteles'
 //LOS HOTELES SE IMPORTAN DEL SERVICE QUE TRAIGA LA INFORMACION
 export class ListHotelComponent implements OnInit {
   hoteles = HOTELES;
+  estado = ESTADOS;
 
   constructor() { }
 
