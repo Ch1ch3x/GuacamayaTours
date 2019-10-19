@@ -1,3 +1,5 @@
+$blue : #91CCC2;
+
 h1 { 
     color: rgb(33, 40, 78); 
     font-family: 'Open Sans Condensed', sans-serif; 
@@ -24,9 +26,7 @@ h1 {
 .img{
     width: 100%;
 }
-
-
-
+    
 @media screen and (min-width:769px){
 
     .container-fluid{
@@ -69,4 +69,6 @@ h1 {
 .position{
     margin-right: 9%;
 }
+
+
 
