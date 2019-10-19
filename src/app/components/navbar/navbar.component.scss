@@ -2,7 +2,7 @@
 
 @media screen and (max-width:640px) {
   .logo{
-    margin: 2%;
+    margin: 3%;
 }
 
 /* Style the sidebar - fixed full height */
@@ -16,6 +16,7 @@
   background-color: white;
   overflow-x: hidden;
   padding-top: 2%;
+  padding-bottom: 0;
   text-align: center;
   border: rgb(43, 124, 93);
 }
@@ -46,13 +47,13 @@
 @media screen and (max-width:840px) and (min-width:640px){
   /* reglas CSS */
   .logo{
-    margin: 2%;
+    margin: 3%;
 }
 
 /* Style the sidebar - fixed full height */
 .sidebar {
   height: 100%;
-  width: 100px;
+  width: 110px;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -71,7 +72,7 @@
 }
 
 .size{
-    padding-top: 40px;
+    padding-top: 55px;
     height: 60%;
     width: 60%;
     padding-bottom: 0;
@@ -96,7 +97,7 @@
     /* Style the sidebar - fixed full height */
     .sidebar {
       height: 100%;
-      width: 100px;
+      width: 120px;
       position: fixed;
       z-index: 1;
       top: 0;
@@ -115,9 +116,9 @@
     }
 
     .size{
-        padding-top: 40px;
-        height: 55%;
-        width: 55%;
+        padding-top: 55px;
+        height: 60%;
+        width: 60%;
         padding-bottom: 0;
         padding-left: 5px;
     }
