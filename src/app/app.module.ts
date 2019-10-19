@@ -20,6 +20,7 @@ import { HomeComponent } from './components/home/home.component';
     HomeHeaderComponent,
     FooterComponent,
     SliderComponent,
+    NgImageSliderModule,
     ListHotelComponent,
     HomeComponent,
 
