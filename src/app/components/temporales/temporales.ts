@@ -1,43 +1,40 @@
 import { Hotel } from './hotel';
 import { Estado } from './estado';
-import { destinoTuristico } from './destinoTuristico';
+import { DestinoTuristico } from './destinoTuristico';
 
-export const TOP: Object[] = [
-    
+export const TOP: object[] = [
     {
         hotelId: [3333],
         nombre: ['Hotel Hesperia'],
         estrellas: [5],
-        latitud:["555"],
-        longitud:["555"],
-        direccion:['Valle de Pedro González, Playa Puerto Viejo, 6301'],
-        estado:['Nueva Esparta'],
-        imagenes:['assets/img/hotel1.jpg'],
-        ciudad:['La Asuncion'],
+        latitud: ['555'],
+        longitud: ['555'],
+        direccion: ['Valle de Pedro González, Playa Puerto Viejo, 6301'],
+        estado: ['Nueva Esparta'],
+        imagenes: ['assets/img/hotel1.jpg'],
+        ciudad: ['La Asuncion'],
         fullday: [false, 0],
         servicios: [true, true, true, true],
         tipoHabitaciones: ['Suite', ['simple'], 'Doble', 5, ['doble']]
-    
-    },{
+    }, {
         hotelId: [3333],
         nombre: ['Hotel Hesperia'],
         estrellas: [5],
-        latitud:["555"],
-        longitud:["555"],
-        direccion:['Valle de Pedro González, Playa Puerto Viejo, 6301'],
-        estado:['Nueva Esparta'],
-        imagenes:['assets/img/hotel1.jpg'],
-        ciudad:['La Asuncion'],
+        latitud: ['555'],
+        longitud: ['555'],
+        direccion: ['Valle de Pedro González, Playa Puerto Viejo, 6301'],
+        estado: ['Nueva Esparta'],
+        imagenes: ['assets/img/hotel1.jpg'],
+        ciudad: ['La Asuncion'],
         fullday: [false, 0],
         servicios: [true, true, true, true],
         tipoHabitaciones: ['Suite', ['simple'], 'Doble', 5, ['doble']]
-    
-    },{
+    }, {
         destinosId: ['Tucacas'],
         nombre: 'Tucacas',
         descripcion: 'Playa',
-        servicios: ['Lanchas,hoteles,cayos'], //preguntar
-        actividades: ['Playas y hoteles'], //preguntar
+        servicios: ['Lanchas,hoteles,cayos'], // preguntar
+        actividades: ['Playas y hoteles'], // preguntar
         latitud: ['00.00.00'],
         longitud: ['00.00.00'],
         estado: 'Falcón',
@@ -45,11 +42,10 @@ export const TOP: Object[] = [
         direccion: 'Ciudad capital del Municipio José Laurencio Silva del estado Falcón, en Venezuela',
         imagenes: ['assets/img/tucacas.jpg']
     }
-]
+];
 
-export const ESTADOS: Estado[]=[
-    
-    {    estadoId: 'Falcón',
+export const ESTADOS: Estado[] = [
+    {   estadoId: 'Falcón',
         nombre: 'Falcón',
         imagenes: ['']
     },
@@ -57,40 +53,39 @@ export const ESTADOS: Estado[]=[
         nombre: 'Zulia',
         imagenes: ['']
     }
-]
+];
 
-export const DESTINOS: destinoTuristico[]=[
-    
+export const DESTINOS: DestinoTuristico[] = [
     {
         destinosId: ['Tucacas'],
         nombre: 'Tucacas',
         descripcion: 'Playa',
-        servicios: ['Lanchas,hoteles,cayos'], //preguntar
-        actividades: ['Playas y hoteles'], //preguntar
+        servicios: ['Lanchas,hoteles,cayos'], // preguntar
+        actividades: ['Playas y hoteles'], // preguntar
         latitud: ['00.00.00'],
         longitud: ['00.00.00'],
         estado: 'Falcón',
         ciudad: 'Falcón',
         direccion: 'Ciudad capital del Municipio José Laurencio Silva del estado Falcón, en Venezuela',
         imagenes: ['assets/img/tucacas.jpg']
-    },{
+    }, {
         destinosId: ['Parque Vereda del Lago'],
         nombre: 'Vereda del Lago',
         descripcion: 'Playa',
-        servicios: [''], //preguntar
-        actividades: [''], //preguntar
+        servicios: [''], // preguntar
+        actividades: [''], // preguntar
         latitud: ['00.00.00'],
         longitud: ['00.00.00'],
         estado: 'Zulia',
         ciudad: 'Maracaibo',
         direccion: '',
         imagenes: ['assets/img/vereda.jpg']
-    },{
+    }, {
         destinosId: ['Parque Vereda del Lago'],
         nombre: 'Vereda del Lago',
         descripcion: 'Playa',
-        servicios: [''], //preguntar
-        actividades: [''], //preguntar
+        servicios: [''], //  preguntar
+        actividades: [''], // preguntar
         latitud: ['00.00.00'],
         longitud: ['00.00.00'],
         estado: 'Zulia',
@@ -99,38 +94,34 @@ export const DESTINOS: destinoTuristico[]=[
         imagenes: ['assets/img/vereda.jpg']
     }
 
-]
+];
 
 export const HOTELES: Hotel[] = [
-    
     {
         hotelId: [3333],
         nombre: ['Hotel Hesperia'],
         estrellas: [5],
-        latitud:["555"],
-        longitud:["555"],
-        direccion:['Valle de Pedro González, Playa Puerto Viejo, 6301'],
-        estado:['Nueva Esparta'],
-        imagenes:['assets/img/hotel1.jpg'],
-        ciudad:['La Asuncion'],
+        latitud: ['555'],
+        longitud: ['555'],
+        direccion: ['Valle de Pedro González, Playa Puerto Viejo, 6301'],
+        estado: ['Nueva Esparta'],
+        imagenes: ['assets/img/hotel1.jpg'],
+        ciudad: ['La Asuncion'],
         fullday: [false, 0],
         servicios: [true, true, true, true],
         tipoHabitaciones: ['Suite', ['simple'], 'Doble', 5, ['doble']]
-    
-    },{
+    }, {
         hotelId: [3333],
         nombre: ['Hotel Hesperia'],
         estrellas: [5],
-        latitud:["555"],
-        longitud:["555"],
-        direccion:['Valle de Pedro González, Playa Puerto Viejo, 6301'],
-        estado:['Nueva Esparta'],
-        imagenes:['assets/img/hotel1.jpg'],
-        ciudad:['La Asuncion'],
+        latitud: ['555'],
+        longitud: ['555'],
+        direccion: ['Valle de Pedro González, Playa Puerto Viejo, 6301'],
+        estado: ['Nueva Esparta'],
+        imagenes: ['assets/img/hotel1.jpg'],
+        ciudad: ['La Asuncion'],
         fullday: [false, 0],
         servicios: [true, true, true, true],
         tipoHabitaciones: ['Suite', ['simple'], 'Doble', 5, ['doble']]
-    
     }
-]
-   
+];

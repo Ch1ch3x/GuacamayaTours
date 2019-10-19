@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TOP } from '../temporales/temporales';
 import { ESTADOS } from '../temporales/temporales';
 import { DESTINOS } from '../temporales/temporales';
-import { HOTELES } from '../temporales/temporales'
+import { HOTELES } from '../temporales/temporales';
 
 
 @Component({
