@@ -1,14 +1,14 @@
-export class DestinoTuristico {
+export class destinoTuristico {
     destinosId: [string];
     nombre: string;
     descripcion: string;
-    servicios: [string]; // preguntar
-    actividades: [string]; // preguntar
+    servicios: [string]; //preguntar
+    actividades: [string]; //preguntar
     latitud: [string];
     longitud: [string];
-    estado: string;
-    ciudad: string;
-    direccion: string;
+    estado: String;
+    ciudad: String;
+    direccion: String;
     imagenes: [string];
 
 }
