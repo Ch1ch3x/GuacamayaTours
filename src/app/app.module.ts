@@ -4,6 +4,7 @@ import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { NgImageSliderModule } from "ng-image-slider";
+import { CommonModule } from "@angular/common";
 import { HomeComponent } from "./components/home/home.component";
 import { AppRoutingModule } from "./routing/routing.module";
 import { HeaderComponent } from "./components/header/header.component";
@@ -41,6 +42,9 @@ import { ListarHotelesComponent } from "./components/hoteles/CRUD/listar/listar-
 import { ListarOrdenesComponent } from "./components/ordenes/CRUD/listar/listar-ordenes.component";
 import { ListaCategoriaDestinoComponent } from "./components/categoria-destino/CRUD/listar/lista-categoria-destino.component";
 import { ListaCiudadComponent } from "./components/ciudades/CRUD/listar/lista-ciudad.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MaterialModule } from "./material/material.module";
 
 @NgModule({
   declarations: [
@@ -84,7 +88,19 @@ import { ListaCiudadComponent } from "./components/ciudades/CRUD/listar/lista-ci
     NosotrosComponent,
     ContactanosComponent
   ],
-  imports: [BrowserModule, NgImageSliderModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    NgImageSliderModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    CommonModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
