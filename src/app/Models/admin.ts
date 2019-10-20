@@ -1,7 +1,7 @@
 import { persona } from './persona';
 
 export interface admin {
-    persona: persona;
+    nombre: string;
     usuario: string;
     password: string;
 }
