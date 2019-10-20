@@ -1,0 +1,203 @@
+[
+  {
+    "cliente": "",
+    "cedula": "",
+    "correo": "",
+    "telefono": "",
+    "direccion": "",
+    "estatus": "",
+    "localizador": "",
+    "itinerario": [
+      {
+        "localizador": "",
+        "hotel": "",
+        "fechaLlegada": "",
+        "fechaSalida": "",
+        "tipoHabitacion": {},
+        "costoTotal": "",
+        "integrantes": [
+          {
+            "nombre": "",
+            "apellido:": "",
+            "cedula": "",
+            "edad": 23
+          },
+          {
+            "nombre": "",
+            "apellido:": "",
+            "cedula": "",
+            "edad": 23
+          },
+          {
+            "nombre": "",
+            "apellido:": "",
+            "cedula": "",
+            "edad": 23
+          }
+        ]
+      },
+      {
+        "localizador": "",
+        "hotel": "",
+        "fechaLlegada": "",
+        "fechaSalida": "",
+        "tipoHabitacion": {},
+        "costoTotal": "",
+        "integrantes": [
+          {
+            "nombre": "",
+            "apellido:": "",
+            "cedula": "",
+            "edad": 23
+          },
+          {
+            "nombre": "",
+            "apellido:": "",
+            "cedula": "",
+            "edad": 23
+          },
+          {
+            "nombre": "",
+            "apellido:": "",
+            "cedula": "",
+            "edad": 23
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "cliente": "",
+    "cedula": "",
+    "correo": "",
+    "telefono": "",
+    "direccion": "",
+    "estatus": "",
+    "localizador": "",
+    "itinerario": [
+      {
+        "localizador": "",
+        "hotel": "",
+        "fechaLlegada": "",
+        "fechaSalida": "",
+        "tipoHabitacion": {},
+        "costoTotal": "",
+        "integrantes": [
+          {
+            "nombre": "",
+            "apellido:": "",
+            "cedula": "",
+            "edad": 23
+          },
+          {
+            "nombre": "",
+            "apellido:": "",
+            "cedula": "",
+            "edad": 23
+          },
+          {
+            "nombre": "",
+            "apellido:": "",
+            "cedula": "",
+            "edad": 23
+          }
+        ]
+      },
+      {
+        "localizador": "",
+        "hotel": "",
+        "fechaLlegada": "",
+        "fechaSalida": "",
+        "tipoHabitacion": {},
+        "costoTotal": "",
+        "integrantes": [
+          {
+            "nombre": "",
+            "apellido:": "",
+            "cedula": "",
+            "edad": 23
+          },
+          {
+            "nombre": "",
+            "apellido:": "",
+            "cedula": "",
+            "edad": 23
+          },
+          {
+            "nombre": "",
+            "apellido:": "",
+            "cedula": "",
+            "edad": 23
+          }
+        ]
+      },
+      {
+        "localizador": "",
+        "hotel": "",
+        "fechaLlegada": "",
+        "fechaSalida": "",
+        "tipoHabitacion": {},
+        "costoTotal": "",
+        "integrantes": [
+          {
+            "nombre": "",
+            "apellido:": "",
+            "cedula": "",
+            "edad": 23
+          },
+          {
+            "nombre": "",
+            "apellido:": "",
+            "cedula": "",
+            "edad": 23
+          },
+          {
+            "nombre": "",
+            "apellido:": "",
+            "cedula": "",
+            "edad": 23
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "cliente": "",
+    "cedula": "",
+    "correo": "",
+    "telefono": "",
+    "direccion": "",
+    "estatus": "",
+    "localizador": "",
+    "itinerario": [
+      {
+        "localizador": "",
+        "hotel": "",
+        "fechaLlegada": "",
+        "fechaSalida": "",
+        "tipoHabitacion": {},
+        "costoTotal": "",
+        "integrantes": [
+          {
+            "nombre": "",
+            "apellido:": "",
+            "cedula": "",
+            "edad": 23
+          },
+          {
+            "nombre": "",
+            "apellido:": "",
+            "cedula": "",
+            "edad": 23
+          },
+          {
+            "nombre": "",
+            "apellido:": "",
+            "cedula": "",
+            "edad": 23
+          }
+        ]
+      }
+    ]
+  }
+]

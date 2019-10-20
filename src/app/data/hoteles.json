@@ -1,0 +1,80 @@
+[
+  {
+    "id": "",
+    "nombre": "",
+    "estrellas": 3,
+    "latitud": "",
+    "longitud": "",
+    "direccion": "",
+    "estado": {},
+    "fotos": [],
+    "ciudad": {},
+    "fullDay": {
+      "disponible": true,
+      "precioXPersona": ""
+    },
+    "servicios": [],
+    "costoXNoche": "",
+    "tipoHabitaciones": [
+      {
+        "nombre": "",
+        "fotos": [],
+        "tipoVista": "",
+        "maximoPersonas": "",
+        "comodidades": []
+      }
+    ]
+  },
+  {
+    "id": "",
+    "nombre": "",
+    "estrellas": 3,
+    "latitud": "",
+    "longitud": "",
+    "direccion": "",
+    "estado": {},
+    "fotos": [],
+    "ciudad": {},
+    "fullDay": {
+      "disponible": true,
+      "precioXPersona": ""
+    },
+    "servicios": [],
+    "costoXNoche": "",
+    "tipoHabitaciones": [
+      {
+        "nombre": "",
+        "fotos": [],
+        "tipoVista": "",
+        "maximoPersonas": "",
+        "comodidades": []
+      }
+    ]
+  },
+  {
+    "id": "",
+    "nombre": "",
+    "estrellas": 3,
+    "latitud": "",
+    "longitud": "",
+    "direccion": "",
+    "estado": {},
+    "fotos": [],
+    "ciudad": {},
+    "fullDay": {
+      "disponible": true,
+      "precioXPersona": ""
+    },
+    "servicios": [],
+    "costoXNoche": "",
+    "tipoHabitaciones": [
+      {
+        "nombre": "",
+        "fotos": [],
+        "tipoVista": "",
+        "maximoPersonas": "",
+        "comodidades": []
+      }
+    ]
+  }
+]

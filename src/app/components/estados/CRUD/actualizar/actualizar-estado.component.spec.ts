@@ -1,0 +1,25 @@
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { ActualizarEstadoComponent } from './actualizar-estado.component';
+
+describe('ActualizarEstadoComponent', () => {
+  let component: ActualizarEstadoComponent;
+  let fixture: ComponentFixture<ActualizarEstadoComponent>;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ ActualizarEstadoComponent ]
+    })
+    .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(ActualizarEstadoComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

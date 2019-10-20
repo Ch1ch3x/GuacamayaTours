@@ -1,0 +1,133 @@
+
+
+@media screen and (max-width:640px) {
+  .logo{
+    margin: 2%;
+}
+
+/* Style the sidebar - fixed full height */
+.sidebar {
+  height: 100%;
+  width: 80px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: white;
+  overflow-x: hidden;
+  padding-top: 2%;
+  text-align: center;
+  border: rgb(43, 124, 93);
+}
+
+/* Style sidebar links */
+.sidebar a {
+  color: #818181;
+  display: block;
+}
+
+.size{
+    padding-top: 40px;
+    height: 55%;
+    width: 55%;
+    padding-bottom: 0;
+    padding-left: 5px;
+}
+
+.sizeHome{
+    height: 95%;
+    width: 95%;
+    text-align: center;
+    padding-left: 5px;
+    padding-top: 10px;
+}
+}
+
+@media screen and (max-width:840px) and (min-width:640px){
+  /* reglas CSS */
+  .logo{
+    margin: 2%;
+}
+
+/* Style the sidebar - fixed full height */
+.sidebar {
+  height: 100%;
+  width: 100px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: white;
+  overflow-x: hidden;
+  padding-top: 2%;
+  text-align: center;
+  border: rgb(43, 124, 93);
+}
+
+/* Style sidebar links */
+.sidebar a {
+  color: #818181;
+  display: block;
+}
+
+.size{
+    padding-top: 40px;
+    height: 60%;
+    width: 60%;
+    padding-bottom: 0;
+    padding-left: 5px;
+}
+
+.sizeHome{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    padding-left: 5px;
+}
+}
+
+
+@media screen and (min-width: 840px){
+  /* reglas CSS */
+      .logo{
+        margin: 2%;
+    }
+
+    /* Style the sidebar - fixed full height */
+    .sidebar {
+      height: 100%;
+      width: 100px;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: white;
+      overflow-x: hidden;
+      padding-top: 2%;
+      text-align: center;
+      border: rgb(43, 124, 93);
+    }
+
+    /* Style sidebar links */
+    .sidebar a {
+      color: #818181;
+      display: block;
+    }
+
+    .size{
+        padding-top: 40px;
+        height: 55%;
+        width: 55%;
+        padding-bottom: 0;
+        padding-left: 5px;
+    }
+
+    .sizeHome{
+        height: 95%;
+        width: 95%;
+        text-align: center;
+        padding-left: 5px;
+    }
+}
+
+
