@@ -13,12 +13,6 @@ import { DashboardComponent } from "../components/dashboard/dashboard.component"
 import { ItinerarioComponent } from "../components/itinerario/itinerario.component";
 import { NosotrosComponent } from "../components/nosotros/nosotros.component";
 import { ContactanosComponent } from "../components/contactanos/contactanos.component";
-import { CrearHotelesComponent } from "../components/hoteles/CRUD/crear-hoteles/crear-hoteles.component";
-import { CrearDestinoComponent } from "../components/destinos-turisticos/CRUD/crear-destino/crear-destino.component";
-import { CrearCategoriaDestinoComponent } from "../components/categoria-destino/CRUD/crear-categoria-destino/crear-categoria-destino.component";
-import { CrearHabitacionComponent } from "../components/habitaciones/CRUD/crear-habitacion/crear-habitacion.component";
-import { CrearOrdenComponent } from "../components/ordenes/CRUD/crear-orden/crear-orden.component";
-import { CrearCiudadComponent } from "../components/ciudades/CRUD/crear-ciudad/crear-ciudad.component";
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
@@ -33,19 +27,6 @@ const routes: Routes = [
   { path: "itinerario", component: ItinerarioComponent },
   { path: "nosotros", component: NosotrosComponent },
   { path: "contactanos", component: ContactanosComponent },
-  { path: "hoteles/crear/:hotelId", component: CrearHotelesComponent },
-  { path: "destinos/crear/:destinoId", component: CrearDestinoComponent },
-  {
-    path: "categorias/crear/:categoriaId",
-    component: CrearCategoriaDestinoComponent
-  },
-  {
-    path: "habitaciones/crear/:habitacionId",
-    component: CrearHabitacionComponent
-  },
-  { path: "ordenes/crear/:ordenId", component: CrearOrdenComponent },
-  { path: "ciudades/crear/:ciudadId", component: CrearCiudadComponent },
-  { path: "estados/crear/:estadoId", component: CategoriaDestinoComponent },
   { path: "", redirectTo: "/home", pathMatch: "full" },
   { path: "**", component: NotFoundComponent }
 ];

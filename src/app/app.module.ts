@@ -16,17 +16,31 @@ import { OrdenesComponent } from "./components/ordenes/ordenes.component";
 import { CiudadesComponent } from "./components/ciudades/ciudades.component";
 import { EstadosComponent } from "./components/estados/estados.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
-import { CrearCiudadComponent } from "./components/ciudades/CRUD/crear-ciudad/crear-ciudad.component";
-import { CrearCategoriaDestinoComponent } from "./components/categoria-destino/CRUD/crear-categoria-destino/crear-categoria-destino.component";
-import { CrearOrdenComponent } from "./components/ordenes/CRUD/crear-orden/crear-orden.component";
-import { CrearHotelesComponent } from "./components/hoteles/CRUD/crear-hoteles/crear-hoteles.component";
-import { CrearHabitacionComponent } from "./components/habitaciones/CRUD/crear-habitacion/crear-habitacion.component";
-import { CrearDestinoComponent } from "./components/destinos-turisticos/CRUD/crear-destino/crear-destino.component";
-import { CrearEstadoComponent } from "./components/estados/CRUD/crear-estado/crear-estado.component";
+import { CrearCiudadComponent } from "./components/ciudades/CRUD/crear/crear-ciudad.component";
+import { CrearCategoriaDestinoComponent } from "./components/categoria-destino/CRUD/crear/crear-categoria-destino.component";
+import { CrearOrdenComponent } from "./components/ordenes/CRUD/crear/crear-orden.component";
+import { CrearHabitacionComponent } from "./components/habitaciones/CRUD/crear/crear-habitacion.component";
+import { CrearEstadoComponent } from "./components/estados/CRUD/crear/crear-estado.component";
 import { PlanearViajeComponent } from "./components/planear-viaje/planear-viaje.component";
 import { ItinerarioComponent } from "./components/itinerario/itinerario.component";
 import { NosotrosComponent } from "./components/nosotros/nosotros.component";
 import { ContactanosComponent } from "./components/contactanos/contactanos.component";
+import { CrearHotelComponent } from "./components/hoteles/CRUD/crear/crear-hotel.component";
+import { CrearDestinosTuristicosComponent } from "./components/destinos-turisticos/CRUD/crear/crear-destinos-turisticos.component";
+import { ActualizarCategoriaDestinoComponent } from "./components/categoria-destino/CRUD/actualizar/actualizar-categoria-destino.component";
+import { ActualizarCiudadComponent } from "./components/ciudades/CRUD/actualizar/actualizar-ciudad.component";
+import { ActualizarEstadoComponent } from "./components/estados/CRUD/actualizar/actualizar-estado.component";
+import { ActualizarHabitacionComponent } from "./components/habitaciones/CRUD/actualizar/actualizar-habitacion.component";
+import { ActualizarHotelComponent } from "./components/hoteles/CRUD/actualizar/actualizar-hotel.component";
+import { ActualizarOrdenComponent } from "./components/ordenes/CRUD/actualizar/actualizar-orden.component";
+import { ActualizarDestinosTuristicosComponent } from "./components/destinos-turisticos/CRUD/actualizar/actualizar-destinos-turisticos.component";
+import { ListarDestinosTuristicosComponent } from "./components/destinos-turisticos/CRUD/listar/listar-destinos-turisticos.component";
+import { ListarEstadoComponent } from "./components/estados/CRUD/listar/listar-estado.component";
+import { ListarHabitacionesComponent } from "./components/habitaciones/CRUD/listar/listar-habitaciones.component";
+import { ListarHotelesComponent } from "./components/hoteles/CRUD/listar/listar-hoteles.component";
+import { ListarOrdenesComponent } from "./components/ordenes/CRUD/listar/listar-ordenes.component";
+import { ListaCategoriaDestinoComponent } from "./components/categoria-destino/CRUD/listar/lista-categoria-destino.component";
+import { ListaCiudadComponent } from "./components/ciudades/CRUD/listar/lista-ciudad.component";
 
 @NgModule({
   declarations: [
@@ -44,13 +58,27 @@ import { ContactanosComponent } from "./components/contactanos/contactanos.compo
     CiudadesComponent,
     EstadosComponent,
     DashboardComponent,
-    CrearDestinoComponent,
+    CrearDestinosTuristicosComponent,
     CrearEstadoComponent,
     CrearHabitacionComponent,
-    CrearHotelesComponent,
+    CrearHotelComponent,
     CrearOrdenComponent,
     CrearCategoriaDestinoComponent,
     CrearCiudadComponent,
+    ActualizarCategoriaDestinoComponent,
+    ActualizarCiudadComponent,
+    ActualizarEstadoComponent,
+    ActualizarHabitacionComponent,
+    ActualizarHotelComponent,
+    ActualizarOrdenComponent,
+    ActualizarDestinosTuristicosComponent,
+    ListarDestinosTuristicosComponent,
+    ListarEstadoComponent,
+    ListarHabitacionesComponent,
+    ListarHotelesComponent,
+    ListarOrdenesComponent,
+    ListaCategoriaDestinoComponent,
+    ListaCiudadComponent,
     PlanearViajeComponent,
     ItinerarioComponent,
     NosotrosComponent,
