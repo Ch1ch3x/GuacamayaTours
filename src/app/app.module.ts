@@ -3,8 +3,8 @@ import { NgModule } from "@angular/core";
 
 import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
-import { HotelListComponent } from "./components/user/hotel-list/hotel-list.component";
-import { RegionListComponent } from "./components/user/region-list/region-list.component";
+import { HotelListComponent } from "./components/hotel-list/hotel-list.component";
+import { RegionListComponent } from "./components/region-list/region-list.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { NgImageSliderModule } from "ng-image-slider";
 import { HomeComponent } from "./components/home/home.component";
