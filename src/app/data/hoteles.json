@@ -1,53 +1,60 @@
 [
   {
-    "id": "",
-    "nombre": "",
-    "estrellas": 3,
-    "latitud": "",
-    "longitud": "",
-    "direccion": "",
-    "estado": {},
-    "fotos": [],
-    "ciudad": {},
+    "id": 0,
+    "nombre": "Paraguana Mall Hotel",
+    "estrellas": 5,
+    "latitud": 11.6955996,
+    "longitud": -70.1995697,
+    "direccion": "Autopista Intercomunal Coro-Punto Fijo, Sector El Cardon, C.C. Paraguana Mall., Punto Fijo, Península de Paraguaná 4102 Venezuela",
+    "estado": "Falcon",
+    "fotos": ["..assets/JSON/hotel/paraguana-mall/paraguana.jpg", "..assets/JSON/hotel/paraguana-mall/paraguana1.jpg", "..assets/JSON/hotel/paraguana-mall/paraguana2.jpg"],
+    "ciudad": "Punto Fijo",
     "fullDay": {
       "disponible": true,
-      "precioXPersona": ""
+      "precioXPersona": "20$"
     },
-    "servicios": [],
-    "costoXNoche": "",
+    "servicios": ["Wifi Gratis","Piscina", "Desayuno gratis", "Bañera de hidromasaje", "Estacionamiento gratis"],
+    "costoXNoche": "68$",
     "tipoHabitaciones": [
       {
-        "nombre": "",
-        "fotos": [],
-        "tipoVista": "",
-        "maximoPersonas": "",
-        "comodidades": []
+        "nombre": "Standard",
+        "fotos": ["..assets/JSON/hotel/paraguana-mall/hab-paraguana.jpg", "..assets/JSON/hotel/paraguana-mall/hab-paraguana1.jpg"],
+        "tipoVista": "Vista hacia la piscina",
+        "maximoPersonas": "2",
+        "comodidades": ["Cama Matrimonial","Jacuzzi", "Servicio a la habitación", "televisor pantalla plana"]
+      },
+      {
+        "nombre": "Doble",
+        "fotos": ["..assets/JSON/hotel/paraguana-mall/hab-paraguana2.jpg", "..assets/JSON/hotel/paraguana-mall/hab-paraguana3.jpg"],
+        "tipoVista": "Vista hacia la calle",
+        "maximoPersonas": "4",
+        "comodidades": ["Sofas", "Mesa para cuatro personas", "televisor pantalla plana", "espejos verticales"]
       }
     ]
   },
   {
-    "id": "",
-    "nombre": "",
-    "estrellas": 3,
-    "latitud": "",
-    "longitud": "",
-    "direccion": "",
-    "estado": {},
-    "fotos": [],
-    "ciudad": {},
+    "id": 1,
+    "nombre": "Hotel Villa Mar Suites",
+    "estrellas": 4,
+    "latitud": 11.6955996,
+    "longitud": -70.1995697,
+    "direccion": "Av. Coro No 75 con Av. Alta Vista. Urb. Santa Irene Urb. Santa Irene, Punto Fijo, Península de Paraguaná 4102 Venezuela",
+    "estado": "Falcon",
+    "fotos": ["..assets/JSON/hotel/villa-mar/hotel.jpg", "..assets/JSON/hotel/villa-mar/hotel1.jpg", "..assets/JSON/hotel/villa-mar/hotel2.jpg"],
+    "ciudad": "Punto Fijo",
     "fullDay": {
-      "disponible": true,
-      "precioXPersona": ""
+      "disponible": false,
+      "precioXPersona": "0$"
     },
-    "servicios": [],
-    "costoXNoche": "",
+    "servicios": ["Estacionamiento gratis", "wifi gratis", "Desayuno gratis", "Piscina", "Bar-Restaurant"],
+    "costoXNoche": "40$",
     "tipoHabitaciones": [
       {
-        "nombre": "",
-        "fotos": [],
-        "tipoVista": "",
-        "maximoPersonas": "",
-        "comodidades": []
+        "nombre": "Standard",
+        "fotos": ["..assets/JSON/hotel/villa-mar/hab.jpg"],
+        "tipoVista": "Vista hacia la piscina",
+        "maximoPersonas": "4",
+        "comodidades": ["Televisor", "Cocina"]
       }
     ]
   },
