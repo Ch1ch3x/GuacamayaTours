@@ -34,6 +34,7 @@ import { ActualizarEstadoComponent } from "./components/estados/CRUD/actualizar/
 import { ActualizarHabitacionComponent } from "./components/habitaciones/CRUD/actualizar/actualizar-habitacion.component";
 import { ActualizarHotelComponent } from "./components/hoteles/CRUD/actualizar/actualizar-hotel.component";
 import { ActualizarOrdenComponent } from "./components/ordenes/CRUD/actualizar/actualizar-orden.component";
+// tslint:disable-next-line: max-line-length
 import { ActualizarDestinosTuristicosComponent } from "./components/destinos-turisticos/CRUD/actualizar/actualizar-destinos-turisticos.component";
 import { ListarDestinosTuristicosComponent } from "./components/destinos-turisticos/CRUD/listar/listar-destinos-turisticos.component";
 import { ListarEstadoComponent } from "./components/estados/CRUD/listar/listar-estado.component";
@@ -45,6 +46,13 @@ import { ListaCiudadComponent } from "./components/ciudades/CRUD/listar/lista-ci
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MaterialModule } from "./material/material.module";
+import {
+  MatTableModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatButtonModule
+} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -86,7 +94,7 @@ import { MaterialModule } from "./material/material.module";
     PlanearViajeComponent,
     ItinerarioComponent,
     NosotrosComponent,
-    ContactanosComponent
+    ContactanosComponent,
   ],
   imports: [
     BrowserModule,
@@ -99,7 +107,12 @@ import { MaterialModule } from "./material/material.module";
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    CommonModule
+    CommonModule,
+    MatTableModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
