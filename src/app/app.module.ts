@@ -45,6 +45,7 @@ import { ListaCiudadComponent } from "./components/ciudades/CRUD/listar/lista-ci
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MaterialModule } from "./material/material.module";
+import { MatTableModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -99,7 +100,8 @@ import { MaterialModule } from "./material/material.module";
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    CommonModule
+    CommonModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
