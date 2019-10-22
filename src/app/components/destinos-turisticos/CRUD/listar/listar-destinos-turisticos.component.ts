@@ -54,6 +54,8 @@ const ELEMENT_DATA: UsersData[] = [
   }
 ];
 
+
+
 @Component({
   selector: 'app-listar-destinos-turisticos',
   templateUrl: './listar-destinos-turisticos.component.html',
@@ -68,7 +70,5 @@ export class ListarDestinosTuristicosComponent {
 
   constructor() { }
 
-  openCrear() {
-    location.href = 'src/app/components/destinos - turisticos/CRUD/crear/crear - destinos - turisticos.component.html';
-   }
+  openCrear() { }
 }
