@@ -68,7 +68,14 @@ export class ListarDestinosTuristicosComponent {
 
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
 
+  formVisibility = false;
+
   constructor() { }
 
-  openCrear() { }
+  openCrear() {
+    this.formVisibility = true;
+  }
+  openBorrar() {
+    this.formVisibility = false;
+  }
 }

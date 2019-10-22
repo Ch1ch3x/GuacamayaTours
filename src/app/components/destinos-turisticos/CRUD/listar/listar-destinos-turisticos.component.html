@@ -1,6 +1,7 @@
-<div class="container text-center">
+<button class="agregar" ng-model="formVisibility" mat-button (click)="openCrear()" [hidden]="formVisibility"
+  mat-flat-button color="primary">Nuevo Destino</button>
 
-  <button id="agregar" mat-button (click)= "openCrear()" mat-flat-button color ="primary">Nuevo Destino</button>
+<div [hidden]="formVisibility" class="container text-center">
 
   <table mat-table [dataSource]="dataSource" #mytable class="my-table mat-elevation-z8">
 
@@ -70,4 +71,43 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
+</div>
+<div [hidden]="!formVisibility" id = form>
+
+  <form class="border border-light p-5">
+
+    <div class="text-center">
+      <p class="h4 mb-4">Ingrese los Datos del Nuevo Destino</p>
+
+      <p>Coloque en la casilla correspondiente la información del destino turistico seleccionado.</p>
+
+    </div>
+    <label for="ID">ID del Destino</label>
+    <input type="text" id="ID" class="form-control mb-4" placeholder="ID">
+    <label for="Nombre">Nombre del Destino</label>
+    <input type="text" id="Nombre" class="form-control mb-4" placeholder="Nombre de Destino">
+    <label for="Estado">Estado del Destino</label>
+    <input type="text" id="Estado" class="form-control mb-4" placeholder="Estado del Destino">
+    <label for="Tipo">Tipo de destino</label>
+    <select class="browser-default custom-select mb-4" id="Tipo">
+      <option value="" disabled="" selected="">Elije un Tipo de Destino</option>
+      <option value="1">Playa</option>
+      <option value="2">Montaña</option>
+      <option value="3">Arte</option>
+    </select>
+    <label for="Servicios">Servicios del Destino</label>
+    <input type="text" id="Servicios" class="form-control mb-4" placeholder="Servicios del Destino">
+    <label for="Actividades">Actividades del Destino</label>
+    <input type="text" id="Actividades" class="form-control mb-4" placeholder="Actividades del Destino">
+    <label for="Latitud">Latitud del Destino</label>
+    <input type="text" id="Latitud" class="form-control mb-4" placeholder="Latitud">
+    <label for="Longitud">Longitud del Destino</label>
+    <input type="text" id="Longitud" class="form-control mb-4" placeholder="Longitud">
+    <label for="Dirección">Dirección del Destino</label>
+    <input type="text" id="Dirección" class="form-control mb-4" placeholder="Dirección">
+    <label for="Descripción">Descripción</label>
+    <textarea id="Descripción" class="form-control mb-4" placeholder="Descripción del Destino"></textarea>
+
+    <button class="btn btn-info btn-block" (click)= "openBorrar()" type="submit">Crear</button>
+  </form>
 </div>

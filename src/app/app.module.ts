@@ -27,7 +27,6 @@ import { ItinerarioComponent } from "./components/itinerario/itinerario.componen
 import { NosotrosComponent } from "./components/nosotros/nosotros.component";
 import { ContactanosComponent } from "./components/contactanos/contactanos.component";
 import { CrearHotelComponent } from "./components/hoteles/CRUD/crear/crear-hotel.component";
-import { CrearDestinosTuristicosComponent } from "./components/destinos-turisticos/CRUD/crear/crear-destinos-turisticos.component";
 import { ActualizarCategoriaDestinoComponent } from "./components/categoria-destino/CRUD/actualizar/actualizar-categoria-destino.component";
 import { ActualizarCiudadComponent } from "./components/ciudades/CRUD/actualizar/actualizar-ciudad.component";
 import { ActualizarEstadoComponent } from "./components/estados/CRUD/actualizar/actualizar-estado.component";
@@ -70,7 +69,6 @@ import {
     CiudadesComponent,
     EstadosComponent,
     DashboardComponent,
-    CrearDestinosTuristicosComponent,
     CrearEstadoComponent,
     CrearHabitacionComponent,
     CrearHotelComponent,
