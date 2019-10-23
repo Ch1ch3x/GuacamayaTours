@@ -1,20 +1,26 @@
-<button class="agregar" ng-model="formVisibility" mat-button (click)="openCrear()" [hidden]="formVisibility"
+<button class="agregar" ng-model="formVisibility" name = "button" mat-button (click)="openCrear()" [hidden]="formVisibility"
   mat-flat-button color="primary">Nuevo Destino</button>
 
 <div [hidden]="formVisibility" class="container text-center">
 
   <table mat-table [dataSource]="dataSource" #mytable class="my-table mat-elevation-z8">
 
-    <!-- Name Column -->
-    <ng-container sticky matColumnDef="name">
+    <!-- Nombre Column -->
+    <ng-container sticky matColumnDef="nombre">
       <th id="headnombre" mat-header-cell *matHeaderCellDef> Nombre </th>
-      <td id="infonombre" mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <td id="infonombre" mat-cell *matCellDef="let element"> {{element.nombre}} </td>
     </ng-container>
 
     <!-- Estado Column -->
     <ng-container matColumnDef="estado">
       <th id="headnombre" mat-header-cell *matHeaderCellDef> Estado </th>
       <td id="infonombre" mat-cell *matCellDef="let element"> {{element.estado}} </td>
+    </ng-container>
+
+    <!-- Ciudad Column -->
+    <ng-container matColumnDef="ciudad">
+      <th id="headnombre" mat-header-cell *matHeaderCellDef> Ciudad </th>
+      <td id="infonombre" mat-cell *matCellDef="let element"> {{element.ciudad}} </td>
     </ng-container>
 
     <!-- Tipo Column -->
@@ -53,10 +59,10 @@
       <td id="infonombre" mat-cell *matCellDef="let element"> {{element.direccion}} </td>
     </ng-container>
 
-    <!-- Description Column -->
-    <ng-container matColumnDef="description">
+    <!-- Descripcion Column -->
+    <ng-container matColumnDef="descripcion">
       <th id="headnombre" mat-header-cell *matHeaderCellDef> Descripcion </th>
-      <td id="infonombre" mat-cell *matCellDef="let element"> {{element.description}} </td>
+      <td id="infonombre" mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
     </ng-container>
 
 
@@ -72,7 +78,8 @@
   </table>
 
 </div>
-<div [hidden]="!formVisibility" id = form>
+
+<div [hidden]="!formVisibility" id=form>
 
   <form class="border border-light p-5">
 
@@ -83,32 +90,37 @@
 
     </div>
     <label for="ID">ID del Destino</label>
-    <input type="text" id="ID" class="form-control mb-4" placeholder="ID">
+    <input [(ngModel)]="id" type="text" id="ID" class="form-control mb-4" placeholder="ID" [ngModelOptions]="{standalone: true}">
     <label for="Nombre">Nombre del Destino</label>
-    <input type="text" id="Nombre" class="form-control mb-4" placeholder="Nombre de Destino">
+    <input [(ngModel)]="nombre" type="text" id="Nombre" class="form-control mb-4" placeholder="Nombre de Destino" [ngModelOptions]="{standalone: true}">
     <label for="Estado">Estado del Destino</label>
-    <input type="text" id="Estado" class="form-control mb-4" placeholder="Estado del Destino">
+    <input [(ngModel)]="estado" type="text" id="Estado" class="form-control mb-4" placeholder="Estado del Destino" [ngModelOptions]="{standalone: true}">
+    <label for="Ciudad">Ciudad del Destino</label>
+    <input [(ngModel)]="ciudad" type="text" id="Ciudad" class="form-control mb-4" placeholder="Ciudad del Destino" [ngModelOptions]="{standalone: true}">
     <label for="Tipo">Tipo de destino</label>
-    <select class="browser-default custom-select mb-4" id="Tipo">
+    <select [(ngModel)]="tipo" class="browser-default custom-select mb-4" id="Tipo">
       <option value="" disabled="" selected="">Elije un Tipo de Destino</option>
       <option value="1">Playa</option>
       <option value="2">Montaña</option>
       <option value="3">Arte</option>
     </select>
     <label for="Servicios">Servicios del Destino</label>
-    <input type="text" id="Servicios" class="form-control mb-4" placeholder="Servicios del Destino">
+    <input [(ngModel)]="servicios" type="text" id="Servicios" class="form-control mb-4"
+      placeholder="Servicios del Destino" [ngModelOptions]="{standalone: true}">
     <label for="Actividades">Actividades del Destino</label>
-    <input type="text" id="Actividades" class="form-control mb-4" placeholder="Actividades del Destino">
+    <input [(ngModel)]="actividades" type="text" id="Actividades" class="form-control mb-4"
+      placeholder="Actividades del Destino" [ngModelOptions]="{standalone: true}">
     <label for="Latitud">Latitud del Destino</label>
-    <input type="text" id="Latitud" class="form-control mb-4" placeholder="Latitud">
+    <input [(ngModel)]="latitud" type="text" id="Latitud" class="form-control mb-4" placeholder="Latitud" [ngModelOptions]="{standalone: true}">
     <label for="Longitud">Longitud del Destino</label>
-    <input type="text" id="Longitud" class="form-control mb-4" placeholder="Longitud">
+    <input [(ngModel)]="longitud" type="text" id="Longitud" class="form-control mb-4" placeholder="Longitud" [ngModelOptions]="{standalone: true}">
     <label for="Dirección">Dirección del Destino</label>
-    <input type="text" id="Dirección" class="form-control mb-4" placeholder="Dirección">
+    <input [(ngModel)]="direccion" type="text" id="Dirección" class="form-control mb-4" placeholder="Dirección" [ngModelOptions]="{standalone: true}">
     <label for="Descripción">Descripción</label>
-    <textarea id="Descripción" class="form-control mb-4" placeholder="Descripción del Destino"></textarea>
+    <textarea [(ngModel)]="descripcion" id="Descripción" class="form-control mb-4"
+      placeholder="Descripción del Destino" [ngModelOptions]="{standalone: true}"></textarea>
 
-    <button class="btn btn-info btn-block" (click)= "openBorrar()" type="submit">Crear</button>
+    <button class="btn btn-info btn-block" (click)="crearDestinos()" type="submit">Crear</button>
   </form>
 </div>
 
