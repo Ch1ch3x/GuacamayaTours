@@ -54,6 +54,7 @@ import {
 } from '@angular/material';
 import {HttpClientModule} from '@angular/common/http'
 import { DestinosService } from './services/destinos.service';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -113,7 +114,8 @@ import { DestinosService } from './services/destinos.service';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCheckboxModule
   ],
   providers: [DestinosService],
   bootstrap: [AppComponent, ]

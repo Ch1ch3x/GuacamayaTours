@@ -4,6 +4,7 @@ import { MatTable } from '@angular/material';
 
 import destinos from '../../../../data/destinos.json';
 import {destinoTuristico} from '../../../../interfaces/destinoTuristico';
+import { SelectionModel } from '@angular/cdk/collections';
 
 const ELEMENT_DATA: destinoTuristico[] = destinos;
 @Component({
@@ -14,10 +15,12 @@ const ELEMENT_DATA: destinoTuristico[] = destinos;
 
 export class ListarDestinosTuristicosComponent implements OnInit {
   // tslint:disable-next-line: max-line-length
-  displayedColumns: string[] = ['nombre', 'estado', 'ciudad', 'tipo', 'actividades', 'servicios', 'latitud', 'longitud', 'direccion', 'descripcion', 'id'];
+  displayedColumns: string[] = ['select', 'nombre', 'estado', 'ciudad', 'tipo', 'actividades', 'servicios', 'latitud', 'longitud', 'direccion', 'descripcion', 'id'];
   dataSource = ELEMENT_DATA;
+
+  selection = new SelectionModel<destinoTuristico>(false, []);
+
   public destino = destinos;
-  public tabla;
   public destinos: destinoTuristico[] = [];
   public Destino: destinoTuristico = {
     nombre: '',
@@ -66,14 +69,20 @@ export class ListarDestinosTuristicosComponent implements OnInit {
     this.table.renderRows();
   }
 
-  openModificar(obj) {
+  openModificar() {
+
     this.formVisibility = true;
     this.modificarformVisibility = true;
   }
 
   modificarDestinos() {
+
     this.modifyRowData();
     this.formVisibility = false;
     this.crearformVisibility = false;
+  }
+
+  checkboxLabel(row?: destinoTuristico): string {
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'}`;
   }
 }
