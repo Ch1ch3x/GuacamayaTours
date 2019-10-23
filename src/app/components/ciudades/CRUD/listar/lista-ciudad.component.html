@@ -1,6 +1,6 @@
 <div class="container text-center">
 
-  <button id="agregar" mat-button (click)="openCrear()" mat-flat-button color="primary">Nueva Ciudad</button>
+  <button class="agregar" ng-model="formVisibility" mat-button (click)="openCrear()" [hidden]="formVisibility" mat-flat-button color="primary">Nueva Ciudad</button>
 
   <table mat-table [dataSource] ="dataSource" #mytable class="my-table mat-elevation-z8 text-center">
 
@@ -32,4 +32,29 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
+</div>
+
+<div [hidden]="!formVisibility" id = form>
+
+  <form class="border border-light p-5">
+
+    <div class="text-center">
+      <p class="h4 mb-4">Ingrese los Datos de la Nueva Ciudad</p>
+
+      <p>Coloque en la casilla correspondiente la información del destino turistico seleccionado.</p>
+
+    </div>
+    <label for="Nombre">Nombre de la Ciudad</label>
+    <input type="text" id="Nombre" class="form-control mb-4" placeholder="Nombre de Destino">
+    <label for="Estado">Nombre del Estado</label>
+    <input type="text" id="Nombre del Estado" class="form-control mb-4" placeholder="Estado">
+    <label for="imagen">Url de Imagen</label>
+    <input type="text" id="imagen" class="form-control mb-4" placeholder="imagen">
+    <label for="ID">ID de la Ciudad</label>
+    <input type="text" id="ID" class="form-control mb-4" placeholder="ID">
+    
+    
+
+    <button class="btn btn-info btn-block" (click)= "openBorrar()" type="submit">Crear</button>
+  </form>
 </div>

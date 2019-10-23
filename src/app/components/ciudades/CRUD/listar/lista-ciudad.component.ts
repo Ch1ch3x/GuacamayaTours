@@ -40,10 +40,14 @@ export class ListaCiudadComponent {
   dataSource = ELEMENT_DATA;
 
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
+  formVisibility = false;
 
   constructor() { }
 
   openCrear() {
-    location.href = 'src/app/components/ciudades/CRUD/crear/crear-ciudad.component.html';
+    this.formVisibility = true;
+  }
+  openBorrar() {
+    this.formVisibility = false;
   }
 }
