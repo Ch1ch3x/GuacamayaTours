@@ -1,7 +1,7 @@
-<button class="agregar" ng-model="formVisibility" name = "button" mat-button (click)="openCrear()" [hidden]="formVisibility"
-  mat-flat-button color="primary">Nuevo Destino</button>
 
-<div [hidden]="formVisibility" class="container text-center">
+<div [hidden]="formVisibility" class="container-fluid col-6 text-center">
+    <button class="agregar col-lg-6" ng-model="formVisibility" name = "button" mat-button (click)="openCrear()" [hidden]="formVisibility"
+        mat-flat-button color="primary">Nuevo Destino</button>
 
   <table mat-table [dataSource]="dataSource" #mytable class="my-table mat-elevation-z8">
 
