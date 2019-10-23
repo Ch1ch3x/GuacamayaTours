@@ -11,6 +11,6 @@ export class DestinosService {
   constructor() { }
 
   getDestinos() {
-    destinos;
+    return destinos;
   }
 }

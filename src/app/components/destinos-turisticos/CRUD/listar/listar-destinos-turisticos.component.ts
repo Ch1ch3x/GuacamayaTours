@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 
 import { MatTable } from '@angular/material';
-import { DestinosService } from '../../../../services/destinos.service';
+
 import destinos from '../../../../data/destinos.json';
 import {destinoTuristico} from '../../../../interfaces/destinoTuristico';
 
@@ -20,8 +20,8 @@ export class ListarDestinosTuristicosComponent {
 
   formVisibility = false;
 
-  constructor(private DestinosService: DestinosService) {
-
+  constructor() {
+    
    }
   total = 2;
   nombre = "";
@@ -67,4 +67,5 @@ export class ListarDestinosTuristicosComponent {
     destinos[this.total].ciudad = this.ciudad;
     destinos[this.total].direccion = this.direccion;
   }
+
 }
