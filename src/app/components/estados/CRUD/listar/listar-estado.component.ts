@@ -20,6 +20,7 @@ export class ListarEstadoComponent implements OnInit {
   constructor() { }
   total = 2;
   nombre = "";
+  imagen = "";
   id;
 
   public estado = estados;

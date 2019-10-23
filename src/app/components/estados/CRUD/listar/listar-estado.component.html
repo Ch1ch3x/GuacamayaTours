@@ -27,26 +27,21 @@
       <form class="border border-light p-5">
     
         <div class="text-center">
-          <p class="h4 mb-4">Ingrese los Datos del Nuevo Hotel</p>
+          <p class="h4 mb-4">Ingrese Datos del Estado</p>
     
-          <p>Coloque en la casilla correspondiente la información del hotel nuevo.</p>
+          <p>Coloque en la casilla correspondiente la información del Estado.</p>
     
         </div>
         
-        <label for="ID">ID del Hotel</label>
+        <label for="ID">ID del Estado</label>
         <input [(ngModel)]="id" type="text" id="ID" class="form-control mb-4" placeholder="ID" [ngModelOptions]="{standalone: true}">
-        <label for="Nombre">Nombre del Hotel</label>
-        <input [(ngModel)]="nombre" type="text" id="Nombre" class="form-control mb-4" placeholder="Nombre del Hotel" [ngModelOptions]="{standalone: true}">
+        <label for="Nombre">Nombre del Estado</label>
+        <input [(ngModel)]="nombre" type="text" id="Nombre" class="form-control mb-4" placeholder="Nombre del Estado" [ngModelOptions]="{standalone: true}">
 
         <label for="fotos">Fotos del estado</label>
-        <input [(ngModel)]="fotos" type="text" id="fotos" class="form-control mb-4" placeholder="URL" [ngModelOptions]="{standalone: true}">
-        <input [(ngModel)]="fotos" type="text" id="fotos" class="form-control mb-4" placeholder="URL" [ngModelOptions]="{standalone: true}">
-        <input [(ngModel)]="fotos" type="text" id="fotos" class="form-control mb-4" placeholder="URL" [ngModelOptions]="{standalone: true}">
-        <input [(ngModel)]="fotos" type="text" id="fotos" class="form-control mb-4" placeholder="URL" [ngModelOptions]="{standalone: true}">
-        <input [(ngModel)]="fotos" type="text" id="fotos" class="form-control mb-4" placeholder="URL" [ngModelOptions]="{standalone: true}">
-        
-    
-        <button class="btn btn-info btn-block" (click)="crearHotel()" type="submit">Crear Hotel</button>
+        <input [(ngModel)]="imagen" type="text" id="fotos" class="form-control mb-4" placeholder="URL" [ngModelOptions]="{standalone: true}">
+
+        <button class="btn btn-info btn-block" (click)="crearEstado()" type="submit">Agregar Estado</button>
       </form>
     </div>
     
