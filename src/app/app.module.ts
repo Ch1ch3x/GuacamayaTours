@@ -52,6 +52,8 @@ import {
   MatInputModule,
   MatButtonModule
 } from '@angular/material';
+import {HttpClientModule} from '@angular/common/http'
+import { DestinosService } from './services/destinos.service';
 
 @NgModule({
   declarations: [
@@ -111,8 +113,9 @@ import {
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    HttpClientModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [DestinosService],
+  bootstrap: [AppComponent, ]
 })
 export class AppModule {}
