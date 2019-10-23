@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 
 import { MatTable } from '@angular/material';
-import { DestinosService } from '../../../../services/destinos.service';
+
 import destinos from '../../../../data/destinos.json';
 
 export interface UsersData {
@@ -35,8 +35,8 @@ export class ListarDestinosTuristicosComponent {
 
   formVisibility = false;
 
-  constructor(private DestinosService: DestinosService) {
-
+  constructor() {
+    
    }
    
 
@@ -52,4 +52,5 @@ export class ListarDestinosTuristicosComponent {
   openBorrar() {
     this.formVisibility = false;
   }
+
 }
