@@ -33,20 +33,26 @@ a:focus {
 
 .wrapper {
     display: flex;
-    width: 100%;
-    align-items: stretch;
+
+    
     text-align: left;
     font: Regular 15px/21px Source Sans Pro;
 }
 
 #sidebar {
+    height: 100%;
+    max-width: 270px;
     min-width: 160px;
-    max-width: 300px;
-
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
     color: #fff;
     transition: all 0.3s;
     background: #43425D 0% 0% no-repeat padding-box;
     opacity: 1;
+    overflow-x: hidden;
+
     
 }
 
@@ -88,14 +94,6 @@ a[aria-expanded="true"] {
 }
 
 
-.dropdown-toggle::after {
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-}
-
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 60px !important;
@@ -114,10 +112,6 @@ ul.CTAs a {
     margin-bottom: 5px;
 }
 
-a.download {
-    background: #fff;
-    color: #7386D5;
-}
 
 a.article,
 a.article:hover {
@@ -131,9 +125,9 @@ a.article:hover {
 
 #content {
     width: 100%;
-    padding: 10px;
-    min-height: 100vh;
+    padding-left: 290px;
     transition: all 0.3s;
+    margin-top: 10px;
 }
 
 .img{
