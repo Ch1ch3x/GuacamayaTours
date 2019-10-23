@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 
 import { MatTable } from '@angular/material';
 
@@ -12,60 +12,68 @@ const ELEMENT_DATA: destinoTuristico[] = destinos;
   styleUrls: ['./listar-destinos-turisticos.component.scss']
 })
 
-export class ListarDestinosTuristicosComponent {
+export class ListarDestinosTuristicosComponent implements OnInit {
+  // tslint:disable-next-line: max-line-length
   displayedColumns: string[] = ['nombre', 'estado', 'ciudad', 'tipo', 'actividades', 'servicios', 'latitud', 'longitud', 'direccion', 'descripcion', 'id'];
   dataSource = ELEMENT_DATA;
+  public destino = destinos;
+  public tabla;
+  public destinos: destinoTuristico[] = [];
+  public Destino: destinoTuristico = {
+    nombre: '',
+    tipo: '',
+    servicios: '',
+    actividades: '',
+    ciudad: '',
+    latitud: '',
+    longitud: '',
+    direccion: '',
+    descripcion: '',
+    estado: '',
+    id: this.destino.length + 1,
+  };
 
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
 
   formVisibility = false;
+  modificarformVisibility = false;
+  crearformVisibility = false;
 
-  constructor() {
-    
-   }
-  total = 2;
-  nombre = "";
-  tipo = 0;
-  servicios = "";
-  actividades = "";
-  ciudad = "";
-  latitud = "";
-  longitud = "";
-  direccion = "";
-  descripcion = "";
-  estado = "";
-  id = 3;
+  constructor() { }
 
-  public destino = destinos;
-
-   ngOnInit() {
+  ngOnInit() {
      this.destino = destinos;
    }
 
   openCrear() {
     this.formVisibility = true;
+    this.crearformVisibility = true;
   }
 
   crearDestinos() {
+    this.addRowData();
     this.formVisibility = false;
-
-    destinos[this.total + 1].id = this.id;
-    destinos[this.total].nombre = this.nombre;
-    destinos[this.total].descripcion = this.descripcion;
-    if (this.tipo == 1) {
-      destinos[this.total].servicios = "Playa";
-    } else if (this.tipo == 2) {
-      destinos[this.total].servicios = "Montaña";
-    } else {
-      destinos[this.total].servicios = "Arte";
-    }
-    destinos[this.total].servicios = this.servicios;
-    destinos[this.total].actividades = this.actividades;
-    destinos[this.total].latitud = this.latitud;
-    destinos[this.total].longitud = this.longitud;
-    destinos[this.total].estado = this.estado;
-    destinos[this.total].ciudad = this.ciudad;
-    destinos[this.total].direccion = this.direccion;
+    this.crearformVisibility = false;
   }
 
+  addRowData() {
+    this.destino.push({ ...this.Destino });
+    this.table.renderRows();
+  }
+
+  modifyRowData() {
+    this.destino.push({ ...this.Destino });
+    this.table.renderRows();
+  }
+
+  openModificar(obj) {
+    this.formVisibility = true;
+    this.modificarformVisibility = true;
+  }
+
+  modificarDestinos() {
+    this.modifyRowData();
+    this.formVisibility = false;
+    this.crearformVisibility = false;
+  }
 }

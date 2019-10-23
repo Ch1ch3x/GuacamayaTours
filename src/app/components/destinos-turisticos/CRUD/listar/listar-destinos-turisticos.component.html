@@ -1,9 +1,11 @@
-<button class="agregar" ng-model="formVisibility" name = "button" mat-button (click)="openCrear()" [hidden]="formVisibility"
+<button class="boton" ng-model="formVisibility" name = "button" mat-button (click)="openCrear()" [hidden]="formVisibility"
   mat-flat-button color="primary">Nuevo Destino</button>
+<button class="boton2" ng-model="formVisibility" name = "button" mat-button (click)="openModificar()"
+  [hidden]="formVisibility" mat-flat-button color="primary">Modificar Destino</button>
 
 <div [hidden]="formVisibility" class="container text-center">
 
-  <table mat-table [dataSource]="dataSource" #mytable class="my-table mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" [(ngModel)]="tabla" [ngModelOptions]="{standalone: true}" #mytable class="my-table mat-elevation-z8">
 
     <!-- Nombre Column -->
     <ng-container sticky matColumnDef="nombre">
@@ -65,8 +67,6 @@
       <td id="infonombre" mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
     </ng-container>
 
-
-
     <!-- Id Column -->
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> ID. </th>
@@ -79,7 +79,7 @@
 
 </div>
 
-<div [hidden]="!formVisibility" id=form>
+<div [hidden]="!crearformVisibility" id = form>
 
   <form class="border border-light p-5">
 
@@ -89,39 +89,85 @@
       <p>Coloque en la casilla correspondiente la información del destino turistico seleccionado.</p>
 
     </div>
-    <label for="ID">ID del Destino</label>
-    <input [(ngModel)]="id" type="text" id="ID" class="form-control mb-4" placeholder="ID" [ngModelOptions]="{standalone: true}">
     <label for="Nombre">Nombre del Destino</label>
-    <input [(ngModel)]="nombre" type="text" id="Nombre" class="form-control mb-4" placeholder="Nombre de Destino" [ngModelOptions]="{standalone: true}">
+    <input type="text" id="Nombre" class="form-control mb-4" [(ngModel)]="Destino.nombre" [ngModelOptions]="{standalone: true}" placeholder="Nombre de Destino" >
     <label for="Estado">Estado del Destino</label>
-    <input [(ngModel)]="estado" type="text" id="Estado" class="form-control mb-4" placeholder="Estado del Destino" [ngModelOptions]="{standalone: true}">
+    <input type="text" id="Estado" class="form-control mb-4" [(ngModel)]="Destino.estado" [ngModelOptions]="{standalone: true}" placeholder="Estado del Destino" >
     <label for="Ciudad">Ciudad del Destino</label>
-    <input [(ngModel)]="ciudad" type="text" id="Ciudad" class="form-control mb-4" placeholder="Ciudad del Destino" [ngModelOptions]="{standalone: true}">
+    <input type="text" id="Ciudad" class="form-control mb-4" [(ngModel)]="Destino.ciudad" [ngModelOptions]="{standalone: true}" placeholder="Ciudad del Destino" >
     <label for="Tipo">Tipo de destino</label>
-    <select [(ngModel)]="tipo" class="browser-default custom-select mb-4" id="Tipo">
+    <select class="browser-default custom-select mb-4" [(ngModel)]="Destino.tipo" [ngModelOptions]="{standalone: true}" id="Tipo">
       <option value="" disabled="" selected="">Elije un Tipo de Destino</option>
       <option value="1">Playa</option>
       <option value="2">Montaña</option>
       <option value="3">Arte</option>
     </select>
     <label for="Servicios">Servicios del Destino</label>
-    <input [(ngModel)]="servicios" type="text" id="Servicios" class="form-control mb-4"
-      placeholder="Servicios del Destino" [ngModelOptions]="{standalone: true}">
+    <input type="text" id="Servicios" class="form-control mb-4"
+      [(ngModel)]="Destino.servicios" [ngModelOptions]="{standalone: true}" placeholder="Servicios del Destino" >
     <label for="Actividades">Actividades del Destino</label>
-    <input [(ngModel)]="actividades" type="text" id="Actividades" class="form-control mb-4"
-      placeholder="Actividades del Destino" [ngModelOptions]="{standalone: true}">
+    <input type="text" id="Actividades" class="form-control mb-4"
+      [(ngModel)]="Destino.actividades" [ngModelOptions]="{standalone: true}" placeholder="Actividades del Destino" >
     <label for="Latitud">Latitud del Destino</label>
-    <input [(ngModel)]="latitud" type="text" id="Latitud" class="form-control mb-4" placeholder="Latitud" [ngModelOptions]="{standalone: true}">
+    <input type="text" id="Latitud" class="form-control mb-4" [(ngModel)]="Destino.latitud" [ngModelOptions]="{standalone: true}" placeholder="Latitud" >
     <label for="Longitud">Longitud del Destino</label>
-    <input [(ngModel)]="longitud" type="text" id="Longitud" class="form-control mb-4" placeholder="Longitud" [ngModelOptions]="{standalone: true}">
+    <input type="text" id="Longitud" class="form-control mb-4" [(ngModel)]="Destino.longitud" [ngModelOptions]="{standalone: true}" placeholder="Longitud" >
     <label for="Dirección">Dirección del Destino</label>
-    <input [(ngModel)]="direccion" type="text" id="Dirección" class="form-control mb-4" placeholder="Dirección" [ngModelOptions]="{standalone: true}">
+    <input type="text" id="Dirección" class="form-control mb-4" [(ngModel)]="Destino.direccion" [ngModelOptions]="{standalone: true}" placeholder="Dirección" >
     <label for="Descripción">Descripción</label>
-    <textarea [(ngModel)]="descripcion" id="Descripción" class="form-control mb-4"
-      placeholder="Descripción del Destino" [ngModelOptions]="{standalone: true}"></textarea>
+    <textarea id="Descripción" class="form-control mb-4"
+      [(ngModel)]="Destino.descripcion" [ngModelOptions]="{standalone: true}" placeholder="Descripción del Destino" ></textarea>
 
     <button class="btn btn-info btn-block" (click)="crearDestinos()" type="submit">Crear</button>
   </form>
 </div>
 
+<div [hidden]="!modificarformVisibility" id=form>
 
+  <form class="border border-light p-5">
+
+    <div class="text-center">
+      <p class="h4 mb-4">Ingrese los Datos del Nuevo Destino</p>
+
+      <p>Coloque en la casilla correspondiente la información del destino turistico seleccionado.</p>
+
+    </div>
+    <label for="Nombre">Nombre del Destino</label>
+    <input type="text" id="Nombre" class="form-control mb-4" [(ngModel)]="Destino.nombre"
+      [ngModelOptions]="{standalone: true}" placeholder="Nombre de Destino">
+    <label for="Estado">Estado del Destino</label>
+    <input type="text" id="Estado" class="form-control mb-4" [(ngModel)]="Destino.estado"
+      [ngModelOptions]="{standalone: true}" placeholder="Estado del Destino">
+    <label for="Ciudad">Ciudad del Destino</label>
+    <input type="text" id="Ciudad" class="form-control mb-4" [(ngModel)]="Destino.ciudad"
+      [ngModelOptions]="{standalone: true}" placeholder="Ciudad del Destino">
+    <label for="Tipo">Tipo de destino</label>
+    <select class="browser-default custom-select mb-4" [(ngModel)]="Destino.tipo" [ngModelOptions]="{standalone: true}"
+      id="Tipo">
+      <option value="" disabled="" selected="">Elije un Tipo de Destino</option>
+      <option value="1">Playa</option>
+      <option value="2">Montaña</option>
+      <option value="3">Arte</option>
+    </select>
+    <label for="Servicios">Servicios del Destino</label>
+    <input type="text" id="Servicios" class="form-control mb-4" [(ngModel)]="Destino.servicios"
+      [ngModelOptions]="{standalone: true}" placeholder="Servicios del Destino">
+    <label for="Actividades">Actividades del Destino</label>
+    <input type="text" id="Actividades" class="form-control mb-4" [(ngModel)]="Destino.actividades"
+      [ngModelOptions]="{standalone: true}" placeholder="Actividades del Destino">
+    <label for="Latitud">Latitud del Destino</label>
+    <input type="text" id="Latitud" class="form-control mb-4" [(ngModel)]="Destino.latitud"
+      [ngModelOptions]="{standalone: true}" placeholder="Latitud">
+    <label for="Longitud">Longitud del Destino</label>
+    <input type="text" id="Longitud" class="form-control mb-4" [(ngModel)]="Destino.longitud"
+      [ngModelOptions]="{standalone: true}" placeholder="Longitud">
+    <label for="Dirección">Dirección del Destino</label>
+    <input type="text" id="Dirección" class="form-control mb-4" [(ngModel)]="Destino.direccion"
+      [ngModelOptions]="{standalone: true}" placeholder="Dirección">
+    <label for="Descripción">Descripción</label>
+    <textarea id="Descripción" class="form-control mb-4" [(ngModel)]="Destino.descripcion"
+      [ngModelOptions]="{standalone: true}" placeholder="Descripción del Destino"></textarea>
+
+    <button class="btn btn-info btn-block" (click)="modificarDestinos()" type="submit">Crear</button>
+  </form>
+</div>

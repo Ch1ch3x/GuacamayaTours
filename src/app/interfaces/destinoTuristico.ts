@@ -1,9 +1,9 @@
 
 export interface destinoTuristico {
-    destinosId: number;
+    id: number;
     nombre: string;
     descripcion: string;
-    tipoDeDestino: string;
+    tipo: string;
     servicios: string;
     actividades: string;
     latitud: string;
