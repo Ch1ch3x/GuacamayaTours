@@ -29,7 +29,7 @@ export class ListarHotelesComponent implements OnInit {
   longitud = "";
   direccion = "";
   estado = "";
-  id = 3;
+  id;
 
   public hotel = hoteles;
 
