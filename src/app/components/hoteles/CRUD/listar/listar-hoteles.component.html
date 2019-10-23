@@ -1,8 +1,9 @@
 
-<div [hidden]="formVisibility" class="container-fluid col-6 text-center">
-    <button class="btn-group agregar col-lg-6" ng-model="formVisibility" name = "button" mat-button (click)="openCrear()" [hidden]="formVisibility"
+<div [hidden]="formVisibility" class="container-fluid col-12 text-center">
+    <button class="btn-group agregar " ng-model="formVisibility" name = "button" mat-button (click)="openCrear()" [hidden]="formVisibility"
         mat-flat-button color="primary">Nuevo Hotel</button>
-
+        <button class="btn-group agregar" ng-model="formVisibility" name = "button" mat-button (click)="openCrear()" [hidden]="formVisibility"
+        mat-flat-button color="primary">Modificar Hotel</button>
   <table mat-table [dataSource]="dataSource" #mytable class="my-table mat-elevation-z8">
 
     <!-- Nombre Column -->
