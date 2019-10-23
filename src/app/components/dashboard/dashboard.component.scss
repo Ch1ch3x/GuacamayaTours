@@ -10,7 +10,7 @@ a:focus {
 }
 
 .navbar {
-    padding: 15px 10px;
+    padding-left: 10px;
     background: #fff;
     border: none;
     border-radius: 0;
@@ -31,18 +31,10 @@ a:focus {
     margin: 40px 0;
 }
 
-.wrapper {
-    display: flex;
-
-    
-    text-align: left;
-    font: Regular 15px/21px Source Sans Pro;
-}
-
 #sidebar {
     height: 100%;
-    max-width: 270px;
-    min-width: 160px;
+    max-width: 30%;
+    min-width: 120px;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -51,17 +43,12 @@ a:focus {
     transition: all 0.3s;
     background: #43425D 0% 0% no-repeat padding-box;
     opacity: 1;
-    overflow-x: hidden;
-
-    
+    overflow-x: hidden;   
 }
 
-#sidebar.active {
-    margin-left: -250px;
-}
 
 #sidebar .sidebar-header {
-    padding: 20px;
+    padding: 25px;
     background: #0000001A;
     text-align: left;
 }
@@ -95,7 +82,7 @@ a[aria-expanded="true"] {
 
 
 ul ul a {
-    font-size: 0.9em !important;
+    font-size: 50% !important;
     padding-left: 60px !important;
     background: #43425D;
 }
@@ -106,7 +93,7 @@ ul.CTAs {
 
 ul.CTAs a {
     text-align: center;
-    font-size: 0.9em !important;
+    font-size: 50% !important;
     display: block;
     border-radius: 5px;
     margin-bottom: 5px;
@@ -125,7 +112,7 @@ a.article:hover {
 
 #content {
     width: 100%;
-    padding-left: 290px;
+    padding-left: 37%;
     transition: all 0.3s;
     margin-top: 10px;
 }
