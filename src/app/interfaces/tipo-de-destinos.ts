@@ -1,4 +1,5 @@
 export interface tipoDeDestino {
-    foto: [String];
+    id: number;
     nombre: string;
+    foto: String;
 }
