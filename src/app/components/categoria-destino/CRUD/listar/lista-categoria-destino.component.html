@@ -11,7 +11,7 @@
         mat-flat-button
         color="primary"
       >
-        Nuevo Destino
+        Nueva Categoría
       </button>
   
       <button
@@ -19,13 +19,35 @@
         ng-model="formVisibility"
         name="button"
         mat-button
-        (click)="openCrear()"
+        (click)="openModificar()"
         [hidden]="formVisibility"
         mat-flat-button
         color="primary"
       >
-        Modificar Destino
+        Modificar categoría
       </button>
+
+      <button class="btn agregar"
+        ng-model="formVisibility"
+        name="button"
+        mat-button
+        (click)="habilitar()"
+        [hidden]="formVisibility"
+        mat-flat-button
+        color="primary"
+        >
+        Habilitar Categoria
+    </button>
+    <button class="btn agregar"
+        ng-model="formVisibility"
+        name="button"
+        mat-button
+        (click)="deshabilitar()"
+        [hidden]="formVisibility"
+        mat-flat-button color="primary"
+      >
+        Deshabilitar Deshabilitar
+    </button>
     </div>
   
     <table
@@ -49,7 +71,11 @@
       </ng-container>
   
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns" 
+        [class.highlight2] = "tipos[row.id].deshabilitar == true"
+        [class.highlight] = "selectedRowIndex == row.id"
+        [class.highlight3] = "selectedRowIndex == row.id && tipos[row.id].deshabilitar == true"
+        (click)="highlight(row)"></tr>
     </table>
   </div>
   
