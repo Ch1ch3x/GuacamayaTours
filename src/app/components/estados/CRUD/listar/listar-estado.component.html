@@ -1,51 +1,4 @@
 <app-dashboard></app-dashboard>
-
-<button
-  class="boton"
-  ng-model="formVisibility"
-  name="button"
-  mat-button
-  (click)="openCrear()"
-  [hidden]="formVisibility"
-  mat-flat-button
-  color="primary"
->
-  Nueva Ciudad
-</button>
-<button
-  class="boton2"
-  ng-model="formVisibility"
-  name="button"
-  mat-button
-  (click)="openModificar()"
-  [hidden]="formVisibility"
-  mat-flat-button
-  color="primary"
->
-  Modificar Ciudad
-</button>
-<button class="boton2"
-  ng-model="formVisibility"
-  name="button"
-  mat-button
-  (click)="habilitar()"
-  [hidden]="formVisibility"
-  mat-flat-button
-  color="primary"
-  >
-  Habilitar Ciudad
-</button>
-<button class="boton2"
-  ng-model="formVisibility"
-  name="button"
-  mat-button
-  (click)="deshabilitar()"
-  [hidden]="formVisibility"
-  mat-flat-button color="primary"
->
-  Deshabilitar Ciudad
-</button>
-
 <div [hidden]="formVisibility" class="container col-12 text-center">
     <button
       class="boton2"
@@ -93,10 +46,10 @@
 >
   Deshabilitar
 </button>
-    
 
 
-  
+
+
 
   <table
     mat-table
@@ -125,7 +78,7 @@
          [class.highlight] = "selectedRowIndex == row.id"
          [class.highlight3] = "selectedRowIndex == row.id && estado[row.id].deshabilitar == true"
          (click)="highlight(row)"></tr>
-    
+
   </table>
 </div>
 

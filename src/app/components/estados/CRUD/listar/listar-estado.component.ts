@@ -25,11 +25,7 @@ export class ListarEstadoComponent implements OnInit {
     nombre: "",
     imagen: "",
     id: this.estado.length + 1,
-<<<<<<< HEAD
     deshabilitar: false,
-=======
-    deshabilitar: false
->>>>>>> a141e2edeb070df11267fd1ef75b5e2989c304ee
   };
 
 
@@ -42,11 +38,7 @@ export class ListarEstadoComponent implements OnInit {
       nombre: "",
       imagen: "",
       id: this.estado.length + 1,
-<<<<<<< HEAD
       deshabilitar: false,
-=======
-      deshabilitar: false
->>>>>>> a141e2edeb070df11267fd1ef75b5e2989c304ee
     };
   }
 

@@ -18,19 +18,17 @@ export class ListaCiudadComponent {
   displayedColumns: string[] = [
     'nombre',
     'estado',
-    'servicios',
     'imagen',
   ];
   dataSource = ELEMENT_DATA;
 
   public ciudad = ciudades;
-  public ciudades: ciudades[] = [];
-  public Destino: ciudades = {
-    ciudadId: this.ciudad.length + 1,
+  public ciudades: ciudad[] = [];
+  public Ciudad: ciudad = {
+    id: this.ciudad.length,
     nombre: '',
-    servicios: '',
     estado: '',
-    imagen: '', 
+    imagen: '',
     deshabilitar: false
   };
 
@@ -47,13 +45,12 @@ export class ListaCiudadComponent {
   }
 
   clearCiudad() {
-    this.ciudad = {
-      ciudadId: this.ciudad.length + 1,
+    this.Ciudad = {
       nombre: '',
-      servicios: '',
       estado: '',
-      imagen: '', 
-      deshabilitar: false
+      imagen: '',
+      deshabilitar: false,
+      id: this.ciudad.length,
     };
   }
 
@@ -62,14 +59,14 @@ export class ListaCiudadComponent {
     this.crearformVisibility = true;
   }
 
-  crearDestinos() {
+  crearCiudad() {
     this.addRowData();
     this.formVisibility = false;
     this.crearformVisibility = false;
   }
 
   addRowData() {
-    ciudad.push(this.ciudad);
+    ciudades.push(this.Ciudad);
     this.clearCiudad();
     this.table.renderRows();
   }
@@ -81,7 +78,7 @@ export class ListaCiudadComponent {
   openModificar() {
     this.formVisibility = true;
     this.modificarformVisibility = true;
-    this.ciudad = this.ciudad[this.selectedRowIndex];
+    this.Ciudad = this.ciudad[this.selectedRowIndex];
   }
 
   close() {
@@ -91,20 +88,17 @@ export class ListaCiudadComponent {
   }
 
   modificar() {
-    this.ciudad[this.selectedRowIndex].nombre = this.ciudad.nombre;
-    this.ciudad[this.selectedRowIndex].id = this.ciudad.estado;
-    this.ciudad[this.selectedRowIndex].estado = this.ciudad.ciudad;
-    this.ciudad[this.selectedRowIndex].imagen = this.ciudad.tipo;
-    this.ciudad[this.selectedRowIndex].actividades = this.Destino.actividades;
-    
+    this.ciudad[this.selectedRowIndex].nombre = this.Ciudad.nombre;
+    this.ciudad[this.selectedRowIndex].estado = this.Ciudad.estado;
+    this.ciudad[this.selectedRowIndex].imagen = this.Ciudad.imagen;
+
   }
 
-  modificarDestinos() {
+  modificarCiudad() {
     this.modifyRowData();
     this.formVisibility = false;
     this.crearformVisibility = false;
     this.modificarformVisibility = false;
-    console.log(this.selectedRowIndex, "hola");
     this.modificar();
   }
 
@@ -118,5 +112,5 @@ export class ListaCiudadComponent {
   habilitar() {
     ciudades[this.selectedRowIndex].deshabilitar = false;
   }
-  
+
 }
