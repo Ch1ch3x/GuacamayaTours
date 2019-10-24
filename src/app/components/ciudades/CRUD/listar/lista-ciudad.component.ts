@@ -15,8 +15,11 @@ const ELEMENT_DATA: ciudad[] = ciudades;
 export class ListaCiudadComponent implements OnInit {
   displayedColumns: string[] = ['nombre', 'estado', 'id'];
   dataSource = ELEMENT_DATA;
+
   @ViewChild(MatTable,  { static: true}) table: MatTable<any>;
+  
   formVisibility = false;
+  
   constructor() { }
   total = 2;
   nombre = "";
