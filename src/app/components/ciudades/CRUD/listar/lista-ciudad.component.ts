@@ -1,53 +1,42 @@
-import { Component, ViewChild } from '@angular/core';
-
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatTable } from '@angular/material';
 
-export interface UsersData {
-  name: string;
-  imagen: string;
-  estado: string;
-  id: number;
-}
+import ciudades from '../../../../data/ciudades.json';
+import { ciudad } from '../../../../interfaces/ciudad';
 
-const ELEMENT_DATA: UsersData[] = [
-  {
-    id: 632,
-    name: 'Tucacas',
-    estado: 'Falcon',
-    imagen: 'src/assets/img/Cayo.jpg',
-  },
-  {
-    id: 614,
-    name: 'Pampatar',
-    estado: 'Nueva Esparta',
-    imagen: 'src/assets/img/5011953823_19b9a06d1a_b.jpg',
-  },
-  {
-    id: 815,
-    name: 'Chichiriviche',
-    estado: 'Falcon',
-    imagen: 'src/assets/img/MargaritaCastle.jpg',
-  }
-];
+const ELEMENT_DATA: ciudad[] = ciudades;
 
 @Component({
   selector: 'app-lista-ciudad',
   templateUrl: './lista-ciudad.component.html',
   styleUrls: ['./lista-ciudad.component.scss']
 })
-export class ListaCiudadComponent {
-  displayedColumns: string[] = ['name', 'estado', 'imagen', 'id'];
+
+export class ListaCiudadComponent implements OnInit {
+  displayedColumns: string[] = ['nombre', 'estado', 'id'];
   dataSource = ELEMENT_DATA;
-
-  @ViewChild(MatTable, { static: true }) table: MatTable<any>;
+  @ViewChild(MatTable,  { static: true}) table: MatTable<any>;
   formVisibility = false;
-
   constructor() { }
+  total = 2;
+  nombre = "";
+  estado = "";
+  imagen = "";
+  id;
+
+  public ciudad = ciudades;
+
+  ngOnInit() {
+    this.ciudad = ciudades;
+  }
 
   openCrear() {
     this.formVisibility = true;
   }
-  openBorrar() {
+
+  crearEstado() {
     this.formVisibility = false;
+
   }
+
 }

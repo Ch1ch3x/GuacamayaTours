@@ -1,60 +1,50 @@
-<div class="container text-center">
+<div [hidden]="formVisibility" class="container col-12 text-center">
+  <div class="btn-group col-12">
+      <button class="btn agregar" ng-model="formVisibility" name = "button" mat-button (click)="openCrear()" [hidden]="formVisibility"
+          mat-flat-button color="primary">Agregar Estado</button>
+          <button class="btn agregar" ng-model="formVisibility" name = "button" mat-button (click)="openCrear()" [hidden]="formVisibility"
+          mat-flat-button color="primary">Modificar Estado</button>
+  </div>     
 
-  <button class="agregar" ng-model="formVisibility" mat-button (click)="openCrear()" [hidden]="formVisibility" mat-flat-button color="primary">Nueva Ciudad</button>
+    <table mat-table [dataSource]="dataSource" #mytable class="my-table mat-elevation-z8 col-12">
+  
+      <!-- Nombre Column -->
+      <ng-container sticky matColumnDef="nombre">
+        <th id="headnombre" mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td id="infonombre" mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+      </ng-container>
 
-  <table mat-table [dataSource] ="dataSource" #mytable class="my-table mat-elevation-z8 text-center">
+      <!-- Id Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+  </div>
+  
+  <div [hidden]="!formVisibility" id=form class="col-12">
+  
+    <form class="border border-light p-5">
+  
+      <div class="text-center">
+        <p class="h4 mb-4">Ingrese Datos del Estado</p>
+  
+        <p>Coloque en la casilla correspondiente la información del Estado.</p>
+  
+      </div>
+      
+      <label for="ID">ID del Estado</label>
+      <input [(ngModel)]="id" type="text" id="ID" class="form-control mb-4" placeholder="ID" [ngModelOptions]="{standalone: true}">
+      <label for="Nombre">Nombre del Estado</label>
+      <input [(ngModel)]="nombre" type="text" id="Nombre" class="form-control mb-4" placeholder="Nombre del Estado" [ngModelOptions]="{standalone: true}">
 
-    <!-- Name Column -->
-    <ng-container sticky matColumnDef="name">
-      <th id="headnombre" mat-header-cell *matHeaderCellDef> Nombre </th>
-      <td id="infonombre" mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
+      <label for="fotos">Fotos del estado</label>
+      <input [(ngModel)]="imagen" type="text" id="fotos" class="form-control mb-4" placeholder="URL" [ngModelOptions]="{standalone: true}">
 
-    <!-- Estado Column -->
-    <ng-container matColumnDef="estado">
-      <th id="headnombre" mat-header-cell *matHeaderCellDef> Estado </th>
-      <td id="infonombre" mat-cell *matCellDef="let element"> {{element.estado}} </td>
-    </ng-container>
-
-    <!-- Imagen Column -->
-    <ng-container matColumnDef="imagen">
-      <th id="headnombre" mat-header-cell *matHeaderCellDef> Imagen </th>
-      <td id="infonombre" mat-cell *matCellDef="let element"> {{element.imagen}} </td>
-    </ng-container>
-
-    <!-- Id Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> ID. </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-
-</div>
-
-<div [hidden]="!formVisibility" id = form>
-
-  <form class="border border-light p-5">
-
-    <div class="text-center">
-      <p class="h4 mb-4">Ingrese los Datos de la Nueva Ciudad</p>
-
-      <p>Coloque en la casilla correspondiente la información del destino turistico seleccionado.</p>
-
-    </div>
-    <label for="Nombre">Nombre de la Ciudad</label>
-    <input type="text" id="Nombre" class="form-control mb-4" placeholder="Nombre de Destino">
-    <label for="Estado">Nombre del Estado</label>
-    <input type="text" id="Nombre del Estado" class="form-control mb-4" placeholder="Estado">
-    <label for="imagen">Url de Imagen</label>
-    <input type="text" id="imagen" class="form-control mb-4" placeholder="imagen">
-    <label for="ID">ID de la Ciudad</label>
-    <input type="text" id="ID" class="form-control mb-4" placeholder="ID">
-    
-    
-
-    <button class="btn btn-info btn-block" (click)= "openBorrar()" type="submit">Crear</button>
-  </form>
-</div>
+      <button class="btn btn-info btn-block" (click)="crearEstado()" type="submit">Agregar Estado</button>
+    </form>
+  </div>
