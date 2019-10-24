@@ -48,6 +48,7 @@ import { MaterialModule } from "./material/material.module";
 import { HttpClientModule } from "@angular/common/http";
 import { DestinosService } from "./services/destinos.service";
 import { ModalModule } from "ngx-bootstrap/modal";
+import { DestinosService } from './services/destinos.service';
 
 @NgModule({
   declarations: [

@@ -8,11 +8,11 @@ import { CategoriaDestinoComponent } from "../components/categoria-destino/categ
 import { HabitacionesComponent } from "../components/habitaciones/habitaciones.component";
 import { OrdenesComponent } from "../components/ordenes/ordenes.component";
 import { CiudadesComponent } from "../components/ciudades/ciudades.component";
-import { EstadosComponent } from "../components/estados/estados.component";
 import { DashboardComponent } from "../components/dashboard/dashboard.component";
 import { ItinerarioComponent } from "../components/itinerario/itinerario.component";
 import { NosotrosComponent } from "../components/nosotros/nosotros.component";
 import { ContactanosComponent } from "../components/contactanos/contactanos.component";
+import { ListarEstadoComponent } from "../components/estados/CRUD/listar/listar-estado.component";
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: "habitaciones", component: HabitacionesComponent },
   { path: "ordenes", component: OrdenesComponent },
   { path: "ciudades", component: CiudadesComponent },
-  { path: "estados", component: EstadosComponent },
+  { path: "admin/estados", component: ListarEstadoComponent },
   { path: "admin/dashboard", component: DashboardComponent },
   { path: "itinerario", component: ItinerarioComponent },
   { path: "nosotros", component: NosotrosComponent },

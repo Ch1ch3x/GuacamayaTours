@@ -20,7 +20,6 @@ const modules = [
   MatDialogModule,
   MatFormFieldModule,
   MatInputModule,
-  MatButtonModule,
   MatCheckboxModule
 ];
 
