@@ -27,13 +27,13 @@ import { ItinerarioComponent } from "./components/itinerario/itinerario.componen
 import { NosotrosComponent } from "./components/nosotros/nosotros.component";
 import { ContactanosComponent } from "./components/contactanos/contactanos.component";
 import { CrearHotelComponent } from "./components/hoteles/CRUD/crear/crear-hotel.component";
-import { CrearDestinosTuristicosComponent } from "./components/destinos-turisticos/CRUD/crear/crear-destinos-turisticos.component";
 import { ActualizarCategoriaDestinoComponent } from "./components/categoria-destino/CRUD/actualizar/actualizar-categoria-destino.component";
 import { ActualizarCiudadComponent } from "./components/ciudades/CRUD/actualizar/actualizar-ciudad.component";
 import { ActualizarEstadoComponent } from "./components/estados/CRUD/actualizar/actualizar-estado.component";
 import { ActualizarHabitacionComponent } from "./components/habitaciones/CRUD/actualizar/actualizar-habitacion.component";
 import { ActualizarHotelComponent } from "./components/hoteles/CRUD/actualizar/actualizar-hotel.component";
 import { ActualizarOrdenComponent } from "./components/ordenes/CRUD/actualizar/actualizar-orden.component";
+// tslint:disable-next-line: max-line-length
 import { ActualizarDestinosTuristicosComponent } from "./components/destinos-turisticos/CRUD/actualizar/actualizar-destinos-turisticos.component";
 import { ListarDestinosTuristicosComponent } from "./components/destinos-turisticos/CRUD/listar/listar-destinos-turisticos.component";
 import { ListarEstadoComponent } from "./components/estados/CRUD/listar/listar-estado.component";
@@ -45,9 +45,16 @@ import { ListaCiudadComponent } from "./components/ciudades/CRUD/listar/lista-ci
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MaterialModule } from "./material/material.module";
-import { MatTableModule } from '@angular/material';
-import { HttpClientModule } from '@angular/common/http';
-import { HttpClient } from '@angular/common/http';
+import {
+  MatTableModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatButtonModule
+} from '@angular/material';
+import {HttpClientModule} from '@angular/common/http'
+import { DestinosService } from './services/destinos.service';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -65,7 +72,6 @@ import { HttpClient } from '@angular/common/http';
     CiudadesComponent,
     EstadosComponent,
     DashboardComponent,
-    CrearDestinosTuristicosComponent,
     CrearEstadoComponent,
     CrearHabitacionComponent,
     CrearHotelComponent,
@@ -89,7 +95,7 @@ import { HttpClient } from '@angular/common/http';
     PlanearViajeComponent,
     ItinerarioComponent,
     NosotrosComponent,
-    ContactanosComponent
+    ContactanosComponent,
   ],
   imports: [
     BrowserModule,
@@ -104,9 +110,14 @@ import { HttpClient } from '@angular/common/http';
     BrowserAnimationsModule,
     CommonModule,
     MatTableModule,
-    HttpClientModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    HttpClientModule,
+    MatCheckboxModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [DestinosService],
+  bootstrap: [AppComponent, ]
 })
 export class AppModule {}
