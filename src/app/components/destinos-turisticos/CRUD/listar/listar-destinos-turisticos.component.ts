@@ -70,19 +70,25 @@ export class ListarDestinosTuristicosComponent implements OnInit {
   }
 
   openModificar() {
-
     this.formVisibility = true;
     this.modificarformVisibility = true;
   }
 
   modificarDestinos() {
-
     this.modifyRowData();
     this.formVisibility = false;
     this.crearformVisibility = false;
+    this.modificarformVisibility = false;
   }
 
   checkboxLabel(row?: destinoTuristico): string {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'}`;
+  } 
+
+  close(){
+    this.formVisibility = false;
+    this.crearformVisibility = false;
+    this.modificarformVisibility = false;
   }
+
 }

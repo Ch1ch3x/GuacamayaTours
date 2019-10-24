@@ -1,9 +1,20 @@
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('formCtrl', function($scope) {
+    $scope.master = {firstName: "John", lastName: "Doe"};
+    $scope.reset = function() {
+      $scope.user = angular.copy($scope.master);
+    };
+    $scope.reset();
+    });
+  </script>
+
 <button class="boton" ng-model="formVisibility" name = "button" mat-button (click)="openCrear()" [hidden]="formVisibility"
   mat-flat-button color="primary">Nuevo Destino</button>
 <button class="boton2" ng-model="formVisibility" name = "button" mat-button (click)="openModificar()"
   [hidden]="formVisibility" mat-flat-button color="primary">Modificar Destino</button>
 
-<div [hidden]="formVisibility" class="container text-center">
+<div [hidden]="formVisibility" class="container text-center" ng-app= "modificar" ng-controller="formCtrl">
 
   <table mat-table [dataSource]="dataSource" #mytable class="my-table mat-elevation-z8">
 
@@ -91,7 +102,7 @@
 
 </div>
 
-<div [hidden]="!crearformVisibility" id = form>
+<div [hidden]="!crearformVisibility" id = form >
 
   <form class="border border-light p-5">
 
@@ -131,6 +142,7 @@
       [(ngModel)]="Destino.descripcion" [ngModelOptions]="{standalone: true}" placeholder="Descripción del Destino" ></textarea>
 
     <button class="btn btn-info btn-block" (click)="crearDestinos()" type="submit">Crear</button>
+    <button class="btn btn-info btn-block" (click)="close()" type="submit">Cancelar</button>
   </form>
 </div>
 
@@ -146,7 +158,7 @@
     </div>
     <label for="Nombre">Nombre del Destino</label>
     <input type="text" id="Nombre" class="form-control mb-4" [(ngModel)]="Destino.nombre"
-      [ngModelOptions]="{standalone: true}" placeholder="Nombre de Destino">
+      [ngModelOptions]="{standalone: true}" placeholder= "AQUII">
     <label for="Estado">Estado del Destino</label>
     <input type="text" id="Estado" class="form-control mb-4" [(ngModel)]="Destino.estado"
       [ngModelOptions]="{standalone: true}" placeholder="Estado del Destino">
@@ -181,5 +193,9 @@
       [ngModelOptions]="{standalone: true}" placeholder="Descripción del Destino"></textarea>
 
     <button class="btn btn-info btn-block" (click)="modificarDestinos()" type="submit">Crear</button>
+    <button class="btn btn-info btn-block" (click)="close()" type="submit">Cancelar</button>
   </form>
+  
 </div>
+
+
