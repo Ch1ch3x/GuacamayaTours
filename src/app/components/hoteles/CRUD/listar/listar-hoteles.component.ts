@@ -1,9 +1,9 @@
 import { Component, ViewChild, OnInit } from "@angular/core";
-
 import { MatTable } from "@angular/material";
-
 import hoteles from "../../../../data/hoteles.json";
 import { hotel } from "../../../../interfaces/hotel";
+import * as ciudades from "../../../../data/ciudades.json";
+import * as estados from "../../../../data/estados.json";
 
 const ELEMENT_DATA: hotel[] = hoteles;
 
@@ -23,6 +23,8 @@ export class ListarHotelesComponent implements OnInit {
     "id"
   ];
   dataSource = ELEMENT_DATA;
+  ciudades = ciudades;
+  estados = estados;
 
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
 
@@ -31,13 +33,6 @@ export class ListarHotelesComponent implements OnInit {
   constructor() {}
 
   total = 2;
-  nombre = "";
-  ciudad = "";
-  latitud = "";
-  longitud = "";
-  direccion = "";
-  estado = "";
-  id;
 
   public hotel = hoteles;
 
@@ -80,7 +75,6 @@ export class ListarHotelesComponent implements OnInit {
     this.addRowData();
     this.formVisibility = false;
   }
-
   clearHotel() {
     this.Hotel = {
       id: this.hotel.length,
