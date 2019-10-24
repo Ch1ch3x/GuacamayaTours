@@ -1,20 +1,9 @@
-<script>
-    var app = angular.module('myApp', []);
-    app.controller('formCtrl', function($scope) {
-    $scope.master = {firstName: "John", lastName: "Doe"};
-    $scope.reset = function() {
-      $scope.user = angular.copy($scope.master);
-    };
-    $scope.reset();
-    });
-  </script>
-
 <button class="boton" ng-model="formVisibility" name = "button" mat-button (click)="openCrear()" [hidden]="formVisibility"
   mat-flat-button color="primary">Nuevo Destino</button>
 <button class="boton2" ng-model="formVisibility" name = "button" mat-button (click)="openModificar()"
   [hidden]="formVisibility" mat-flat-button color="primary">Modificar Destino</button>
 
-<div [hidden]="formVisibility" class="container text-center" ng-app= "modificar" ng-controller="formCtrl">
+<div [hidden]="formVisibility" class="container text-center">
 
   <table mat-table [dataSource]="dataSource" #mytable class="my-table mat-elevation-z8">
 
@@ -97,7 +86,9 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"
+         [ngClass]="{'highlight': selectedRowIndex == row.id}"
+         (click)="highlight(row)"></tr>
   </table>
 
 </div>

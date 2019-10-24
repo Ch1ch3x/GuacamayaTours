@@ -5,6 +5,7 @@ import { MatTable } from '@angular/material';
 import destinos from '../../../../data/destinos.json';
 import {destinoTuristico} from '../../../../interfaces/destinoTuristico';
 import { SelectionModel } from '@angular/cdk/collections';
+import { FormsModule } from '@angular/forms';
 
 const ELEMENT_DATA: destinoTuristico[] = destinos;
 @Component({
@@ -33,7 +34,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
     direccion: '',
     descripcion: '',
     estado: '',
-    id: this.destino.length + 1,
+    id: this.destino.length,
   };
 
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
@@ -65,7 +66,6 @@ export class ListarDestinosTuristicosComponent implements OnInit {
   }
 
   modifyRowData() {
-    this.destino.push({ ...this.Destino });
     this.table.renderRows();
   }
 
@@ -79,6 +79,8 @@ export class ListarDestinosTuristicosComponent implements OnInit {
     this.formVisibility = false;
     this.crearformVisibility = false;
     this.modificarformVisibility = false;
+    console.log(this.selectedRowIndex, "hola");
+    this.modificar();
   }
 
   checkboxLabel(row?: destinoTuristico): string {
@@ -89,6 +91,29 @@ export class ListarDestinosTuristicosComponent implements OnInit {
     this.formVisibility = false;
     this.crearformVisibility = false;
     this.modificarformVisibility = false;
+    console.log(this.selectedRowIndex , "hola");
   }
 
-}
+  modificar() {
+    this.destino[this.selectedRowIndex].nombre = "";
+    this.destino[this.selectedRowIndex].estado = "";
+    this.destino[this.selectedRowIndex].ciudad = "";
+    this.destino[this.selectedRowIndex].tipo = "";
+    this.destino[this.selectedRowIndex].actividades = "";
+    this.destino[this.selectedRowIndex].servicios = "";
+    this.destino[this.selectedRowIndex].latitud = "";
+    this.destino[this.selectedRowIndex].longitud = "";
+    this.destino[this.selectedRowIndex].direccion = "";
+    this.destino[this.selectedRowIndex].descripcion = "";
+  }
+
+  selectedRowIndex: number= -1;
+
+  highLight(row) {
+    this.selectedRowIndex = row.id;
+  }
+
+  deshabilitar() {
+    this.selectedRowIndex;
+  }
+};
