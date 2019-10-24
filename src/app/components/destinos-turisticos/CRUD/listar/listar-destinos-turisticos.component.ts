@@ -94,20 +94,41 @@ export class ListarDestinosTuristicosComponent implements OnInit {
   }
 
   modifyRowData() {
-    destinos.push(this.Destino);
-    this.clearDestino();
     this.table.renderRows();
   }
 
   openModificar() {
     this.formVisibility = true;
     this.modificarformVisibility = true;
+    this.Destino = this.destino[this.selectedRowIndex];
+  }
+
+  close() {
+    this.formVisibility = false;
+    this.crearformVisibility = false;
+    this.modificarformVisibility = false;
+  }
+
+  modificar() {
+    this.destino[this.selectedRowIndex].nombre = this.Destino.nombre;
+    this.destino[this.selectedRowIndex].estado = this.Destino.estado;
+    this.destino[this.selectedRowIndex].ciudad = this.Destino.ciudad;
+    this.destino[this.selectedRowIndex].tipo = this.Destino.tipo;
+    this.destino[this.selectedRowIndex].actividades = this.Destino.actividades;
+    this.destino[this.selectedRowIndex].servicios = this.Destino.servicios;
+    this.destino[this.selectedRowIndex].latitud = this.Destino.latitud;
+    this.destino[this.selectedRowIndex].longitud = this.Destino.longitud;
+    this.destino[this.selectedRowIndex].direccion = this.Destino.direccion;
+    this.destino[this.selectedRowIndex].descripcion = this.Destino.descripcion;
   }
 
   modificarDestinos() {
     this.modifyRowData();
     this.formVisibility = false;
     this.crearformVisibility = false;
+    this.modificarformVisibility = false;
+    console.log(this.selectedRowIndex, "hola");
+    this.modificar();
   }
 
   highlight(row) {
