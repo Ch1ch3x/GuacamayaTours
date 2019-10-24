@@ -11,7 +11,7 @@
       mat-flat-button
       color="primary"
     >
-      Nuevo Hotel
+      Nuevo Ciudad
     </button>
 
     <button
@@ -24,7 +24,7 @@
       mat-flat-button
       color="primary"
     >
-      Modificar Hotel
+      Modificar Ciudad
     </button>
   </div>
 
@@ -64,7 +64,7 @@
 <div [hidden]="!formVisibility" id="form">
   <form class="border border-light p-5">
     <div class="text-center">
-      <p class="h4 mb-4">Ingrese los Datos del Nuevo Hotel</p>
+      <p class="h4 mb-4">Ingrese los Datos de la nueva Ciudad</p>
 
       <p>
         Coloque en la casilla correspondiente la información de la ciudad.
@@ -99,9 +99,19 @@
       [ngModelOptions]="{ standalone: true }"
     />
 
+    <label for="costo">Fotos de la Ciudad</label>
+      <input
+        [(ngModel)]="fotos"
+        type="text"
+        id="fotos"
+        class="form-control mb-4"
+        placeholder="URL"
+        [ngModelOptions]="{ standalone: true }"
+      />
+
 
     <button class="btn btn-info btn-block" (click)="crearCiudad()" type="submit">
-      Crear Hotel
+      Crear Ciudad
     </button>
   </form>
 </div>
