@@ -44,7 +44,7 @@
 .login-btn {
   align-self: center;
 }
-@media screen and (max-width: 840px) and (min-width: 640px) {
+@media screen and (max-width: 840px) {
   /* reglas CSS */
   .logo {
     margin: 2%;
@@ -96,7 +96,7 @@
   /* Style the sidebar - fixed full height */
   .sidebar {
     height: 100%;
-    width: 100px;
+    width: 140px;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -115,17 +115,17 @@
   }
 
   .size {
-    padding-top: 40px;
+    padding-top: 45px;
     height: 55%;
     width: 55%;
     padding-bottom: 0;
-    padding-left: 5px;
+    padding-left: 15px;
   }
 
   .sizeHome {
-    height: 95%;
-    width: 95%;
+    height: 100%;
+    width: 100%;
     text-align: center;
-    padding-left: 5px;
+    padding-left: 12px;
   }
 }
