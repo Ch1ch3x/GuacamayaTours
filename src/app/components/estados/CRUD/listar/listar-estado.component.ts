@@ -12,20 +12,27 @@ const ELEMENT_DATA: estado[] = estados;
   styleUrls: ["./listar-estado.component.scss"]
 })
 export class ListarEstadoComponent implements OnInit {
-  displayedColumns: string[] = ["nombre", "id"];
+  displayedColumns: string[] = ["nombre", "id"] ;
   dataSource = ELEMENT_DATA;
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
   formVisibility = false;
   constructor() {}
-  total = 2;
+  total = 3;
   public estado = estados;
+  selectedRowIndex: number = -1;
 
   Estado = {
     nombre: "",
     imagen: "",
     id: this.estado.length + 1,
+<<<<<<< HEAD
     deshabilitar: false,
+=======
+    deshabilitar: false
+>>>>>>> a141e2edeb070df11267fd1ef75b5e2989c304ee
   };
+
+
   ngOnInit() {
     this.estado = estados;
   }
@@ -35,7 +42,11 @@ export class ListarEstadoComponent implements OnInit {
       nombre: "",
       imagen: "",
       id: this.estado.length + 1,
+<<<<<<< HEAD
       deshabilitar: false,
+=======
+      deshabilitar: false
+>>>>>>> a141e2edeb070df11267fd1ef75b5e2989c304ee
     };
   }
 
@@ -46,6 +57,17 @@ export class ListarEstadoComponent implements OnInit {
   crearEstado() {
     this.addRowData();
     this.formVisibility = false;
+  }
+
+  highlight(row) {
+    this.selectedRowIndex = row.id;
+  }
+
+  deshabilitar() {
+    estados[this.selectedRowIndex].deshabilitar = true;
+  }
+  habilitar() {
+    estados[this.selectedRowIndex].deshabilitar = false;
   }
 
   addRowData() {

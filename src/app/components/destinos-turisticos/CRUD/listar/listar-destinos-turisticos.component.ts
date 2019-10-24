@@ -127,7 +127,6 @@ export class ListarDestinosTuristicosComponent implements OnInit {
     this.formVisibility = false;
     this.crearformVisibility = false;
     this.modificarformVisibility = false;
-    console.log(this.selectedRowIndex, "hola");
     this.modificar();
   }
 

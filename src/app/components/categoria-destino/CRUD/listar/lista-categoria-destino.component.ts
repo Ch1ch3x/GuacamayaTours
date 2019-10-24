@@ -25,8 +25,8 @@ export class ListaCategoriaDestinoComponent implements OnInit {
   constructor() { }
   public tipo = tipos;
   public tipos: tipoDeDestino[] = [];
-  Categoria = {
-    id: this.tipo.length+1,
+  public Tipo: tipoDeDestino = {
+    id: this.tipo.length,
     nombre: "",
     foto: "",
     deshabilitar: false
@@ -37,7 +37,7 @@ export class ListaCategoriaDestinoComponent implements OnInit {
   }
 
   clearEstado() {
-    this.Categoria = {
+    this.Tipo = {
       nombre: "",
       foto: "",
       id: this.tipo.length + 1,
@@ -55,27 +55,40 @@ export class ListaCategoriaDestinoComponent implements OnInit {
     this.formVisibility = false;
     this.crearformVisibility = false;
   }
+
   addRowData() {
-    tipos.push(this.Categoria);
+    tipos.push(this.Tipo);
     this.clearEstado();
     this.table.renderRows();
   }
 
   modifyRowData() {
-    tipos.push(this.Categoria);
-    this.clearEstado();
     this.table.renderRows();
   }
 
   openModificar() {
     this.formVisibility = true;
     this.modificarformVisibility = true;
+    this.Tipo = this.tipo[this.selectedRowIndex];
+  }
+
+  close() {
+    this.formVisibility = false;
+    this.crearformVisibility = false;
+    this.modificarformVisibility = false;
+  }
+
+  modificar() {
+    this.tipo[this.selectedRowIndex].nombre = this.Tipo.nombre;
+    this.tipo[this.selectedRowIndex].foto = this.Tipo.foto;
   }
 
   modificarCategoria() {
     this.modifyRowData();
     this.formVisibility = false;
     this.crearformVisibility = false;
+    this.modificarformVisibility = false;
+    this.modificar();
   }
 
   highlight(row) {
