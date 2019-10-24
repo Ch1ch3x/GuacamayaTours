@@ -4,7 +4,9 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatRippleModule,
-  MatIconModule
+  MatIconModule,
+  MatTableModule,
+  MatDialogModule
 } from "@angular/material";
 
 const modules = [
@@ -12,7 +14,12 @@ const modules = [
   MatFormFieldModule,
   MatInputModule,
   MatRippleModule,
-  MatIconModule
+  MatIconModule,
+  MatTableModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatButtonModule
 ];
 
 @NgModule({

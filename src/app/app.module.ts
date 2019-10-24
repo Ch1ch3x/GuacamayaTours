@@ -45,16 +45,9 @@ import { ListaCiudadComponent } from "./components/ciudades/CRUD/listar/lista-ci
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MaterialModule } from "./material/material.module";
-import {
-  MatTableModule,
-  MatDialogModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatButtonModule
-} from '@angular/material';
-import {HttpClientModule} from '@angular/common/http'
-import { DestinosService } from './services/destinos.service';
-import { MatCheckboxModule } from '@angular/material/checkbox';
+import { HttpClientModule } from "@angular/common/http";
+import { DestinosService } from "./services/destinos.service";
+import { MatCheckboxModule } from "@angular/material/checkbox";
 import { ModalModule } from "ngx-bootstrap/modal";
 import { DestinosService } from './services/destinos.service';
 
@@ -97,7 +90,7 @@ import { DestinosService } from './services/destinos.service';
     PlanearViajeComponent,
     ItinerarioComponent,
     NosotrosComponent,
-    ContactanosComponent,
+    ContactanosComponent
   ],
   imports: [
     BrowserModule,
@@ -111,16 +104,11 @@ import { DestinosService } from './services/destinos.service';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     CommonModule,
-    ModalModule.forRoot()
-    MatTableModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
+    ModalModule.forRoot(),
     HttpClientModule,
     MatCheckboxModule
   ],
   providers: [DestinosService],
-  bootstrap: [AppComponent, ]
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
