@@ -12,6 +12,7 @@ const ELEMENT_DATA: destinoTuristico[] = destinos;
   templateUrl: './listar-destinos-turisticos.component.html',
   styleUrls: ['./listar-destinos-turisticos.component.scss']
 })
+export class ListarDestinosTuristicosComponent implements OnInit {
 
 export class ListarDestinosTuristicosComponent implements OnInit {
   // tslint:disable-next-line: max-line-length

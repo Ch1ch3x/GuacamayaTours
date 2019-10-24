@@ -1,11 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
-
-import { MatTable } from '@angular/material';
-
-import hoteles from '../../../../data/hoteles.json';
-import { hotel } from '../../../../interfaces/hotel';
-
-const ELEMENT_DATA: hotel[] = hoteles;
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-listar-hoteles',
@@ -13,12 +6,6 @@ const ELEMENT_DATA: hotel[] = hoteles;
   styleUrls: ['./listar-hoteles.component.scss']
 })
 export class ListarHotelesComponent implements OnInit {
-  displayedColumns: string[] = ['nombre', 'estado', 'ciudad', 'latitud', 'longitud', 'direccion', 'id'];
-  dataSource = ELEMENT_DATA;
-
-  @ViewChild(MatTable,  { static: true}) table: MatTable<any>;
-
-  formVisibility = false;
 
   constructor() { }
 
@@ -34,17 +21,6 @@ export class ListarHotelesComponent implements OnInit {
   public hotel = hoteles;
 
   ngOnInit() {
-    this.hotel = hoteles;
   }
 
-  openCrear() {
-    this.formVisibility = true;
-  }
-
-  crearHotel() {
-    this.formVisibility = false;
-
-    
-
-  }
 }
