@@ -14,4 +14,5 @@ export interface hotel{
     servicios: [boolean, boolean, boolean, boolean];
     tipoHabitaciones: [string, [string], string, number, [string], number];
     // nombre, fotos, tipo de vista, maxPersonas, Comodidades, Costo por noche
+    desahabilitar: boolean;
 }

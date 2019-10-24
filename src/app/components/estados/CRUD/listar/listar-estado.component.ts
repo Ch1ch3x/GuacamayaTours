@@ -23,7 +23,8 @@ export class ListarEstadoComponent implements OnInit {
   Estado = {
     nombre: "",
     imagen: "",
-    id: this.estado.length + 1
+    id: this.estado.length + 1,
+    deshabilitar: false,
   };
   ngOnInit() {
     this.estado = estados;
@@ -33,7 +34,8 @@ export class ListarEstadoComponent implements OnInit {
     this.Estado = {
       nombre: "",
       imagen: "",
-      id: this.estado.length + 1
+      id: this.estado.length + 1,
+      deshabilitar: false,
     };
   }
 

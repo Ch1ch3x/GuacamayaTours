@@ -10,4 +10,5 @@ export interface orden {
     localizador: number;
     itinerario: [number, number, string, string, string, number, persona ?];
     //localizador, id, fechaLlegada, fechaSalida, TipoHabitacion, CostoTotal, Integrantes
+    desahabilitar: boolean;
 }

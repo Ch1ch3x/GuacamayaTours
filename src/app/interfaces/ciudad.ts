@@ -3,4 +3,5 @@ export interface ciudad{
     nombre: string;
     estado: number;
     imagen: [string];
+    desahabilitar: boolean;
 }

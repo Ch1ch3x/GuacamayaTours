@@ -1,7 +1,10 @@
 <app-dashboard></app-dashboard>
+
+
+
 <div [hidden]="formVisibility" class="container-fluid col-12 text-center">
   <div class="btn-group col-12">
-    <button
+      <button
       class="btn agregar "
       ng-model="formVisibility"
       name="button"
@@ -11,11 +14,10 @@
       mat-flat-button
       color="primary"
     >
-      Nuevo Ciudad
-    </button>
-
-    <button
-      class="btn agregar"
+  Nuevo Destino
+</button>
+<button
+      class="btn agregar "
       ng-model="formVisibility"
       name="button"
       mat-button
@@ -24,8 +26,32 @@
       mat-flat-button
       color="primary"
     >
-      Modificar Ciudad
-    </button>
+  Modificar Destino
+</button>
+<button
+      class="btn agregar "
+      ng-model="formVisibility"
+      name="button"
+      mat-button
+      (click)="openCrear()"
+      [hidden]="formVisibility"
+      mat-flat-button
+      color="primary"
+    >
+  Habilitar Destino
+</button>
+<button
+      class="btn agregar "
+      ng-model="formVisibility"
+      name="button"
+      mat-button
+      (click)="openCrear()"
+      [hidden]="formVisibility"
+      mat-flat-button
+      color="primary"
+    >
+  Deshabilitar Destino
+</button>
   </div>
 
   <table

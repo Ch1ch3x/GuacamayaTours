@@ -1,4 +1,51 @@
 <app-dashboard></app-dashboard>
+
+<button
+  class="boton"
+  ng-model="formVisibility"
+  name="button"
+  mat-button
+  (click)="openCrear()"
+  [hidden]="formVisibility"
+  mat-flat-button
+  color="primary"
+>
+  Nueva Ciudad
+</button>
+<button
+  class="boton2"
+  ng-model="formVisibility"
+  name="button"
+  mat-button
+  (click)="openModificar()"
+  [hidden]="formVisibility"
+  mat-flat-button
+  color="primary"
+>
+  Modificar Ciudad
+</button>
+<button class="boton2"
+  ng-model="formVisibility"
+  name="button"
+  mat-button
+  (click)="habilitar()"
+  [hidden]="formVisibility"
+  mat-flat-button
+  color="primary"
+  >
+  Habilitar Ciudad
+</button>
+<button class="boton2"
+  ng-model="formVisibility"
+  name="button"
+  mat-button
+  (click)="deshabilitar()"
+  [hidden]="formVisibility"
+  mat-flat-button color="primary"
+>
+  Deshabilitar Ciudad
+</button>
+
 <div [hidden]="formVisibility" class="container col-12 text-center">
   <div class="btn-group col-12">
     <button

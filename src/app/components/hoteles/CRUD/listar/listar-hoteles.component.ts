@@ -61,7 +61,8 @@ export class ListarHotelesComponent implements OnInit {
         comodidades: [],
         costoXNoche: 0
       }
-    ]
+    ],
+    deshabilitar: false,
   };
   ngOnInit() {
     this.hotel = hoteles;
@@ -101,7 +102,8 @@ export class ListarHotelesComponent implements OnInit {
           comodidades: [],
           costoXNoche: 0
         }
-      ]
+      ],
+      deshabilitar: false,
     };
   }
 
