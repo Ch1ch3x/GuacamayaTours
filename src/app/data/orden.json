@@ -1,12 +1,12 @@
 [
   {
-    "cliente": "",
-    "cedula": "",
-    "correo": "",
-    "telefono": "",
-    "direccion": "",
-    "estatus": "",
-    "localizador": "",
+    "cliente": "Abraham Rivero",
+    "cedula": "6403072",
+    "correo": "arivero648@hotmail.com",
+    "telefono": 4140211487,
+    "direccion": "La California",
+    "estatus": true,
+    "localizador": 6,
     "itinerario": [
       {
         "localizador": "",
