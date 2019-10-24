@@ -18,6 +18,7 @@ export class ListaCategoriaDestinoComponent implements OnInit {
 
   formVisibility = false;
 
+
   constructor() { }
   public tipo = tipos;
   Categoria = {
@@ -30,13 +31,40 @@ export class ListaCategoriaDestinoComponent implements OnInit {
     this.tipo = tipos;
   }
 
+  clearEstado() {
+    this.Categoria = {
+      nombre: "",
+      foto: "",
+      id: this.tipo.length + 1
+    };
+  }
+
   openCrear() {
     this.formVisibility = true;
   }
 
   crearCategoria() {
+    this.addRowData();
     this.formVisibility = false;
- 
+  }
+  addRowData() {
+    tipos.push(this.Categoria);
+    this.clearEstado();
+    this.table.renderRows();
+  }
 
+  modifyRowData() {
+    tipos.push(this.Categoria);
+    this.clearEstado();
+    this.table.renderRows();
+  }
+
+  openModificar() {
+    this.formVisibility = true;
+  }
+
+  modificarCategoria() {
+    this.modifyRowData();
+    this.formVisibility = false;
   }
 }
