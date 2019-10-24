@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { HomeComponent } from "../components/home/home.component";
 import { NotFoundComponent } from "../components/not-found/not-found.component";
-import { HotelesComponent } from "../components/hoteles/hoteles.component";
+import { ListarHotelesComponent } from "../components/hoteles/CRUD/listar/listar-hoteles.component";
 import { ListarDestinosTuristicosComponent } from "../components/destinos-turisticos/CRUD/listar/listar-destinos-turisticos.component";
 import { CategoriaDestinoComponent } from "../components/categoria-destino/categoria-destino.component";
 import { HabitacionesComponent } from "../components/habitaciones/habitaciones.component";
@@ -16,7 +16,7 @@ import { ContactanosComponent } from "../components/contactanos/contactanos.comp
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
-  { path: "hoteles", component: HotelesComponent },
+  { path: "admin/hoteles", component: ListarHotelesComponent },
   { path: "admin/destinos", component: ListarDestinosTuristicosComponent },
   { path: "categorias", component: CategoriaDestinoComponent },
   { path: "habitaciones", component: HabitacionesComponent },

@@ -6,7 +6,8 @@ import {
   MatRippleModule,
   MatIconModule,
   MatTableModule,
-  MatDialogModule
+  MatDialogModule,
+  MatCheckboxModule
 } from "@angular/material";
 
 const modules = [
@@ -19,7 +20,8 @@ const modules = [
   MatDialogModule,
   MatFormFieldModule,
   MatInputModule,
-  MatButtonModule
+  MatButtonModule,
+  MatCheckboxModule
 ];
 
 @NgModule({

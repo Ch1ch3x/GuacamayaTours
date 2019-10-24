@@ -47,9 +47,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MaterialModule } from "./material/material.module";
 import { HttpClientModule } from "@angular/common/http";
 import { DestinosService } from "./services/destinos.service";
-import { MatCheckboxModule } from "@angular/material/checkbox";
 import { ModalModule } from "ngx-bootstrap/modal";
-import { DestinosService } from './services/destinos.service';
 
 @NgModule({
   declarations: [
@@ -105,8 +103,7 @@ import { DestinosService } from './services/destinos.service';
     BrowserAnimationsModule,
     CommonModule,
     ModalModule.forRoot(),
-    HttpClientModule,
-    MatCheckboxModule
+    HttpClientModule
   ],
   providers: [DestinosService],
   bootstrap: [AppComponent]
