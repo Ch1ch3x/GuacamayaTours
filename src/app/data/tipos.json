@@ -1,17 +1,17 @@
 [
   {
-    "id": "",
-    "nombre": "",
+    "id": 1,
+    "nombre": "Playa",
     "foto": ""
   },
   {
-    "id": "",
-    "nombre": "",
+    "id": 2,
+    "nombre": "Montaña",
     "foto": ""
   },
   {
-    "id": "",
-    "nombre": "",
+    "id": 3,
+    "nombre": "Arte",
     "foto": ""
   }
 ]
