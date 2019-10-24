@@ -37,7 +37,7 @@ export class ListaCiudadComponent implements OnInit {
     this.formVisibility = true;
   }
 
-  crearEstado() {
+  crearCiudad() {
     this.formVisibility = false;
 
   }
