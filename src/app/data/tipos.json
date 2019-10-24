@@ -2,16 +2,19 @@
   {
     "id": 1,
     "nombre": "Playa",
-    "foto": ""
+    "foto": "",
+    "deshabilitar": false
   },
   {
     "id": 2,
     "nombre": "Montaña",
-    "foto": ""
+    "foto": "",
+    "deshabilitar": false
   },
   {
     "id": 3,
     "nombre": "Arte",
-    "foto": ""
+    "foto": "",
+    "deshabilitar": false
   }
 ]
