@@ -10,7 +10,8 @@
     "latitud": "SDAGASD",
     "longitud": "SADGSAD",
     "estado": "SAFSDA",
-    "direccion": "SADGASGAS"
+    "direccion": "SADGASGAS",
+    "deshabilitar": false
   },
   {
     "id": 1,
@@ -23,7 +24,8 @@
     "latitud": "dfhfd",
     "longitud": "dfhdfhfd",
     "estado": "jgjhng",
-    "direccion": "gfngfn"
+    "direccion": "gfngfn",
+    "deshabilitar": false
   },
   {
     "id": 2,
@@ -36,6 +38,7 @@
     "latitud": "",
     "longitud": "",
     "estado": "",
-    "direccion": ""
+    "direccion": "",
+    "deshabilitar": false
   }
 ]
