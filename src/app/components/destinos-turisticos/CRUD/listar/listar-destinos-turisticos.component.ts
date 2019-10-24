@@ -60,6 +60,22 @@ export class ListarDestinosTuristicosComponent implements OnInit {
     this.destino = destinos;
   }
 
+  clearDestino() {
+    this.Destino = {
+      nombre: "",
+      tipo: "",
+      servicios: "",
+      actividades: "",
+      ciudad: "",
+      latitud: "",
+      longitud: "",
+      direccion: "",
+      descripcion: "",
+      estado: "",
+      id: this.destino.length + 1
+    };
+  }
+
   openCrear() {
     this.formVisibility = true;
     this.crearformVisibility = true;
@@ -72,12 +88,14 @@ export class ListarDestinosTuristicosComponent implements OnInit {
   }
 
   addRowData() {
-    this.destino.push({ ...this.Destino });
+    destinos.push(this.Destino);
+    this.clearDestino();
     this.table.renderRows();
   }
 
   modifyRowData() {
-    this.destino.push({ ...this.Destino });
+    destinos.push(this.Destino);
+    this.clearDestino();
     this.table.renderRows();
   }
 

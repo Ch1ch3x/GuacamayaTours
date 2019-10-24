@@ -2,19 +2,19 @@
   {
     "id": 0,
     "nombre": "Punto Fijo",
-    "estado": "falcon",
+    "estado": 2,
     "imagen": "../assets/JSON/ciudades/puntofijo.jpg"
   },
   {
     "id": 1,
     "nombre": "Coro",
-    "estado": "falcon",
+    "estado": 2,
     "imagen": "../assets/JSON/ciudades/coro.jpg"
   },
   {
     "id": 2,
     "nombre": "Maracaibo",
-    "estado": "Zulia",
+    "estado": 24,
     "imagen": "../assets/JSON/ciudades/maracaibo.jpg"
   }
 ]
