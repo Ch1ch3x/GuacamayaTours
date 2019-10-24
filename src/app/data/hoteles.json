@@ -33,13 +33,23 @@
     "longitud": -70.1995697,
     "direccion": "Av. Coro No 75 con Av. Alta Vista. Urb. Santa Irene Urb. Santa Irene, Punto Fijo, Península de Paraguaná 4102 Venezuela",
     "estado": "Falcon",
-    "fotos": ["..assets/JSON/hotel/villa-mar/hotel.jpg", "..assets/JSON/hotel/villa-mar/hotel1.jpg", "..assets/JSON/hotel/villa-mar/hotel2.jpg"],
+    "fotos": [
+      "..assets/JSON/hotel/villa-mar/hotel.jpg",
+      "..assets/JSON/hotel/villa-mar/hotel1.jpg",
+      "..assets/JSON/hotel/villa-mar/hotel2.jpg"
+    ],
     "ciudad": "Punto Fijo",
     "fullDay": {
       "disponible": false,
       "precioXPersona": "0$"
     },
-    "servicios": ["Estacionamiento gratis", "wifi gratis", "Desayuno gratis", "Piscina", "Bar-Restaurant"],
+    "servicios": [
+      "Estacionamiento gratis",
+      "wifi gratis",
+      "Desayuno gratis",
+      "Piscina",
+      "Bar-Restaurant"
+    ],
     "costoXNoche": "40$",
     "tipoHabitaciones": [
       {
@@ -48,32 +58,6 @@
         "tipoVista": "Vista hacia la piscina",
         "maximoPersonas": "4",
         "comodidades": ["Televisor", "Cocina"]
-      }
-    ]
-  },
-  {
-    "id": "",
-    "nombre": "",
-    "estrellas": 3,
-    "latitud": "",
-    "longitud": "",
-    "direccion": "",
-    "estado": {},
-    "fotos": [],
-    "ciudad": {},
-    "fullDay": {
-      "disponible": true,
-      "precioXPersona": ""
-    },
-    "servicios": [],
-    "costoXNoche": "",
-    "tipoHabitaciones": [
-      {
-        "nombre": "",
-        "fotos": [],
-        "tipoVista": "",
-        "maximoPersonas": "",
-        "comodidades": []
       }
     ]
   }
