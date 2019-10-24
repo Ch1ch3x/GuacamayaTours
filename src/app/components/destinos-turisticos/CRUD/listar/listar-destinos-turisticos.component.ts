@@ -1,51 +1,50 @@
-import { Component, ViewChild, OnInit } from "@angular/core";
+import { Component, ViewChild, OnInit } from '@angular/core';
 
-import { MatTable } from "@angular/material";
+import { MatTable } from '@angular/material';
 
-import destinos from "../../../../data/destinos.json";
-import { destinoTuristico } from "../../../../interfaces/destinoTuristico";
-import { SelectionModel } from "@angular/cdk/collections";
+import destinos from '../../../../data/destinos.json';
+import { destinoTuristico } from '../../../../interfaces/destinoTuristico';
 
 const ELEMENT_DATA: destinoTuristico[] = destinos;
 @Component({
-  selector: "app-listar-destinos-turisticos",
-  templateUrl: "./listar-destinos-turisticos.component.html",
-  styleUrls: ["./listar-destinos-turisticos.component.scss"]
+  selector: 'app-listar-destinos-turisticos',
+  templateUrl: './listar-destinos-turisticos.component.html',
+  styleUrls: ['./listar-destinos-turisticos.component.scss']
 })
 export class ListarDestinosTuristicosComponent implements OnInit {
+
+  constructor() {}
   // tslint:disable-next-line: max-line-length
   displayedColumns: string[] = [
-    "select",
-    "nombre",
-    "estado",
-    "ciudad",
-    "tipo",
-    "actividades",
-    "servicios",
-    "latitud",
-    "longitud",
-    "direccion",
-    "descripcion",
-    "id"
+    'nombre',
+    'estado',
+    'ciudad',
+    'tipo',
+    'actividades',
+    'servicios',
+    'latitud',
+    'longitud',
+    'direccion',
+    'descripcion',
+    'id'
   ];
   dataSource = ELEMENT_DATA;
-
-  selection = new SelectionModel<destinoTuristico>(false, []);
 
   public destino = destinos;
   public destinos: destinoTuristico[] = [];
   public Destino: destinoTuristico = {
-    nombre: "",
-    tipo: "",
-    servicios: "",
-    actividades: "",
-    ciudad: "",
-    latitud: "",
-    longitud: "",
-    direccion: "",
-    descripcion: "",
-    estado: "",
-    id: this.destino.length + 1
+    nombre: '',
+    tipo: '',
+    servicios: '',
+    actividades: '',
+    ciudad: '',
+    latitud: '',
+    longitud: '',
+    direccion: '',
+    descripcion: '',
+    estado: '',
+    id: this.destino.length + 1,
+    deshabilitar: false
   };
 
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
@@ -54,7 +53,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
   modificarformVisibility = false;
   crearformVisibility = false;
 
-  constructor() {}
+  selectedRowIndex: number = -1;
 
   ngOnInit() {
     this.destino = destinos;
@@ -62,17 +61,18 @@ export class ListarDestinosTuristicosComponent implements OnInit {
 
   clearDestino() {
     this.Destino = {
-      nombre: "",
-      tipo: "",
-      servicios: "",
-      actividades: "",
-      ciudad: "",
-      latitud: "",
-      longitud: "",
-      direccion: "",
-      descripcion: "",
-      estado: "",
-      id: this.destino.length + 1
+      nombre: '',
+      tipo: '',
+      servicios: '',
+      actividades: '',
+      ciudad: '',
+      latitud: '',
+      longitud: '',
+      direccion: '',
+      descripcion: '',
+      estado: '',
+      id: this.destino.length + 1,
+      deshabilitar: false
     };
   }
 
@@ -110,7 +110,14 @@ export class ListarDestinosTuristicosComponent implements OnInit {
     this.crearformVisibility = false;
   }
 
-  checkboxLabel(row?: destinoTuristico): string {
-    return `${this.selection.isSelected(row) ? "deselect" : "select"}`;
+  highlight(row) {
+    this.selectedRowIndex = row.id;
+  }
+
+  deshabilitar() {
+    destinos[this.selectedRowIndex].deshabilitar = true;
+  }
+  habilitar() {
+    destinos[this.selectedRowIndex].deshabilitar = false;
   }
 }
