@@ -1,2 +1,100 @@
 <app-dashboard></app-dashboard>
-<p>lista-categoria-destino works!</p>
+<div [hidden]="formVisibility" class="container-fluid col-12 text-center">
+    <div class="btn-group col-12">
+      <button
+        class="btn agregar "
+        ng-model="formVisibility"
+        name="button"
+        mat-button
+        (click)="openCrear()"
+        [hidden]="formVisibility"
+        mat-flat-button
+        color="primary"
+      >
+        Nuevo Hotel
+      </button>
+  
+      <button
+        class="btn agregar"
+        ng-model="formVisibility"
+        name="button"
+        mat-button
+        (click)="openCrear()"
+        [hidden]="formVisibility"
+        mat-flat-button
+        color="primary"
+      >
+        Modificar Hotel
+      </button>
+    </div>
+  
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      #mytable
+      class="my-table mat-elevation-z8 col-12"
+    >
+      <!-- Nombre Column -->
+      <ng-container sticky matColumnDef="nombre">
+        <th id="headnombre" mat-header-cell *matHeaderCellDef>Nombre</th>
+        <td id="infonombre" mat-cell *matCellDef="let element">
+          {{ element.nombre }}
+        </td>
+      </ng-container>
+  
+      <!-- Id Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID.</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+  
+  <div [hidden]="!formVisibility" id="form">
+    <form class="border border-light p-5">
+      <div class="text-center">
+        <p class="h4 mb-4">Ingrese los Datos de la nueva Categoría</p>
+  
+        <p>
+          Coloque en la casilla correspondiente la información de la categoría.
+        </p>
+      </div>
+  
+      <label for="ID">ID del Hotel</label>
+      <input
+        [(ngModel)]="id"
+        type="text"
+        id="ID"
+        class="form-control mb-4"
+        placeholder="ID"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <label for="Nombre">Nombre de la Categoría</label>
+      <input
+        [(ngModel)]="nombre"
+        type="text"
+        id="Nombre"
+        class="form-control mb-4"
+        placeholder="Nombre de la categoría"
+        [ngModelOptions]="{ standalone: true }"
+      />
+
+      <label for="costo">Fotos de la categoría</label>
+      <input
+        [(ngModel)]="fotos"
+        type="text"
+        id="fotos"
+        class="form-control mb-4"
+        placeholder="URL"
+        [ngModelOptions]="{ standalone: true }"
+      />
+
+  
+      <button class="btn btn-info btn-block" (click)="crearCategoria()" type="submit">
+        Crear Categoría
+      </button>
+    </form>
+  </div>

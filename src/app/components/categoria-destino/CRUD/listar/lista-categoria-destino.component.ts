@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { tipoDeDestino } from './../../../../interfaces/tipo-de-destinos';
+import { Component, ViewChild, OnInit } from '@angular/core';
+import { MatTable } from '@angular/material';
+import tipos from '../../../../data/tipos.json';
+
+const ELEMENT_DATA: tipoDeDestino[] = tipos;
 
 @Component({
   selector: 'app-lista-categoria-destino',
@@ -6,10 +11,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lista-categoria-destino.component.scss']
 })
 export class ListaCategoriaDestinoComponent implements OnInit {
+  displayedColumns: string[] = ['nombre', 'id'];
+  dataSource = ELEMENT_DATA;
+
+  @ViewChild(MatTable,  { static: true}) table: MatTable<any>;
+
+  formVisibility = false;
 
   constructor() { }
-
-  ngOnInit() {
+  public tipo = tipos;
+  Categoria = {
+    id: this.tipo.length+1,
+    nombre: "",
+    foto: ""
   }
 
+  ngOnInit() {
+    this.tipo = tipos;
+  }
+
+  openCrear() {
+    this.formVisibility = true;
+  }
+
+  crearCategoria() {
+    this.formVisibility = false;
+ 
+
+  }
 }
