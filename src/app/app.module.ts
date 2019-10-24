@@ -56,6 +56,7 @@ import {HttpClientModule} from '@angular/common/http'
 import { DestinosService } from './services/destinos.service';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ModalModule } from "ngx-bootstrap/modal";
+import { DestinosService } from './services/destinos.service';
 
 @NgModule({
   declarations: [

@@ -1,27 +1,27 @@
 [
   {
-    "id": "",
-    "nombre": "",
+    "id": 0,
+    "nombre": "kkkkkkkkk",
     "estrellas": 3,
-    "latitud": "",
-    "longitud": "",
-    "direccion": "",
-    "estado": {},
-    "fotos": [],
-    "ciudad": {},
+    "latitud": "jjjjjjjjj",
+    "longitud": "oooooooooo",
+    "direccion": "000000000",
+    "estado": "jkbbjk",
+    "fotos": ["jbkk"],
+    "ciudad": "jbkbj;k",
     "fullDay": {
       "disponible": true,
       "precioXPersona": ""
     },
     "servicios": [],
-    "costoXNoche": "",
     "tipoHabitaciones": [
       {
         "nombre": "",
         "fotos": [],
         "tipoVista": "",
         "maximoPersonas": "",
-        "comodidades": []
+        "comodidades": [],
+        "costoXNoche": 0
       }
     ]
   },

@@ -24,5 +24,18 @@
     "longitud": "dfhdfhfd",
     "estado": "jgjhng",
     "direccion": "gfngfn"
+  },
+  {
+    "id": 2,
+    "nombre": "",
+    "descripcion": "",
+    "tipo": "",
+    "servicios": "",
+    "ciudad": "",
+    "actividades": "",
+    "latitud": "",
+    "longitud": "",
+    "estado": "",
+    "direccion": ""
   }
 ]
