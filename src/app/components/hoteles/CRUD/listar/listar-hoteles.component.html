@@ -122,23 +122,29 @@
       [ngModelOptions]="{ standalone: true }"
     />
     <label for="Estado">Estado donde se ubica el Hotel</label>
-    <input
+    <select
       [(ngModel)]="Hotel.estado"
-      type="text"
+      [ngModelOptions]="{ standalone: true }"
+      class="browser-default custom-select mb-4"
       id="Estado"
-      class="form-control mb-4"
-      placeholder="Estado del Hotel"
-      [ngModelOptions]="{ standalone: true }"
-    />
+    >
+      <option value="" disabled="" selected="">Elije el estado</option>
+      <option *ngFor="let estado of estados.default" value="estado.id">{{
+        estado.nombre
+      }}</option>
+    </select>
     <label for="Ciudad">Ciudad donde se ubica el Hotel</label>
-    <input
+    <select
       [(ngModel)]="Hotel.ciudad"
-      type="text"
-      id="Ciudad"
-      class="form-control mb-4"
-      placeholder="Ciudad del Destino"
       [ngModelOptions]="{ standalone: true }"
-    />
+      class="browser-default custom-select mb-4"
+      id="Ciudad"
+    >
+      <option value="" disabled="" selected="">Elije la ciudad</option>
+      <option *ngFor="let ciudad of ciudades.default" value="ciudad.id">{{
+        ciudad.nombre
+      }}</option>
+    </select>
     <label for="Tipo">Número de estrellas que tiene el Hotel</label>
     <select
       [(ngModel)]="Hotel.estrellas"

@@ -13,28 +13,104 @@ const ELEMENT_DATA: ciudad[] = ciudades;
   styleUrls: ['./lista-ciudad.component.scss']
 })
 export class ListaCiudadComponent {
-  displayedColumns: string[] = ["nombre", "id"];
-  dataSource = ELEMENT_DATA;
-  @ViewChild(MatTable, { static: true }) table: MatTable<any>;
-  formVisibility = false;
   constructor() {}
-  total = 2;
-  public ciudad = ciudades;
+  // tslint:disable-next-line: max-line-length
+  displayedColumns: string[] = [
+    'nombre',
+    'estado',
+    'imagen',
+  ];
+  dataSource = ELEMENT_DATA;
 
-  Ciudad = {
-    nombre: "",
-    imagen: "",
-    estado: 0,
-    id: this.ciudad.length + 1
+  public ciudad = ciudades;
+  public ciudades: ciudad[] = [];
+  public Ciudad: ciudad = {
+    id: this.ciudad.length,
+    nombre: '',
+    estado: '',
+    imagen: '',
+    deshabilitar: false
   };
-  
+
+  @ViewChild(MatTable, { static: true }) table: MatTable<any>;
+
+  formVisibility = false;
+  modificarformVisibility = false;
+  crearformVisibility = false;
+
+  selectedRowIndex: number = -1;
+
   ngOnInit() {
     this.ciudad = ciudades;
   }
+
+  clearCiudad() {
+    this.Ciudad = {
+      nombre: '',
+      estado: '',
+      imagen: '',
+      deshabilitar: false,
+      id: this.ciudad.length,
+    };
+  }
+
   openCrear() {
     this.formVisibility = true;
+    this.crearformVisibility = true;
   }
+
   crearCiudad() {
+    this.addRowData();
     this.formVisibility = false;
+    this.crearformVisibility = false;
   }
+
+  addRowData() {
+    ciudades.push(this.Ciudad);
+    this.clearCiudad();
+    this.table.renderRows();
+  }
+
+  modifyRowData() {
+    this.table.renderRows();
+  }
+
+  openModificar() {
+    this.formVisibility = true;
+    this.modificarformVisibility = true;
+    this.Ciudad = this.ciudad[this.selectedRowIndex];
+  }
+
+  close() {
+    this.formVisibility = false;
+    this.crearformVisibility = false;
+    this.modificarformVisibility = false;
+  }
+
+  modificar() {
+    this.ciudad[this.selectedRowIndex].nombre = this.Ciudad.nombre;
+    this.ciudad[this.selectedRowIndex].estado = this.Ciudad.estado;
+    this.ciudad[this.selectedRowIndex].imagen = this.Ciudad.imagen;
+
+  }
+
+  modificarCiudad() {
+    this.modifyRowData();
+    this.formVisibility = false;
+    this.crearformVisibility = false;
+    this.modificarformVisibility = false;
+    this.modificar();
+  }
+
+  highlight(row) {
+    this.selectedRowIndex = row.id;
+  }
+
+  deshabilitar() {
+    ciudades[this.selectedRowIndex].deshabilitar = true;
+  }
+  habilitar() {
+    ciudades[this.selectedRowIndex].deshabilitar = false;
+  }
+
 }
