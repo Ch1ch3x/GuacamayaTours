@@ -126,14 +126,29 @@ li {
     MEDIAQUERIES
 ----------------------------------------------------- */
 
-@media (max-width: 360px) {
-  #sidebar {
-    margin-left: -150px;
-  }
+@media (max-width: 2200px) {
+
   #sidebar.active {
     margin-left: 0;
   }
-  #sidebarCollapse span {
-    display: none;
+
+  .title:before {
+      content: "GUACAMAYA TOURS";
   }
+  
 }
+
+@media (max-width: 700px) {
+
+  #sidebar.active {
+    margin-left: 0;
+  }
+
+  .title:before {
+      content: "";
+  }
+  
+}
+
+
+
