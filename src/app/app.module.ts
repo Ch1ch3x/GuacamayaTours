@@ -47,7 +47,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MaterialModule } from "./material/material.module";
 import { HttpClientModule } from "@angular/common/http";
 import { ModalModule } from "ngx-bootstrap/modal";
-import { DestinosService } from "./services/destinos.service";
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -103,9 +104,11 @@ import { DestinosService } from "./services/destinos.service";
     BrowserAnimationsModule,
     CommonModule,
     ModalModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    
   ],
-  providers: [DestinosService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
