@@ -3,6 +3,7 @@ import { MatTable } from "@angular/material";
 
 import estados from "../../../../data/estados.json";
 import { estado } from "../../../../interfaces/estado";
+import {EstadosService} from "../../../../services/firebase/estados.service"
 
 const ELEMENT_DATA: estado[] = estados;
 
@@ -16,34 +17,24 @@ export class ListarEstadoComponent implements OnInit {
   dataSource = ELEMENT_DATA;
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
   formVisibility = false;
-  constructor() {}
-  total = 3;
-  public estado = estados;
+  estado = [];
+
+  constructor(private EstadoSV: EstadosService) {
+    this.EstadoSV.getAll().subscribe((estadoSnapshot))
+  }
+
+
   selectedRowIndex: number = -1;
 
-  Estado = {
-    nombre: "",
-    imagen: "",
-    id: this.estado.length + 1,
-    deshabilitar: false,
-  };
-
+  
 
   ngOnInit() {
-    this.estado = estados;
   }
 
   clearEstado() {
-    this.Estado = {
-      nombre: "",
-      imagen: "",
-      id: this.estado.length + 1,
-      deshabilitar: false,
-    };
   }
 
   openCrear() {
-    this.formVisibility = true;
   }
 
   crearEstado() {
