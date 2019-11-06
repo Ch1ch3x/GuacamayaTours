@@ -1,6 +1,7 @@
 export interface ciudad{
-    ciudadId: number;
+    id: number;
     nombre: string;
     estado: string;
-    imagen: [string];
+    imagen: string;
+    deshabilitar: boolean;
 }
