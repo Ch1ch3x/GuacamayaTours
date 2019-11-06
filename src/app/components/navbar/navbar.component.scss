@@ -1,131 +1,67 @@
-@media screen and (max-width: 640px) {
-  .logo {
-    margin: 2%;
-  }
-
-  /* Style the sidebar - fixed full height */
-  .sidebar {
-    height: 100%;
-    width: 80px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: white;
-    overflow-x: hidden;
-    padding-top: 2%;
-    text-align: center;
-    border: rgb(43, 124, 93);
-  }
-
-  /* Style sidebar links */
-  .sidebar a {
-    color: #818181;
-    display: block;
-  }
-
-  .size {
-    padding-top: 40px;
-    height: 55%;
-    width: 55%;
-    padding-bottom: 0;
-    padding-left: 5px;
-  }
-
-  .sizeHome {
-    height: 95%;
-    width: 95%;
-    text-align: center;
-    padding-left: 5px;
-    padding-top: 10px;
-  }
+.navbar{
+  width: 100%;
+  height: 80px;
+  left: 0px;
+  top: 0px;  
+  background: #FFF;
+  text-align: center;
+  padding:0;
 }
 
-.login-btn {
-  align-self: center;
-}
-@media screen and (max-width: 840px) {
-  /* reglas CSS */
-  .logo {
-    margin: 2%;
-  }
-
-  /* Style the sidebar - fixed full height */
-  .sidebar {
-    height: 100%;
-    width: 100px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: white;
-    overflow-x: hidden;
-    padding-top: 2%;
-    text-align: center;
-    border: rgb(43, 124, 93);
-  }
-
-  /* Style sidebar links */
-  .sidebar a {
-    color: #818181;
-    display: block;
-  }
-
-  .size {
-    padding-top: 40px;
-    height: 60%;
-    width: 60%;
-    padding-bottom: 0;
-    padding-left: 5px;
-  }
-
-  .sizeHome {
-    height: 100%;
-    width: 100%;
-    text-align: center;
-    padding-left: 5px;
-  }
+.navbar-header{
+  padding: 0;
 }
 
-@media screen and (min-width: 840px) {
-  /* reglas CSS */
-  .logo {
-    margin: 2%;
-  }
+a{
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 19px;
+  line-height: 28px;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-  /* Style the sidebar - fixed full height */
-  .sidebar {
-    height: 100%;
-    width: 140px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: white;
-    overflow-x: hidden;
-    padding-top: 2%;
-    text-align: center;
-    border: rgb(43, 124, 93);
-  }
+}
 
-  /* Style sidebar links */
-  .sidebar a {
-    color: #818181;
-    display: block;
-  }
 
-  .size {
-    padding-top: 45px;
-    height: 55%;
-    width: 55%;
-    padding-bottom: 0;
-    padding-left: 15px;
-  }
+.size{
+  width: 50px;
+  margin-right: 10px ;
+}
 
-  .sizeHome {
-    height: 100%;
-    width: 100%;
-    text-align: center;
-    padding-left: 12px;
-  }
+.home{
+  background: #002D51;
+  height: 80px;
+  padding-top:5px;
+  padding-left: 80px; 
+  padding-right: 70px;
+}
+
+.sizeHome{
+  width: 56px;
+  height: 72px;
+  left: 44px;
+  top: 8px;
+}
+
+.active{
+  background: #FFFFFF;
+  color: #002D51; 
+  top: 0;
+  height: 80px;
+  padding-top:15px;
+  border-left-style: solid;
+  border-color: rgb(158, 158, 158);
+  border-width: thin;
+}
+
+.bord{
+  border-left-style: none;
+}
+
+a:active{
+  border-top-style: solid; 
+  border-left-style: none; 
+  border-color: #002D51;
+  border-width: medium;  
 }
