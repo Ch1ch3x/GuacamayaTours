@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import destinos from '../../../../data/destinos.json';
 
 @Component({
   selector: 'app-actualizar-destinos-turisticos',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./actualizar-destinos-turisticos.component.scss']
 })
 export class ActualizarDestinosTuristicosComponent implements OnInit {
+
+  destinos = [];
+  
 
   constructor() { }
 

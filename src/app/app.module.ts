@@ -27,13 +27,13 @@ import { ItinerarioComponent } from "./components/itinerario/itinerario.componen
 import { NosotrosComponent } from "./components/nosotros/nosotros.component";
 import { ContactanosComponent } from "./components/contactanos/contactanos.component";
 import { CrearHotelComponent } from "./components/hoteles/CRUD/crear/crear-hotel.component";
-import { CrearDestinosTuristicosComponent } from "./components/destinos-turisticos/CRUD/crear/crear-destinos-turisticos.component";
 import { ActualizarCategoriaDestinoComponent } from "./components/categoria-destino/CRUD/actualizar/actualizar-categoria-destino.component";
 import { ActualizarCiudadComponent } from "./components/ciudades/CRUD/actualizar/actualizar-ciudad.component";
 import { ActualizarEstadoComponent } from "./components/estados/CRUD/actualizar/actualizar-estado.component";
 import { ActualizarHabitacionComponent } from "./components/habitaciones/CRUD/actualizar/actualizar-habitacion.component";
 import { ActualizarHotelComponent } from "./components/hoteles/CRUD/actualizar/actualizar-hotel.component";
 import { ActualizarOrdenComponent } from "./components/ordenes/CRUD/actualizar/actualizar-orden.component";
+// tslint:disable-next-line: max-line-length
 import { ActualizarDestinosTuristicosComponent } from "./components/destinos-turisticos/CRUD/actualizar/actualizar-destinos-turisticos.component";
 import { ListarDestinosTuristicosComponent } from "./components/destinos-turisticos/CRUD/listar/listar-destinos-turisticos.component";
 import { ListarEstadoComponent } from "./components/estados/CRUD/listar/listar-estado.component";
@@ -45,6 +45,10 @@ import { ListaCiudadComponent } from "./components/ciudades/CRUD/listar/lista-ci
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MaterialModule } from "./material/material.module";
+import { HttpClientModule } from "@angular/common/http";
+import { ModalModule } from "ngx-bootstrap/modal";
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -62,7 +66,6 @@ import { MaterialModule } from "./material/material.module";
     CiudadesComponent,
     EstadosComponent,
     DashboardComponent,
-    CrearDestinosTuristicosComponent,
     CrearEstadoComponent,
     CrearHabitacionComponent,
     CrearHotelComponent,
@@ -99,7 +102,11 @@ import { MaterialModule } from "./material/material.module";
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    CommonModule
+    CommonModule,
+    ModalModule.forRoot(),
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

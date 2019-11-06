@@ -1,17 +1,20 @@
 [
   {
-    "id": "",
-    "nombre": "",
-    "foto": ""
+    "id": 0,
+    "nombre": "Playa",
+    "foto": "",
+    "deshabilitar": false
   },
   {
-    "id": "",
-    "nombre": "",
-    "foto": ""
+    "id": 1,
+    "nombre": "Montaña",
+    "foto": "",
+    "deshabilitar": false
   },
   {
-    "id": "",
-    "nombre": "",
-    "foto": ""
+    "id": 2,
+    "nombre": "Arte",
+    "foto": "",
+    "deshabilitar": false
   }
 ]

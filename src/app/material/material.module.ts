@@ -4,7 +4,10 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatRippleModule,
-  MatIconModule
+  MatIconModule,
+  MatTableModule,
+  MatDialogModule,
+  MatCheckboxModule
 } from "@angular/material";
 
 const modules = [
@@ -12,7 +15,12 @@ const modules = [
   MatFormFieldModule,
   MatInputModule,
   MatRippleModule,
-  MatIconModule
+  MatIconModule,
+  MatTableModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatCheckboxModule
 ];
 
 @NgModule({

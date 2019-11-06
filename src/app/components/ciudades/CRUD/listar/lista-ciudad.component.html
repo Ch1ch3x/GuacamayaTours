@@ -1,1 +1,146 @@
-<p>lista-ciudad works!</p>
+<app-dashboard></app-dashboard>
+<div [hidden]="formVisibility" class="container-fluid col-12 text-center">
+  <div class="btn-group col-12" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-secondary" ng-model="formVisibility" name="button" (click)="openCrear()"
+      [hidden]="formVisibility">Nueva Ciudad</button>
+    <button type="button" class="btn btn-secondary" ng-model="formVisibility" name="button" (click)="openCrear()"
+      [hidden]="formVisibility">Modificar Ciudad</button>
+    <button type="button" class="btn btn-secondary" ng-model="formVisibility" name="button" (click)="habilitar()"
+      [hidden]="formVisibility">Habilitar Ciudad</button>
+    <button type="button" class="btn btn-secondary" ng-model="formVisibility" name="button" (click)="deshabilitar()"
+      [hidden]="formVisibility">Deshabilitar Ciudad</button>
+  </div>
+
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    #mytable
+    class="my-table mat-elevation-z8 col-12"
+  >
+    <!-- Nombre Column -->
+    <ng-container sticky matColumnDef="nombre">
+      <th id="headnombre" mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td id="infonombre" mat-cell *matCellDef="let element">
+        {{ element.nombre }}
+      </td>
+    </ng-container>
+
+    <!-- Estado Column -->
+    <ng-container matColumnDef="estado">
+      <th id="headnombre" mat-header-cell *matHeaderCellDef>Estado</th>
+      <td id="infonombre" mat-cell *matCellDef="let element">
+        {{ element.estado }}
+      </td>
+    </ng-container>
+
+    <!-- Imagen Column -->
+    <ng-container matColumnDef="imagen">
+      <th id="headnombre" mat-header-cell *matHeaderCellDef>Imagen</th>
+      <td id="infonombre" mat-cell *matCellDef="let element">
+        {{ element.imagen }}
+      </td>
+    </ng-container>
+
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"
+    [class.highlight2] = "ciudad[row.id].deshabilitar == true"
+         [class.highlight] = "selectedRowIndex == row.id"
+         [class.highlight3] = "selectedRowIndex == row.id && ciudad[row.id].deshabilitar == true"
+         (click)="highlight(row)"></tr>
+  </table>
+</div>
+
+<div [hidden]="!crearformVisibility" id="form">
+  <form class="border border-light p-5">
+    <div class="text-center">
+      <p class="h4 mb-4">Ingrese los Datos de la nueva Ciudad</p>
+
+      <p>
+        Coloque en la casilla correspondiente la información de la ciudad.
+      </p>
+    </div>
+
+    <label for="ID">ID de la Ciudad</label>
+    <input
+      [(ngModel)]="Ciudad.id"
+      type="text"
+      id="ID"
+      class="form-control mb-4"
+      placeholder="ID"
+      [ngModelOptions]="{ standalone: true }"
+    />
+    <label for="Nombre">Nombre de la Ciudad</label>
+    <input
+      [(ngModel)]="Ciudad.nombre"
+      type="text"
+      id="Nombre"
+      class="form-control mb-4"
+      placeholder="Nombre del Estado"
+      [ngModelOptions]="{ standalone: true }"
+    />
+    <label for="Estado">ID del Estado donde se ubica la Ciudad</label>
+    <input
+      [(ngModel)]="Ciudad.estado"
+      type="text"
+      id="ID Estado"
+      class="form-control mb-4"
+      placeholder="Estado del Hotel"
+      [ngModelOptions]="{ standalone: true }"
+    />
+
+    <label for="costo">Fotos de la Ciudad</label>
+      <input
+        [(ngModel)]="Ciudad.imagen"
+        type="text"
+        id="fotos"
+        class="form-control mb-4"
+        placeholder="URL"
+        [ngModelOptions]="{ standalone: true }"
+      />
+
+
+    <button class="btn btn-info btn-block" (click)="crearCiudad()" type="submit">
+      Crear
+    </button>
+    <button class="btn btn-info btn-block" (click)="close()" type="submit">Cancelar</button>
+  </form>
+</div>
+
+<div [hidden]="!modificarformVisibility" id="form">
+  <form class="border border-light p-5">
+    <div class="text-center">
+      <p class="h4 mb-4">Ingrese los Datos de la nueva Ciudad</p>
+
+      <p>
+        Coloque en la casilla correspondiente la información de la ciudad.
+      </p>
+    </div>
+
+    <label for="ID">ID de la Ciudad</label>
+    <input [(ngModel)]="Ciudad.id" type="text" id="ID" class="form-control mb-4" placeholder="ID"
+      [ngModelOptions]="{ standalone: true }" />
+    <label for="Nombre">Nombre de la Ciudad</label>
+    <input [(ngModel)]="Ciudad.nombre" type="text" id="Nombre" class="form-control mb-4" placeholder="Nombre del Estado"
+      [ngModelOptions]="{ standalone: true }" />
+    <label for="Estado">ID del Estado donde se ubica la Ciudad</label>
+    <input [(ngModel)]="Ciudad.estado" type="text" id="ID Estado" class="form-control mb-4"
+      placeholder="Estado del Hotel" [ngModelOptions]="{ standalone: true }" />
+
+    <label for="costo">Fotos de la Ciudad</label>
+    <input [(ngModel)]="Ciudad.imagen" type="text" id="fotos" class="form-control mb-4" placeholder="URL"
+      [ngModelOptions]="{ standalone: true }" />
+
+
+    <button class="btn btn-info btn-block" (click)="modificarCiudad()" type="submit">
+      Crear
+    </button>
+    <button class="btn btn-info btn-block" (click)="close()" type="submit">Cancelar</button>
+  </form>
+</div>
+
