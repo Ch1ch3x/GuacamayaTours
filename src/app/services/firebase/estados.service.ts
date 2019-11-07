@@ -15,19 +15,18 @@ export class EstadosService {
   ) {}
 
   public create(data) {
-    return this.fireStroreSV.create(this.collectionPath, data)
+    return this.fireStroreSV.create(this.collectionPath, data);
   }
 
-  public getEstado(collection, documentId: string) {
+  public getEstado(documentId: string) {
     return this.fireStroreSV.getDoc(this.collectionPath, documentId);
   }
   
-  public getAll(collection) {
-    return this.fireStroreSV.getAll(collection);
+  public getAll() {
+    return this.fireStroreSV.getAll(this.collectionPath);
   }
   
-  public update(collection, documentId: string, data: any) {
-    return this.fireStroreSV.update(collection, documentId, data);
-  }
-  
+  public update(documentId: string, data: any) {
+    return this.fireStroreSV.update(this.collectionPath, documentId, data);
+  } 
 }

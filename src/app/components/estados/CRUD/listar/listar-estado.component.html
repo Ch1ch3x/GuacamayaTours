@@ -72,6 +72,7 @@
     </ng-container>
 
 
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"
         [class.highlight2] = "estado[row.id].deshabilitar == true"
@@ -83,7 +84,8 @@
 </div>
 
 
-<div [hidden]="!formVisibility" id="form" class="col-12">
+<div [hidden]="!formVisibility" id="form" class="col-12" 
+[formGroup] = "newEstadoForm">
   <form class="border border-light p-5">
     <div class="text-center">
       <p class="h4 mb-4">Ingrese Datos del Estado</p>
@@ -93,7 +95,7 @@
 
     <label for="ID">ID del Estado</label>
     <input
-      [(ngModel)]="Estado.id"
+      [(ngModel)]="id"
       type="text"
       id="ID"
       class="form-control mb-4"
@@ -102,7 +104,7 @@
     />
     <label for="Nombre">Nombre del Estado</label>
     <input
-      [(ngModel)]="Estado.nombre"
+      [(ngModel)]="nombre"
       type="text"
       id="Nombre"
       class="form-control mb-4"
@@ -112,7 +114,7 @@
 
     <label for="fotos">Fotos del estado</label>
     <input
-      [(ngModel)]="Estado.imagen"
+      [(ngModel)]="imagen"
       type="text"
       id="fotos"
       class="form-control mb-4"
