@@ -1,189 +1,388 @@
-<button class="boton" ng-model="formVisibility" name = "button" mat-button (click)="openCrear()" [hidden]="formVisibility"
-  mat-flat-button color="primary">Nuevo Destino</button>
-<button class="boton2" ng-model="formVisibility" name = "button" mat-button (click)="openModificar()"
-  [hidden]="formVisibility" mat-flat-button color="primary">Modificar Destino</button>
+<app-dashboard></app-dashboard>
+<button
+  class="boton"
+  ng-model="formVisibility"
+  name="button"
+  mat-button
+  (click)="openCrear()"
+  [hidden]="formVisibility"
+  mat-flat-button
+  color="primary"
+>
+  Nuevo Destino
+</button>
+<button
+  class="boton2"
+  ng-model="formVisibility"
+  name="button"
+  mat-button
+  (click)="openModificar()"
+  [hidden]="formVisibility"
+  mat-flat-button
+  color="primary"
+>
+  Modificar Destino
+</button>
+<button
+  class="boton2"
+  ng-model="formVisibility"
+  name="button"
+  mat-button
+  (click)="habilitar()"
+  [hidden]="formVisibility"
+  mat-flat-button
+  color="primary"
+  >
+  Habilitar Destino
+</button>
+<button
+  class="boton2"
+  ng-model="formVisibility"
+  name="button"
+  mat-button
+  (click)="deshabilitar()"
+  [hidden]="formVisibility"
+  mat-flat-button color="primary"
+>
+  Deshabilitar Destino
+</button>
 
 <div [hidden]="formVisibility" class="container text-center">
-
-  <table mat-table [dataSource]="dataSource" #mytable class="my-table mat-elevation-z8">
-
-
-    <ng-container matColumnDef="select" >
-      <th mat-header-cell *matHeaderCellDef id="headselect">
-        <mat-checkbox [indeterminate]="selection.hasValue()" [aria-label]="checkboxLabel()">
-        </mat-checkbox>
-      </th>
-      <td mat-cell *matCellDef="let row" id="infonombre">
-        <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [aria-label]="checkboxLabel(row)">
-        </mat-checkbox>
-      </td>
-    </ng-container>
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    #mytable
+    class="my-table mat-elevation-z8"
+  >
 
     <!-- Nombre Column -->
     <ng-container sticky matColumnDef="nombre">
-      <th id="headnombre" mat-header-cell *matHeaderCellDef> Nombre </th>
-      <td id="infonombre" mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+      <th id="headnombre" mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td id="infonombre" mat-cell *matCellDef="let element">
+        {{ element.nombre }}
+      </td>
     </ng-container>
 
     <!-- Estado Column -->
     <ng-container matColumnDef="estado">
-      <th id="headnombre" mat-header-cell *matHeaderCellDef> Estado </th>
-      <td id="infonombre" mat-cell *matCellDef="let element"> {{element.estado}} </td>
+      <th id="headnombre" mat-header-cell *matHeaderCellDef>Estado</th>
+      <td id="infonombre" mat-cell *matCellDef="let element">
+        {{ element.estado }}
+      </td>
     </ng-container>
 
     <!-- Ciudad Column -->
     <ng-container matColumnDef="ciudad">
-      <th id="headnombre" mat-header-cell *matHeaderCellDef> Ciudad </th>
-      <td id="infonombre" mat-cell *matCellDef="let element"> {{element.ciudad}} </td>
+      <th id="headnombre" mat-header-cell *matHeaderCellDef>Ciudad</th>
+      <td id="infonombre" mat-cell *matCellDef="let element">
+        {{ element.ciudad }}
+      </td>
     </ng-container>
 
     <!-- Tipo Column -->
     <ng-container matColumnDef="tipo">
-      <th id="headnombre" mat-header-cell *matHeaderCellDef> Tipo </th>
-      <td id="infonombre" mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+      <th id="headnombre" mat-header-cell *matHeaderCellDef>Tipo</th>
+      <td id="infonombre" mat-cell *matCellDef="let element">
+        {{ element.tipo }}
+      </td>
     </ng-container>
 
     <!-- Servicios Column -->
     <ng-container matColumnDef="servicios">
-      <th id="headnombre" mat-header-cell *matHeaderCellDef> Servicios </th>
-      <td id="infonombre" mat-cell *matCellDef="let element"> {{element.servicios}} </td>
+      <th id="headnombre" mat-header-cell *matHeaderCellDef>Servicios</th>
+      <td id="infonombre" mat-cell *matCellDef="let element">
+        {{ element.servicios }}
+      </td>
     </ng-container>
 
     <!-- Actividades Column -->
     <ng-container matColumnDef="actividades">
-      <th id="headnombre" mat-header-cell *matHeaderCellDef> Actividades </th>
-      <td id="infonombre" mat-cell *matCellDef="let element"> {{element.actividades}} </td>
+      <th id="headnombre" mat-header-cell *matHeaderCellDef>Actividades</th>
+      <td id="infonombre" mat-cell *matCellDef="let element">
+        {{ element.actividades }}
+      </td>
     </ng-container>
 
     <!-- Latitud Column -->
     <ng-container matColumnDef="latitud">
-      <th id="headnombre" mat-header-cell *matHeaderCellDef> Latitud </th>
-      <td id="infonombre" mat-cell *matCellDef="let element"> {{element.latitud}} </td>
+      <th id="headnombre" mat-header-cell *matHeaderCellDef>Latitud</th>
+      <td id="infonombre" mat-cell *matCellDef="let element">
+        {{ element.latitud }}
+      </td>
     </ng-container>
 
     <!-- Longitud Column -->
     <ng-container matColumnDef="longitud">
-      <th id="headnombre" mat-header-cell *matHeaderCellDef> Longitud </th>
-      <td id="infonombre" mat-cell *matCellDef="let element"> {{element.longitud}} </td>
+      <th id="headnombre" mat-header-cell *matHeaderCellDef>Longitud</th>
+      <td id="infonombre" mat-cell *matCellDef="let element">
+        {{ element.longitud }}
+      </td>
     </ng-container>
 
     <!-- Direccion Column -->
     <ng-container matColumnDef="direccion">
-      <th id="headnombre" mat-header-cell *matHeaderCellDef> Direccion </th>
-      <td id="infonombre" mat-cell *matCellDef="let element"> {{element.direccion}} </td>
+      <th id="headnombre" mat-header-cell *matHeaderCellDef>Direccion</th>
+      <td id="infonombre" mat-cell *matCellDef="let element">
+        {{ element.direccion }}
+      </td>
     </ng-container>
 
     <!-- Descripcion Column -->
     <ng-container matColumnDef="descripcion">
-      <th id="headnombre" mat-header-cell *matHeaderCellDef> Descripcion </th>
-      <td id="infonombre" mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+      <th id="headnombre" mat-header-cell *matHeaderCellDef>Descripcion</th>
+      <td id="infonombre" mat-cell *matCellDef="let element">
+        {{ element.descripcion }}
+      </td>
     </ng-container>
 
     <!-- Id Column -->
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> ID. </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      <th mat-header-cell *matHeaderCellDef>ID.</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"
-         [ngClass]="{'highlight': selectedRowIndex == row.id}"
+         [class.highlight2] = "destino[row.id].deshabilitar == true"
+         [class.highlight] = "selectedRowIndex == row.id"
+         [class.highlight3] = "selectedRowIndex == row.id && destino[row.id].deshabilitar == true"
          (click)="highlight(row)"></tr>
   </table>
-
 </div>
 
-<div [hidden]="!crearformVisibility" id = form >
-
+<div [hidden]="!crearformVisibility" id="form">
   <form class="border border-light p-5">
-
     <div class="text-center">
       <p class="h4 mb-4">Ingrese los Datos del Nuevo Destino</p>
 
-      <p>Coloque en la casilla correspondiente la información del destino turistico seleccionado.</p>
-
+      <p>
+        Coloque en la casilla correspondiente la información del destino
+        turistico seleccionado.
+      </p>
     </div>
     <label for="Nombre">Nombre del Destino</label>
-    <input type="text" id="Nombre" class="form-control mb-4" [(ngModel)]="Destino.nombre" [ngModelOptions]="{standalone: true}" placeholder="Nombre de Destino" >
+    <label [hidden]="valnombre" id="validate" for="Nombre">Debe ingresar un nombre para el Destino Turistico</label>
+    <input
+      type="text"
+      id="Nombre"
+      class="form-control mb-4"
+      [(ngModel)]="Destino.nombre"
+      [ngModelOptions]="{ standalone: true }"
+      placeholder="Nombre de Destino"
+    />
     <label for="Estado">Estado del Destino</label>
-    <input type="text" id="Estado" class="form-control mb-4" [(ngModel)]="Destino.estado" [ngModelOptions]="{standalone: true}" placeholder="Estado del Destino" >
+    <label [hidden]="valestado" id="validate" for="Estado">Debe ingresar un Estado para el Destino Turistico</label>
+    <select class="browser-default custom-select mb-4" [(ngModel)]="Destino.estado" [ngModelOptions]="{ standalone: true }"
+      (change)="capturarEstado()" id="Estado">
+      <option value="" disabled="" selected="">Elije un Estado</option>
+      <option value="1">Falcon</option>
+      <option value="2">Sucre</option>
+      <option value="3">Nueva Esparta</option>
+    </select>
     <label for="Ciudad">Ciudad del Destino</label>
-    <input type="text" id="Ciudad" class="form-control mb-4" [(ngModel)]="Destino.ciudad" [ngModelOptions]="{standalone: true}" placeholder="Ciudad del Destino" >
+    <label [hidden]="valciudad" id="validate" for="Ciudad">Debe ingresar una Ciudad para el Destino Turistico</label>
+    <select class="browser-default custom-select mb-4" [(ngModel)]="Destino.ciudad" [ngModelOptions]="{ standalone: true }"
+      (change)="capturarCiudad()" id="Ciudad">
+      <option value="" disabled="" selected="">Elije una Ciudad</option>
+      <option value="1">Chichiriviche</option>
+      <option value="2">Tucacas</option>
+      <option value="3">Puerto Cabello</option>
+    </select>
     <label for="Tipo">Tipo de destino</label>
-    <select class="browser-default custom-select mb-4" [(ngModel)]="Destino.tipo" [ngModelOptions]="{standalone: true}" id="Tipo">
+    <label [hidden]="valtipo" id="validate" for="Tipo">Debe ingresar un tipo de destino para el Destino Turistico</label>
+    <select
+      class="browser-default custom-select mb-4"
+      [(ngModel)]="Destino.tipo"
+      [ngModelOptions]="{ standalone: true }"
+      (change)="capturarTipo()"
+      id="Tipo"
+    >
       <option value="" disabled="" selected="">Elije un Tipo de Destino</option>
       <option value="1">Playa</option>
       <option value="2">Montaña</option>
       <option value="3">Arte</option>
     </select>
     <label for="Servicios">Servicios del Destino</label>
-    <input type="text" id="Servicios" class="form-control mb-4"
-      [(ngModel)]="Destino.servicios" [ngModelOptions]="{standalone: true}" placeholder="Servicios del Destino" >
+    <label [hidden]="valservicios" id="validate" for="Servicios">Debe ingresar un Servicio para el Destino Turistico</label>
+    <input
+      type="text"
+      id="Servicios"
+      class="form-control mb-4"
+      [(ngModel)]="Destino.servicios"
+      [ngModelOptions]="{ standalone: true }"
+      placeholder="Servicios del Destino"
+    />
     <label for="Actividades">Actividades del Destino</label>
-    <input type="text" id="Actividades" class="form-control mb-4"
-      [(ngModel)]="Destino.actividades" [ngModelOptions]="{standalone: true}" placeholder="Actividades del Destino" >
+    <label [hidden]="valactividades" id="validate" for="Actividades">Debe ingresar una Actividad para el Destino Turistico</label>
+    <input
+      type="text"
+      id="Actividades"
+      class="form-control mb-4"
+      [(ngModel)]="Destino.actividades"
+      [ngModelOptions]="{ standalone: true }"
+      placeholder="Actividades del Destino"
+    />
     <label for="Latitud">Latitud del Destino</label>
-    <input type="text" id="Latitud" class="form-control mb-4" [(ngModel)]="Destino.latitud" [ngModelOptions]="{standalone: true}" placeholder="Latitud" >
+    <label [hidden]="vallatitud" id="validate" for="Latitud">Debe ingresar una latitud para el Destino Turistico</label>
+    <input
+      type="text"
+      id="Latitud"
+      class="form-control mb-4"
+      [(ngModel)]="Destino.latitud"
+      [ngModelOptions]="{ standalone: true }"
+      placeholder="Latitud"
+    />
     <label for="Longitud">Longitud del Destino</label>
-    <input type="text" id="Longitud" class="form-control mb-4" [(ngModel)]="Destino.longitud" [ngModelOptions]="{standalone: true}" placeholder="Longitud" >
+    <label [hidden]="vallongitud" id="validate" for="Longitud">Debe ingresar una longitud para el Destino Turistico</label>
+    <input
+      type="text"
+      id="Longitud"
+      class="form-control mb-4"
+      [(ngModel)]="Destino.longitud"
+      [ngModelOptions]="{ standalone: true }"
+      placeholder="Longitud"
+    />
     <label for="Dirección">Dirección del Destino</label>
-    <input type="text" id="Dirección" class="form-control mb-4" [(ngModel)]="Destino.direccion" [ngModelOptions]="{standalone: true}" placeholder="Dirección" >
+    <label [hidden]="valdireccion" id="validate" for="Dirección">Debe ingresar una Dirección para el Destino Turistico</label>
+    <input
+      type="text"
+      id="Dirección"
+      class="form-control mb-4"
+      [(ngModel)]="Destino.direccion"
+      [ngModelOptions]="{ standalone: true }"
+      placeholder="Dirección"
+    />
     <label for="Descripción">Descripción</label>
-    <textarea id="Descripción" class="form-control mb-4"
-      [(ngModel)]="Destino.descripcion" [ngModelOptions]="{standalone: true}" placeholder="Descripción del Destino" ></textarea>
+    <label [hidden]="valdescripcion" id="validate" for="Descripción">Debe ingresar una Descripción detallada para el Destino Turistico</label>
+    <textarea
+      id="Descripción"
+      class="form-control mb-4"
+      [(ngModel)]="Destino.descripcion"
+      [ngModelOptions]="{ standalone: true }"
+      placeholder="Descripción del Destino"
+    ></textarea>
 
-    <button class="btn btn-info btn-block" (click)="crearDestinos()" type="submit">Crear</button>
+    <button
+      class="btn btn-info btn-block"
+      (click)="crearDestinos()"
+      type="submit"
+    >
+      Crear
+    </button>
     <button class="btn btn-info btn-block" (click)="close()" type="submit">Cancelar</button>
   </form>
 </div>
 
-<div [hidden]="!modificarformVisibility" id=form>
-
+<div [hidden]="!modificarformVisibility" id="form">
   <form class="border border-light p-5">
-
     <div class="text-center">
       <p class="h4 mb-4">Ingrese los Datos del Nuevo Destino</p>
 
-      <p>Coloque en la casilla correspondiente la información del destino turistico seleccionado.</p>
-
+      <p>
+        Coloque en la casilla correspondiente la información del destino
+        turistico seleccionado.
+      </p>
     </div>
     <label for="Nombre">Nombre del Destino</label>
-    <input type="text" id="Nombre" class="form-control mb-4" [(ngModel)]="Destino.nombre"
-      [ngModelOptions]="{standalone: true}" placeholder= "AQUII">
+    <input
+      type="text"
+      id="Nombre"
+      class="form-control mb-4"
+      [(ngModel)]="Destino.nombre"
+      [ngModelOptions]="{ standalone: true }"
+      placeholder="Nombre de Destino"
+    />
     <label for="Estado">Estado del Destino</label>
-    <input type="text" id="Estado" class="form-control mb-4" [(ngModel)]="Destino.estado"
-      [ngModelOptions]="{standalone: true}" placeholder="Estado del Destino">
+    <input
+      type="text"
+      id="Estado"
+      class="form-control mb-4"
+      [(ngModel)]="Destino.estado"
+      [ngModelOptions]="{ standalone: true }"
+      placeholder="Estado del Destino"
+    />
     <label for="Ciudad">Ciudad del Destino</label>
-    <input type="text" id="Ciudad" class="form-control mb-4" [(ngModel)]="Destino.ciudad"
-      [ngModelOptions]="{standalone: true}" placeholder="Ciudad del Destino">
+    <input
+      type="text"
+      id="Ciudad"
+      class="form-control mb-4"
+      [(ngModel)]="Destino.ciudad"
+      [ngModelOptions]="{ standalone: true }"
+      placeholder="Ciudad del Destino"
+    />
     <label for="Tipo">Tipo de destino</label>
-    <select class="browser-default custom-select mb-4" [(ngModel)]="Destino.tipo" [ngModelOptions]="{standalone: true}"
-      id="Tipo">
+    <select
+      class="browser-default custom-select mb-4"
+      [(ngModel)]="Destino.tipo"
+      [ngModelOptions]="{ standalone: true }"
+      id="Tipo"
+    >
       <option value="" disabled="" selected="">Elije un Tipo de Destino</option>
       <option value="1">Playa</option>
       <option value="2">Montaña</option>
       <option value="3">Arte</option>
     </select>
     <label for="Servicios">Servicios del Destino</label>
-    <input type="text" id="Servicios" class="form-control mb-4" [(ngModel)]="Destino.servicios"
-      [ngModelOptions]="{standalone: true}" placeholder="Servicios del Destino">
+    <input
+      type="text"
+      id="Servicios"
+      class="form-control mb-4"
+      [(ngModel)]="Destino.servicios"
+      [ngModelOptions]="{ standalone: true }"
+      placeholder="Servicios del Destino"
+    />
     <label for="Actividades">Actividades del Destino</label>
-    <input type="text" id="Actividades" class="form-control mb-4" [(ngModel)]="Destino.actividades"
-      [ngModelOptions]="{standalone: true}" placeholder="Actividades del Destino">
+    <input
+      type="text"
+      id="Actividades"
+      class="form-control mb-4"
+      [(ngModel)]="Destino.actividades"
+      [ngModelOptions]="{ standalone: true }"
+      placeholder="Actividades del Destino"
+    />
     <label for="Latitud">Latitud del Destino</label>
-    <input type="text" id="Latitud" class="form-control mb-4" [(ngModel)]="Destino.latitud"
-      [ngModelOptions]="{standalone: true}" placeholder="Latitud">
+    <input
+      type="text"
+      id="Latitud"
+      class="form-control mb-4"
+      [(ngModel)]="Destino.latitud"
+      [ngModelOptions]="{ standalone: true }"
+      placeholder="Latitud"
+    />
     <label for="Longitud">Longitud del Destino</label>
-    <input type="text" id="Longitud" class="form-control mb-4" [(ngModel)]="Destino.longitud"
-      [ngModelOptions]="{standalone: true}" placeholder="Longitud">
+    <input
+      type="text"
+      id="Longitud"
+      class="form-control mb-4"
+      [(ngModel)]="Destino.longitud"
+      [ngModelOptions]="{ standalone: true }"
+      placeholder="Longitud"
+    />
     <label for="Dirección">Dirección del Destino</label>
-    <input type="text" id="Dirección" class="form-control mb-4" [(ngModel)]="Destino.direccion"
-      [ngModelOptions]="{standalone: true}" placeholder="Dirección">
+    <input
+      type="text"
+      id="Dirección"
+      class="form-control mb-4"
+      [(ngModel)]="Destino.direccion"
+      [ngModelOptions]="{ standalone: true }"
+      placeholder="Dirección"
+    />
     <label for="Descripción">Descripción</label>
-    <textarea id="Descripción" class="form-control mb-4" [(ngModel)]="Destino.descripcion"
-      [ngModelOptions]="{standalone: true}" placeholder="Descripción del Destino"></textarea>
+    <textarea
+      id="Descripción"
+      class="form-control mb-4"
+      [(ngModel)]="Destino.descripcion"
+      [ngModelOptions]="{ standalone: true }"
+      placeholder="Descripción del Destino"
+    ></textarea>
 
-    <button class="btn btn-info btn-block" (click)="modificarDestinos()" type="submit">Crear</button>
+    <button
+      class="btn btn-info btn-block"
+      (click)="modificarDestinos()"
+      type="submit"
+    >
+      Crear
+    </button>
     <button class="btn btn-info btn-block" (click)="close()" type="submit">Cancelar</button>
   </form>
   

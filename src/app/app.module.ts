@@ -43,18 +43,12 @@ import { ListarOrdenesComponent } from "./components/ordenes/CRUD/listar/listar-
 import { ListaCategoriaDestinoComponent } from "./components/categoria-destino/CRUD/listar/lista-categoria-destino.component";
 import { ListaCiudadComponent } from "./components/ciudades/CRUD/listar/lista-ciudad.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { MaterialModule } from "./material/material.module";
-import {
-  MatTableModule,
-  MatDialogModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatButtonModule
-} from '@angular/material';
-import {HttpClientModule} from '@angular/common/http'
-import { DestinosService } from './services/destinos.service';
-import { MatCheckboxModule } from '@angular/material/checkbox';
+import { HttpClientModule } from "@angular/common/http";
+import { ModalModule } from "ngx-bootstrap/modal";
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -95,7 +89,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     PlanearViajeComponent,
     ItinerarioComponent,
     NosotrosComponent,
-    ContactanosComponent,
+    ContactanosComponent
   ],
   imports: [
     BrowserModule,
@@ -109,15 +103,12 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     CommonModule,
-    MatTableModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
+    ModalModule.forRoot(),
     HttpClientModule,
-    MatCheckboxModule
+    AngularFireModule.initializeApp(environment.firebase),
+
   ],
-  providers: [DestinosService],
-  bootstrap: [AppComponent, ]
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
