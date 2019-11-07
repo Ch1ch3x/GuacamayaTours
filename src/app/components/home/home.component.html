@@ -1,19 +1,25 @@
 <body>
     <app-navbar> </app-navbar>
-    <div >
-        <img
-          class="header"
-          src="../../../assets/img/home.png"
-          />
-          <img
-          class="flor"
-          src="../../../assets/img/flores-abajo.svg"
-          />
-    
+
+    <div class="containe">
+        <p class="centered1">GUACAMAYA <br> TOURS</p>
+        
+        <img src="../../../assets/img/home.png" alt="Planea tu viaje">
+        <button class="btn">PLANEA TU VIAJE AHORA</button>
     </div>
-    <div class="slider">
-      <ng-image-slider [images]="imageObject" #nav></ng-image-slider>
+    <div class="">
+        <img src="../../../assets/img/flores-arriba.svg" class="size title" >
+      <p class="title">DESTINOS POPULARES</p>
+      
     </div>
 
+    <div class="slider">
+      <ng-image-slider [images]="imageObject" imageSize="{width: 400, height: 300, space: 4}" #nav></ng-image-slider>
+    </div>
+
+    <app-footer></app-footer>
+
 </body>
+
+
 
