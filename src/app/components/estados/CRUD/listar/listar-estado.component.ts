@@ -24,7 +24,10 @@ export class ListarEstadoComponent implements OnInit {
       nombre: new FormControl('', Validators.required),
       id: new FormControl(''),
       imagen: new FormControl(''),
+      imagen2: new FormControl(''),
+      imagen3: new FormControl(''),
       deshabilitar: new FormControl('')
+
     });
 
 
@@ -33,6 +36,8 @@ export class ListarEstadoComponent implements OnInit {
       nombre: '',
       id: '',
       imagen: '',
+      imagen2 ?: '',
+      imagen3 ?: '', 
       deshabilitar: ''
     });
   }
@@ -47,6 +52,8 @@ export class ListarEstadoComponent implements OnInit {
           id: estadoData.payload.doc.id,
           nombre: estadoData.payload.doc.data().nombre,
           imagen: estadoData.payload.doc.data().imagen,
+          imagen2: estadoData.payload.doc.data().imagen,
+          imagen3: estadoData.payload.doc.data().imagen,
           deshabilitar: estadoData.payload.doc.data().deshabilitar
         });
         console.log(this.estados)
@@ -62,6 +69,8 @@ export class ListarEstadoComponent implements OnInit {
       let data = {
         nombre: form.nombre,
         imagen: form.imagen,
+        imagen2: form.imagen2,
+        imagen3: form.imagen3,
         deshabilitar: form.deshabilitar
       }
       this.EstadoSV.create(data).then(() => {
@@ -69,6 +78,8 @@ export class ListarEstadoComponent implements OnInit {
         this.newEstadoForm.setValue({
           nombre: '',
           imagen: '',
+          imagen2: '',
+          imagen3: '',
           id: '',
           deshabilitar: ''
         });
@@ -79,6 +90,8 @@ export class ListarEstadoComponent implements OnInit {
       let data = {
         nombre: form.nombre,
         imagen: form.imagen,
+        imagen2: '',
+        imagen3: '',
         deshabilitar: form.deshabilitar
       }
       this.EstadoSV.update(documentId, data).then(() => {
@@ -87,6 +100,8 @@ export class ListarEstadoComponent implements OnInit {
           nombre: '',
           deshabilitar: '',
           imagen:'',
+          imagen2: '',
+          imagen3: '',
           id: ''
         });
         console.log('Documento editado exitósamente');
@@ -104,6 +119,8 @@ export class ListarEstadoComponent implements OnInit {
         id: documentId,
         nombre: estado.payload.data()['nombre'],
         imagen: estado.payload.data()['imagen'],
+        imagen2: estado.payload.data()['imagen2'],
+        imagen3: estado.payload.data()['imagen3'],
         desabilitar: estado.payload.data()['desabilitar'],
       });
       editSubscribe.unsubscribe();
