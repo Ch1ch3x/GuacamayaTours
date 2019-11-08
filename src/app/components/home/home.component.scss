@@ -5,7 +5,6 @@ body{
 .slider {
   margin-top: 0px;
   margin-right: 10px;
-  height: 500px;
 }
 
 
@@ -15,8 +14,7 @@ body{
   padding: 0;
   position: relative;
   width: 100%;
-  text-align: center;
-  
+  text-align: center; 
 }
 
 /* Make the image responsive */
@@ -58,13 +56,34 @@ body{
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font: Sedgwick Ave Display;
+  font-family: 'Sedgwick Ave Display', cursive;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   font-style: normal;
   font-weight: normal;
-  font-size: 168%;
-  line-height: 60px;
-  color: #ffffff;
+  font-size: 528%;
+  line-height: 61px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #FFFFFF;
+
+}
+
+.centered2 {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: Rock Salt;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 195%;
+  line-height: 74px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #FFFFFF;
 }
 
 .title{
@@ -86,7 +105,17 @@ body{
 }
 
 p{
-  padding: 2.7%;
-  margin-bottom: 150px;
+  padding: 2%;
+  margin-bottom: 5%;
+}
+
+.full{
+  width: 100%;
+  position: relative;
+  
+}
+
+.actividades{
+  padding-top: 2%;
 }
 
