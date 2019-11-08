@@ -2,7 +2,7 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 
 import { MatTable } from '@angular/material';
 // necesito conectar tipos,ciuades,estados
-import destinos from '../../../../data/destinos.json';
+import destinosJ from '../../../../data/destinos.json';
 import tipos from '../../../../data/tipos.json';
 import ciudades from '../../../../data/ciudades.json';
 import estados from '../../../../data/estados.json';
@@ -58,7 +58,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
     'id'
   ];
 
-  public destino = destinos;
+  public NOUSAR = destinosJ;
   public tipoD = tipos;
   public ciudadD = ciudades;
   public estadoD = estados;
@@ -80,24 +80,24 @@ export class ListarDestinosTuristicosComponent implements OnInit {
   public destinos = [];
   public documentId = null;
   public currentStatus = 1;
-   public newDestinoForm = new FormGroup({
-      id: new FormControl(''),
-      nombre: new FormControl('', Validators.required),
-      descripcion: new FormControl('', Validators.required),
-      tipo: new FormControl('', Validators.required),
-      servicios: new FormControl('', Validators.required),
-      actividades: new FormControl('', Validators.required),
-      latitud: new FormControl('', Validators.required),
-      longitud: new FormControl('', Validators.required),
-      estado: new FormControl('', Validators.required),
-      ciudad:new FormControl('', Validators.required),
-      direccion: new FormControl('', Validators.required),
-      imagen: new FormControl(''),
-      imagen2: new FormControl(''),
-      imagen3: new FormControl(''),
-      deshabilitar: new FormControl('')
+  public newDestinoForm = new FormGroup({
+    id: new FormControl(''),
+    nombre: new FormControl('', Validators.required),
+    descripcion: new FormControl('', Validators.required),
+    tipo: new FormControl('', Validators.required),
+    servicios: new FormControl('', Validators.required),
+    actividades: new FormControl('', Validators.required),
+    latitud: new FormControl('', Validators.required),
+    longitud: new FormControl('', Validators.required),
+    estado: new FormControl('', Validators.required),
+    ciudad:new FormControl('', Validators.required),
+    direccion: new FormControl('', Validators.required),
+    imagen: new FormControl(''),
+    imagen2: new FormControl(''),
+    imagen3: new FormControl(''),
+    deshabilitar: new FormControl('')
 
-    });
+  });
 
 
   constructor(private DestinoSV: DestinosService) {
@@ -142,7 +142,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
           imagen3: destinoData.payload.doc.data().imagen3,
           deshabilitar: destinoData.payload.doc.data().deshabilitar
         });
-        console.log(this.destino)
+        console.log(this.destinos)
       })
     });
     
@@ -193,9 +193,18 @@ export class ListarDestinosTuristicosComponent implements OnInit {
     } else {
       let data = {
         nombre: form.nombre,
+        descripcion: form.descripcion,
+        tipo: form.tipo,
+        servicios: form.servicios,
+        actividades: form.actividades,
+        latitud: form.latitud,
+        longitud: form.longitud,
+        estado: form.estado,
+        ciudad: form.ciudad,
+        direccion: form.direccion,
         imagen: form.imagen,
-        imagen2: '',
-        imagen3: '',
+        imagen2: form.imagen2,
+        imagen3: form.imagen3,
         deshabilitar: form.deshabilitar
       }
       this.DestinoSV.update(documentId, data).then(() => {

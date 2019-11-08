@@ -43,12 +43,15 @@ import { ListarOrdenesComponent } from "./components/ordenes/CRUD/listar/listar-
 import { ListaCategoriaDestinoComponent } from "./components/categoria-destino/CRUD/listar/lista-categoria-destino.component";
 import { ListaCiudadComponent } from "./components/ciudades/CRUD/listar/lista-ciudad.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MaterialModule } from "./material/material.module";
 import { HttpClientModule } from "@angular/common/http";
 import { ModalModule } from "ngx-bootstrap/modal";
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+
 
 @NgModule({
   declarations: [
@@ -106,9 +109,8 @@ import { environment } from '../environments/environment';
     ModalModule.forRoot(),
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
-
   ],
-  providers: [],
+  providers: [ AngularFirestore ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
