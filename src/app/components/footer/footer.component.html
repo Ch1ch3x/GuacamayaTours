@@ -33,7 +33,7 @@
         </li>
         <li class="list-inline-item">
             <a class="btn-floating btn-li mx-1">
-              <i class="fa fa-angle-double-right fa-2x"> </i>
+              <i class="fa fa-angle-double-right fa-2x" alt="login" title="Login" (click)="openModal(login)"> </i>
             </a>
         </li>
       </ul>
@@ -49,15 +49,6 @@
 
   </footer>
   <!-- Footer -->
-
-  <a
-    ><img
-      class="size"
-      src="assets/icon/admin.jpg"
-      alt="login"
-      title="Login"
-      (click)="openModal(login)"
-  /></a>
 
 <ng-template #login>
   <div class="modal-header">

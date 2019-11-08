@@ -21,8 +21,7 @@ import { FormControl, Validators } from "@angular/forms";
   styleUrls: ["./navbar.component.scss"]
 })
 export class NavbarComponent implements OnInit {
-  password = new FormControl("", [Validators.required]);
-  modalRef: BsModalRef;
+
   constructor(
     private modalService: BsModalService,
     private adminService: AdminService,
@@ -31,22 +30,5 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {}
 
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
-  }
 
-  signIn() {
-    if (
-      this.adminService.login(
-        crypto.SHA256(this.password.value, "guacamaya").toString()
-      )
-    ) {
-      this.modalRef.hide();
-      this.router.navigate(["/admin/dashboard", {}]);
-    } else alert("Invalid password");
-  }
-
-  getErrorMessage() {
-    return this.password.hasError("required") ? "You must enter a value" : "";
-  }
 }
