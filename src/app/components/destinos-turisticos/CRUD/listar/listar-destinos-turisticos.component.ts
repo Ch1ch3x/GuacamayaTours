@@ -92,10 +92,10 @@ export class ListarDestinosTuristicosComponent implements OnInit {
     estado: new FormControl('', Validators.required),
     ciudad:new FormControl('', Validators.required),
     direccion: new FormControl('', Validators.required),
-    imagen: new FormControl(''),
+    imagen: new FormControl('', Validators.required),
     imagen2: new FormControl(''),
     imagen3: new FormControl(''),
-    deshabilitar: new FormControl('')
+    deshabilitar: new FormControl('', Validators.required)
 
   });
 
