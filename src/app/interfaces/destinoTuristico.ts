@@ -11,6 +11,9 @@ export interface destinoTuristico {
     estado: string[];
     ciudad: string[];
     direccion: string;
+    imagen: string;
+    imagen2 ?: string;
+    imagen3 ?: string;
     deshabilitar: boolean;
-
+    
 }
