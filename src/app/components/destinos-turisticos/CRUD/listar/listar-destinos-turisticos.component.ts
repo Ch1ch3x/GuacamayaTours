@@ -11,9 +11,9 @@ import { tipo } from '../../../../interfaces/tipo';
 import { ciudad } from '../../../../interfaces/ciudad';
 import { estado } from '../../../../interfaces/estado';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import {DestinosService} from '../../../../services/firebase/destinos.service'
+import {DestinosService} from '../../../../services/firebase/destinos.service';
 
-const ELEMENT_DATA: destinoTuristico[] = destinos; //el JSON no tiene cambios de interface
+// const ELEMENT_DATA: destinoTuristico[] = destinos; //el JSON no tiene cambios de interface
 
 
 @Component({
@@ -42,7 +42,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
   vertipo: string = '0';
   verestado: string = '0';
   verciudad: string = '0';
-  dataSource = ELEMENT_DATA;
+ // dataSource = ELEMENT_DATA;
   // tslint:disable-next-line: max-line-length
   displayedColumns: string[] = [
     'nombre',
