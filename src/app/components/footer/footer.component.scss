@@ -1,23 +1,17 @@
 .footer {
   background-color: #ff9f1c;
 }
-.botton {
-  background-color: black;
-  color: rgb(173, 173, 140);
-}
 
-.size {
+
+i {
+  color: #FBEACE;
   width: 30%;
   padding: 0px;
   margin: 0px;
 }
 
 .color {
-  background-color: rgb(224, 228, 238);
+  background-color: #FBEACE;
+  color:#002D51;
 }
 
-@media screen and (max: 560px){
-  .copyright{
-    display: none;
-  }
-}
