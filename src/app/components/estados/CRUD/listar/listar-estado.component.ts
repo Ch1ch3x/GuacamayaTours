@@ -1,11 +1,9 @@
 import { Component, ViewChild, OnInit } from "@angular/core";
 import { MatTable } from "@angular/material";
-import estados from "../../../../data/estados.json";
-import { estado } from "../../../../interfaces/estado";
 import {EstadosService} from "../../../../services/firebase/estados.service";
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-const ELEMENT_DATA: estado[] = estados;
+
 
 @Component({
   selector: "app-listar-estado",
@@ -13,20 +11,20 @@ const ELEMENT_DATA: estado[] = estados;
   styleUrls: ["./listar-estado.component.scss"]
 })
 export class ListarEstadoComponent implements OnInit {
-  displayedColumns: string[] = ["nombre", "id", "imagen", "deshabilitado"] ;
-  dataSource = ELEMENT_DATA;
+  estados: any[];
+  displayedColumns: string[] = ["nombre", "imagen", "imagen2", 'imagen3', 'deshabilitar'] ;
+  dataSource: string[];
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
   formVisibility = false;
-  public estados = [];
+
   public documentId = null;
   public currentStatus = 1;
   public newEstadoForm = new FormGroup({
       nombre: new FormControl('', Validators.required),
-      id: new FormControl(''),
-      imagen: new FormControl(''),
+      imagen: new FormControl('', Validators.required),
       imagen2: new FormControl(''),
       imagen3: new FormControl(''),
-      deshabilitar: new FormControl('')
+      deshabilitar: new FormControl(true),
 
     });
 
@@ -34,11 +32,10 @@ export class ListarEstadoComponent implements OnInit {
   constructor(private EstadoSV: EstadosService) {
     this.newEstadoForm.setValue({
       nombre: '',
-      id: '',
       imagen: '',
-      imagen2 ?: '',
-      imagen3 ?: '', 
-      deshabilitar: ''
+      imagen2: '',
+      imagen3: '',
+      deshabilitar: true,
     });
   }
 
@@ -49,17 +46,16 @@ export class ListarEstadoComponent implements OnInit {
       this.estados = [];
       estadosSnapshot.forEach((estadoData: any) => {
         this.estados.push({
-          id: estadoData.payload.doc.id,
           nombre: estadoData.payload.doc.data().nombre,
           imagen: estadoData.payload.doc.data().imagen,
-          imagen2: estadoData.payload.doc.data().imagen,
-          imagen3: estadoData.payload.doc.data().imagen,
-          deshabilitar: estadoData.payload.doc.data().deshabilitar
+          imagen2: estadoData.payload.doc.data().imagen2,
+          imagen3: estadoData.payload.doc.data().imagen3,
+          deshabilitar: estadoData.payload.doc.data().deshabilitar,
         });
         console.log(this.estados)
       })
     });
-    
+
 
   }
 
@@ -80,7 +76,6 @@ export class ListarEstadoComponent implements OnInit {
           imagen: '',
           imagen2: '',
           imagen3: '',
-          id: '',
           deshabilitar: ''
         });
       }, (error) => {
@@ -102,7 +97,6 @@ export class ListarEstadoComponent implements OnInit {
           imagen:'',
           imagen2: '',
           imagen3: '',
-          id: ''
         });
         console.log('Documento editado exitósamente');
       }, (error) => {
@@ -116,7 +110,6 @@ export class ListarEstadoComponent implements OnInit {
       this.currentStatus = 2;
       this.documentId = documentId;
       this.newEstadoForm.setValue({
-        id: documentId,
         nombre: estado.payload.data()['nombre'],
         imagen: estado.payload.data()['imagen'],
         imagen2: estado.payload.data()['imagen2'],
@@ -142,10 +135,10 @@ export class ListarEstadoComponent implements OnInit {
   }
 
   deshabilitar() {
-    estados[this.selectedRowIndex].deshabilitar = true;
+    this.estados[this.selectedRowIndex].deshabilitar = true;
   }
   habilitar() {
-    estados[this.selectedRowIndex].deshabilitar = false;
+    this.estados[this.selectedRowIndex].deshabilitar = false;
   }
   addRowData() {
     this.clearEstado();
@@ -153,7 +146,7 @@ export class ListarEstadoComponent implements OnInit {
   }
 
   modifyRowData() {
-    estados.push();
+    this.estados.push();
     this.clearEstado();
     this.table.renderRows();
   }

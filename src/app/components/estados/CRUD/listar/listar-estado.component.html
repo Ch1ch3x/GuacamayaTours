@@ -53,7 +53,7 @@
 
   <table
     mat-table
-    [dataSource]="dataSource"
+    [dataSource]="estados"
     #mytable
     class="my-table mat-elevation-z8 col-12"
   >
@@ -65,26 +65,39 @@
       </td>
     </ng-container>
 
-    <!-- Id Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>ID</th>
-      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    <!-- Imagen Column -->
+    <ng-container matColumnDef="imagen">
+      <th mat-header-cell *matHeaderCellDef>Imagen</th>
+      <td mat-cell *matCellDef="let element">{{ element.imagen }}</td>
     </ng-container>
+    <!-- Imagen2 Column -->
+    <ng-container matColumnDef="imagen2">
+      <th mat-header-cell *matHeaderCellDef>Imagen 2</th>
+      <td mat-cell *matCellDef="let element">{{ element.imagen2 }}</td>
+    </ng-container>
+    <!-- Imagen3 Column -->
+    <ng-container matColumnDef="imagen3">
+      <th mat-header-cell *matHeaderCellDef>Imagen 3</th>
+      <td mat-cell *matCellDef="let element">{{ element.imagen3 }}</td>
+    </ng-container>
+    <ng-container matColumnDef="deshabilitar">
+      <th mat-header-cell *matHeaderCellDef>Vigencia</th>
+      <td mat-cell *matCellDef="let element">{{ element.deshabilitar }}</td>
+    </ng-container>
+
 
 
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"
-        [class.highlight2] = "estado[row.id].deshabilitar == true"
+        [class.highlight2] = "estados[row.id].deshabilitar == true"
          [class.highlight] = "selectedRowIndex == row.id"
-         [class.highlight3] = "selectedRowIndex == row.id && estado[row.id].deshabilitar == true"
+         [class.highlight3] = "selectedRowIndex == row.id && estados[row.id].deshabilitar == true"
          (click)="highlight(row)"></tr>
 
   </table>
 </div>
-
-
-<div [hidden]="!formVisibility" id="form" class="col-12" 
+<div [hidden]="!formVisibility" id="form" class="col-12"
 [formGroup] = "newEstadoForm">
   <form class="border border-light p-5">
     <div class="text-center">
@@ -95,31 +108,25 @@
 
     <label for="ID">ID del Estado</label>
     <input
-      [(ngModel)]="id"
       type="text"
       id="ID"
       class="form-control mb-4"
       placeholder="ID"
-      [ngModelOptions]="{ standalone: true }"
     />
     <label for="Nombre">Nombre del Estado</label>
     <input
-      [(ngModel)]="nombre"
       type="text"
       id="Nombre"
       class="form-control mb-4"
       placeholder="Nombre del Estado"
-      [ngModelOptions]="{ standalone: true }"
     />
 
     <label for="fotos">Fotos del estado</label>
     <input
-      [(ngModel)]="imagen"
       type="text"
       id="fotos"
       class="form-control mb-4"
       placeholder="URL"
-      [ngModelOptions]="{ standalone: true }"
     />
 
     <button
