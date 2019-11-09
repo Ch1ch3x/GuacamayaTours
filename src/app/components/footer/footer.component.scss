@@ -15,3 +15,9 @@
 .color {
   background-color: rgb(224, 228, 238);
 }
+
+@media screen and (max: 560px){
+  .copyright{
+    display: none;
+  }
+}

@@ -1,3 +1,7 @@
+.actividades{
+  background-color: #FEFCED;
+}
+
 @media screen and (max-width: 3000px){
   body{
     background-color: #FBEACE;  
@@ -6,7 +10,7 @@
   }
 
   .slider {
-    margin-top: 7%;  
+    margin-top: 7.5%;  
   }
 
   /* Container needed to position the button. Adjust the width as needed */
@@ -269,6 +273,141 @@
 
 }
 
+@media screen and (max-width: 1000px){
+  body{
+    background-color: #FBEACE;  
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+  .slider {
+    margin-top: 9.5%;  
+  }
+
+  /* Container needed to position the button. Adjust the width as needed */
+  .containe {
+    margin:0;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    text-align: center; 
+  }
+
+  /* Make the image responsive */
+  .containe img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Style the button and place it in the middle of the container/image */
+  .containe .btn {
+    position: absolute;
+    top: 76%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #DA1A29;
+    border-radius: 10px;
+    color: white;
+
+    padding: 5px 15px;
+    border: none;
+    cursor: pointer;
+    font-family: Oswald;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 37px;
+    display: flex;
+    align-items: center;
+    text-align: center;  
+  }
+
+  .containe .btn:hover {
+    background-color: #002D51;
+  }
+
+  .centered1 {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Sedgwick Ave Display', cursive;
+    letter-spacing: 1pt;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-style: normal;
+    font-weight: normal;
+    font-size: 290%;
+    line-height: 51px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+
+  }
+
+  .centered2 {
+    position: absolute;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Rock Salt;
+    letter-spacing: 1pt;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-style: normal;
+    font-weight: normal;
+    font-size: 120%;
+    line-height: 70px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+  }
+
+  .title{
+    font-family: Oswald;
+    letter-spacing: 2pt;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 203%;
+    line-height: 40px;
+    color: #002D51;;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-align: center;
+  }
+
+  .size{
+    width: 22%;
+    position: absolute;
+    left:39.5%;
+
+  }
+
+  .size2{
+    width: 16.5%;
+    position: absolute;
+    left:42%;
+    padding-top: 1.75%;
+
+  }
+
+  p{
+    padding: 2%;
+    margin-bottom: 5%;
+  }
+
+  .full{
+    width: 100%;
+    position: relative;
+    
+  }
+
+  .actividades{
+    padding-top: 2%;
+  }
+
+}
+
 @media screen and (max-width: 790px){
   body{
     background-color: #FBEACE;  
@@ -277,7 +416,7 @@
   }
 
   .slider {
-    margin-top: 5%;  
+    margin-top: 8.5%;  
   }
 
   /* Container needed to position the button. Adjust the width as needed */
@@ -366,7 +505,7 @@
     font-style: normal;
     font-weight: normal;
     font-size: 190%;
-    line-height: 53px;
+    line-height: 35px;
     color: #002D51;;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     text-align: center;
@@ -376,6 +515,14 @@
     width: 24%;
     position: absolute;
     left:38%;
+
+  }
+
+  .size2{
+    width: 16.5%;
+    position: absolute;
+    left:42%;
+    padding-top: 2.25%;
 
   }
 
@@ -404,7 +551,7 @@
   }
 
   .slider {
-    margin-top: 5%;  
+    margin-top: 12%;  
   }
 
   /* Container needed to position the button. Adjust the width as needed */
@@ -492,17 +639,25 @@
     letter-spacing: 1pt;
     font-style: normal;
     font-weight: normal;
-    font-size: 190%;
-    line-height: 53px;
+    font-size: 150%;
+    line-height: 30px;
     color: #002D51;;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     text-align: center;
   }
 
   .size{
-    width: 24%;
+    width: 30.5%;
+    position: absolute;
+    left:36%;
+
+  }
+
+  .size2{
+    width: 25%;
     position: absolute;
     left:38%;
+    padding-top: 2%;
 
   }
 
