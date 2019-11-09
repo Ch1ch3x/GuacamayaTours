@@ -1,6 +1,6 @@
 import { Component, ViewChild, OnInit } from "@angular/core";
 import { MatTable } from "@angular/material";
-import {EstadosService} from "../../../../services/firebase/estados.service";
+import { EstadosService } from "../../../../services/firebase/estados.service";
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
@@ -13,9 +13,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class ListarEstadoComponent implements OnInit {
   estados: any[];
   displayedColumns: string[] = ["nombre", "imagen", "imagen2", 'imagen3', 'deshabilitar'] ;
-  dataSource: string[];
+  dataSource = this.estados;
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
   formVisibility = false;
+  prueba = 0;
 
   public documentId = null;
   public currentStatus = 1;
@@ -52,7 +53,7 @@ export class ListarEstadoComponent implements OnInit {
           imagen3: estadoData.payload.doc.data().imagen3,
           deshabilitar: estadoData.payload.doc.data().deshabilitar,
         });
-        console.log(this.estados)
+        console.log(this.estados[this.prueba].nombre + ' ' + this.estados[this.prueba].deshabilitar);
       })
     });
 

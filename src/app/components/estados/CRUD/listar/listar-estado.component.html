@@ -51,50 +51,25 @@
 
 
 
-  <table
-    mat-table
-    [dataSource]="estados"
-    #mytable
-    class="my-table mat-elevation-z8 col-12"
-  >
-    <!-- Nombre Column -->
-    <ng-container sticky matColumnDef="nombre">
-      <th id="headnombre" mat-header-cell *matHeaderCellDef>Nombre</th>
-      <td id="infonombre" mat-cell *matCellDef="let element">
-        {{ element.nombre }}
-      </td>
-    </ng-container>
-
-    <!-- Imagen Column -->
-    <ng-container matColumnDef="imagen">
-      <th mat-header-cell *matHeaderCellDef>Imagen</th>
-      <td mat-cell *matCellDef="let element">{{ element.imagen }}</td>
-    </ng-container>
-    <!-- Imagen2 Column -->
-    <ng-container matColumnDef="imagen2">
-      <th mat-header-cell *matHeaderCellDef>Imagen 2</th>
-      <td mat-cell *matCellDef="let element">{{ element.imagen2 }}</td>
-    </ng-container>
-    <!-- Imagen3 Column -->
-    <ng-container matColumnDef="imagen3">
-      <th mat-header-cell *matHeaderCellDef>Imagen 3</th>
-      <td mat-cell *matCellDef="let element">{{ element.imagen3 }}</td>
-    </ng-container>
-    <ng-container matColumnDef="deshabilitar">
-      <th mat-header-cell *matHeaderCellDef>Vigencia</th>
-      <td mat-cell *matCellDef="let element">{{ element.deshabilitar }}</td>
-    </ng-container>
-
-
-
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"
-        [class.highlight2] = "estados[row.id].deshabilitar == true"
-         [class.highlight] = "selectedRowIndex == row.id"
-         [class.highlight3] = "selectedRowIndex == row.id && estados[row.id].deshabilitar == true"
-         (click)="highlight(row)"></tr>
-
+  <table class="table" >
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Imagen</th>
+        <th scope="col">Imagen2</th>
+        <th scope="col">Imagen3</th>
+        <th scope="col">Vigencia</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let dato of estados">
+      <tr>
+        <th scope="row">{{dato.nombre}}</th>
+        <td>{{dato.imagen}}</td>
+        <td>{{dato.imagen2}}</td>
+        <td>{{dato.imagen3}}</td>
+        <td>{{dato.deshabilitar}}</td>
+      </tr>
+    </tbody>
   </table>
 </div>
 <div [hidden]="!formVisibility" id="form" class="col-12"
