@@ -52,8 +52,8 @@ export class ListarEstadoComponent implements OnInit {
           imagen3: estadoData.payload.doc.data().imagen3,
           deshabilitar: estadoData.payload.doc.data().deshabilitar,
         });
+        console.log(this.estados)
       })
-      console.log(this.estados)
     });
 
 
