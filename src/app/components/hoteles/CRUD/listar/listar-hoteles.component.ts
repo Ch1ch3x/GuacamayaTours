@@ -114,23 +114,23 @@ export class ListarHotelesComponent implements OnInit {
   ngOnInit() {
     this.HotelSV.getAll().subscribe((hotelesSnapshot) => {
       this.hoteles = [];
-      hotelesSnapshot.forEach((destinoData: any) => {
+      hotelesSnapshot.forEach((ordenData: any) => {
         this.hoteles.push({
-          id: destinoData.payload.doc.id,
-          nombre: destinoData.payload.doc.data().nombre,
-          estrellas:destinoData.payload.doc.data().estrellas,
-          servicios: destinoData.payload.doc.data().servicios,
-          latitud: destinoData.payload.doc.data().latitud,
-          longitud: destinoData.payload.doc.data().longitud,
-          estado: destinoData.payload.doc.data().estado,
-          ciudad: destinoData.payload.doc.data().ciudad,
-          direccion: destinoData.payload.doc.data().direccion,
-          costoFullday: destinoData.payload.doc.data().fullday.costo,
-          activoFullday: destinoData.payload.doc.data().fullday.activo,
-          imagen: destinoData.payload.doc.data().imagen,
-          imagen2: destinoData.payload.doc.data().imagen2,
-          imagen3: destinoData.payload.doc.data().imagen3,
-          deshabilitar: destinoData.payload.doc.data().deshabilitar
+          id: ordenData.payload.doc.id,
+          nombre: ordenData.payload.doc.data().nombre,
+          estrellas:ordenData.payload.doc.data().estrellas,
+          servicios: ordenData.payload.doc.data().servicios,
+          latitud: ordenData.payload.doc.data().latitud,
+          longitud: ordenData.payload.doc.data().longitud,
+          estado: ordenData.payload.doc.data().estado,
+          ciudad: ordenData.payload.doc.data().ciudad,
+          direccion: ordenData.payload.doc.data().direccion,
+          costoFullday: ordenData.payload.doc.data().fullday.costo,
+          activoFullday: ordenData.payload.doc.data().fullday.activo,
+          imagen: ordenData.payload.doc.data().imagen,
+          imagen2: ordenData.payload.doc.data().imagen2,
+          imagen3: ordenData.payload.doc.data().imagen3,
+          deshabilitar: ordenData.payload.doc.data().deshabilitar
         });
         console.log(this.hoteles)
       })
