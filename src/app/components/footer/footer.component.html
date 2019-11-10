@@ -31,6 +31,11 @@
             <i class="fa fa-phone fa-2x"> </i>
           </a>
         </li>
+        <li class="list-inline-item">
+            <a class="btn-floating btn-li mx-1">
+              <i class="fa fa-angle-double-right fa-2x" alt="login" title="Login" (click)="openModal(login)"> </i>
+            </a>
+        </li>
       </ul>
       <!-- Social buttons -->
 
@@ -44,3 +49,52 @@
 
   </footer>
   <!-- Footer -->
+
+<ng-template #login>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Admin Login</h4>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="modalRef.hide()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h6>Please enter the admin code</h6>
+    <form class="login-form">
+      <div class="container">
+        <div class="row">
+          <div class="col-6">
+            <mat-form-field class="login-full-width">
+              <input
+                matInput
+                name="password"
+                placeholder="Admin code"
+                [formControl]="password"
+                type="password"
+              />
+              <mat-error *ngIf="password.invalid"
+                >{{ getErrorMessage() }}
+              </mat-error>
+            </mat-form-field>
+            <span></span>
+          </div>
+          <div class="col-6 login-btn">
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="signIn()"
+              [disabled]="password.invalid"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>
+

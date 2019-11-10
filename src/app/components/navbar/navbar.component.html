@@ -1,97 +1,41 @@
-<nav class="sidebar">
-  <a href="#"
-    ><img
-      class="sizeHome"
-      src="assets/icon/logo.jpg"
-      alt="Home"
-      title="Página principal"
-  /></a>
-  <a href="#regions"
-    ><img
-      class="size"
-      src="assets/icon/region.jpg"
-      alt="Regiones"
-      title="Regiones"
-  /></a>
-  <a href="#clients"
-    ><img class="size" src="assets/icon/hotel.jpg" alt="Hoteles" title="Hoteles"
-  /></a>
-  <a href="#contact"
-    ><img
-      class="size"
-      src="assets/icon/itinerary.jpg"
-      alt="Itinerario"
-      title="Itinerario"
-    />
-  </a>
-  <a href="#contact"
-    ><img
-      class="size"
-      src="assets/icon/reservations.jpg"
-      alt="Reservas"
-      title="Reservas"
-  /></a>
-  <a href="#contact"
-    ><img
-      class="size"
-      src="assets/icon/about.jpg"
-      alt="Acarca de nosotros"
-      title="Acarca de nosotros"
-  /></a>
-  <a
-    ><img
-      class="size"
-      src="assets/icon/admin.jpg"
-      alt="login"
-      title="Login"
-      (click)="openModal(login)"
-  /></a>
+<nav class="navbar navbar-default">  
+    <div class="navbar-header row container-fluid">
+      <a class="home" href="#">
+          <img
+          class="sizeHome"
+          src="assets/icon/png/guacamaya.svg"
+          />
+          </a>
+      <a class="active col-2 bord" href="#">
+        <img
+        class="size"
+        src="assets/icon/png/destinos.png"
+        />
+        DESTINOS</a>
+      <a class="active col-2" href="#">
+          <img
+          class="size"
+          src="assets/icon/png/hotel.png"
+          />
+          HOTELES</a>
+      <a class="active col-2" href="#">
+          <img
+          class="size"
+          src="assets/icon/png/planea.png"
+          />
+          PLANEA TU VIAJE</a>
+      <a class="active col-2" href="#">
+          <img
+          class="size"
+          src="assets/icon/png/itineario.png"
+          />
+          ITINERARIO</a>
+      <a class="active col-2" href="#">
+          <img
+          class="size"
+          src="assets/icon/png/destinos.png"
+          />
+          CONTÁCTANOS</a>
+    </div>
+  
 </nav>
-
-<ng-template #login>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left">Admin Login</h4>
-    <button
-      type="button"
-      class="close pull-right"
-      aria-label="Close"
-      (click)="modalRef.hide()"
-    >
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <h6>Please enter the admin code</h6>
-    <form class="login-form">
-      <div class="container">
-        <div class="row">
-          <div class="col-6">
-            <mat-form-field class="login-full-width">
-              <input
-                matInput
-                name="password"
-                placeholder="Admin code"
-                [formControl]="password"
-                type="password"
-              />
-              <mat-error *ngIf="password.invalid"
-                >{{ getErrorMessage() }}
-              </mat-error>
-            </mat-form-field>
-            <span></span>
-          </div>
-          <div class="col-6 login-btn">
-            <button
-              type="button"
-              class="btn btn-primary"
-              (click)="signIn()"
-              [disabled]="password.invalid"
-            >
-              Submit
-            </button>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
-</ng-template>
