@@ -1,3 +1,7 @@
+.flores{
+  position: relative;
+  top:50%;
+}
 .actividades{
   margin: 0;
   padding: 0;
@@ -115,7 +119,7 @@
   /* Style the button and place it in the middle of the container/image */
   .containe .btn {
     position: absolute;
-    top: 75%;
+    top: 68%;
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
@@ -123,7 +127,7 @@
     border-radius: 10px;
     color: white;
     font-size: 16px;
-    padding: 12px 24px;
+    padding: 10px 20px;
     border: none;
     cursor: pointer;
     font-family: Oswald;
@@ -142,7 +146,7 @@
 
   .centered1 {
     position: absolute;
-    top: 45%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: 'Sedgwick Ave Display', cursive;
@@ -150,8 +154,8 @@
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     font-style: normal;
     font-weight: normal;
-    font-size: 320%;
-    line-height: 61px;
+    font-size: 319%;
+    line-height: 60px;
     display: flex;
     align-items: center;
     text-align: center;
@@ -161,7 +165,7 @@
 
   .centered2 {
     position: absolute;
-    top: 52%;
+    top: 42%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: Rock Salt;
@@ -169,8 +173,8 @@
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     font-style: normal;
     font-weight: normal;
-    font-size: 155%;
-    line-height: 74px;
+    font-size: 150%;
+    line-height: 70px;
     display: flex;
     align-items: center;
     text-align: center;
@@ -270,7 +274,7 @@
   /* Style the button and place it in the middle of the container/image */
   .containe .btn {
     position: absolute;
-    top: 76%;
+    top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
@@ -297,7 +301,7 @@
 
   .centered1 {
     position: absolute;
-    top: 45%;
+    top: 37%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: 'Sedgwick Ave Display', cursive;
@@ -316,7 +320,7 @@
 
   .centered2 {
     position: absolute;
-    top: 53%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: Rock Salt;
