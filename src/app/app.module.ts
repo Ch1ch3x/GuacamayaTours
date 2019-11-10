@@ -47,9 +47,11 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MaterialModule } from "./material/material.module";
 import { HttpClientModule } from "@angular/common/http";
 import { ModalModule } from "ngx-bootstrap/modal";
-import { AngularFireModule } from '@angular/fire';
-import { environment } from '../environments/environment';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { AngularFireModule } from "@angular/fire";
+import { environment } from "../environments/environment";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { FirestoreService } from "./services/firebase/firebase.service";
+import { AngularFirestore } from "@angular/fire/firestore";
 
 @NgModule({
   declarations: [
@@ -108,9 +110,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     NgbModule
-    
   ],
-  providers: [],
+  providers: [FirestoreService, AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
