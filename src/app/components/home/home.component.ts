@@ -6,6 +6,10 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent implements OnInit {
+
+  images = ["../../../assets/img/margarita.jpg", "../../../assets/img/roraima(2).png", "../../../assets/img/juangriego.jpg"];
+  actividades = ["../../../assets/img/roques.jpg", "../../../assets/img/telefericojpg.jpg"];
+
   constructor() {}
   imageObject: Array<object> = [
     {

@@ -49,6 +49,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { ModalModule } from "ngx-bootstrap/modal";
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -106,6 +107,7 @@ import { environment } from '../environments/environment';
     ModalModule.forRoot(),
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
+    NgbModule
     
   ],
   providers: [],
