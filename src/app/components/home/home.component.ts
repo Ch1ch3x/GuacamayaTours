@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from '@angular/router';
+import { FirestoreService } from 'src/app/services/firebase/firebase.service';
 
 @Component({
   selector: "app-home",
@@ -10,7 +12,12 @@ export class HomeComponent implements OnInit {
   images = ["../../../assets/img/margarita.jpg", "../../../assets/img/roraima(2).png", "../../../assets/img/juangriego.jpg"];
   actividades = ["../../../assets/img/roques.jpg", "../../../assets/img/telefericojpg.jpg"];
 
-  constructor() {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private fireStoreService: FirestoreService
+  ) {}
+  
   imageObject: Array<object> = [
     {
       image: "assets/img/5011953823_19b9a06d1a_b.jpg",

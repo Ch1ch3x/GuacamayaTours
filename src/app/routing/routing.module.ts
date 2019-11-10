@@ -1,3 +1,4 @@
+import { HotelesComponent } from './../components/hoteles/hoteles.component';
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { HomeComponent } from "../components/home/home.component";
@@ -19,6 +20,7 @@ import { ListaCategoriaDestinoComponent } from "../components/categoria-destino/
 const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "destinos", component: DestinosTuristicosComponent },
+  { path: "hoteles", component: HotelesComponent},
   { path: "admin/hoteles", component: ListarHotelesComponent },
   { path: "admin/destinos", component: ListarDestinosTuristicosComponent },
   { path: "admin/categorias", component: ListaCategoriaDestinoComponent },
