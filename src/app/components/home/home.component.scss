@@ -55,6 +55,7 @@
 
 .act{
   border-radius: 12px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .centered3 {
@@ -73,35 +74,22 @@
   stroke-width: 1px;
 }
 
-.centered4 {
-  position: absolute;
-  top: 80%;
-  left: 35%;
-  text-align: left;
-  transform: translate(-50%, -50%);
-  font-family: Oswald;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  display: flex;
-  color: #FFFFFF;
-  stroke:  rgba(0, 0, 0, 0.25);
-  stroke-width: 1px;
-}
-
 .hoteles{
   position: absolute; 
   width: 100%;
+  padding-top: 24%;
+  padding-right: 0;
 }
 
 .hotel{
-  border-radius: 270px;
+  width: 75%;
+  border-radius: 200%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .title1{
   position: absolute;
-  left: 45%;
+  left: 41%;
   font-family: Oswald;
   letter-spacing: 1pt;
   font-style: normal;
@@ -111,6 +99,7 @@
   color: #002D51;;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   text-align: center;
+  padding-top:20px;
 }
 
 @media screen and (max-width: 3000px){
