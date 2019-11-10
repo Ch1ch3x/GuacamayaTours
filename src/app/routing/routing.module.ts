@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { HomeComponent } from "../components/home/home.component";
+import { DestinosTuristicosComponent} from "../components/destinos-turisticos/destinos-turisticos.component";
 import { NotFoundComponent } from "../components/not-found/not-found.component";
 import { ListarHotelesComponent } from "../components/hoteles/CRUD/listar/listar-hoteles.component";
 import { ListarDestinosTuristicosComponent } from "../components/destinos-turisticos/CRUD/listar/listar-destinos-turisticos.component";
@@ -17,6 +18,7 @@ import { ListaCategoriaDestinoComponent } from "../components/categoria-destino/
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
+  { path: "destinos", component: DestinosTuristicosComponent },
   { path: "admin/hoteles", component: ListarHotelesComponent },
   { path: "admin/destinos", component: ListarDestinosTuristicosComponent },
   { path: "admin/categorias", component: ListaCategoriaDestinoComponent },
