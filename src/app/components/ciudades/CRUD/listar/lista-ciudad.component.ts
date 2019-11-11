@@ -25,7 +25,7 @@ export class ListaCiudadComponent {
   dataSource = ELEMENT_DATA;
 
   // public ciudad = ciudades;
-  
+
   public Ciudad: ciudad = {
     id: 0,
     nombre: '',
@@ -137,7 +137,7 @@ export class ListaCiudadComponent {
         });
       }
     }
-  
+
     public editCiudad(documentId) {
       let editSubscribe = this.CiudadSV.getCiudad(documentId).subscribe((ciudad) => {
         this.currentStatus = 2;
@@ -154,7 +154,7 @@ export class ListaCiudadComponent {
         editSubscribe.unsubscribe();
       });
     }
-    
+
   clearCiudad() {
    /* this.Ciudad = {
       nombre: '',
@@ -189,7 +189,6 @@ export class ListaCiudadComponent {
   openModificar() {
     this.formVisibility = true;
     this.modificarformVisibility = true;
-    this.Ciudad = this.ciudad[this.selectedRowIndex];
   }
 
   close() {
@@ -198,19 +197,11 @@ export class ListaCiudadComponent {
     this.modificarformVisibility = false;
   }
 
-  modificar() {
-    this.ciudad[this.selectedRowIndex].nombre = this.Ciudad.nombre;
-    this.ciudad[this.selectedRowIndex].estado = this.Ciudad.estado;
-    this.ciudad[this.selectedRowIndex].imagen = this.Ciudad.imagen;
-
-  }
-
   modificarCiudad() {
     this.modifyRowData();
     this.formVisibility = false;
     this.crearformVisibility = false;
     this.modificarformVisibility = false;
-    this.modificar();
   }
 
   highlight(row) {
