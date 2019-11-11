@@ -9,7 +9,7 @@
 
     <div class="contenedor container-fluid">
         <div class="side">
-            <p>HOTELES RESERVADOS</p>
+            <p>RESERVACIONES</p>
             <div class="reservas">
                 <p>f</p>
                 <p>f</p>
@@ -20,24 +20,85 @@
             </div>
             <p>FILTROS</p>
             <div class="filtros">
-                <div class="ec-stars-wrapper">
-                    <a data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-                    <a data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-                    <a data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-                    <a data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-                    <a data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+                <form>
+                    <div clas="form-group">
+                        <div class="ec-stars-wrapper">
+                            <a data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+                            <a data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+                            <a data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+                            <a data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+                            <a data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+                        </div>
+                        <div class="form-group form-check">
+                            <div>
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Aceptan mascotas</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Wifi gratis</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Piscina</label>
+                            </div>    
+                            <div>
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Estacionamiento gratis</label>
+                            </div>
+                            <div>                            
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Desayuno incluido</label>
+                            </div>
+                            <div>                            
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Restaurantes</label>
+                            </div>
+                            <div>                            
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Spa</label>
+                            </div>
+                            <div>                            
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Traslado gratuito</label>
+                            </div>
+                                                    
+                        </div>
+
+                        <div class="seleccion">
+                            <select class="custom-select" id="inlineFormCustomSelect">
+                                <option selected>Precios</option>
+                                <option value="1">Mayor a Menor precio</option>
+                                <option value="2">Menor a Mayor precio</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-outline-secondary">Buscar</button>
+
+                </form>
+                
+            </div>
+
+        </div>
+        <div class="right">
+            <div class="contenedorBotones">
+                    <ngb-datepicker #d></ngb-datepicker>
+                <button type="submit" class="btn btn-primary op">Destinos</button>
+                <button type="submit" class="btn btn-primary op">Llegada</button>
+                <button type="submit" class="btn btn-primary op">Salida</button>
+                <button type="submit" class="btn btn-primary op">Cantidad de personas</button>
+            </div>
+            <div class="contenido">
+                <div class="img">
+    
+                </div>
+                <div class="info">
+    
                 </div>
             </div>
-
         </div>
-        <div class="contenido">
-            <div class="img">
-
-            </div>
-            <div class="info">
-
-            </div>
-        </div>
+        
     </div>
     
 </body>

@@ -4,6 +4,13 @@
     background-color: #FEFCED;
 }
 
+.contenedorBotones{
+    display:flex;
+    display: flex;
+    flex-flow: row no-wrap;
+    justify-content: space-around;
+}
+
 .containe{
     margin:0;
     padding: 0;
@@ -55,14 +62,15 @@
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
+    padding-bottom: 3%;
 }
 
 p{
     font-family: Oswald;
     font-style: normal;
     font-weight: normal;
-    font-size: 120%;
-    line-height: 41px;
+    font-size: 110%;
+    line-height: 39px;
     color: #000000;
     text-align: center;
     padding-top: 9px;
@@ -78,8 +86,51 @@ p{
     margin-left: auto;
 }
 
-.contenido{
+.form-group{
+    text-align: left;
+    margin-left: 3.5%;
+    padding-top:1% ;
+}
+
+label{
+    padding-top:0.2%;
+    font-family: Oswald;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 85%;
+}
+
+.custom-select{
+    font-family: Oswald;
+    margin-bottom: 2%;
     width: 60%;
+    padding: 1px 1.5px;
+}
+
+button{
+    margin: 10px;
+    border-color: #C4C4C4;
+}
+
+.op{
+    background: #DA1A29;
+    border-radius: 10px;
+    font-family: Oswald;
+    font-style: normal;
+    font-weight: normal;
+    color: #FBEACE;
+    font-size: 80%;
+}
+
+.right{
+    width: 60%;
+    background: #ffffff;
+    border-radius: 10px;
+
+}
+
+.contenido{
+    width: 100%;
     height: 100px;
     background: #FBEACE;
     border-radius: 10px;
@@ -106,6 +157,8 @@ p{
     margin-right: auto;
     margin-left: auto;
     text-align: center;
+    padding-top:2%;
+    padding-bottom: 2%;
 }
 
 .ec-stars-wrapper {
@@ -131,3 +184,29 @@ p{
 	color: #888;
 }
 
+@media screen and (max-width: 700px){
+    .contenedorBotones{
+        display:flex;
+        flex-flow: column wrap;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 550px){
+    .contenedor{
+        display:flex;
+        flex-flow: column;
+        justify-content: center;
+    }
+    .side{
+        width: 65%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .right{
+        padding-top:10px;
+        width: 100%;
+    }
+
+
+}
