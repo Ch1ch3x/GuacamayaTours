@@ -104,7 +104,7 @@ export class ListarHotelesComponent implements OnInit {
       tipoHabitaciones: '',
       imagen: '',
       imagen2: '',
-      imagen3: '', 
+      imagen3: '',
       deshabilitar: ''
     });
   }
@@ -118,7 +118,7 @@ export class ListarHotelesComponent implements OnInit {
         this.hoteles.push({
           id: ordenData.payload.doc.id,
           nombre: ordenData.payload.doc.data().nombre,
-          estrellas:ordenData.payload.doc.data().estrellas,
+          estrellas: ordenData.payload.doc.data().estrellas,
           servicios: ordenData.payload.doc.data().servicios,
           latitud: ordenData.payload.doc.data().latitud,
           longitud: ordenData.payload.doc.data().longitud,
@@ -135,7 +135,7 @@ export class ListarHotelesComponent implements OnInit {
         console.log(this.hoteles)
       })
     });
-    
+
 
   }
 

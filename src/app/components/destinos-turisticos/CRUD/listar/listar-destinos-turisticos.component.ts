@@ -25,23 +25,6 @@ export class ListarDestinosTuristicosComponent implements OnInit {
   formVisibility = false;
   modificarformVisibility = false;
   crearformVisibility = false;
-  validacion = true;
-  valnombre = true;
-  valtipo = true;
-  valservicios = true;
-  valactividades = true;
-  valciudad = true;
-  vallatitud = true;
-  vallongitud = true;
-  valdireccion = true;
-  valdescripcion = true;
-  valestado = true;
-  selecttipo: string = '0';
-  selectestado: string = '0';
-  selectciudad: string = '0';
-  vertipo: string = '0';
-  verestado: string = '0';
-  verciudad: string = '0';
  // dataSource = ELEMENT_DATA;
   // tslint:disable-next-line: max-line-length
   displayedColumns: string[] = [
@@ -114,7 +97,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
       ciudad: '',
       imagen: '',
       imagen2: '',
-      imagen3: '', 
+      imagen3: '',
       deshabilitar: ''
     });
   }
@@ -145,7 +128,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
         console.log(this.destinos)
       })
     });
-    
+
 
   }
 
