@@ -83,7 +83,11 @@
         </div>
         <div class="right">
             <div class="contenedorBotones">
-                    <ngb-datepicker #d></ngb-datepicker>
+                <mat-form-field>
+                    <input matInput [matDatepicker]="myDatepicker">
+                    <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+                    <mat-datepicker #myDatepicker></mat-datepicker>
+                </mat-form-field>
                 <button type="submit" class="btn btn-primary op">Destinos</button>
                 <button type="submit" class="btn btn-primary op">Llegada</button>
                 <button type="submit" class="btn btn-primary op">Salida</button>
