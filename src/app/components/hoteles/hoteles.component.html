@@ -11,12 +11,9 @@
         <div class="side">
             <p>RESERVACIONES</p>
             <div class="reservas">
-                <p>f</p>
-                <p>f</p>
-                <p>f</p>
-                <p>f</p>
-                <p>f</p>
-                <p>f</p>
+                <p *ngFor="let reserva of reservas" class="reservaciones">
+                    {{ reserva.ads }}
+                </p>
             </div>
             <p>FILTROS</p>
             <div class="filtros">
@@ -82,25 +79,53 @@
 
         </div>
         <div class="right">
-            <div class="contenedorBotones">
-                <mat-form-field>
-                    <input matInput [matDatepicker]="myDatepicker">
-                    <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
-                    <mat-datepicker #myDatepicker></mat-datepicker>
-                </mat-form-field>
-                <button type="submit" class="btn btn-primary op">Destinos</button>
-                <button type="submit" class="btn btn-primary op">Llegada</button>
-                <button type="submit" class="btn btn-primary op">Salida</button>
-                <button type="submit" class="btn btn-primary op">Cantidad de personas</button>
-            </div>
-            <div class="contenido">
-                <div class="img">
-    
+            <form>
+                <div class="contenedorBotones">
+                    <div class="btn-group">
+                            <button type="button" class="btn btn-danger">Destinos</button>
+                            <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" href="#" *ngFor="let destino of destinos"> {{destino.nombre}} </a>
+                            </div>
+                          </div>
+                    <div class="btn-group"> 
+                        <button type="button" class="btn btn-danger">Cantidad de personas</button>
+                        <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown2" aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu">
+                            <p class="dropdown-item">1</p>
+                        </div>
+                    </div>
+                    <mat-form-field>
+                        <label class="labelBoton">Llegada</label>
+                        <input matInput [matDatepicker]="myDatepicker" [min]="minDate">
+                        <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+                        <mat-datepicker #myDatepicker></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <label class="labelBoton">Salida</label>
+                        <input matInput [matDatepicker]="myDatepicker2">
+                        <mat-datepicker-toggle matSuffix [for]="myDatepicker2"></mat-datepicker-toggle>
+                        <mat-datepicker #myDatepicker2></mat-datepicker>
+                    </mat-form-field>
+                
                 </div>
-                <div class="info">
-    
+            </form>
+            <div *ngFor="let hotel of hoteles">
+                <div class="contenido">
+                    
+                        <div class="img">
+                            <img src= "{{ hotel.imagen }}" class="hotelImg" >
+                        </div>
+                        <div class="info">
+            
+                        </div>
+                    
                 </div>
-            </div>
+            </div>  
         </div>
         
     </div>
