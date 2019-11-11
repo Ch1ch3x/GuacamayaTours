@@ -51,39 +51,29 @@
 
 
 
-  <table
-    mat-table
-    [dataSource]="dataSource"
-    #mytable
-    class="my-table mat-elevation-z8 col-12"
-  >
-    <!-- Nombre Column -->
-    <ng-container sticky matColumnDef="nombre">
-      <th id="headnombre" mat-header-cell *matHeaderCellDef>Nombre</th>
-      <td id="infonombre" mat-cell *matCellDef="let element">
-        {{ element.nombre }}
-      </td>
-    </ng-container>
-
-    <!-- Id Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>ID</th>
-      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-    </ng-container>
-
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"
-        [class.highlight2] = "estado[row.id].deshabilitar == true"
-         [class.highlight] = "selectedRowIndex == row.id"
-         [class.highlight3] = "selectedRowIndex == row.id && estado[row.id].deshabilitar == true"
-         (click)="highlight(row)"></tr>
-
+  <table class="table" >
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Imagen</th>
+        <th scope="col">Imagen2</th>
+        <th scope="col">Imagen3</th>
+        <th scope="col">Vigencia</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let dato of estados">
+      <tr>
+        <th scope="row">{{dato.nombre}}</th>
+        <td>{{dato.imagen}}</td>
+        <td>{{dato.imagen2}}</td>
+        <td>{{dato.imagen3}}</td>
+        <td>{{dato.deshabilitar}}</td>
+      </tr>
+    </tbody>
   </table>
 </div>
-
-
-<div [hidden]="!formVisibility" id="form" class="col-12">
+<div [hidden]="!formVisibility" id="form" class="col-12"
+[formGroup] = "newEstadoForm">
   <form class="border border-light p-5">
     <div class="text-center">
       <p class="h4 mb-4">Ingrese Datos del Estado</p>
@@ -93,31 +83,25 @@
 
     <label for="ID">ID del Estado</label>
     <input
-      [(ngModel)]="Estado.id"
       type="text"
       id="ID"
       class="form-control mb-4"
       placeholder="ID"
-      [ngModelOptions]="{ standalone: true }"
     />
     <label for="Nombre">Nombre del Estado</label>
     <input
-      [(ngModel)]="Estado.nombre"
       type="text"
       id="Nombre"
       class="form-control mb-4"
       placeholder="Nombre del Estado"
-      [ngModelOptions]="{ standalone: true }"
     />
 
     <label for="fotos">Fotos del estado</label>
     <input
-      [(ngModel)]="Estado.imagen"
       type="text"
       id="fotos"
       class="form-control mb-4"
       placeholder="URL"
-      [ngModelOptions]="{ standalone: true }"
     />
 
     <button
