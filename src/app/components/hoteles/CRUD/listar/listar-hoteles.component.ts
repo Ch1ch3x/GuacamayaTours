@@ -15,16 +15,6 @@ const ELEMENT_DATA: hotel[] = hoteles;
   styleUrls: ["./listar-hoteles.component.scss"]
 })
 export class ListarHotelesComponent implements OnInit {
-  displayedColumns: string[] = [
-    "nombre",
-    "estado",
-    "ciudad",
-    "latitud",
-    "longitud",
-    "direccion",
-    "id"
-  ];
-  dataSource = ELEMENT_DATA;
   ciudades = ciudades;
   estados = estados;
 
@@ -68,7 +58,7 @@ export class ListarHotelesComponent implements OnInit {
   public hoteles = [];
   public documentId = null;
   public currentStatus = 1;
-  public newDestinoForm = new FormGroup({
+  public newHotelForm = new FormGroup({
     id: new FormControl(''),
     nombre: new FormControl('', Validators.required),
     estrellas: new FormControl('', Validators.required),
@@ -91,16 +81,17 @@ export class ListarHotelesComponent implements OnInit {
 
 
   constructor(private HotelSV: HotelesService) {
-    this.newDestinoForm.setValue({
+    this.newHotelForm.setValue({
       id: '',
       nombre: '',
+      estrellas: '',
+      direccion: '',
       servicios: '',
       latitud: '',
       longitud: '',
       estado: '',
       ciudad: '',
-      costo: '',
-      activo: '',
+      fullDay: {costo: '', activo: ''},
       tipoHabitaciones: '',
       imagen: '',
       imagen2: '',
@@ -160,7 +151,7 @@ export class ListarHotelesComponent implements OnInit {
       }
       this.HotelSV.create(data).then(() => {
         console.log('Documento creado exitósamente!');
-        this.newDestinoForm.setValue({
+        this.newHotelForm.setValue({
           nombre: '',
           estrellas: '',
           servicios: '',
@@ -199,7 +190,7 @@ export class ListarHotelesComponent implements OnInit {
       }
       this.HotelSV.update(documentId, data).then(() => {
         this.currentStatus = 1;
-        this.newDestinoForm.setValue({
+        this.newHotelForm.setValue({
           nombre: '',
           estrellas: '',
           servicios: '',
@@ -227,7 +218,7 @@ export class ListarHotelesComponent implements OnInit {
     let editSubscribe = this.HotelSV.getHotel(documentId).subscribe((hotel) => {
       this.currentStatus = 2;
       this.documentId = documentId;
-      this.newDestinoForm.setValue({
+      this.newHotelForm.setValue({
         id: documentId,
         nombre: hotel.payload.data()['nombre'],
         estrellas:hotel.payload.data()['estrellas'],

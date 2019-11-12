@@ -45,20 +45,6 @@ export class ListarDestinosTuristicosComponent implements OnInit {
   public tipoD = tipos;
   public ciudadD = ciudades;
   public estadoD = estados;
-  /* public Destino: destinoTuristico = {
-    nombre: '',
-    tipo: [this.tipoD[this.vertipo].nombre],
-    servicios: '',
-    actividades: '',
-    ciudad: [this.ciudadD[this.verciudad].nombre],
-    latitud: '',
-    longitud: '',
-    direccion: '',
-    descripcion: '',
-    estado: [this.estadoD[this.verestado].nombre],
-    id: this.destino.length + 1,
-    deshabilitar: false
-  }; */
 
   public destinos = [];
   public documentId = null;
@@ -93,6 +79,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
       actividades: '',
       latitud: '',
       longitud: '',
+      direccion: '',
       estado: '',
       ciudad: '',
       imagen: '',

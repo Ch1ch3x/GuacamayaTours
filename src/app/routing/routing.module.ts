@@ -21,7 +21,6 @@ const routes: Routes = [
   { path: "admin/hoteles", component: ListarHotelesComponent },
   { path: "admin/destinos", component: ListarDestinosTuristicosComponent },
   { path: "admin/categorias", component: ListaCategoriaDestinoComponent },
-  { path: "admin/habitaciones", component: HabitacionesComponent },
   { path: "ordenes", component: OrdenesComponent },
   { path: "admin/ciudades", component: ListaCiudadComponent },
   { path: "admin/estados", component: ListarEstadoComponent },
