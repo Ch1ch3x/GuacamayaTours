@@ -116,11 +116,12 @@
             </form>
             <div *ngFor="let hotel of hoteles">
                 <div class="contenido">
-                    
                         <div class="img">
+                            
                             <img src= "{{ hotel.imagen }}" class="hotelImg" >
                         </div>
                         <div class="informacion">
+                                
                             <div class="info">
                                 <h3> {{hotel.nombre}} </h3>
                                 <h4> {{hotel.direccion}} </h4>
@@ -128,6 +129,7 @@
                             </div>
                             <div class="precio">
                                 <h5>{{hotel.fullday.costo}}</h5>
+                                <img class="pina" src="../../../assets/img/pina.svg" />
                             </div>
                         </div>
                                            
