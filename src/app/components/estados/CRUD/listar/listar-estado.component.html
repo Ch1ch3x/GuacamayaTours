@@ -1,6 +1,6 @@
 <app-dashboard></app-dashboard>
 <div [hidden]="formVisibility" class="container col-12 text-center">
-    <button
+  <button
       class="boton2"
       ng-model="formVisibility"
       name="button"
@@ -11,9 +11,8 @@
       color="primary"
     >
       Agregar
-    </button>
-
-<button
+  </button>
+  <button
   class="boton2"
   ng-model="formVisibility"
   name="button"
@@ -22,10 +21,11 @@
   [hidden]="formVisibility"
   mat-flat-button
   color="primary"
->
+  >
   Modificar
-</button>
-<button class="boton2"
+  </button>
+  <button
+  class="boton2"
   ng-model="formVisibility"
   name="button"
   mat-button
@@ -35,8 +35,9 @@
   color="primary"
   >
   Habilitar
-</button>
-<button class="boton2"
+  </button>
+  <button
+class="boton2"
   ng-model="formVisibility"
   name="button"
   mat-button
@@ -45,11 +46,7 @@
   mat-flat-button color="primary"
 >
   Deshabilitar
-</button>
-
-
-
-
+  </button>
 
   <table class="table" >
     <thead>
@@ -72,6 +69,7 @@
     </tbody>
   </table>
 </div>
+
 <div [hidden]="!formVisibility" id="form" class="col-12"
 >
   <form class="border border-light p-5" form (ngSubmit)="newEstado(newEstadoForm.value)" [formGroup] = "newEstadoForm">
@@ -89,7 +87,7 @@
       formControlName = "nombre"
     />
 
-    <label for="fotos">Fotos del estado</label>
+    <label for="fotos">Foto 1 del estado</label>
     <input
       type="text"
       id="fotos"
@@ -98,7 +96,7 @@
       formControlName = "imagen"
     />
 
-    <label for="fotos">Fotos del estado</label>
+    <label for="fotos">Foto 2 del estado</label>
     <input
       type="text"
       id="fotos"
@@ -107,7 +105,7 @@
       formControlName = "imagen2"
     />
 
-    <label for="fotos">Fotos del estado</label>
+    <label for="fotos">Foto 3 del estado</label>
     <input
       type="text"
       id="fotos"
@@ -116,14 +114,14 @@
       formControlName = "imagen3"
     />
 
-    <label for="fotos">Deshabilitar</label>
-    <input
-      type="text"
-      id="fotos"
-      class="form-control mb-4"
-      placeholder="URL"
-      formControlName = "deshabilitar"
-    />
+    <label for="fotos">Vigencia</label>
+    <select class="browser-default custom-select mb-4"
+      id="deshabilitar"
+      required
+      formControlName="deshabilitar">
+      <option value=true>True</option>
+      <option value=false>False</option>
+    </select>
 
     <button
       class="btn btn-info btn-block"
