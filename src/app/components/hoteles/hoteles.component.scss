@@ -118,20 +118,23 @@ label{
 }
 
 button{
-    margin: 10px;
-    border-color: #C4C4C4;
+    margin-top: 10px;
+}
+
+#buscar{
+    border-color: #FBEACE;
 }
 
 .btn-danger{
-    background: #DA1A29;
-    border-radius: 10px;
+    
+    border-radius: 5px;
     font-family: Oswald;
     font-style: normal;
     font-weight: normal;
     color: #FBEACE;
     font-size: 70%;
     margin-right: 0;
-    max-height: 60px;
+    max-height: 40px;
 }
 
 .right{
