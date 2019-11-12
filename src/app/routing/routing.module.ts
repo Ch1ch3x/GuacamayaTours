@@ -1,3 +1,4 @@
+import { PlanearViajeComponent } from './../components/planear-viaje/planear-viaje.component';
 import { HotelesComponent } from './../components/hoteles/hoteles.component';
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "destinos", component: DestinosTuristicosComponent },
   { path: "hoteles", component: HotelesComponent},
+  { path: "planea", component: PlanearViajeComponent},
   { path: "admin/hoteles", component: ListarHotelesComponent },
   { path: "admin/destinos", component: ListarDestinosTuristicosComponent },
   { path: "admin/categorias", component: ListaCategoriaDestinoComponent },

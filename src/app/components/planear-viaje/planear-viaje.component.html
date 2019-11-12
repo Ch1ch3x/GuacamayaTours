@@ -1,1 +1,46 @@
-<p>planear-viaje works!</p>
+<app-navbar></app-navbar>
+<body>
+    <div class="container-fluid">
+        <div class="fila">           
+            <img
+                class="back"
+                src="../../../assets/img/saltoangel.jpg"
+            />
+            
+            <img class="mountains" src="./assets/mountains.svg" />
+            <h1 class="centered">Planea tu viaje</h1>
+            <div class="select row">
+                <mat-form-field class="col">
+                <mat-label>Estado</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let estado of estados" [value]="estado.nombre">
+                    {{ estado.nombre }}
+                    </mat-option>
+                </mat-select>
+                </mat-form-field>
+        
+                <mat-form-field class="col">
+                <mat-label>Ciudad</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let ciudad of ciudades" [value]="ciudad.nombre">
+                    {{ ciudad.nombre }}
+                    </mat-option>
+                </mat-select>
+                </mat-form-field>
+        
+                <mat-form-field class="col">
+                <mat-label>Categoría</mat-label>
+                <mat-select>
+                    <mat-option
+                    *ngFor="let categoria of categorias"
+                    [value]="categoria.nombre"
+                    >
+                    {{ categoria.nombre }}
+                    </mat-option>
+                </mat-select>
+                </mat-form-field>
+            </div>
+            
+        </div>
+    </div>  
+</body>
