@@ -61,7 +61,6 @@ export class ListaCategoriaDestinoComponent implements OnInit {
           deshabilitar: categoriaData.payload.doc.data().deshabilitar
         });
       })
-      console.log(this.categorias)
     });
   }
     public newCategoria(form, documentId = this.documentId) {
