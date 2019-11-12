@@ -57,7 +57,7 @@
           <th scope="col">Vigencia</th>
         </tr>
       </thead>
-      <tbody *ngFor="let dato of tipos">
+      <tbody *ngFor="let dato of categorias">
         <tr>
           <th scope="row">{{dato.nombre}}</th>
           <td>{{dato.deshabilitar}}</td>
@@ -79,7 +79,7 @@
 
       <label for="ID">ID del Hotel</label>
       <input
-        [(ngModel)]="Tipo.id"
+        [(ngModel)]="Categoria.id"
         type="text"
         id="ID"
         class="form-control mb-4"
@@ -88,7 +88,7 @@
       />
       <label for="Nombre">Nombre de la Categoría</label>
       <input
-        [(ngModel)]="Tipo.nombre"
+        [(ngModel)]="Categoria.nombre"
         type="text"
         id="Nombre"
         class="form-control mb-4"
@@ -98,7 +98,7 @@
 
       <label for="costo">Fotos de la categoría</label>
       <input
-        [(ngModel)]="Tipo.foto"
+        [(ngModel)]="Categoria.foto"
         type="text"
         id="fotos"
         class="form-control mb-4"

@@ -129,8 +129,8 @@ export class ListarEstadoComponent implements OnInit {
 
   crearEstado() {
     //const cryptoRandomString = require('crypto-random-string');
-    this.newEstado("");
     this.formVisibility = false;
+    this.newEstado("");
   }
 
   highlight(row) {
