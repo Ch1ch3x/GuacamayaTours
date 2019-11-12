@@ -120,10 +120,17 @@
                         <div class="img">
                             <img src= "{{ hotel.imagen }}" class="hotelImg" >
                         </div>
-                        <div class="info">
-            
+                        <div class="informacion">
+                            <div class="info">
+                                <h3> {{hotel.nombre}} </h3>
+                                <h4> {{hotel.direccion}} </h4>
+                                <h4> {{hotel.servicios}} </h4>
+                            </div>
+                            <div class="precio">
+                                <h5>{{hotel.fullday.costo}}</h5>
+                            </div>
                         </div>
-                    
+                                           
                 </div>
             </div>  
         </div>
