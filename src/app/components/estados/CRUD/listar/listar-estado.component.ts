@@ -25,7 +25,7 @@ export class ListarEstadoComponent implements OnInit {
       imagen: new FormControl('', Validators.required),
       imagen2: new FormControl(''),
       imagen3: new FormControl(''),
-      deshabilitar: new FormControl(true),
+      deshabilitar: new FormControl(null),
 
     });
 
@@ -36,7 +36,7 @@ export class ListarEstadoComponent implements OnInit {
       imagen: '',
       imagen2: '',
       imagen3: '',
-      deshabilitar: true,
+      deshabilitar: null,
     });
   }
 
@@ -77,7 +77,7 @@ export class ListarEstadoComponent implements OnInit {
           imagen: '',
           imagen2: '',
           imagen3: '',
-          deshabilitar: ''
+          deshabilitar: null
         });
       }, (error) => {
         console.error(error);
@@ -94,7 +94,7 @@ export class ListarEstadoComponent implements OnInit {
         this.currentStatus = 1;
         this.newEstadoForm.setValue({
           nombre: '',
-          deshabilitar: '',
+          deshabilitar: null,
           imagen:'',
           imagen2: '',
           imagen3: '',
