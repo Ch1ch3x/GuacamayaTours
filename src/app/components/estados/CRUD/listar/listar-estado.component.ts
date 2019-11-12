@@ -2,7 +2,7 @@ import { Component, ViewChild, OnInit } from "@angular/core";
 import { MatTable } from "@angular/material";
 import { EstadosService } from "../../../../services/firebase/estados.service";
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
+import { format } from 'url';
 
 
 @Component({
@@ -86,8 +86,8 @@ export class ListarEstadoComponent implements OnInit {
       let data = {
         nombre: form.nombre,
         imagen: form.imagen,
-        imagen2: '',
-        imagen3: '',
+        imagen2: form.imagen2,
+        imagen3: form.imagen3,
         deshabilitar: form.deshabilitar
       }
       this.EstadoSV.update(documentId, data).then(() => {
@@ -124,10 +124,12 @@ export class ListarEstadoComponent implements OnInit {
   }
 
   openCrear() {
+    this.formVisibility = true;
   }
 
   crearEstado() {
-    this.addRowData();
+    //const cryptoRandomString = require('crypto-random-string');
+    this.newEstado("");
     this.formVisibility = false;
   }
 
