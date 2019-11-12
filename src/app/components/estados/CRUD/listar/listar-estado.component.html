@@ -73,20 +73,20 @@
   </table>
 </div>
 <div [hidden]="!formVisibility" id="form" class="col-12"
-[formGroup] = "newEstadoForm">
-  <form class="border border-light p-5">
+>
+  <form class="border border-light p-5" form (ngSubmit)="newEstado(newEstadoForm.value)" [formGroup] = "newEstadoForm">
     <div class="text-center">
       <p class="h4 mb-4">Ingrese Datos del Estado</p>
 
       <p>Coloque en la casilla correspondiente la información del Estado.</p>
     </div>
-
     <label for="ID">ID del Estado</label>
     <input
       type="text"
       id="ID"
       class="form-control mb-4"
       placeholder="ID"
+      formControlName = "id"
     />
     <label for="Nombre">Nombre del Estado</label>
     <input
@@ -94,6 +94,7 @@
       id="Nombre"
       class="form-control mb-4"
       placeholder="Nombre del Estado"
+      formControlName = "nombre"
     />
 
     <label for="fotos">Fotos del estado</label>
@@ -102,6 +103,34 @@
       id="fotos"
       class="form-control mb-4"
       placeholder="URL"
+      formControlName = "imagen"
+    />
+
+    <label for="fotos">Fotos del estado</label>
+    <input
+      type="text"
+      id="fotos"
+      class="form-control mb-4"
+      placeholder="URL"
+      formControlName = "imagen2"
+    />
+
+    <label for="fotos">Fotos del estado</label>
+    <input
+      type="text"
+      id="fotos"
+      class="form-control mb-4"
+      placeholder="URL"
+      formControlName = "imagen3"
+    />
+
+    <label for="fotos">Deshabilitar</label>
+    <input
+      type="text"
+      id="fotos"
+      class="form-control mb-4"
+      placeholder="URL"
+      formControlName = "deshabilitar"
     />
 
     <button
