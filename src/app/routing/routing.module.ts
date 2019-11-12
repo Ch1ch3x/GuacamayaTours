@@ -14,17 +14,18 @@ import { ContactanosComponent } from "../components/contactanos/contactanos.comp
 import { ListarEstadoComponent } from "../components/estados/CRUD/listar/listar-estado.component";
 import { ListaCiudadComponent } from "../components/ciudades/CRUD/listar/lista-ciudad.component";
 import { ListaCategoriaDestinoComponent } from "../components/categoria-destino/CRUD/listar/lista-categoria-destino.component";
+import { ListarHabitacionesComponent } from '../components/habitaciones/CRUD/listar/listar-habitaciones.component';
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "admin/hoteles", component: ListarHotelesComponent },
   { path: "admin/destinos", component: ListarDestinosTuristicosComponent },
   { path: "admin/categorias", component: ListaCategoriaDestinoComponent },
-  { path: "habitaciones", component: HabitacionesComponent },
   { path: "ordenes", component: OrdenesComponent },
   { path: "admin/ciudades", component: ListaCiudadComponent },
   { path: "admin/estados", component: ListarEstadoComponent },
   { path: "admin/dashboard", component: DashboardComponent },
+  { path: "admin/habitaciones", component: ListarHabitacionesComponent},
   { path: "itinerario", component: ItinerarioComponent },
   { path: "nosotros", component: NosotrosComponent },
   { path: "contactanos", component: ContactanosComponent },

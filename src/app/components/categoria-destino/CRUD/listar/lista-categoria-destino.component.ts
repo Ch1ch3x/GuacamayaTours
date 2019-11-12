@@ -1,9 +1,9 @@
-import { tipoDeDestino } from './../../../../interfaces/tipo-de-destinos';
+import { tipo } from '../../../../interfaces/tipo';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatTable } from '@angular/material';
 import tipos from '../../../../data/tipos.json';
 
-const ELEMENT_DATA: tipoDeDestino[] = tipos;
+const ELEMENT_DATA: tipo[] = tipos;
 
 @Component({
   selector: 'app-lista-categoria-destino',
@@ -24,8 +24,8 @@ export class ListaCategoriaDestinoComponent implements OnInit {
 
   constructor() { }
   public tipo = tipos;
-  public tipos: tipoDeDestino[] = [];
-  public Tipo: tipoDeDestino = {
+  public tipos: tipo[] = [];
+  public Tipo: tipo = {
     id: this.tipo.length,
     nombre: "",
     foto: "",
