@@ -19,8 +19,7 @@
                 <img [src]="images[0]" alt="">
               </div>
               <div class="carousel-caption">
-                <h3>First slide label</h3>
-                
+                <a routerLink="/destinos/Mochima"><h3>Mochima, Sucre</h3></a>                
               </div>
             </ng-template>
             <ng-template ngbSlide>
@@ -28,8 +27,7 @@
                 <img [src]="images[1]" alt="">
               </div>
               <div class="carousel-caption">
-                <h3>Second slide label</h3>
-                
+                <a routerLink="/destinos/roraima"><h3>Roraima, Bolivar</h3></a>               
               </div>
             </ng-template>
             <ng-template ngbSlide>
@@ -37,7 +35,7 @@
                 <img [src]="images[2]" alt="">
               </div>
               <div class="carousel-caption">
-                <h3>Third slide label</h3>
+                <a routerLink="/destinos/juangriego"><h3>Juan Griego, Nueva Esparta</h3></a>
                 
               </div>
             </ng-template>
@@ -82,13 +80,16 @@
         <p class="title1">HOTELES</p>
         <div class="hoteles row container-fluid">
             <div class="col">
-                <img [src] = "actividades[1]" class = "hotel">
+                <a routerLink="/hoteles"><img [src] = "actividades[1]" class = "hotel"></a>
+                <h3>Hotel Ávila</h3>
             </div>
             <div class="col">
-                <img [src] = "actividades[1]" class = "hotel">
+                <a routerLink="/hoteles"><img [src] = "actividades[1]" class = "hotel"></a>
+                <h3>Hotel Tibisay</h3>
             </div>
             <div class="col">
-                <img [src] = "actividades[1]" class = "hotel">
+                <a routerLink="/hoteles"><img [src] = "actividades[1]" class = "hotel"></a>
+                <h3>Hotel caracas</h3>
             </div>
         </div>
 
