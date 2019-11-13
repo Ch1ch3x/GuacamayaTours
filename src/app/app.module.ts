@@ -52,6 +52,7 @@ import { environment } from "../environments/environment";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { FirestoreService } from "./services/firebase/firebase.service";
 import { AngularFirestore } from "@angular/fire/firestore";
+import { HotelComponent } from './components/hoteles/hotel/hotel.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import { AngularFirestore } from "@angular/fire/firestore";
     PlanearViajeComponent,
     ItinerarioComponent,
     NosotrosComponent,
-    ContactanosComponent
+    ContactanosComponent,
+    HotelComponent
   ],
   imports: [
     BrowserModule,
