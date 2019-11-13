@@ -1,14 +1,35 @@
 <app-dashboard></app-dashboard>
 <div [hidden]="formVisibility" class="container-fluid col-12 text-center">
   <div class="btn-group col-12" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-secondary" ng-model="formVisibility" name="button" (click)="openCrear()"
-      [hidden]="formVisibility">Nueva Ciudad</button>
-    <button type="button" class="btn btn-secondary" ng-model="formVisibility" name="button" (click)="openCrear()"
-      [hidden]="formVisibility">Modificar Ciudad</button>
-    <button type="button" class="btn btn-secondary" ng-model="formVisibility" name="button" (click)="habilitar()"
-      [hidden]="formVisibility">Habilitar Ciudad</button>
-    <button type="button" class="btn btn-secondary" ng-model="formVisibility" name="button" (click)="deshabilitar()"
-      [hidden]="formVisibility">Deshabilitar Ciudad</button>
+    <button
+      type="button"
+      class="btn btn-secondary"
+      name="button"
+      (click)="openCrear()"
+      >Nueva Ciudad
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary"
+      name="button"
+      (click)="openCrear()"
+      >Modificar Ciudad
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary"
+      name="button"
+      (click)="habilitar()"
+      >Habilitar Ciudad
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary"
+      ng-model="formVisibility"
+      name="button"
+      (click)="deshabilitar()"
+      >Deshabilitar Ciudad
+    </button>
   </div>
 
     <table class="table">

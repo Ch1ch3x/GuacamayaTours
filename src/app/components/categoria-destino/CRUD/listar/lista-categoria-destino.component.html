@@ -1,72 +1,40 @@
 <app-dashboard></app-dashboard>
+<div>
 <div [hidden]="formVisibility" class="container-fluid col-12 text-center">
-    <div class="btn-group col-12">
-      <button
-        class="btn agregar "
-        ng-model="formVisibility"
-        name="button"
-        mat-button
-        (click)="openCrear()"
-        [hidden]="formVisibility"
-        mat-flat-button
-        color="primary"
-      >
-        Nueva Categoría
+    <div class="btn-group col-12" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-primary" name="button" (click)="openCrear()">Nueva Categoria
       </button>
-
-      <button
-        class="btn agregar"
-        ng-model="formVisibility"
-        name="button"
-        mat-button
-        (click)="openModificar()"
-        [hidden]="formVisibility"
-        mat-flat-button
-        color="primary"
-      >
-        Modificar categoría
+      <button type="button" class="btn btn-primary" name="button" (click)="openCrear()">Modificar Categoria
       </button>
-
-      <button class="btn agregar"
-        ng-model="formVisibility"
-        name="button"
-        mat-button
-        (click)="habilitar()"
-        [hidden]="formVisibility"
-        mat-flat-button
-        color="primary"
-        >
-        Habilitar Categoria
-    </button>
-    <button class="btn agregar"
-        ng-model="formVisibility"
-        name="button"
-        mat-button
-        (click)="deshabilitar()"
-        [hidden]="formVisibility"
-        mat-flat-button color="primary"
-      >
-        Deshabilitar Deshabilitar
-    </button>
+      <button type="button" class="btn btn-primary" name="button" (click)="habilitar()">Habilitar Categoria
+      </button>
+      <button type="button" class="btn btn-primary" ng-model="formVisibility" name="button"
+        (click)="deshabilitar()">Deshabilitar Categoria
+      </button>
     </div>
 
     <table class="table">
-      <thead>
+      <thead class="thead-dark">
         <tr>
           <th scope="col">Nombre</th>
           <th scope="col">Vigencia</th>
         </tr>
       </thead>
       <tbody *ngFor="let dato of categorias">
-        <tr>
-          <th scope="row">{{dato.nombre}}</th>
+        <tr
+        [ngClass] = "{'highlight': selectedRowIndex == dato.id,
+        'highlight2': dato.deshabilitar == false,
+        'highlight3': selectedRowIndex == dato.nombre && dato.deshabilitar == false}"
+        (click)="highlight(dato)"
+        >
+          <td>{{dato.nombre}}</td>
           <td>{{dato.deshabilitar}}</td>
         </tr>
       </tbody>
     </table>
 
   </div>
-
+</div>
   <!--<div [hidden]="!crearformVisibility" id="form">
     <form class="border border-light p-5">
       <div class="text-center">
