@@ -1,30 +1,13 @@
 <app-dashboard></app-dashboard>
 <div class="container-fluid col-12 text-center">
-  <div class="btn-group col-12">
-    <button
-      class="btn agregar "
-      ng-model="formVisibility"
-      name="button"
-      mat-button
-      (click)="openCrear()"
-      [hidden]="formVisibility"
-      mat-flat-button
-      color="primary"
-    >
-      Nuevo Hotel
+  <div class="btn-group col-12" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-outline-primary" name="button" (click)="openCrear()">Nueva Categoria
     </button>
-
-    <button
-      class="btn agregar"
-      ng-model="formVisibility"
-      name="button"
-      mat-button
-      (click)="openCrear()"
-      [hidden]="formVisibility"
-      mat-flat-button
-      color="primary"
-    >
-      Modificar Hotel
+    <button type="button" class="btn btn-outline-primary" name="button" (click)="openCrear()">Modificar Categoria
+    </button>
+    <button type="button" class="btn btn-outline-primary" name="button" >Habilitar Categoria
+    </button>
+    <button type="button" class="btn btn-outline-primary" name="button" >Deshabilitar Categoria
     </button>
   </div>
 
@@ -69,7 +52,7 @@
 
 </div>
 
-<div [hidden]="!formVisibility" id="form">
+<!--<div [hidden]="!formVisibility" id="form">
   <form class="border border-light p-5">
     <div class="text-center">
       <p class="h4 mb-4">Ingrese los Datos del Nuevo Hotel</p>

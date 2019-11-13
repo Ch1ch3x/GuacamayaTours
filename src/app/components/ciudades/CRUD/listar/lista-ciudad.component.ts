@@ -41,7 +41,7 @@ export class ListaCiudadComponent {
   modificarformVisibility = false;
   crearformVisibility = false;
 
-  selectedRowIndex: number = -1;
+  selectedRowIndex: any;
 
   public ciudades = [];
   public documentId = null;
@@ -204,8 +204,8 @@ export class ListaCiudadComponent {
     this.modificarformVisibility = false;
   }
 
-  highlight(row) {
-    this.selectedRowIndex = row.id;
+  highlight(dato) {
+    this.selectedRowIndex = dato.id;
   }
 
   deshabilitar() {

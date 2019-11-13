@@ -2,14 +2,13 @@
 <div>
 <div [hidden]="formVisibility" class="container-fluid col-12 text-center">
     <div class="btn-group col-12" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-primary" name="button" (click)="openCrear()">Nueva Categoria
+      <button type="button" class="btn btn-outline-primary" name="button" (click)="openCrear()">Nueva Categoria
       </button>
-      <button type="button" class="btn btn-primary" name="button" (click)="openCrear()">Modificar Categoria
+      <button type="button" class="btn btn-outline-primary" name="button" (click)="openCrear()">Modificar Categoria
       </button>
-      <button type="button" class="btn btn-primary" name="button" (click)="habilitar()">Habilitar Categoria
+      <button type="button" class="btn btn-outline-primary" name="button" (click)="habilitar()">Habilitar Categoria
       </button>
-      <button type="button" class="btn btn-primary" ng-model="formVisibility" name="button"
-        (click)="deshabilitar()">Deshabilitar Categoria
+      <button type="button" class="btn btn-outline-primary" name="button" (click)="deshabilitar()">Deshabilitar Categoria
       </button>
     </div>
 
@@ -95,7 +94,7 @@
       <button class="btn btn-info btn-block" (click)="close()" type="submit">Cancelar</button>
     </form>
   </div>
-  
+
 <!--
   <div [hidden]="!modificarformVisibility" id="form">
     <form class="border border-light p-5" (ngSubmit)="newCategoria(newCategoriaForm.value)" [formGroup]="newCatForm>
@@ -121,5 +120,5 @@
 
       <button class="btn btn-info btn-block" (click)="modificarCategoria()" type="submit">Crear Categoría</button>
       <button class="btn btn-info btn-block" (click)="close()" type="submit">Cancelar</button>
-    </form> 
+    </form>
   </div> -->

@@ -1,49 +1,16 @@
 <app-dashboard></app-dashboard>
 
-<div>
-<button
-  class="boton"
-  ng-model="formVisibility"
-  name="button"
-  mat-button
-  [hidden]="formVisibility"
-  mat-flat-button
-  color="primary"
->
-  Nuevo Destino
-</button>
-<button
-  class="boton2"
-  ng-model="formVisibility"
-  name="button"
-  mat-button
-  [hidden]="formVisibility"
-  mat-flat-button
-  color="primary"
->
-  Modificar Destino
-</button>
-<button
-  class="boton2"
-  ng-model="formVisibility"
-  name="button"
-  mat-button
-  [hidden]="formVisibility"
-  mat-flat-button
-  color="primary"
-  >
-  Habilitar Destino
-</button>
-<button
-  class="boton2"
-  ng-model="formVisibility"
-  name="button"
-  mat-button
-  [hidden]="formVisibility"
-  mat-flat-button color="primary"
->
-  Deshabilitar Destino
-</button>
+<div [hidden]="formVisibility" class="container-fluid col-12 text-center">
+<div class="btn-group col-12" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-outline-primary" name="button" (click)="openCrear()">Nueva Categoria
+  </button>
+  <button type="button" class="btn btn-outline-primary" name="button" (click)="openCrear()">Modificar Categoria
+  </button>
+  <button type="button" class="btn btn-outline-primary" name="button" >Habilitar Categoria
+  </button>
+  <button type="button" class="btn btn-outline-primary" name="button" >Deshabilitar Categoria
+  </button>
+</div>
 
 <table class="table">
   <thead>
@@ -52,6 +19,7 @@
       <th scope="col">Tipo</th>
       <th scope="col">Ciudad</th>
       <th scope="col">Estado</th>
+      <th scope="col">Descripción</th>
       <th scope="col">Latitud</th>
       <th scope="col">Longitud</th>
       <th scope="col">Dirección</th>
@@ -65,11 +33,16 @@
     </tr>
   </thead>
   <tbody *ngFor="let dato of destinos">
-    <tr>
-      <th scope="row">{{dato.nombre}}</th>
+    <tr
+        [ngClass] = "{'highlight': selectedRowIndex == dato.id,
+        'highlight2': dato.deshabilitar == false,
+        'highlight3': selectedRowIndex == dato.nombre && dato.deshabilitar == false}"
+        (click)="highlight(dato)">
+      <td>{{dato.nombre}}</td>
       <td>{{dato.tipo}}</td>
       <td>{{dato.ciudad}}</td>
       <td>{{dato.estado}}</td>
+      <td>{{dato.descripcion}}</td>
       <td>{{dato.latitud}}</td>
       <td>{{dato.longitud}}</td>
       <td>{{dato.direccion}}</td>
@@ -102,12 +75,12 @@
       id="Nombre"
       class="form-control mb-4"
       formControlName="Destino.nombre"
-      
+
       placeholder="Nombre de Destino"
     />
     <label for="Estado">Estado del Destino</label>
     <label [hidden]="valestado" id="validate" for="Estado">Debe ingresar un Estado para el Destino Turistico</label>
-    <select class="browser-default custom-select mb-4" formControlName="Destino.estado" 
+    <select class="browser-default custom-select mb-4" formControlName="Destino.estado"
       (change)="capturarEstado()" id="Estado">
       <option value="" disabled="" selected="">Elije un Estado</option>
       <option value="1">Falcon</option>
@@ -116,7 +89,7 @@
     </select>
     <label for="Ciudad">Ciudad del Destino</label>
     <label [hidden]="valciudad" id="validate" for="Ciudad">Debe ingresar una Ciudad para el Destino Turistico</label>
-    <select class="browser-default custom-select mb-4" formControlName="Destino.ciudad" 
+    <select class="browser-default custom-select mb-4" formControlName="Destino.ciudad"
       (change)="capturarCiudad()" id="Ciudad">
       <option value="" disabled="" selected="">Elije una Ciudad</option>
       <option value="1">Chichiriviche</option>
@@ -128,7 +101,7 @@
     <select
       class="browser-default custom-select mb-4"
       formControlName="Destino.tipo"
-      
+
       (change)="capturarTipo()"
       id="Tipo"
     >
@@ -144,7 +117,7 @@
       id="Servicios"
       class="form-control mb-4"
       formControlName="Destino.servicios"
-      
+
       placeholder="Servicios del Destino"
     />
     <label for="Actividades">Actividades del Destino</label>
@@ -154,7 +127,7 @@
       id="Actividades"
       class="form-control mb-4"
       formControlName="Destino.actividades"
-      
+
       placeholder="Actividades del Destino"
     />
     <label for="Latitud">Latitud del Destino</label>
@@ -164,7 +137,7 @@
       id="Latitud"
       class="form-control mb-4"
       formControlName="Destino.latitud"
-      
+
       placeholder="Latitud"
     />
     <label for="Longitud">Longitud del Destino</label>
@@ -174,7 +147,7 @@
       id="Longitud"
       class="form-control mb-4"
       formControlName="Destino.longitud"
-      
+
       placeholder="Longitud"
     />
     <label for="Dirección">Dirección del Destino</label>
@@ -184,7 +157,7 @@
       id="Dirección"
       class="form-control mb-4"
       formControlName="Destino.direccion"
-      
+
       placeholder="Dirección"
     />
     <label for="Descripción">Descripción</label>
@@ -193,7 +166,7 @@
       id="Descripción"
       class="form-control mb-4"
       formControlName="Destino.descripcion"
-      
+
       placeholder="Descripción del Destino"
     ></textarea>
 
