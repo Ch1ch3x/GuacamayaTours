@@ -373,9 +373,7 @@ mat-form-field{
 
 
 @media screen and (max-width: 550px){
-  .mountains{
-    display:none;
-  }
+
   .select{
     margin-top:15%;
   }
@@ -396,6 +394,13 @@ mat-form-field{
   .reservas{
       display:none;
   }
+  mat-form-field{
+    width: 1%;
+  
+  }
+   .select{
+    margin-top: 5%;
+  }
   
   .right{
       padding-top:10px;
@@ -403,6 +408,9 @@ mat-form-field{
   }
   .fila{
     margin-top:0;
+  }
+  h2{
+    margin-top: 6%;
   }
 
 }
