@@ -1,0 +1,108 @@
+body{
+    font-family: Oswald;
+    color: #002D51;
+}
+.carousel-inner{
+    max-height: 580px;
+}
+
+p{
+    font-family: Oswald;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 90%;
+    line-height: 31px;
+    color:  #002D51;
+    text-align: center;
+    
+
+}
+
+i{
+    font-size: 15%;
+    padding: 2px;
+    margin-right: 2%;
+}
+
+.ubicacion{
+    font-size: 200%;
+    padding: 2px;
+    margin-right: 5%;
+}
+
+.containe{
+    margin:0;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.contenedor{
+    margin-top: 20px;
+    width: 95%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.left{
+    width: 20%;
+    height: auto;
+    background: #FBEACE;
+    border-radius: 20px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    padding-bottom: 3%;
+}
+
+.center{
+    width: 50%;
+}
+
+.right{
+    width: 25%;
+}
+
+.servicios{
+    width: 90%;
+    height: auto;
+    background: white;
+    border-radius: 20px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.filtros{
+    width: 90%;
+    height: auto;
+    background: white;
+    border-radius: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    padding-top:2%;
+    padding-bottom: 2%;
+}
+
+.reservaciones{
+    text-align-last: left;
+    padding-left:4%;
+    margin-bottom: 2%;
+}
+
+.habitaciones{
+    text-align: left;
+    margin-left: 3.5%;
+    padding-top:1% ;
+}
+
+label{
+    padding-top:0.2%;
+    font-family: Oswald;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 85%;
+}
