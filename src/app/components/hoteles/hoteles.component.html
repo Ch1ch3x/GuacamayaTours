@@ -115,25 +115,28 @@
                 </div>
             </form>
             <div *ngFor="let hotel of hoteles">
-                <div class="contenido">
-                    <div id="imagen" class="img">
-                        
-                        <img src= "{{ hotel.imagen }}" class="hotelImg" >
+                <div *ngIf="hotel.deshabilitar==false">
+                    <div class="contenido">
+                        <div id="imagen" class="img">
+                            
+                            <img src= "{{ hotel.imagen }}" class="hotelImg" >
+                        </div>
+                        <div id="informacion" class="informacion">
+                                
+                            <div class="info">
+                                <h3> {{hotel.nombre}} </h3>
+                                <h5> {{hotel.direccion}} </h5><br>
+                                <h6> Servicios: {{hotel.servicios}} </h6>
+                            </div>
+                            <div class="precio">
+                                <h5>{{hotel.fullday.costo}}</h5>
+                                
+                                <button type="button" id="mas" routerLink="/hoteles/{{hotel.id}}" class="btn btn-danger" color="warn">VER MAS</button>
+                            </div>
+                        </div>                      
                     </div>
-                    <div id="informacion" class="informacion">
-                            
-                        <div class="info">
-                            <h3> {{hotel.nombre}} </h3>
-                            <h5> {{hotel.direccion}} </h5><br>
-                            <h6> Servicios: {{hotel.servicios}} </h6>
-                        </div>
-                        <div class="precio">
-                            <h5>{{hotel.fullday.costo}}</h5>
-                            
-                            <button type="button" id="mas" routerLink="/hoteles/{{hotel.id}}" class="btn btn-danger" color="warn">VER MAS</button>
-                        </div>
-                    </div>                      
                 </div>
+                
 
             </div>  
         </div>
