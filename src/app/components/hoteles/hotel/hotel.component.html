@@ -1,8 +1,9 @@
 <app-navbar></app-navbar>
 
+<body>
 <div *ngFor="let h of hoteles">
     <div *ngIf="h.id == hotel">
-        <div *ngIf="h.deshabilitar==false">
+        
 
             <div class= "containe">
             
@@ -14,13 +15,13 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                        <img class="d-block w-100" src="{{h.imagen2}}" alt="First slide" >
+                        <img class="d-block w-100" src="{{h.imagenes[0]}}" alt="First slide" >
                         </div>
                         <div class="carousel-item">
-                        <img class="d-block w-100" src="{{h.imagen3}}" alt="Second slide">
+                        <img class="d-block w-100" src="{{h.imagenes[1]}}" alt="Second slide">
                         </div>
                         <div class="carousel-item">
-                        <img class="d-block w-100" src="{{h.imagen4}}" alt="Third slide">
+                        <img class="d-block w-100" src="{{h.imagenes[2]}}" alt="Third slide">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -36,20 +37,37 @@
             </div>
 
             <div class="contenedor container-fluid">
+                
+                <div class="center">
+                    <br>
+                    <h1>{{h.nombre}}</h1>
+                    
+                    <h3>{{h.direccion}}</h3>
+                </div>
+
                 <div class="left">
+                        <br>
+                        <p>UBICACIÓN</p>
+                        <div class="servicios">
+                            <p class="reservaciones">
+                                <i class="fa fa-building-o" aria-hidden="true" style="font-size: 0.9em;"></i>Ciudad: {{ h.ciudad }}
+                            </p>
+                        </div>
+                        <br>
                         <p>SERVICIOS</p>
                         <div class="servicios">
                             <p *ngFor="let serv of h.servicios" class="reservaciones">
                                 <i class="fa fa-circle-o" aria-hidden="true"></i>{{ serv }}
                             </p>
                         </div>
+                        
                         <p>HABITACIONES</p>
                         <div class="filtros">
                             
-                                <div clas="habitaciones">
+                                <div class="habitaciones">
                                                                 
-                                    <div *ngFor="let habitaciones of h.tipoHabitaciones">
-                                        <p>{{habitaciones.nombre}}</p>
+                                    <div class="habitacion">
+                                        <p></p>
                                     </div>
             
                                     
@@ -58,12 +76,7 @@
                         </div>
 
                 </div>
-                <div class="center">
-
-                </div>
-                <div class="right">
-
-                </div>
+                
             </div>
             
 
@@ -71,9 +84,10 @@
 
 
 
-        </div>
+        
     </div>
 </div>
+</body>
 
 <app-footer></app-footer>
 

@@ -1,3 +1,7 @@
+body{
+    font-family: Oswald;
+    color: #002D51;
+}
 .carousel-inner{
     max-height: 580px;
 }
@@ -8,7 +12,7 @@ p{
     font-weight: normal;
     font-size: 90%;
     line-height: 31px;
-    color: #000000;
+    color:  #002D51;
     text-align: center;
     
 
@@ -17,6 +21,13 @@ p{
 i{
     font-size: 15%;
     padding: 2px;
+    margin-right: 2%;
+}
+
+.ubicacion{
+    font-size: 200%;
+    padding: 2px;
+    margin-right: 5%;
 }
 
 .containe{
