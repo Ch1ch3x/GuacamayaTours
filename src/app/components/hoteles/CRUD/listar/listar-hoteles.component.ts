@@ -233,7 +233,7 @@ export class ListarHotelesComponent implements OnInit {
         imagen: hotel.payload.data()['imagen'],
         imagen2: hotel.payload.data()['imagen2'],
         imagen3: hotel.payload.data()['imagen3'],
-        desabilitar: hotel.payload.data()['desabilitar'],
+        deshabilitar: hotel.payload.data()['deshabilitar'],
       });
       editSubscribe.unsubscribe();
     });

@@ -149,7 +149,7 @@ export class ListarHabitacionesComponent implements OnInit {
           imagen: habitacion.payload.data()['imagen'],
           imagen2: habitacion.payload.data()['imagen2'],
           imagen3: habitacion.payload.data()['imagen3'],
-          desabilitar: habitacion.payload.data()['desabilitar'],
+          deshabilitar: habitacion.payload.data()['deshabilitar'],
         });
         editSubscribe.unsubscribe();
       });

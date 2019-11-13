@@ -122,7 +122,7 @@ export class ListaCategoriaDestinoComponent implements OnInit {
           imagan: categoria.payload.data()['imagen'],
           imagen2: categoria.payload.data()['imagen2'],
           imagen3: categoria.payload.data()['imagen3'],
-          deshabilitar: categoria.payload.data()['desabilitar'],
+          deshabilitar: categoria.payload.data()['deshabilitar'],
         });
         editSubscribe.unsubscribe();
       });
@@ -167,11 +167,9 @@ export class ListaCategoriaDestinoComponent implements OnInit {
   }
 
   modificarCategoria() {
-    this.modifyRowData();
     this.formVisibility = false;
     this.crearformVisibility = false;
     this.modificarformVisibility = false;
-    this.modificar();
   }
 
   highlight(dato) {
@@ -179,36 +177,43 @@ export class ListaCategoriaDestinoComponent implements OnInit {
   }
   deshabilitar() {
     for (let index = 0; index < tipos.length; index++) {
+      console.log("1")
       console.log(this.categorias[index].nombre);
-      if (this.categorias[index].id == this.selectedRowIndex) {
+      if (this.categorias[index].id == this.selectedRowIndex){
+        console.log("2")
         this.categorias[index].deshabilitar = false;
+        this.categorias[index].deshabilitar.toString
+        console.log("3")
+        console.log(this.categorias[index].id.deshabilitar)
         let editSubscribe = this.CategoriaSV.getCategoria(this.categorias[index].id).subscribe((categoria) => {
           this.currentStatus = 2;
-          this.documentId = this.categorias[index].id;
+          this.newCategoriaForm = this.categorias[index].id;
           this.newCategoriaForm.setValue({
-            id: this.documentId,
-            nombre: categoria.payload.data()['nombre'],
-            deshabilitar: this.categorias[index].deshabilitar,
+            id: this.categorias[index].id,
+            deshabilitar: categoria.payload.data()['deshabilitar'],
           });
+          console.log(this.categorias[index].id)
           editSubscribe.unsubscribe();
         });
+        console.log(this.categorias[index].id)
         this.table.renderRows;
       } else {
         continue;
       }
     }
   }
+
   habilitar() {
     for (let index = 0; index < tipos.length; index++) {
       console.log(this.categorias[index].nombre);
       if (this.categorias[index].id == this.selectedRowIndex){
         this.categorias[index].deshabilitar = true;
+        this.categorias[index].deshabilitar.toString
         let editSubscribe = this.CategoriaSV.getCategoria(this.categorias[index].id).subscribe((categoria) => {
           this.currentStatus = 2;
           this.documentId = this.categorias[index].id;
           this.newCategoriaForm.setValue({
             id: this.documentId,
-            nombre: categoria.payload.data()['nombre'],
             deshabilitar: categoria.payload.data()['deshabilitar'],
           });
           editSubscribe.unsubscribe();

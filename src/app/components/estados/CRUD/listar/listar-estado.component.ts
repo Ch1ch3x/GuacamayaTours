@@ -115,7 +115,7 @@ export class ListarEstadoComponent implements OnInit {
         imagen: estado.payload.data()['imagen'],
         imagen2: estado.payload.data()['imagen2'],
         imagen3: estado.payload.data()['imagen3'],
-        desabilitar: estado.payload.data()['desabilitar'],
+        deshabilitar: estado.payload.data()['deshabilitar'],
       });
       editSubscribe.unsubscribe();
     });
