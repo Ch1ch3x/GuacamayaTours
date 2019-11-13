@@ -11,7 +11,9 @@ import { FirestoreService } from "src/app/services/firebase/firebase.service";
 export class DestinosTuristicosComponent implements OnInit {
   private estados: any[] = [];
   private ciudades: any[] = [];
+  private filteredCiudades: any[] = [];
   private categorias: any[] = [];
+  estado: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,14 +24,15 @@ export class DestinosTuristicosComponent implements OnInit {
   ngOnInit() {
     this.fireStoreService.getAll("estados").subscribe(estados => {
       estados.docs.map(estado => {
-        this.estados.push(estado.data());
+        this.estados.push({ ...estado.data(), id: estado.id });
       });
     });
 
     this.fireStoreService.getAll("ciudades").subscribe(ciudades => {
       ciudades.docs.map(ciudad => {
-        this.ciudades.push(ciudad.data());
+        this.ciudades.push({ ...ciudad.data(), id: ciudad.id });
       });
+      this.filteredCiudades = this.ciudades;
     });
 
     this.fireStoreService.getAll("categorias").subscribe(categorias => {
@@ -37,5 +40,12 @@ export class DestinosTuristicosComponent implements OnInit {
         this.categorias.push(categoria.data());
       });
     });
+  }
+
+  onChange(event) {
+    this.estado = event;
+    this.filteredCiudades = this.ciudades.filter(
+      ciudad => ciudad.idEstado === this.estado
+    );
   }
 }
