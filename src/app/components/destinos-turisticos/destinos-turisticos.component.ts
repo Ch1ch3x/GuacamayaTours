@@ -47,19 +47,19 @@ export class DestinosTuristicosComponent implements OnInit {
 
     this.fireStoreService.getAll("categorias").subscribe(categorias => {
       categorias.docs.map(categoria => {
-        this.categorias.push(categoria.data());
+        this.categorias.push({ ...categoria.data(), id: categoria.id });
       });
-      this.filteredCategorias = this.categorias;
     });
   }
 
   onChangeEstado(event) {
     this.estado = event;
+    this.filteredCategorias = [];
     this.filteredCiudades = this.ciudades.filter(
       ciudad => ciudad.idEstado === this.estado
     );
 
-    this.filteredCategorias = this.destinos
+    this.destinos
       .filter(destino => {
         if (this.ciudad) {
           return (
@@ -68,11 +68,10 @@ export class DestinosTuristicosComponent implements OnInit {
         } else return destino.idEstado === this.estado;
       })
       .map(filteredDestino => {
-        this.filteredCategorias = this.categorias.concat(
+        this.filteredCategorias = this.filteredCategorias.concat(
           filteredDestino.categorias
         );
       });
-
     this.filteredCategorias = this.categorias.filter(categoria =>
       this.filteredCategorias.some(fc => fc === categoria.id)
     );
@@ -80,7 +79,8 @@ export class DestinosTuristicosComponent implements OnInit {
 
   onChangeCiudad(event) {
     this.ciudad = event;
-    this.filteredCategorias = this.destinos
+    this.filteredCategorias = [];
+    this.destinos
       .filter(destino => {
         if (this.estado) {
           return (
@@ -89,7 +89,7 @@ export class DestinosTuristicosComponent implements OnInit {
         } else return destino.idCiudad === this.ciudad;
       })
       .map(filteredDestino => {
-        this.filteredCategorias = this.categorias.concat(
+        this.filteredCategorias = this.filteredCategorias.concat(
           filteredDestino.categorias
         );
       });
