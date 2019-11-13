@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from '@angular/router';
-import { FirestoreService } from 'src/app/services/firebase/firebase.service';
+import { ActivatedRoute, Router } from "@angular/router";
+import { FirestoreService } from "src/app/services/firebase/firebase.service";
 
 @Component({
   selector: "app-home",
@@ -8,15 +8,25 @@ import { FirestoreService } from 'src/app/services/firebase/firebase.service';
   styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent implements OnInit {
-
-  images = ["../../../assets/img/margarita.jpg", "../../../assets/img/roraima(2).png", "../../../assets/img/juangriego.jpg"];
-  actividades = ["../../../assets/img/roques.jpg", "../../../assets/img/telefericojpg.jpg"];
+  images = [
+    "../../../assets/img/margarita.jpg",
+    "../../../assets/img/roraima(2).png",
+    "../../../assets/img/juangriego.jpg"
+  ];
+  actividades = [
+    "../../../assets/img/roques.jpg",
+    "../../../assets/img/telefericojpg.jpg"
+  ];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private fireStoreService: FirestoreService
   ) {}
-  
-  ngOnInit() {}
+
+  ngOnInit() {
+    this.fireStoreService.getAll("ordenes").subscribe(data => {
+      data.docs.map(orden => console.log(orden.data()));
+    });
+  }
 }
