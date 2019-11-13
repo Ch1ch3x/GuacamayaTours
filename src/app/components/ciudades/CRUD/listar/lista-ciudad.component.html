@@ -37,7 +37,7 @@
   </div>
 
 <div [hidden]="!crearformVisibility" id="form">
-  <form class="border border-light p-5">
+  <form class="border border-light p-5" (ngSubmit)="newCategoria(newCategoriaForm.value)" [formGroup]="newCategoriaForm">
     <div class="text-center">
       <p class="h4 mb-4">Ingrese los Datos de la nueva Ciudad</p>
 
@@ -46,45 +46,64 @@
       </p>
     </div>
 
-    <label for="ID">ID de la Ciudad</label>
-    <input
-      [(ngModel)]="Ciudad.id"
-      type="text"
-      id="ID"
-      class="form-control mb-4"
-      placeholder="ID"
-      [ngModelOptions]="{ standalone: true }"
-    />
     <label for="Nombre">Nombre de la Ciudad</label>
     <input
-      [(ngModel)]="Ciudad.nombre"
+      formControlName="nombre"
       type="text"
       id="Nombre"
       class="form-control mb-4"
       placeholder="Nombre del Estado"
-      [ngModelOptions]="{ standalone: true }"
+      
     />
     <label for="Estado">ID del Estado donde se ubica la Ciudad</label>
     <input
-      [(ngModel)]="Ciudad.estado"
+      formControlName="estado"
       type="text"
       id="ID Estado"
       class="form-control mb-4"
       placeholder="Estado del Hotel"
-      [ngModelOptions]="{ standalone: true }"
+      
     />
 
     <label for="costo">Fotos de la Ciudad</label>
       <input
-        [(ngModel)]="Ciudad.imagen"
+        formControlName="imagen"
         type="text"
         id="fotos"
         class="form-control mb-4"
         placeholder="URL"
-        [ngModelOptions]="{ standalone: true }"
+        
       />
 
+      <label for="costo">Fotos de la Ciudad</label>
+      <input
+        formControlName="imagen2"
+        type="text"
+        id="fotos"
+        class="form-control mb-4"
+        placeholder="URL"
+        
+      />
 
+      <label for="costo">Fotos de la Ciudad</label>
+      <input
+        formControlName="imagen3"
+        type="text"
+        id="fotos"
+        class="form-control mb-4"
+        placeholder="URL"
+        
+      />
+
+      <label for="costo">Deshabilitar</label>
+      <input
+        formControlName="deshabilitar"
+        type="text"
+        id="fotos"
+        class="form-control mb-4"
+        placeholder="URL"
+        
+      />
     <button class="btn btn-info btn-block" (click)="crearCiudad()" type="submit">
       Crear
     </button>
@@ -103,18 +122,18 @@
     </div>
 
     <label for="ID">ID de la Ciudad</label>
-    <input [(ngModel)]="Ciudad.id" type="text" id="ID" class="form-control mb-4" placeholder="ID"
-      [ngModelOptions]="{ standalone: true }" />
+    <input formControlName="id" type="text" id="ID" class="form-control mb-4" placeholder="ID"
+       />
     <label for="Nombre">Nombre de la Ciudad</label>
-    <input [(ngModel)]="Ciudad.nombre" type="text" id="Nombre" class="form-control mb-4" placeholder="Nombre del Estado"
-      [ngModelOptions]="{ standalone: true }" />
+    <input formControlName="nombre" type="text" id="Nombre" class="form-control mb-4" placeholder="Nombre del Estado"
+       />
     <label for="Estado">ID del Estado donde se ubica la Ciudad</label>
-    <input [(ngModel)]="Ciudad.estado" type="text" id="ID Estado" class="form-control mb-4"
-      placeholder="Estado del Hotel" [ngModelOptions]="{ standalone: true }" />
+    <input formControlName="estado" type="text" id="ID Estado" class="form-control mb-4"
+      placeholder="Estado del Hotel"  />
 
     <label for="costo">Fotos de la Ciudad</label>
-    <input [(ngModel)]="Ciudad.imagen" type="text" id="fotos" class="form-control mb-4" placeholder="URL"
-      [ngModelOptions]="{ standalone: true }" />
+    <input formControlName="imagen" type="text" id="fotos" class="form-control mb-4" placeholder="URL"
+       />
 
 
     <button class="btn btn-info btn-block" (click)="modificarCiudad()" type="submit">

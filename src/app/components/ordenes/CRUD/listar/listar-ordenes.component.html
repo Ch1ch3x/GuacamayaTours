@@ -167,13 +167,12 @@
       type="text"
       id="Nombre"
       class="form-control mb-4"
-      [(ngModel)]="Destino.nombre"
-      [ngModelOptions]="{ standalone: true }"
+      formControlName="Destino.nombre"
       placeholder="Nombre de Destino"
     />
     <label for="Estado">Estado del Destino</label>
     <label [hidden]="valestado" id="validate" for="Estado">Debe ingresar un Estado para el Destino Turistico</label>
-    <select class="browser-default custom-select mb-4" [(ngModel)]="Destino.estado" [ngModelOptions]="{ standalone: true }"
+    <select class="browser-default custom-select mb-4" formControlName="Destino.estado" 
       (change)="capturarEstado()" id="Estado">
       <option value="" disabled="" selected="">Elije un Estado</option>
       <option value="1">Falcon</option>
@@ -182,7 +181,7 @@
     </select>
     <label for="Ciudad">Ciudad del Destino</label>
     <label [hidden]="valciudad" id="validate" for="Ciudad">Debe ingresar una Ciudad para el Destino Turistico</label>
-    <select class="browser-default custom-select mb-4" [(ngModel)]="Destino.ciudad" [ngModelOptions]="{ standalone: true }"
+    <select class="browser-default custom-select mb-4" formControlName="Destino.ciudad" 
       (change)="capturarCiudad()" id="Ciudad">
       <option value="" disabled="" selected="">Elije una Ciudad</option>
       <option value="1">Chichiriviche</option>
@@ -193,8 +192,8 @@
     <label [hidden]="valtipo" id="validate" for="Tipo">Debe ingresar un tipo de destino para el Destino Turistico</label>
     <select
       class="browser-default custom-select mb-4"
-      [(ngModel)]="Destino.tipo"
-      [ngModelOptions]="{ standalone: true }"
+      formControlName="Destino.tipo"
+      
       (change)="capturarTipo()"
       id="Tipo"
     >
@@ -209,8 +208,7 @@
       type="text"
       id="Servicios"
       class="form-control mb-4"
-      [(ngModel)]="Destino.servicios"
-      [ngModelOptions]="{ standalone: true }"
+      formControlName="Destino.servicios"
       placeholder="Servicios del Destino"
     />
     <label for="Actividades">Actividades del Destino</label>
@@ -219,8 +217,7 @@
       type="text"
       id="Actividades"
       class="form-control mb-4"
-      [(ngModel)]="Destino.actividades"
-      [ngModelOptions]="{ standalone: true }"
+      formControlName="Destino.actividades"
       placeholder="Actividades del Destino"
     />
     <label for="Latitud">Latitud del Destino</label>
@@ -229,8 +226,8 @@
       type="text"
       id="Latitud"
       class="form-control mb-4"
-      [(ngModel)]="Destino.latitud"
-      [ngModelOptions]="{ standalone: true }"
+      formControlName="Destino.latitud"
+      
       placeholder="Latitud"
     />
     <label for="Longitud">Longitud del Destino</label>
@@ -239,8 +236,8 @@
       type="text"
       id="Longitud"
       class="form-control mb-4"
-      [(ngModel)]="Destino.longitud"
-      [ngModelOptions]="{ standalone: true }"
+      formControlName="Destino.longitud"
+      
       placeholder="Longitud"
     />
     <label for="Dirección">Dirección del Destino</label>
@@ -249,8 +246,8 @@
       type="text"
       id="Dirección"
       class="form-control mb-4"
-      [(ngModel)]="Destino.direccion"
-      [ngModelOptions]="{ standalone: true }"
+      formControlName="Destino.direccion"
+      
       placeholder="Dirección"
     />
     <label for="Descripción">Descripción</label>
@@ -258,8 +255,8 @@
     <textarea
       id="Descripción"
       class="form-control mb-4"
-      [(ngModel)]="Destino.descripcion"
-      [ngModelOptions]="{ standalone: true }"
+      formControlName="Destino.descripcion"
+      
       placeholder="Descripción del Destino"
     ></textarea>
 
@@ -289,8 +286,8 @@
       type="text"
       id="Nombre"
       class="form-control mb-4"
-      [(ngModel)]="Destino.nombre"
-      [ngModelOptions]="{ standalone: true }"
+      formControlName="Destino.nombre"
+      
       placeholder="Nombre de Destino"
     />
     <label for="Estado">Estado del Destino</label>
@@ -298,8 +295,8 @@
       type="text"
       id="Estado"
       class="form-control mb-4"
-      [(ngModel)]="Destino.estado"
-      [ngModelOptions]="{ standalone: true }"
+      formControlName="Destino.estado"
+      
       placeholder="Estado del Destino"
     />
     <label for="Ciudad">Ciudad del Destino</label>
@@ -307,15 +304,15 @@
       type="text"
       id="Ciudad"
       class="form-control mb-4"
-      [(ngModel)]="Destino.ciudad"
-      [ngModelOptions]="{ standalone: true }"
+      formControlName="Destino.ciudad"
+      
       placeholder="Ciudad del Destino"
     />
     <label for="Tipo">Tipo de destino</label>
     <select
       class="browser-default custom-select mb-4"
-      [(ngModel)]="Destino.tipo"
-      [ngModelOptions]="{ standalone: true }"
+      formControlName="Destino.tipo"
+      
       id="Tipo"
     >
       <option value="" disabled="" selected="">Elije un Tipo de Destino</option>
@@ -328,8 +325,8 @@
       type="text"
       id="Servicios"
       class="form-control mb-4"
-      [(ngModel)]="Destino.servicios"
-      [ngModelOptions]="{ standalone: true }"
+      formControlName="Destino.servicios"
+      
       placeholder="Servicios del Destino"
     />
     <label for="Actividades">Actividades del Destino</label>
@@ -337,8 +334,8 @@
       type="text"
       id="Actividades"
       class="form-control mb-4"
-      [(ngModel)]="Destino.actividades"
-      [ngModelOptions]="{ standalone: true }"
+      formControlName="Destino.actividades"
+      
       placeholder="Actividades del Destino"
     />
     <label for="Latitud">Latitud del Destino</label>
@@ -346,8 +343,8 @@
       type="text"
       id="Latitud"
       class="form-control mb-4"
-      [(ngModel)]="Destino.latitud"
-      [ngModelOptions]="{ standalone: true }"
+      formControlName="Destino.latitud"
+      
       placeholder="Latitud"
     />
     <label for="Longitud">Longitud del Destino</label>
@@ -355,8 +352,8 @@
       type="text"
       id="Longitud"
       class="form-control mb-4"
-      [(ngModel)]="Destino.longitud"
-      [ngModelOptions]="{ standalone: true }"
+      formControlName="Destino.longitud"
+      
       placeholder="Longitud"
     />
     <label for="Dirección">Dirección del Destino</label>
@@ -364,16 +361,16 @@
       type="text"
       id="Dirección"
       class="form-control mb-4"
-      [(ngModel)]="Destino.direccion"
-      [ngModelOptions]="{ standalone: true }"
+      formControlName="Destino.direccion"
+      
       placeholder="Dirección"
     />
     <label for="Descripción">Descripción</label>
     <textarea
       id="Descripción"
       class="form-control mb-4"
-      [(ngModel)]="Destino.descripcion"
-      [ngModelOptions]="{ standalone: true }"
+      formControlName="Destino.descripcion"
+      
       placeholder="Descripción del Destino"
     ></textarea>
 

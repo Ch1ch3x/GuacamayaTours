@@ -1,4 +1,5 @@
 <app-dashboard></app-dashboard>
+
 <div [hidden]="formVisibility" class="container-fluid col-12 text-center">
     <div class="btn-group col-12">
       <button
@@ -17,7 +18,6 @@
       <button
         class="btn agregar"
         ng-model="formVisibility"
-        name="button"
         mat-button
         (click)="openModificar()"
         [hidden]="formVisibility"
@@ -46,7 +46,7 @@
         [hidden]="formVisibility"
         mat-flat-button color="primary"
       >
-        Deshabilitar Deshabilitar
+        Deshabilitar
     </button>
     </div>
 
@@ -67,8 +67,8 @@
 
   </div>
 
-  <!--<div [hidden]="!crearformVisibility" id="form">
-    <form class="border border-light p-5">
+ <div [hidden]="!crearformVisibility" id="form">
+    <form class="border border-light p-5" (ngSubmit)="newCategoria(newCategoriaForm.value)" [formGroup]="newCategoriaForm">
       <div class="text-center">
         <p class="h4 mb-4">Ingrese los Datos de la nueva Categoría</p>
 
@@ -77,33 +77,49 @@
         </p>
       </div>
 
-      <label for="ID">ID del Hotel</label>
-      <input
-        [(ngModel)]="Categoria.id"
-        type="text"
-        id="ID"
-        class="form-control mb-4"
-        placeholder="ID"
-        [ngModelOptions]="{ standalone: true }"
-      />
       <label for="Nombre">Nombre de la Categoría</label>
       <input
-        [(ngModel)]="Categoria.nombre"
         type="text"
         id="Nombre"
         class="form-control mb-4"
         placeholder="Nombre de la categoría"
-        [ngModelOptions]="{ standalone: true }"
+        formControlName="nombre"
       />
 
       <label for="costo">Fotos de la categoría</label>
       <input
-        [(ngModel)]="Categoria.foto"
         type="text"
         id="fotos"
         class="form-control mb-4"
         placeholder="URL"
-        [ngModelOptions]="{ standalone: true }"
+        formControlName="imagen"
+      />
+
+      <label for="costo">Fotos de la categoría</label>
+      <input
+        type="text"
+        id="fotos"
+        class="form-control mb-4"
+        placeholder="URL"
+        formControlName="imagen2"
+      />
+
+      <label for="costo">Fotos de la categoría</label>
+      <input
+        type="text"
+        id="fotos"
+        class="form-control mb-4"
+        placeholder="URL"
+        formControlName="imagen3"
+      />
+
+      <label for="costo">Deshabilitar</label>
+      <input
+        type="text"
+        id="fotos"
+        class="form-control mb-4"
+        placeholder="URL"
+        formControlName="deshabilitar"
       />
 
 
@@ -111,9 +127,10 @@
       <button class="btn btn-info btn-block" (click)="close()" type="submit">Cancelar</button>
     </form>
   </div>
-
+  
+<!--
   <div [hidden]="!modificarformVisibility" id="form">
-    <form class="border border-light p-5">
+    <form class="border border-light p-5" (ngSubmit)="newCategoria(newCategoriaForm.value)" [formGroup]="newCatForm>
       <div class="text-center">
         <p class="h4 mb-4">Ingrese los Datos de la nueva Categoría</p>
 
@@ -123,20 +140,18 @@
       </div>
 
       <label for="ID">ID del Hotel</label>
-      <input [(ngModel)]="Tipo.id" type="text" id="ID" class="form-control mb-4" placeholder="ID"
-        [ngModelOptions]="{ standalone: true }" />
+      <input formControlName="categorias.id" type="text" id="ID" class="form-control mb-4" placeholder="ID"
+         />
       <label for="Nombre">Nombre de la Categoría</label>
-      <input [(ngModel)]="Tipo.nombre" type="text" id="Nombre" class="form-control mb-4"
-        placeholder="Nombre de la categoría" [ngModelOptions]="{ standalone: true }" />
+      <input formControlName="categorias.nombre" type="text" id="Nombre" class="form-control mb-4"
+        placeholder="Nombre de la categoría"  />
 
       <label for="costo">Fotos de la categoría</label>
-      <input [(ngModel)]="Tipo.foto" type="text" id="fotos" class="form-control mb-4" placeholder="URL"
-        [ngModelOptions]="{ standalone: true }" />
+      <input formControlName="categorias.foto" type="text" id="fotos" class="form-control mb-4" placeholder="URL"
+         />
 
 
       <button class="btn btn-info btn-block" (click)="modificarCategoria()" type="submit">Crear Categoría</button>
       <button class="btn btn-info btn-block" (click)="close()" type="submit">Cancelar</button>
-    </form>
-  </div>
-
--->
+    </form> 
+  </div> -->

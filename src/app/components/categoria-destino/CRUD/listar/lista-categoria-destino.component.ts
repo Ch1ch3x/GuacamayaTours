@@ -137,7 +137,6 @@ export class ListaCategoriaDestinoComponent implements OnInit {
   }
 
   crearCategoria() {
-    this.addRowData();
     this.formVisibility = false;
     this.crearformVisibility = false;
   }

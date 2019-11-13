@@ -81,26 +81,23 @@
 
     <label for="ID">ID del Hotel</label>
     <input
-      [(ngModel)]="estrellas"
+      formControlName="estrellas"
       type="text"
       id="ID"
       class="form-control mb-4"
       placeholder="ID"
-      [ngModelOptions]="{ standalone: true }"
     />
     <label for="Nombre">Nombre del Hotel</label>
     <input
-      [(ngModel)]="nombre"
+      formControlName="nombre"
       type="text"
       id="Nombre"
       class="form-control mb-4"
       placeholder="Nombre del Hotel"
-      [ngModelOptions]="{ standalone: true }"
     />
     <label for="Estado">Estado donde se ubica el Hotel</label>
     <select
-      [(ngModel)]="estado"
-      [ngModelOptions]="{ standalone: true }"
+      formControlName="estado"
       class="browser-default custom-select mb-4"
       id="Estado"
     >
@@ -111,8 +108,7 @@
     </select>
     <label for="Ciudad">Ciudad donde se ubica el Hotel</label>
     <select
-      [(ngModel)]="Hotel.ciudad"
-      [ngModelOptions]="{ standalone: true }"
+      formControlName="Hotel.ciudad"
       class="browser-default custom-select mb-4"
       id="Ciudad"
     >
@@ -123,8 +119,7 @@
     </select>
     <label for="Tipo">Número de estrellas que tiene el Hotel</label>
     <select
-      [(ngModel)]="Hotel.estrellas"
-      [ngModelOptions]="{ standalone: true }"
+      formControlName="Hotel.estrellas"
       class="browser-default custom-select mb-4"
       id="Estrellas"
     >
@@ -139,56 +134,50 @@
     </select>
     <label for="Servicios">Servicios que ofrece el Hotel</label>
     <input
-      [(ngModel)]="Hotel.servicios[0]"
+      formControlName="Hotel.servicios[0]"
       type="text"
       id="Servicios"
       class="form-control mb-4"
       placeholder="Servicios"
-      [ngModelOptions]="{ standalone: true }"
     />
     <label for="Actividades">Actividades disponibles en el Hotel</label>
     <input
-      [(ngModel)]="Hotel.actividades[0]"
+      formControlName="Hotel.actividades[0]"
       type="text"
       id="Actividades"
       class="form-control mb-4"
       placeholder="Actividades"
-      [ngModelOptions]="{ standalone: true }"
     />
     <label for="Latitud">Latitud del Hotel</label>
     <input
-      [(ngModel)]="Hotel.latitud"
+      formControlName="Hotel.latitud"
       type="text"
       id="Latitud"
       class="form-control mb-4"
       placeholder="Latitud"
-      [ngModelOptions]="{ standalone: true }"
     />
     <label for="Longitud">Longitud del Hotel</label>
     <input
-      [(ngModel)]="Hotel.longitud"
+      formControlName="Hotel.longitud"
       type="text"
       id="Longitud"
       class="form-control mb-4"
       placeholder="Longitud"
-      [ngModelOptions]="{ standalone: true }"
     />
     <label for="Dirección">Dirección del Hotel</label>
     <input
-      [(ngModel)]="Hotel.direccion"
+      formControlName="Hotel.direccion"
       type="text"
       id="Dirección"
       class="form-control mb-4"
       placeholder="Dirección"
-      [ngModelOptions]="{ standalone: true }"
     />
 
     <label for="fullday">¿Ofrece fullday?</label>
     <select
-      [(ngModel)]="Hotel.fullDay.disponible"
+      formControlName="Hotel.fullDay.disponible"
       class="browser-default custom-select mb-4"
       id="Fullday"
-      [ngModelOptions]="{ standalone: true }"
     >
       <option value="" disabled="" selected=""></option>
       <option value="true">Si</option>
@@ -197,22 +186,20 @@
 
     <label for="costo">Costo del fullday por persona</label>
     <input
-      [(ngModel)]="Hotel.fullDay.precioXPersona"
+      formControlName="Hotel.fullDay.precioXPersona"
       type="text"
       id="costo"
       class="form-control mb-4"
       placeholder="Costo por persona"
-      [ngModelOptions]="{ standalone: true }"
     />
 
     <label for="costo">Fotos del hotel</label>
     <input
-      [(ngModel)]="Hotel.fotos[0]"
+      formControlName="Hotel.fotos[0]"
       type="text"
       id="fotos"
       class="form-control mb-4"
       placeholder="URL"
-      [ngModelOptions]="{ standalone: true }"
     />
 
     <button class="btn btn-info btn-block" (click)="crearHotel()" type="submit">
@@ -220,3 +207,4 @@
     </button>
   </form>
 </div>
+-->
