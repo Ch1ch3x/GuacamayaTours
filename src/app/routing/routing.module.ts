@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: "destinos", component: DestinosTuristicosComponent },
   { path: "hoteles", component: HotelesComponent},
   { path: "planea", component: PlanearViajeComponent},
-  { path: "hotel/:id", component: HotelComponent},
+  { path: "hoteles/:id", component: HotelComponent},
   { path: "admin/hoteles", component: ListarHotelesComponent },
   { path: "admin/destinos", component: ListarDestinosTuristicosComponent },
   { path: "admin/categorias", component: ListaCategoriaDestinoComponent },
