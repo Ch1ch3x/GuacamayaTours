@@ -10,7 +10,10 @@
       <div class="select">
         <mat-form-field class="separador">
           <mat-label>Estado</mat-label>
-          <mat-select [ngModel]="estado" (ngModelChange)="onChange($event)">
+          <mat-select
+            [ngModel]="estado"
+            (ngModelChange)="onChangeEstado($event)"
+          >
             <mat-option *ngFor="let estado of estados" [value]="estado.id">
               {{ estado.nombre }}
             </mat-option>
@@ -19,7 +22,10 @@
 
         <mat-form-field class="separador">
           <mat-label>Ciudad</mat-label>
-          <mat-select>
+          <mat-select
+            [ngModel]="ciudad"
+            (ngModelChange)="onChangeCiudad($event)"
+          >
             <mat-option
               *ngFor="let ciudad of filteredCiudades"
               [value]="ciudad.id"
@@ -33,7 +39,7 @@
           <mat-label>Categoría</mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let categoria of categorias"
+              *ngFor="let categoria of filteredCategorias"
               [value]="categoria.nombre"
             >
               {{ categoria.nombre }}
