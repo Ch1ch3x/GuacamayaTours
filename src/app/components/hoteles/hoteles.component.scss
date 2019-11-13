@@ -41,8 +41,6 @@
     align-items: center;
     text-align: center;
     color: #FFFFFF;
-    border-bottom-style: solid;
-    border-bottom-color: #C4C4C4;
 
 }
 
@@ -77,6 +75,7 @@ p{
     padding-top: 9px;
 
 }
+
 
 .reservas{
     width: 85%;
@@ -183,8 +182,12 @@ button{
 }
 
 .precio{
-    width: 24%;
+    width: 20%;
+    margin-top: 2%;
     text-align: left;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
 }
 
 .info{
@@ -227,6 +230,8 @@ button{
 }
 
 
+
+
 mat-form-field{
     width: 15%;
 
@@ -237,7 +242,34 @@ mat-form-field{
     padding-left:3%;
 }
 
-@media screen and (max-width: 760px){
+.pina{
+    position: relative;
+    width: 80%;
+    padding-top: 60%;
+    padding-left: 5%;
+}
+
+#mas{
+    margin-right:17%;
+    margin-bottom:15%;
+    font-size:10px;
+    text-align: center;
+    margin-top: 0%;
+    padding:3px;
+}
+
+@media screen and (max-width: 1240px){
+    h6{
+        display:none;
+    }
+    h5{
+        font-size: 150%;
+    }
+    
+}
+
+
+@media screen and (max-width: 800px){
     .contenedorBotones{
         display:flex;
         flex-flow: column wrap;
@@ -247,10 +279,17 @@ mat-form-field{
         width: 100%;
     
     }
+    h3{
+        font-size:190%;
+    }
+    h5{
+        font-size: 140%;
+    }
+    
 }
 
 
-@media screen and (max-width: 550px){
+@media screen and (max-width: 690px){
     .contenedor{
         display:flex;
         flex-flow: column;
@@ -269,6 +308,13 @@ mat-form-field{
     .right{
         padding-top:10px;
         width: 100%;
+    }
+
+    h3{
+        font-size:200%;
+    }
+    h5{
+        font-size: 150%;
     }
 
 

@@ -1,102 +1,96 @@
 <body>
-    <app-navbar> </app-navbar>
+  <app-navbar> </app-navbar>
 
-    <div class="containe">
-        <p class="centered1">GUACAMAYA <br></p><p class="centered2"> TOURS</p>        
-        <img src="../../../assets/img/home.png" alt="Planea tu viaje">
-        <button class="btn">PLANEA TU VIAJE AHORA</button>
-    </div>
+  <div class="containe">
+    <p class="centered1">GUACAMAYA <br /></p>
+    <p class="centered2">TOURS</p>
+    <img src="../../../assets/img/home.png" alt="Planea tu viaje" />
+    <button class="btn">PLANEA TU VIAJE AHORA</button>
+  </div>
 
+  <div class="">
+    <h1 class="title">DESTINOS POPULARES</h1>
+  </div>
+
+  <div class="slider">
+    <ngb-carousel *ngIf="images">
+      <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+          <img [src]="images[0]" alt="" />
+        </div>
+        <div class="carousel-caption">
+          <a routerLink="/destinos/Mochima"><h3>Mochima, Sucre</h3></a>
+        </div>
+      </ng-template>
+      <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+          <img [src]="images[1]" alt="" />
+        </div>
+        <div class="carousel-caption">
+          <a routerLink="/destinos/roraima"><h3>Roraima, Bolivar</h3></a>
+        </div>
+      </ng-template>
+      <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+          <img [src]="images[2]" alt="" />
+        </div>
+        <div class="carousel-caption">
+          <a routerLink="/destinos/juangriego"
+            ><h3>Juan Griego, Nueva Esparta</h3></a
+          >
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+
+  <div class="actividades container-fluid">
     <div class="">
-        <img src="../../../assets/img/flores-arriba.svg" class="size title" >
-      <p class="title">DESTINOS POPULARES</p>      
+      <h1 class="title">ACTIVIDADES</h1>
     </div>
 
-    <div class="slider">
-        <ngb-carousel *ngIf="images">
-            <ng-template ngbSlide>
-              <div class="picsum-img-wrapper">
-                <img [src]="images[0]" alt="">
-              </div>
-              <div class="carousel-caption">
-                <h3>First slide label</h3>
-                
-              </div>
-            </ng-template>
-            <ng-template ngbSlide>
-              <div class="picsum-img-wrapper">
-                <img [src]="images[1]" alt="">
-              </div>
-              <div class="carousel-caption">
-                <h3>Second slide label</h3>
-                
-              </div>
-            </ng-template>
-            <ng-template ngbSlide>
-              <div class="picsum-img-wrapper">
-                <img [src]="images[2]" alt="">
-              </div>
-              <div class="carousel-caption">
-                <h3>Third slide label</h3>
-                
-              </div>
-            </ng-template>
-          </ngb-carousel>
-    </div>
-
-    
-
-    <div class="actividades container-fluid">
-        <div class="">
-            <img src="../../../assets/img/flores-arriba.svg" class="size2 title" >
-            <p class="title">ACTIVIDADES</p> 
+    <div class="row actividades1">
+      <div class="elemento1">
+        <img [src]="actividades[0]" class="act hover" />
+        <p class="hover centered3">LOS ROQUES</p>
+      </div>
+      <div class="contenedor">
+        <div class="elemento">
+          <img [src]="actividades[1]" class="act hover" />
+          <p class="hover centered3">TELEFÉRICO DE MÉRIDA</p>
+        </div>
+        <div class="elemento">
+          <img [src]="actividades[1]" class="act hover" />
+          <p class="hover centered3">TELEFÉRICO DE MÉRIDA</p>
         </div>
 
-        <div class="row actividades1">
-          <div class="elemento1">
-              <img [src] = "actividades[0]" class = "act hover">
-              <p class="hover centered3">LOS ROQUES</p>
-          </div>
-          <div class="contenedor">
-            <div class="elemento">
-                <img [src] = "actividades[1]" class = "act hover">
-                <p class="hover centered3">TELEFÉRICO DE MÉRIDA</p>
-            </div>
-            <div class="elemento">
-                <img [src] = "actividades[1]" class = "act hover">
-                <p class="hover centered3">TELEFÉRICO DE MÉRIDA</p>
-            </div>
-            
-            <div class="elemento">
-                <img [src] = "actividades[1]" class = "act hover">
-            </div>
-            <div class="elemento">
-                <img [src] = "actividades[1]" class = "act hover">
-            </div>
-          </div>
+        <div class="elemento">
+          <img [src]="actividades[1]" class="act hover" />
         </div>
-    </div>
-
-    <div class="container-fluid abajo text-center"> 
-        <img src="../../../assets/img/algo.jpg" alt="Opciones" class="full">
-        <p class="title1">HOTELES</p>
-        <div class="hoteles row container-fluid">
-            <div class="col">
-                <img [src] = "actividades[1]" class = "hotel">
-            </div>
-            <div class="col">
-                <img [src] = "actividades[1]" class = "hotel">
-            </div>
-            <div class="col">
-                <img [src] = "actividades[1]" class = "hotel">
-            </div>
+        <div class="elemento">
+          <img [src]="actividades[1]" class="act hover" />
         </div>
-
+      </div>
     </div>
+  </div>
 
+  <div class="container-fluid abajo text-center">
+    <img src="../../../assets/img/algo.jpg" alt="Opciones" class="full" />
+    <h1 class="title1">HOTELES</h1>
+    <div class="hoteles row container-fluid">
+      <div class="col">
+        <a routerLink="/hoteles"><img [src]="actividades[1]" class="hotel"/></a>
+        <h3>Hotel Ávila</h3>
+      </div>
+      <div class="col">
+        <a routerLink="/hoteles"><img [src]="actividades[1]" class="hotel"/></a>
+        <h3>Hotel Tibisay</h3>
+      </div>
+      <div class="col">
+        <a routerLink="/hoteles"><img [src]="actividades[1]" class="hotel"/></a>
+        <h3>Hotel caracas</h3>
+      </div>
+    </div>
+  </div>
 </body>
 
-
 <app-footer></app-footer>
-
-
