@@ -7,12 +7,6 @@
 
 <div class="contenedor container-fluid">
   <div class="side">
-    <p>RESERVACIONES</p>
-    <div class="reservas">
-      <p *ngFor="let reserva of reservas" class="reservaciones">
-        {{ reserva.ads }}
-      </p>
-    </div>
     <p>FILTROS</p>
     <div class="filtros">
       <form>
@@ -21,7 +15,7 @@
             <select
               class="custom-select"
               id="inlineFormCustomSelect"
-              [ngModel]="precio"
+              [ngModel]="precioFilter"
               [ngModelOptions]="{ standalone: true }"
               (ngModelChange)="onChangePrice($event)"
             >
