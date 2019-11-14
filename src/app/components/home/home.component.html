@@ -10,7 +10,7 @@
   </div>
 
   <div class="">
-    <h1 class="title">DESTINOS POPULARES</h1>
+    <h2 class="">DESTINOS POPULARES</h2>
   </div>
 
   <div class="slider">
@@ -29,10 +29,10 @@
 
   <div class="actividades container-fluid">
     <div class="">
-      <h1 class="title">ACTIVIDADES</h1>
+      <h2 class="">ACTIVIDADES</h2>
     </div>
 
-    <div class="actividades1">
+    <div class="actividades1 container-fluid">
       <div class="elemento1">
         <img [src]="actividades[0]" class="act hover" />
         <p class="hover centered3">LOS ROQUES</p>
@@ -46,13 +46,15 @@
     </div>
   </div>
 
-  <div class="container-fluid abajo text-center">
+  <div class="container-fluid text-center">
     <img src="../../../assets/img/algo.jpg" alt="Opciones" class="full" />
-    <h1 class="title1">HOTELES</h1>
+    <h2 class="title1">HOTELES</h2>
     <div class="hoteles row container-fluid">
       <div class="col-4" *ngFor="let hotel of hoteles">
+        <div *ngIf="hotel.deshabilitar===false" >
         <a routerLink="/hoteles"><img [src]="hotel.imagen" class="hotel"/></a>
-        <h3>{{hotel.nombre}}</h3>
+        <h5>{{hotel.nombre}}</h5>
+      </div>
       </div>
      
     </div>
