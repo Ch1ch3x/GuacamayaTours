@@ -124,10 +124,6 @@ export class ListarEstadoComponent implements OnInit {
     this.selectedRowIndex = dato.id;
   }
 
-  soltar() {
-    this.highlight(-1)
-  }
-
   deshabilitar() {
     for (let index = 0; index < this.estados.length; index++) {
       if (this.estados[index].id == this.selectedRowIndex) {
@@ -147,12 +143,5 @@ export class ListarEstadoComponent implements OnInit {
         continue;
       }
     }
-  }
-
-  openModificar() {
-  //  this.formVisibility = true;
-  }
-
-  modificarEstado() {
   }
 }

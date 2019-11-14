@@ -172,10 +172,6 @@ export class ListaCiudadComponent {
     this.selectedRowIndex = dato.id;
   }
 
-  soltar() {
-    this.highlight(-1)
-  }
-
   deshabilitar() {
     for (let index = 0; index < this.ciudades.length; index++) {
       if (this.ciudades[index].id == this.selectedRowIndex) {

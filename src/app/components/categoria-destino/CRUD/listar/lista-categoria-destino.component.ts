@@ -144,10 +144,6 @@ export class ListaCategoriaDestinoComponent implements OnInit {
     this.modificarformVisibility = false;
   }
 
-  soltar() {
-    this.highlight(-1)
-  }
-
   deshabilitar() {
     for (let index = 0; index < tipos.length; index++) {
       console.log(this.categorias[index].nombre);

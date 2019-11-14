@@ -201,10 +201,6 @@ export class ListarDestinosTuristicosComponent implements OnInit {
     this.selectedRowIndex = dato.id;
   }
 
-  soltar() {
-    this.highlight(-1)
-  }
-
   deshabilitar() {
     for (let index = 0; index < this.destinos.length; index++) {
       if (this.destinos[index].id == this.selectedRowIndex) {

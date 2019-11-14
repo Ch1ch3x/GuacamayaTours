@@ -229,10 +229,6 @@ export class ListarHotelesComponent implements OnInit {
     this.selectedRowIndex = dato.id;
   }
 
-  soltar() {
-    this.highlight(-1)
-  }
-
   deshabilitar() {
     for (let index = 0; index < this.hoteles.length; index++) {
       if (this.hoteles[index].id == this.selectedRowIndex) {

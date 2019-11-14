@@ -183,10 +183,6 @@ export class ListarHabitacionesComponent implements OnInit {
     this.selectedRowIndex = dato.id;
   }
 
-  soltar() {
-    this.highlight(-1)
-  }
-  
   deshabilitar() {
     for (let index = 0; index < this.tipoHabitaciones.length; index++) {
       if (this.tipoHabitaciones[index].id == this.selectedRowIndex) {
