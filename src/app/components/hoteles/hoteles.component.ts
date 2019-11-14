@@ -97,7 +97,7 @@ export class HotelesComponent implements OnInit {
     if (this.llegadaFilter) {
       this.filteredHoteles = this.filteredHoteles.filter(filteredHotel =>
         filteredHotel.tipoHabitaciones.some(tipoH => {
-          return tipoH.fechaInicio.toDate() >= this.llegadaFilter;
+          return tipoH.fechaInicio.toDate() <= this.llegadaFilter;
         })
       );
     }
@@ -105,7 +105,7 @@ export class HotelesComponent implements OnInit {
     if (this.salidaFilter) {
       this.filteredHoteles = this.filteredHoteles.filter(filteredHotel =>
         filteredHotel.tipoHabitaciones.some(
-          tipoH => tipoH.fechaFin.toDate() <= this.salidaFilter
+          tipoH => tipoH.fechaFin.toDate() >= this.salidaFilter
         )
       );
     }
