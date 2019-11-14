@@ -16,7 +16,7 @@ export class ListarOrdenesComponent implements OnInit {
   public documentId = null;
   public currentStatus = 1;
   public newOrdenForm = new FormGroup({
-    id: new FormControl(''),
+    
     nombre: new FormControl('', Validators.required),
     cedula: new FormControl('', Validators.required),
     correo: new FormControl('', Validators.required),
@@ -35,7 +35,7 @@ export class ListarOrdenesComponent implements OnInit {
   
   constructor(private OrdenSV: ReservasService) {
     this.newOrdenForm.setValue({
-      id: '',
+      
       nombre: '',
       cedula: '',
       correo: '',
@@ -105,7 +105,7 @@ export class ListarOrdenesComponent implements OnInit {
           hotel: '',
           tipoHabitacion: '',
           direccion: '',
-          id: '',
+          
           deshabilitar: ''
         });
       }, (error) => {
@@ -128,7 +128,7 @@ export class ListarOrdenesComponent implements OnInit {
       this.OrdenSV.update(documentId, data).then(() => {
         this.currentStatus = 1;
         this.newOrdenForm.setValue({
-          id: '',
+          
           nombre: '',
           cedula: '',
           correo: '',

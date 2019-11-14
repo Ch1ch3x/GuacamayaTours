@@ -23,14 +23,14 @@
           <th scope="col">Vigencia</th>
         </tr>
       </thead>
-      <tbody *ngFor="let dato of ciudades">
+      <tbody *ngFor="let dato of ciudades" >
         <tr
         [ngClass] = "{'highlight': selectedRowIndex == dato.id,
         'highlight2': dato.deshabilitar == false,
         'highlight3': selectedRowIndex == dato.id && dato.deshabilitar == false}"
         (click)="highlight(dato)" >
           <td>{{dato.nombre}}</td>
-          <td>{{dato.idEstado}}</td>
+          <td>{{dato.estado}}</td>
           <td>{{dato.imagen}}</td>
           <td>{{dato.imagen2}}</td>
           <td>{{dato.imagen3}}</td>
@@ -41,8 +41,8 @@
 </div>
 
 
-<!--<div [hidden]="!crearformVisibility" id="form">
-  <form class="border border-light p-5" (ngSubmit)="newCiudad(newCiudad.value)" [formGroup]="newCiudadForm">
+<div [hidden]="!crearformVisibility" id="form">
+  <form class="border border-light p-5" (ngSubmit)="newCiudad(newCiudadForm.value)" [formGroup]="newCiudadForm">
     <div class="text-center">
       <p class="h4 mb-4">Ingrese los Datos de la nueva Ciudad</p>
 
@@ -53,22 +53,18 @@
 
     <label for="Nombre">Nombre de la Ciudad</label>
     <input
-      formControlName="nombre"
+      
       type="text"
       id="Nombre"
       class="form-control mb-4"
       placeholder="Nombre del Estado"
-
+      formControlName= "nombre"
     />
     <label for="Estado">ID del Estado donde se ubica la Ciudad</label>
-    <input
-      formControlName="estado"
-      type="text"
-      id="ID Estado"
-      class="form-control mb-4"
-      placeholder="Estado del Hotel"
-
-    />
+    <select class="form-control mb-4" formControlName="idEstado" id="item">
+      <option>Seleccione un Estado</option>
+      <option *ngFor = "let estado of estados">{{estado.nombre}}</option>
+     </select>
 
     <label for="costo">Fotos de la Ciudad</label>
       <input
@@ -100,23 +96,14 @@
 
       />
 
-      <label for="costo">Deshabilitar</label>
-      <input
-        formControlName="deshabilitar"
-        type="text"
-        id="fotos"
-        class="form-control mb-4"
-        placeholder="URL"
-
-      />
     <button class="btn btn-info btn-block" (click)="crearCiudad()" type="submit">
       Crear
     </button>
-    <button class="btn btn-info btn-block" (click)="close()" type="submit">Cancelar</button>
+    <button class="btn btn-info btn-block" (click)="close()" >Cancelar</button>
   </form>
 </div>
 
-<div [hidden]="!modificarformVisibility" id="form">
+<!--<div [hidden]="!modificarformVisibility" id="form">
   <form class="border border-light p-5">
     <div class="text-center">
       <p class="h4 mb-4">Ingrese los Datos de la nueva Ciudad</p>
@@ -144,7 +131,7 @@
     <button class="btn btn-info btn-block" (click)="modificarCiudad()" type="submit">
       Crear
     </button>
-    <button class="btn btn-info btn-block" (click)="close()" type="submit">Cancelar</button>
+    <button class="btn btn-info btn-block" (click)="close()" >Cancelar</button>
   </form>
 </div>-->
 

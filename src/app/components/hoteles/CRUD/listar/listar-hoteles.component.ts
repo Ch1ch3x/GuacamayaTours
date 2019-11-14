@@ -59,7 +59,7 @@ export class ListarHotelesComponent implements OnInit {
   public documentId = null;
   public currentStatus = 1;
   public newHotelForm = new FormGroup({
-    id: new FormControl(''),
+    
     nombre: new FormControl('', Validators.required),
     estrellas: new FormControl('', Validators.required),
     servicios: new FormControl('', Validators.required),
@@ -82,7 +82,7 @@ export class ListarHotelesComponent implements OnInit {
 
   constructor(private HotelSV: HotelesService) {
     this.newHotelForm.setValue({
-      id: '',
+      
       nombre: '',
       estrellas: '',
       direccion: '',
@@ -165,7 +165,7 @@ export class ListarHotelesComponent implements OnInit {
           imagen: '',
           imagen2: '',
           imagen3: '',
-          id: '',
+          
           deshabilitar: ''
         });
       }, (error) => {

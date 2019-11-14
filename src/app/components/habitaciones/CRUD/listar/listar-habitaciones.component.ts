@@ -32,7 +32,7 @@ export class ListarHabitacionesComponent implements OnInit {
   public documentId = null;
   public currentStatus = 1;
   public newHabitacionForm = new FormGroup({
-    id: new FormControl(''),
+    
     nombre: new FormControl('', Validators.required),
     hotel: new FormControl('', Validators.required),
     idHotel: new FormControl('', Validators.required),
@@ -46,7 +46,7 @@ export class ListarHabitacionesComponent implements OnInit {
 
   constructor(private tipoHabitacionSV: TipoHabitacionService) {
     this.newHabitacionForm.setValue({
-      id: '',
+      
       nombre: '',
       hotel: '',
       idHotel: '',
@@ -100,7 +100,7 @@ export class ListarHabitacionesComponent implements OnInit {
             imagen: '',
             imagen2: '',
             imagen3: '',
-            id: '',
+            
             deshabilitar: ''
           });
         }, (error) => {

@@ -29,7 +29,7 @@ export class ListaCategoriaDestinoComponent implements OnInit {
   public documentId = null;
   public currentStatus = 1;
   public newCategoriaForm = new FormGroup({
-    id: new FormControl(''),
+    
     nombre: new FormControl('', Validators.required),
     imagen: new FormControl('', Validators.required),
     imagen2: new FormControl('', Validators.required),
@@ -39,7 +39,7 @@ export class ListaCategoriaDestinoComponent implements OnInit {
 
   constructor(private CategoriaSV: CategoriasService) {
     this.newCategoriaForm.setValue({
-      id: '',
+      
       nombre: '',
       imagen: '',
       imagen2: '',
@@ -80,7 +80,7 @@ export class ListaCategoriaDestinoComponent implements OnInit {
             imagen: '',
             imagen2: '',
             imagen3: '',
-            id: '',
+            
             deshabilitar: ''
           });
         }, (error) => {

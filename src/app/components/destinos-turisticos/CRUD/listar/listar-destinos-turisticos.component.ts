@@ -38,7 +38,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
   public documentId = null;
   public currentStatus = 1;
   public newDestinoForm = new FormGroup({
-    id: new FormControl(''),
+    
     nombre: new FormControl('', Validators.required),
     descripcion: new FormControl('', Validators.required),
     tipo: new FormControl('', Validators.required),
@@ -59,7 +59,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
 
   constructor(private DestinoSV: DestinosService) {
     this.newDestinoForm.setValue({
-      id: '',
+      
       nombre: '',
       descripcion: '',
       tipo: '',
@@ -141,7 +141,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
           imagen: '',
           imagen2: '',
           imagen3: '',
-          id: '',
+          
           deshabilitar: ''
         });
       }, (error) => {
