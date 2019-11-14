@@ -52,8 +52,8 @@
 
 </div>
 
-<!--<div [hidden]="!formVisibility" id="form">
-  <form class="border border-light p-5">
+<div [hidden]="!formVisibility" id="form">
+  <form class="border border-light p-5" (ngSubmit)="newHotel(newHotelForm.value)" [formGroup]="newHotelForm">
     <div class="text-center">
       <p class="h4 mb-4">Ingrese los Datos del Nuevo Hotel</p>
 
@@ -62,14 +62,6 @@
       </p>
     </div>
 
-    <label for="ID">ID del Hotel</label>
-    <input
-      formControlName="estrellas"
-      type="text"
-      id="ID"
-      class="form-control mb-4"
-      placeholder="ID"
-    />
     <label for="Nombre">Nombre del Hotel</label>
     <input
       formControlName="nombre"
@@ -78,37 +70,32 @@
       class="form-control mb-4"
       placeholder="Nombre del Hotel"
     />
-    <label for="Estado">Estado donde se ubica el Hotel</label>
+    <!--<label for="Estado">Estado donde se ubica el Hotel</label>
     <select
       formControlName="estado"
       class="browser-default custom-select mb-4"
       id="Estado"
     >
       <option value="" disabled="" selected="">Elije el estado</option>
-      <option *ngFor="let estado of estados.default" value="estado.id">{{
-        estado.nombre
-      }}</option>
+      <option *ngFor="let estado of estados">{{estado.nombre}}</option>
     </select>
+
     <label for="Ciudad">Ciudad donde se ubica el Hotel</label>
     <select
-      formControlName="Hotel.ciudad"
+      formControlName="ciudad"
       class="browser-default custom-select mb-4"
       id="Ciudad"
     >
       <option value="" disabled="" selected="">Elije la ciudad</option>
-      <option *ngFor="let ciudad of ciudades.default" value="ciudad.id">{{
-        ciudad.nombre
-      }}</option>
-    </select>
+      <option *ngFor="let ciudad of ciudades">{{ciudad.nombre}}</option>
+    </select>-->
     <label for="Tipo">Número de estrellas que tiene el Hotel</label>
     <select
-      formControlName="Hotel.estrellas"
+      formControlName="estrellas"
       class="browser-default custom-select mb-4"
       id="Estrellas"
     >
-      <option value="" disabled="" selected=""
-        >Elije la cantidad de estrellas</option
-      >
+      <option>Elije la cantidad de estrellas</option>
       <option value="1">1 estrella</option>
       <option value="2">2 estrellas</option>
       <option value="3">3 estrellas</option>
@@ -117,7 +104,7 @@
     </select>
     <label for="Servicios">Servicios que ofrece el Hotel</label>
     <input
-      formControlName="Hotel.servicios[0]"
+      formControlName="servicios"
       type="text"
       id="Servicios"
       class="form-control mb-4"
@@ -125,7 +112,7 @@
     />
     <label for="Actividades">Actividades disponibles en el Hotel</label>
     <input
-      formControlName="Hotel.actividades[0]"
+      formControlName="actividades"
       type="text"
       id="Actividades"
       class="form-control mb-4"
@@ -133,7 +120,7 @@
     />
     <label for="Latitud">Latitud del Hotel</label>
     <input
-      formControlName="Hotel.latitud"
+      formControlName="latitud"
       type="text"
       id="Latitud"
       class="form-control mb-4"
@@ -141,7 +128,7 @@
     />
     <label for="Longitud">Longitud del Hotel</label>
     <input
-      formControlName="Hotel.longitud"
+      formControlName="longitud"
       type="text"
       id="Longitud"
       class="form-control mb-4"
@@ -149,7 +136,7 @@
     />
     <label for="Dirección">Dirección del Hotel</label>
     <input
-      formControlName="Hotel.direccion"
+      formControlName="direccion"
       type="text"
       id="Dirección"
       class="form-control mb-4"
@@ -158,7 +145,7 @@
 
     <label for="fullday">¿Ofrece fullday?</label>
     <select
-      formControlName="Hotel.fullDay.disponible"
+      formControlName="activo"
       class="browser-default custom-select mb-4"
       id="Fullday"
     >
@@ -169,7 +156,7 @@
 
     <label for="costo">Costo del fullday por persona</label>
     <input
-      formControlName="Hotel.fullDay.precioXPersona"
+      formControlName="costo"
       type="text"
       id="costo"
       class="form-control mb-4"
@@ -178,7 +165,7 @@
 
     <label for="costo">Fotos del hotel</label>
     <input
-      formControlName="Hotel.fotos[0]"
+      formControlName="fotos"
       type="text"
       id="fotos"
       class="form-control mb-4"
@@ -188,6 +175,7 @@
     <button class="btn btn-info btn-block" (click)="crearHotel()" type="submit">
       Crear Hotel
     </button>
+    <button class="btn btn-info btn-block" (click)="close()">Cancelar</button>
   </form>
 </div>
 -->

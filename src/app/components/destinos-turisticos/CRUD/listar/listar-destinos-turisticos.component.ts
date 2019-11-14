@@ -38,7 +38,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
   public documentId = null;
   public currentStatus = 1;
   public newDestinoForm = new FormGroup({
-    
+
     nombre: new FormControl('', Validators.required),
     descripcion: new FormControl('', Validators.required),
     tipo: new FormControl('', Validators.required),
@@ -59,7 +59,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
 
   constructor(private DestinoSV: DestinosService) {
     this.newDestinoForm.setValue({
-      
+
       nombre: '',
       descripcion: '',
       tipo: '',
@@ -141,52 +141,14 @@ export class ListarDestinosTuristicosComponent implements OnInit {
           imagen: '',
           imagen2: '',
           imagen3: '',
-          
+
           deshabilitar: ''
         });
       }, (error) => {
         console.error(error);
       });
     } else {
-      let data = {
-        nombre: form.nombre,
-        descripcion: form.descripcion,
-        tipo: form.tipo,
-        servicios: form.servicios,
-        actividades: form.actividades,
-        latitud: form.latitud,
-        longitud: form.longitud,
-        estado: form.estado,
-        ciudad: form.ciudad,
-        direccion: form.direccion,
-        imagen: form.imagen,
-        imagen2: form.imagen2,
-        imagen3: form.imagen3,
-        deshabilitar: form.deshabilitar
-      }
-      this.DestinoSV.update(documentId, data).then(() => {
-        this.currentStatus = 1;
-        this.newDestinoForm.setValue({
-          nombre: '',
-          descripcion: '',
-          tipo: '',
-          servicios: '',
-          actividades: '',
-          latitud: '',
-          longitud: '',
-          estado: '',
-          ciudad: '',
-          direccion: '',
-          deshabilitar: '',
-          imagen:'',
-          imagen2: '',
-          imagen3: '',
-          id: ''
-        });
-        console.log('Documento editado exitósamente');
-      }, (error) => {
-        console.log(error);
-      });
+      this.close();
     }
   }
 
@@ -217,15 +179,24 @@ export class ListarDestinosTuristicosComponent implements OnInit {
 
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
 
-
-
-
-
-
   openCrear() {
     this.formVisibility = true;
     this.crearformVisibility = true;
+    this.currentStatus = 1;
   }
+
+  crearDestino() {
+    this.formVisibility = false;
+    this.crearformVisibility = false;
+  }
+
+  close() {
+    this.currentStatus = 3;
+    this.formVisibility = false;
+    this.crearformVisibility = false;
+    this.modificarformVisibility = false;
+  }
+
   highlight(dato) {
     this.selectedRowIndex = dato.id;
   }

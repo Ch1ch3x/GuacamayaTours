@@ -6,6 +6,8 @@ import * as ciudades from "../../../../data/ciudades.json";
 import * as estados from "../../../../data/estados.json";
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HotelesService } from "../../../../services/firebase/hoteles.service";
+import { CiudadesService } from 'src/app/services/firebase/ciudades.service.js';
+import { EstadosService } from 'src/app/services/firebase/estados.service.js';
 
 const ELEMENT_DATA: hotel[] = hoteles;
 
@@ -21,6 +23,8 @@ export class ListarHotelesComponent implements OnInit {
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
 
   formVisibility = false;
+  modificarformVisibility = false;
+  crearformVisibility = false;
 
   total = 2;
 
@@ -59,10 +63,11 @@ export class ListarHotelesComponent implements OnInit {
   public documentId = null;
   public currentStatus = 1;
   public newHotelForm = new FormGroup({
-    
+
     nombre: new FormControl('', Validators.required),
     estrellas: new FormControl('', Validators.required),
     servicios: new FormControl('', Validators.required),
+    actividades: new FormControl('', Validators.required),
     latitud: new FormControl('', Validators.required),
     longitud: new FormControl('', Validators.required),
     estado: new FormControl('', Validators.required),
@@ -80,13 +85,13 @@ export class ListarHotelesComponent implements OnInit {
   });
 
 
-  constructor(private HotelSV: HotelesService) {
+  constructor(private HotelSV: HotelesService, private CiudadSV: CiudadesService, private EstadosSV: EstadosService) {
     this.newHotelForm.setValue({
-      
       nombre: '',
       estrellas: '',
       direccion: '',
       servicios: '',
+      actividades: '',
       latitud: '',
       longitud: '',
       estado: '',
@@ -126,6 +131,31 @@ export class ListarHotelesComponent implements OnInit {
         console.log(this.hoteles)
       })
     });
+    this.EstadosSV.getAll().subscribe((estadosSnapshot) => {
+      this.estados = [];
+      estadosSnapshot.forEach((estadoData: any) => {
+        this.estados.push({
+          id: estadoData.payload.doc.data(),
+          nombre: estadoData.payload.doc.data().nombre,
+          imagen: estadoData.payload.doc.data().imagen,
+          deshabilitar: estadoData.payload.doc.data().deshabilitar,
+        });
+      })
+    });
+    this.CiudadSV.getAll().subscribe((ciudadesSnapshot) => {
+      this.ciudades = [];
+      ciudadesSnapshot.forEach((ciudadData: any) => {
+        this.ciudades.push({
+          id: ciudadData.payload.doc.data(),
+          nombre: ciudadData.payload.doc.data().nombre,
+          estado: ciudadData.payload.doc.data().estado,
+          imagen: ciudadData.payload.doc.data().imagen,
+          deshabilitar: ciudadData.payload.doc.data().deshabilitar
+        });
+      })
+      console.log(this.ciudades);
+    });
+
 
 
   }
@@ -165,52 +195,14 @@ export class ListarHotelesComponent implements OnInit {
           imagen: '',
           imagen2: '',
           imagen3: '',
-          
+
           deshabilitar: ''
         });
       }, (error) => {
         console.error(error);
       });
     } else {
-      let data = {
-        nombre: form.nombre,
-        estrellas: form.estrellas,
-        servicios: form.servicios,
-        latitud: form.latitud,
-        longitud: form.longitud,
-        estado: form.estado,
-        ciudad: form.ciudad,
-        direccion: form.direccion,
-        costo: form.costo,
-        activo: form.activo,
-        imagen: form.imagen,
-        imagen2: form.imagen2,
-        imagen3: form.imagen3,
-        deshabilitar: form.deshabilitar
-      }
-      this.HotelSV.update(documentId, data).then(() => {
-        this.currentStatus = 1;
-        this.newHotelForm.setValue({
-          nombre: '',
-          estrellas: '',
-          servicios: '',
-          latitud: '',
-          longitud: '',
-          estado: '',
-          ciudad: '',
-          direccion: '',
-          costo: '',
-          activo: '',
-          deshabilitar: '',
-          imagen:'',
-          imagen2: '',
-          imagen3: '',
-          id: ''
-        });
-        console.log('Documento editado exitósamente');
-      }, (error) => {
-        console.log(error);
-      });
+      this.close();
     }
   }
 
@@ -241,46 +233,34 @@ export class ListarHotelesComponent implements OnInit {
 
   openCrear() {
     this.formVisibility = true;
+    this.crearformVisibility = true;
+    this.currentStatus = 1;
   }
 
   crearHotel() {
-    this.addRowData();
     this.formVisibility = false;
-  }
-  clearHotel() {
-    this.Hotel = {
-      id: this.hotel.length,
-      nombre: "",
-      actividades: [""],
-      estrellas: 3,
-      latitud: "",
-      longitud: "",
-      direccion: "",
-      estado: "",
-      fotos: [""],
-      ciudad: "",
-      fullDay: {
-        disponible: false,
-        precioXPersona: ""
-      },
-      servicios: [],
-      tipoHabitaciones: [
-        {
-          nombre: "",
-          fotos: [],
-          tipoVista: "",
-          maximoPersonas: "",
-          comodidades: [],
-          costoXNoche: 0
-        }
-      ],
-      deshabilitar: false,
-    };
+    this.crearformVisibility = false;
   }
 
-  addRowData() {
-    hoteles.push(this.Hotel);
-    this.clearHotel();
-    this.table.renderRows();
+  openModificar() {
+    this.formVisibility = true;
+    this.modificarformVisibility = true;
+  }
+
+  close() {
+    this.currentStatus = 3;
+    this.formVisibility = false;
+    this.crearformVisibility = false;
+    this.modificarformVisibility = false;
+  }
+
+  modificarCiudad() {
+    this.formVisibility = false;
+    this.crearformVisibility = false;
+    this.modificarformVisibility = false;
+  }
+
+  highlight(dato) {
+    this.selectedRowIndex = dato.id;
   }
 }

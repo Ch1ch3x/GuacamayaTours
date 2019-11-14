@@ -32,27 +32,25 @@ export class ListarHabitacionesComponent implements OnInit {
   public documentId = null;
   public currentStatus = 1;
   public newHabitacionForm = new FormGroup({
-    
     nombre: new FormControl('', Validators.required),
     hotel: new FormControl('', Validators.required),
     fechasDisponibles: new FormControl('', Validators.required),
     imagen: new FormControl('', Validators.required),
-    imagen2: new FormControl('', Validators.required),
-    imagen3: new FormControl('', Validators.required),
-    deshabilitar: new FormControl('', Validators.required),
+    imagen2: new FormControl(''),
+    imagen3: new FormControl(''),
+    deshabilitar: new FormControl(true),
 
   });
 
   constructor(private tipoHabitacionSV: TipoHabitacionService) {
     this.newHabitacionForm.setValue({
-      
       nombre: '',
       hotel: '',
       fechasDisponibles: '',
       imagen: '',
       imagen2: '',
       imagen3: '',
-      deshabilitar: ''
+      deshabilitar: true
     });
   }
 
@@ -71,7 +69,6 @@ export class ListarHabitacionesComponent implements OnInit {
           deshabilitar: ciudadData.payload.doc.data().deshabilitar
         });
       })
-        console.log(this.tipoHabitaciones)
     });
   }
     public newHabitacion(form, documentId = this.documentId) {
@@ -95,38 +92,14 @@ export class ListarHabitacionesComponent implements OnInit {
             imagen: '',
             imagen2: '',
             imagen3: '',
-            
+
             deshabilitar: ''
           });
         }, (error) => {
           console.error(error);
         });
       } else {
-        let data = {
-          nombre: form.nombre,
-          hotel: form.hotel,
-          fechasDisponibles: form.fechasDisponibles,
-          imagen: form.imagen,
-          imagen2: form.imagen2,
-          imagen3: form.imagen3,
-          deshabilitar: form.deshabilitar
-        }
-        this.tipoHabitacionSV.update(documentId, data).then(() => {
-          this.currentStatus = 1;
-          this.newHabitacionForm.setValue({
-            nombre: '',
-            hotel: '',
-            fechasDisponibles: '',
-            deshabilitar: '',
-            imagen:'',
-            imagen2: '',
-            imagen3: '',
-            id: ''
-          });
-          console.log('Documento editado exitósamente');
-        }, (error) => {
-          console.log(error);
-        });
+        this.close();
       }
     }
 
@@ -151,16 +124,12 @@ export class ListarHabitacionesComponent implements OnInit {
   openCrear() {
     this.formVisibility = true;
     this.crearformVisibility = true;
-    
+    this.currentStatus = 1;
   }
 
   crearHabitacion() {
     this.formVisibility = false;
     this.crearformVisibility = false;
-    this.newHabitacion("");
-  }
-
-  modifyRowData() {
   }
 
   openModificar() {
@@ -169,20 +138,20 @@ export class ListarHabitacionesComponent implements OnInit {
   }
 
   close() {
+    this.currentStatus = 3;
     this.formVisibility = false;
     this.crearformVisibility = false;
     this.modificarformVisibility = false;
   }
 
-  modificarCiudad() {
-    this.modifyRowData();
+  modificarHabitacion() {
     this.formVisibility = false;
     this.crearformVisibility = false;
     this.modificarformVisibility = false;
   }
 
-  highlight(row) {
-    this.selectedRowIndex = row.id;
+  highlight(dato) {
+    this.selectedRowIndex = dato.id;
   }
 
   deshabilitar() {

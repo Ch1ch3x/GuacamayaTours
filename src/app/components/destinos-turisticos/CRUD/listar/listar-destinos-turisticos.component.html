@@ -59,7 +59,7 @@
 </div>
 
 <div [hidden]="!crearformVisibility" id="form">
-  <!--<form class="border border-light p-5">
+  <form class="border border-light p-5" (ngSubmit)="newDestino(newDestinoForm.value)" [formGroup]="newDestinoForm">
     <div class="text-center">
       <p class="h4 mb-4">Ingrese los Datos del Nuevo Destino</p>
 
@@ -69,40 +69,34 @@
       </p>
     </div>
     <label for="Nombre">Nombre del Destino</label>
-    <label [hidden]="valnombre" id="validate" for="Nombre">Debe ingresar un nombre para el Destino Turistico</label>
     <input
       type="text"
       id="Nombre"
       class="form-control mb-4"
-      formControlName="Destino.nombre"
+      formControlName="nombre"
 
       placeholder="Nombre de Destino"
     />
     <label for="Estado">Estado del Destino</label>
-    <label [hidden]="valestado" id="validate" for="Estado">Debe ingresar un Estado para el Destino Turistico</label>
-    <select class="browser-default custom-select mb-4" formControlName="Destino.estado"
-      (change)="capturarEstado()" id="Estado">
+    <select class="browser-default custom-select mb-4" formControlName="estado"
+       id="Estado">
       <option value="" disabled="" selected="">Elije un Estado</option>
       <option value="1">Falcon</option>
       <option value="2">Sucre</option>
       <option value="3">Nueva Esparta</option>
     </select>
     <label for="Ciudad">Ciudad del Destino</label>
-    <label [hidden]="valciudad" id="validate" for="Ciudad">Debe ingresar una Ciudad para el Destino Turistico</label>
-    <select class="browser-default custom-select mb-4" formControlName="Destino.ciudad"
-      (change)="capturarCiudad()" id="Ciudad">
+    <select class="browser-default custom-select mb-4" formControlName="ciudad"
+       id="Ciudad">
       <option value="" disabled="" selected="">Elije una Ciudad</option>
       <option value="1">Chichiriviche</option>
       <option value="2">Tucacas</option>
       <option value="3">Puerto Cabello</option>
     </select>
     <label for="Tipo">Tipo de destino</label>
-    <label [hidden]="valtipo" id="validate" for="Tipo">Debe ingresar un tipo de destino para el Destino Turistico</label>
     <select
       class="browser-default custom-select mb-4"
-      formControlName="Destino.tipo"
-
-      (change)="capturarTipo()"
+      formControlName="tipo"
       id="Tipo"
     >
       <option value="" disabled="" selected="">Elije un Tipo de Destino</option>
@@ -111,74 +105,68 @@
       <option value="3">Arte</option>
     </select>
     <label for="Servicios">Servicios del Destino</label>
-    <label [hidden]="valservicios" id="validate" for="Servicios">Debe ingresar un Servicio para el Destino Turistico</label>
     <input
       type="text"
       id="Servicios"
       class="form-control mb-4"
-      formControlName="Destino.servicios"
+      formControlName="servicios"
 
       placeholder="Servicios del Destino"
     />
     <label for="Actividades">Actividades del Destino</label>
-    <label [hidden]="valactividades" id="validate" for="Actividades">Debe ingresar una Actividad para el Destino Turistico</label>
     <input
       type="text"
       id="Actividades"
       class="form-control mb-4"
-      formControlName="Destino.actividades"
+      formControlName="actividades"
 
       placeholder="Actividades del Destino"
     />
     <label for="Latitud">Latitud del Destino</label>
-    <label [hidden]="vallatitud" id="validate" for="Latitud">Debe ingresar una latitud para el Destino Turistico</label>
     <input
       type="text"
       id="Latitud"
       class="form-control mb-4"
-      formControlName="Destino.latitud"
+      formControlName="latitud"
 
       placeholder="Latitud"
     />
     <label for="Longitud">Longitud del Destino</label>
-    <label [hidden]="vallongitud" id="validate" for="Longitud">Debe ingresar una longitud para el Destino Turistico</label>
     <input
       type="text"
       id="Longitud"
       class="form-control mb-4"
-      formControlName="Destino.longitud"
+      formControlName="longitud"
 
       placeholder="Longitud"
     />
     <label for="Dirección">Dirección del Destino</label>
-    <label [hidden]="valdireccion" id="validate" for="Dirección">Debe ingresar una Dirección para el Destino Turistico</label>
     <input
       type="text"
       id="Dirección"
       class="form-control mb-4"
-      formControlName="Destino.direccion"
+      formControlName="direccion"
 
       placeholder="Dirección"
     />
     <label for="Descripción">Descripción</label>
-    <label [hidden]="valdescripcion" id="validate" for="Descripción">Debe ingresar una Descripción detallada para el Destino Turistico</label>
     <textarea
       id="Descripción"
       class="form-control mb-4"
-      formControlName="Destino.descripcion"
+      formControlName="descripcion"
 
       placeholder="Descripción del Destino"
     ></textarea>
 
     <button
       class="btn btn-info btn-block"
-      (click)="crearDestinos()"
+      (click)="crearDestino()"
       type="submit"
     >
       Crear
     </button>
     <button class="btn btn-info btn-block" (click)="close()" >Cancelar</button>
-  </form> -->
+  </form>
 </div>
 
 

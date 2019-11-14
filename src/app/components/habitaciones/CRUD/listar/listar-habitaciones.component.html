@@ -1,5 +1,5 @@
 <app-dashboard></app-dashboard>
-<div>
+
   <div [hidden]="formVisibility" class="container-fluid col-12 text-center">
     <div class="btn-group col-12" role="group" aria-label="Basic example">
       <button type="button" class="btn btn-outline-primary" name="button" (click)="openCrear()">Nueva Categoria
@@ -40,82 +40,51 @@
         </tr>
       </tbody>
     </table>
+  </div>
 
-    <div [hidden]="!crearformVisibility" id="form" class="col-12">
-      <form class="border border-light p-5" form (ngSubmit)="newHabitacion(newHabitacionForm.value)" [formGroup]="newHabitacionForm">
-        <div class="text-center">
-          <p class="h4 mb-4">Ingrese los Datos de la nueva Categoría</p>
-  
-          <p>
-            Coloque en la casilla correspondiente la información de la categoría.
-          </p>
-        </div>
-  
-        <label for="Nombre">Nombre de la Categoría</label>
-        <input
-          type="text"
-          id="Nombre"
-          class="form-control mb-4"
-          placeholder="Nombre de la categoría"
-          formControlName= "nombre"
-        />
-  
-        <label for="costo">Fotos de la categoría</label>
-        <input
-          type="text"
-          id="fotos"
-          class="form-control mb-4"
-          placeholder="URL"
-          formControlName= "imagen"
-        />
-  
-        <label for="costo">Fotos de la categoría</label>
-        <input
-          type="text"
-          id="fotos"
-          class="form-control mb-4"
-          placeholder="URL"
-          formControlName= "imagen2"
-        />
-  
-        <label for="costo">Fotos de la categoría</label>
-        <input
-          type="text"
-          id="fotos"
-          class="form-control mb-4"
-          placeholder="URL"
-          formControlName= "imagen3"
-        />
-  
-        <label for="costo">Deshabilitar</label>
-        <input
-          type="text"
-          id="fotos"
-          class="form-control mb-4"
-          placeholder="URL"
-          formControlName= "deshabilitar"
-        />
-  
-  
-        <button class="btn btn-info btn-block" (click)="crearHabitacion()" type="submit">Crear Categoría</button>
-        <button class="btn btn-info btn-block" (click)="close()" >Cancelar</button>
-      </form>
-    </div>
-  
+  <div [hidden]="!crearformVisibility" id="form">
+    <form class="border border-light p-5" [formGroup]="newHabitacionForm"
+      (ngSubmit)="newHabitacion(newHabitacionForm.value)">
+      <div class="text-center">
+        <p class="h4 mb-4">Ingrese los Datos de la nueva Categoría</p>
+
+        <p>
+          Coloque en la casilla correspondiente la información de la categoría.
+        </p>
+      </div>
+
+      <label for="Nombre">Nombre de la Categoría</label>
+      <input type="text" id="Nombre" class="form-control mb-4" placeholder="Nombre de la categoría"
+        formControlName="nombre" />
+
+      <label for="costo">Fotos de la categoría</label>
+      <input type="text" id="fotos" class="form-control mb-4" placeholder="URL" formControlName="imagen" />
+
+      <label for="costo">Fotos de la categoría</label>
+      <input type="text" id="fotos" class="form-control mb-4" placeholder="URL" formControlName="imagen2" />
+
+      <label for="costo">Fotos de la categoría</label>
+      <input type="text" id="fotos" class="form-control mb-4" placeholder="URL" formControlName="imagen3" />
+
+
+      <button class="btn btn-info btn-block" (click)="crearHabitacion()" type="submit">Crear Categoría</button>
+      <button class="btn btn-info btn-block" (click)="close()">Cancelar</button>
+    </form>
+  </div>
   <!--
     <div [hidden]="!modificarformVisibility" id="form">
       <form class = "border border-light p-5" form (ngSubmit) = "newHabitacion(newHabitacionForm.value)" [formGroup] = "newHabitacionForm">
         <div class = "text-center">
           <p class = "h4 mb-4">Modifique los Datos de la Categoría</p>
-  
+
           <p>
             Coloque en la casilla correspondiente la información de la categoría.
           </p>
         </div>
-  
+
         <label for="Nombre">Nombre de la Categoría</label>
         <input formControlName="nombre" type="text" id="Nombre" class="form-control mb-4" placeholder="categorias[tr.id].nombre" />
-  
+
         <label for="costo">Foto 1 de la categoría</label>
         <input formControlName="imagen" type="text" id="fotos" class="form-control mb-4" placeholder="categorias[row.id.nombre]"
            />
@@ -125,9 +94,8 @@
         <label for="costo">Foto 3 de la categoría</label>
         <input formControlName="imagen3" type="text" id="fotos" class="form-control mb-4" placeholder="categorias[row.id.nombre]"
            />
-  
-  
+
+
         <button class="btn btn-info btn-block" (click)="modificarCategoria()" type="submit">Crear Categoría</button>
         <button class="btn btn-info btn-block" (click)="close()" >Cancelar</button>
       </form> -->
-  </div>
