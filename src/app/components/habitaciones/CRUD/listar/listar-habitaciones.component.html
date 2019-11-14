@@ -18,10 +18,11 @@
         <tr>
           <th scope="col">Nombre</th>
           <th scope="col">Hotel</th>
-          <th scope="col">Fechas Disponibles</th>
           <th scope="col">Imagen</th>
-          <th scope="col">Imagen2</th>
-          <th scope="col">Imagen3</th>
+          <th scope="col">comodidades</th>
+          <th scope="col">descripcion</th>
+          <th scope="col">max</th>
+          <th scope="col">vista</th>
           <th scope="col">Vigencia</th>
         </tr>
       </thead>
@@ -32,10 +33,11 @@
         (click)="highlight(dato)">
           <td>{{dato.nombre}}</td>
           <td>{{dato.hotel}}</td>
-          <td>{{dato.fechasDisponibles}}</td>
           <td>{{dato.imagen}}</td>
-          <td>{{dato.imagen2}}</td>
-          <td>{{dato.imagen3}}</td>
+          <td>{{dato.comodidades}}</td>
+          <td>{{dato.descripcion}}</td>
+          <td>{{dato.max}}</td>
+          <td>{{dato.vista}}</td>
           <td>{{dato.deshabilitar}}</td>
         </tr>
       </tbody>
@@ -60,11 +62,20 @@
       <label for="costo">Fotos de la categoría</label>
       <input type="text" id="fotos" class="form-control mb-4" placeholder="URL" formControlName="imagen" />
 
-      <label for="costo">Fotos de la categoría</label>
-      <input type="text" id="fotos" class="form-control mb-4" placeholder="URL" formControlName="imagen2" />
+      <label for="costo">Cant Maxima de Personas</label>
+      <input type="text" id="fotos" class="form-control mb-4" placeholder="Max Personas" formControlName="max" />
 
-      <label for="costo">Fotos de la categoría</label>
-      <input type="text" id="fotos" class="form-control mb-4" placeholder="URL" formControlName="imagen3" />
+      <label for="costo">Descripcion</label>
+      <input type="text" id="fotos" class="form-control mb-4" placeholder="Descripcion" formControlName="descripcion" />
+
+      <label for="costo">Comodidades</label>
+      <input type="text" id="fotos" class="form-control mb-4" placeholder="Comodidades" formControlName="comodidades" />
+
+      <label for="costo">Vista</label>
+      <input type="text" id="fotos" class="form-control mb-4" placeholder="Vista" formControlName="vista" />
+
+      <label for="costo">Descripcion</label>
+      <input type="text" id="fotos" class="form-control mb-4" placeholder="Descripcion" formControlName="descripcion" />
 
 
       <button class="btn btn-info btn-block" (click)="crearHabitacion()" type="submit">Crear Categoría</button>

@@ -13,9 +13,11 @@ export class ListarHabitacionesComponent implements OnInit {
   displayedColumns: string[] = [
     'nombre',
     'hotel',
-    'fechas disponibles',
-    'disponibilidad',
+    'descripcion',
+    'comodidades',
     'imagen',
+    'max',
+    'vista'
   ];
  // dataSource = ELEMENT_DATA;
 
@@ -34,10 +36,11 @@ export class ListarHabitacionesComponent implements OnInit {
   public newHabitacionForm = new FormGroup({
     nombre: new FormControl('', Validators.required),
     hotel: new FormControl('', Validators.required),
-    fechasDisponibles: new FormControl('', Validators.required),
+    descripcion: new FormControl('', Validators.required),
     imagen: new FormControl('', Validators.required),
-    imagen2: new FormControl(''),
-    imagen3: new FormControl(''),
+    max: new FormControl('', Validators.required),
+    vista: new FormControl('', Validators.required),
+    comodidades: new FormControl('', Validators.required),
     deshabilitar: new FormControl(true),
 
   });
@@ -46,10 +49,11 @@ export class ListarHabitacionesComponent implements OnInit {
     this.newHabitacionForm.setValue({
       nombre: '',
       hotel: '',
-      fechasDisponibles: '',
+      descripcion: '',
       imagen: '',
-      imagen2: '',
-      imagen3: '',
+      max:'',
+      vista:'',
+      comodidades:'',
       deshabilitar: true
     });
   }
@@ -62,10 +66,11 @@ export class ListarHabitacionesComponent implements OnInit {
           id: ciudadData.payload.doc.data(),
           nombre: ciudadData.payload.doc.data().nombre,
           hotel: ciudadData.payload.doc.data().hotel,
-          fechasDisponibles: ciudadData.payload.doc.data().fechasDisponibles,
+          comodidades: ciudadData.payload.doc.data().comodidades,
+          descripcion: ciudadData.payload.doc.data().descripcion,
+          max: ciudadData.payload.doc.data().max,
           imagen: ciudadData.payload.doc.data().imagen,
-          imagen2: ciudadData.payload.doc.data().imagen2,
-          imagen3: ciudadData.payload.doc.data().imagen3,
+          vista: ciudadData.payload.doc.data().vista,
           deshabilitar: ciudadData.payload.doc.data().deshabilitar
         });
       })
@@ -77,10 +82,11 @@ export class ListarHabitacionesComponent implements OnInit {
         let data = {
           nombre: form.nombre,
           hotel: form.hotel,
-          fechasDisponibles: form.fechasDisponibles,
+          max: form.max,
+          comodidades: form.comodidades,
+          descripcion: form.descripcion,
+          vista: form.vista,
           imagen: form.imagen,
-          imagen2: form.imagen2,
-          imagen3: form.imagen3,
           deshabilitar: form.deshabilitar
         }
         this.tipoHabitacionSV.create(data).then(() => {
@@ -88,11 +94,11 @@ export class ListarHabitacionesComponent implements OnInit {
           this.newHabitacionForm.setValue({
             nombre: '',
             hotel: '',
-            fechasDisponibles: '',
+            max: '',
             imagen: '',
-            imagen2: '',
-            imagen3: '',
-
+            comodidades: '',
+            descripcion: '',
+            vista:'',
             deshabilitar: ''
           });
         }, (error) => {
@@ -112,8 +118,9 @@ export class ListarHabitacionesComponent implements OnInit {
           nombre: habitacion.payload.data()['nombre'],
           hotel: habitacion.payload.data()['hotel'],
           imagen: habitacion.payload.data()['imagen'],
-          imagen2: habitacion.payload.data()['imagen2'],
-          imagen3: habitacion.payload.data()['imagen3'],
+          comodidades: habitacion.payload.data()['comodidades'],
+          descripcion: habitacion.payload.data()['descripcion'],
+          max: habitacion.payload.data()['max'],
           desabilitar: habitacion.payload.data()['desabilitar'],
         });
         editSubscribe.unsubscribe();
