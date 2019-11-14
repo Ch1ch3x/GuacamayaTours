@@ -1,15 +1,11 @@
 import { Component, ViewChild, OnInit } from "@angular/core";
 import { MatTable } from "@angular/material";
-import hoteles from "../../../../data/hoteles.json";
 import { hotel } from "../../../../interfaces/hotel";
-import * as ciudades from "../../../../data/ciudades.json";
-import * as estados from "../../../../data/estados.json";
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HotelesService } from "../../../../services/firebase/hoteles.service";
 import { CiudadesService } from 'src/app/services/firebase/ciudades.service.js';
 import { EstadosService } from 'src/app/services/firebase/estados.service.js';
 
-const ELEMENT_DATA: hotel[] = hoteles;
 
 @Component({
   selector: "app-listar-hoteles",
@@ -17,8 +13,8 @@ const ELEMENT_DATA: hotel[] = hoteles;
   styleUrls: ["./listar-hoteles.component.scss"]
 })
 export class ListarHotelesComponent implements OnInit {
-  ciudades = ciudades;
-  estados = estados;
+  ciudades = [];
+  estados = [];
 
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
 
@@ -28,36 +24,6 @@ export class ListarHotelesComponent implements OnInit {
 
   total = 2;
 
-  public hotel = hoteles;
-
-  Hotel = {
-    id: this.hotel.length,
-    nombre: "",
-    actividades: [""],
-    estrellas: 3,
-    latitud: "",
-    longitud: "",
-    direccion: "",
-    estado: "",
-    fotos: [""],
-    ciudad: "",
-    fullDay: {
-      disponible: true,
-      precioXPersona: ""
-    },
-    servicios: [],
-    tipoHabitaciones: [
-      {
-        nombre: "",
-        fotos: [],
-        tipoVista: "",
-        maximoPersonas: "",
-        comodidades: [],
-        costoXNoche: 0
-      }
-    ],
-    deshabilitar: false,
-  };
 
   public hoteles = [];
   public documentId = null;
@@ -70,17 +36,18 @@ export class ListarHotelesComponent implements OnInit {
     actividades: new FormControl('', Validators.required),
     latitud: new FormControl('', Validators.required),
     longitud: new FormControl('', Validators.required),
-    estado: new FormControl('', Validators.required),
-    ciudad: new FormControl('', Validators.required),
+    idEstado: new FormControl('', Validators.required),
+    idCiudad: new FormControl('', Validators.required),
     direccion: new FormControl('', Validators.required),
-    /* fullDay: new FormGroup({
-      costoFullday: new FormControl('', Validators.required),
-      activoFullday: new FormControl('', Validators.required),
-      tipoHabitaciones: new FormControl('', Validators.required),
-    }), */
+    fullDay: new FormGroup({
+      costo: new FormControl(0, Validators.required),
+      activo: new FormControl(true, Validators.required),
+    }),
+    tipoHabitaciones: new FormControl('', Validators.required),
     imagen: new FormControl(''),
-    tipoHabitaciones: new FormControl(''),
-    deshabilitar: new FormControl('')
+    imagen2: new FormControl(''),
+    imagen3: new FormControl(''),
+    deshabilitar: new FormControl(null)
   });
 
 
@@ -93,12 +60,14 @@ export class ListarHotelesComponent implements OnInit {
       actividades: '',
       latitud: '',
       longitud: '',
-      estado: '',
-      ciudad: '',
-      // fullDay: {costo: '', activo: ''},
+      idEstado: '',
+      idCiudad: '',
+      fullDay: {costo: 0, activo: null},
       tipoHabitaciones: '',
       imagen: '',
-      deshabilitar: ''
+      imagen2: '',
+      imagen3: '',
+      deshabilitar: true
     });
   }
 
@@ -115,15 +84,14 @@ export class ListarHotelesComponent implements OnInit {
           servicios: ordenData.payload.doc.data().servicios,
           latitud: ordenData.payload.doc.data().latitud,
           longitud: ordenData.payload.doc.data().longitud,
-          estado: ordenData.payload.doc.data().estado,
-          ciudad: ordenData.payload.doc.data().ciudad,
+          idEstado: ordenData.payload.doc.data().idEstado,
+          idCiudad: ordenData.payload.doc.data().idCiudad,
           direccion: ordenData.payload.doc.data().direccion,
           /* costoFullday: ordenData.payload.doc.data().fullday.costo,
           activoFullday: ordenData.payload.doc.data().fullday.activo, */
           imagen: ordenData.payload.doc.data().imagen,
           deshabilitar: ordenData.payload.doc.data().deshabilitar
         });
-        console.log(this.hoteles)
       })
     });
     this.EstadosSV.getAll().subscribe((estadosSnapshot) => {
@@ -143,7 +111,7 @@ export class ListarHotelesComponent implements OnInit {
         this.ciudades.push({
           id: ciudadData.payload.doc.data(),
           nombre: ciudadData.payload.doc.data().nombre,
-          estado: ciudadData.payload.doc.data().estado,
+          idEstado: ciudadData.payload.doc.data().idEstado,
           imagen: ciudadData.payload.doc.data().imagen,
           deshabilitar: ciudadData.payload.doc.data().deshabilitar
         });
@@ -164,13 +132,16 @@ export class ListarHotelesComponent implements OnInit {
         servicios: form.servicios,
         latitud: form.latitud,
         longitud: form.longitud,
-        estado: form.estado,
-        ciudad: form.ciudad,
+        idEstado: form.idEstado,
+        idCiudad: form.idCiudad,
         direccion: form.direccion,
-        /*costoFullday: form.costoFullday,
-        activoFullday: form.activoFullday,*/
+        fullDay: {
+          costo: form.costo,
+          activo: form.activo},
         imagen: form.imagen,
-        deshabilitar: form.deshabilitar
+        imagen2: form.imagen2,
+        imagen3: form.imagen3,
+        deshabilitar: true
       }
       this.HotelSV.create(data).then(() => {
         console.log('Documento creado exitósamente!');
@@ -180,13 +151,18 @@ export class ListarHotelesComponent implements OnInit {
           servicios: '',
           latitud: '',
           longitud: '',
-          estado: '',
-          ciudad: '',
+          idEstado: '',
+          idCiudad: '',
           direccion: '',
-          /*costoFullday: '',
-          activoFullday: '',*/
+          fullDay: {
+            costo: 0,
+            activo: null
+          },
           imagen: '',
-          deshabilitar: ''
+          imagen2: '',
+          imagen3: '',
+
+          deshabilitar: true
         });
       }, (error) => {
         console.error(error);
@@ -203,12 +179,12 @@ export class ListarHotelesComponent implements OnInit {
       this.newHotelForm.setValue({
         id: documentId,
         nombre: hotel.payload.data()['nombre'],
-        estrellas:hotel.payload.data()['estrellas'],
+        estrellas: hotel.payload.data()['estrellas'],
         servicios: hotel.payload.data()['servicios'],
         latitud: hotel.payload.data()['latitud'],
         longitud: hotel.payload.data()['longitud'],
-        estado:hotel.payload.data()['estado'],
-        ciudad: hotel.payload.data()['ciudad'],
+        idEstado: hotel.payload.data()['idEstado'],
+        idCiudad: hotel.payload.data()['idCiudad'],
         direccion: hotel.payload.data()['direccion'],
         /*costoFullday: hotel.payload.data()['costoFullday'],
         activoFullday: hotel.payload.data()['activoFullday'],*/

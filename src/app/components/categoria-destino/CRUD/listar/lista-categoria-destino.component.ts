@@ -105,6 +105,8 @@ export class ListaCategoriaDestinoComponent implements OnInit {
       });
     }
 
+
+
   openCrear() {
     this.formVisibility = true;
     this.crearformVisibility = true;
@@ -128,7 +130,6 @@ export class ListaCategoriaDestinoComponent implements OnInit {
     this.modificarformVisibility = false;
   }
 
-
   modificarCategoria() {
     console.log("hey")
     console.log(this.selectedRowIndex)
@@ -144,38 +145,17 @@ export class ListaCategoriaDestinoComponent implements OnInit {
       console.log(this.categorias[index].nombre);
       if (this.categorias[index].id == this.selectedRowIndex) {
         this.categorias[index].deshabilitar = false;
-        let editSubscribe = this.CategoriaSV.getCategoria(this.categorias[index].id).subscribe((categoria) => {
-          this.currentStatus = 2;
-          this.documentId = this.categorias[index].id;
-          this.newCategoriaForm.setValue({
-            id: this.documentId,
-            nombre: categoria.payload.data()['nombre'],
-            deshabilitar: this.categorias[index].deshabilitar,
-          });
-          editSubscribe.unsubscribe();
-        });
-        this.table.renderRows;
       } else {
         continue;
       }
     }
   }
+
   habilitar() {
     for (let index = 0; index < tipos.length; index++) {
       console.log(this.categorias[index].nombre);
       if (this.categorias[index].id == this.selectedRowIndex){
         this.categorias[index].deshabilitar = true;
-        let editSubscribe = this.CategoriaSV.getCategoria(this.categorias[index].id).subscribe((categoria) => {
-          this.currentStatus = 2;
-          this.documentId = this.categorias[index].id;
-          this.newCategoriaForm.setValue({
-            id: this.documentId,
-            nombre: categoria.payload.data()['nombre'],
-            deshabilitar: categoria.payload.data()['deshabilitar'],
-          });
-          editSubscribe.unsubscribe();
-        });
-        this.table.renderRows;
       } else {
         continue;
       }

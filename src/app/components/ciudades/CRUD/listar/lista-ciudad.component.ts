@@ -37,7 +37,7 @@ export class ListaCiudadComponent {
   selectedRowIndex: any;
 
   public ciudades = [];
-  public estados= [];
+  public estados = [];
   public documentId = null;
   public currentStatus = 1;
   public newCiudadForm = new FormGroup({
