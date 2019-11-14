@@ -101,8 +101,6 @@ export class ListarEstadoComponent implements OnInit {
       editSubscribe.unsubscribe();
     });
   }
-  clearEstado() {
-  }
 
   openCrear() {
     this.formVisibility = true;
@@ -133,12 +131,10 @@ export class ListarEstadoComponent implements OnInit {
     this.estados[this.selectedRowIndex].deshabilitar = false;
   }
 
-
   openModificar() {
   //  this.formVisibility = true;
   }
 
   modificarEstado() {
-   // this.formVisibility = false;
   }
 }
