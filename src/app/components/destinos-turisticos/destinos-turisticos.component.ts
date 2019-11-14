@@ -13,8 +13,10 @@ export class DestinosTuristicosComponent implements OnInit {
   private ciudades: any[] = [];
   private filteredCiudades: any[] = [];
   private categorias: any[] = [];
+  private categoria: string = "";
   private filteredCategorias: any[] = [];
   private destinos: any[] = [];
+  private filteredDestinos: any[] = [];
   estado: string;
   ciudad: string;
 
@@ -97,5 +99,70 @@ export class DestinosTuristicosComponent implements OnInit {
     this.filteredCategorias = this.categorias.filter(categoria =>
       this.filteredCategorias.some(fc => fc === categoria.id)
     );
+  }
+
+  filtrar() {
+    this.fireStoreService.getAll("destinos").subscribe(destinos => {
+      destinos.docs.map(destino => {
+        const dest = destino.data();
+        if (this.ciudad) {
+          if (this.estado) {
+            if (this.categoria) {
+              this.filteredDestinos = this.destinos.filter(
+                destino =>
+                  destino.idCiudad === this.ciudad &&
+                  destino.idEstado === this.estado &&
+                  destino.categorias.some(
+                    categoria => categoria === this.categoria
+                  )
+              );
+            } else {
+              this.filteredDestinos = this.destinos.filter(
+                destino =>
+                  destino.idCiudad === this.ciudad &&
+                  destino.idEstado === this.estado
+              );
+            }
+          } else {
+            if (this.categoria) {
+              this.filteredDestinos = this.destinos.filter(
+                destino =>
+                  destino.idCiudad === this.ciudad &&
+                  destino.categorias.some(
+                    categoria => categoria === this.categoria
+                  )
+              );
+            } else {
+              this.filteredDestinos = this.destinos.filter(
+                destino => destino.idCiudad === this.ciudad
+              );
+            }
+          }
+        } else if (this.estado) {
+          if (this.categoria) {
+            this.filteredDestinos = this.destinos.filter(
+              destino =>
+                destino.idEstado === this.estado &&
+                destino.categorias.some(
+                  categoria => categoria === this.categoria
+                )
+            );
+          } else {
+            this.filteredDestinos = this.destinos.filter(
+              destino => destino.idEstado === this.estado
+            );
+          }
+        } else if (this.categoria) {
+          this.filteredDestinos = this.destinos.filter(destino =>
+            destino.categorias.some(categoria => categoria === this.categoria)
+          );
+        }
+      });
+      console.log(this.filteredDestinos);
+    });
+  }
+
+  onChangeCategoria(idCtegoria) {
+    this.categoria = idCtegoria;
   }
 }
