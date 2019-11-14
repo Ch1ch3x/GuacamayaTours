@@ -48,48 +48,13 @@
   </div>
 </div>
 
-<div class="fila container-fluid">
+<div class="fila container-fluid" *ngIf="filteredDestinos.length > 0">
   <h2>RESULTADOS</h2>
 
   <div class="row">
-    <div class="col-4">
-      <img
-        class="search-img"
-        src="https://www.dzoom.org.es/wp-content/uploads/2017/07/seebensee-2384369-810x540.jpg"
-      />
-      <h6 class="title-result">LA GRAN SABANA</h6>
-    </div>
-
-    <div class="col-4">
-      <img
-        class="search-img"
-        src="https://www.dzoom.org.es/wp-content/uploads/2017/07/seebensee-2384369-810x540.jpg"
-      />
-      <h6 class="title-result">LA GRAN SABANA</h6>
-    </div>
-
-    <div class="col-4">
-      <img
-        class="search-img"
-        src="https://www.dzoom.org.es/wp-content/uploads/2017/07/seebensee-2384369-810x540.jpg"
-      />
-      <h6 class="title-result">LA GRAN SABANA</h6>
-    </div>
-
-    <div class="col-4">
-      <img
-        class="search-img"
-        src="https://www.dzoom.org.es/wp-content/uploads/2017/07/seebensee-2384369-810x540.jpg"
-      />
-      <h6 class="title-result">LA GRAN SABANA</h6>
-    </div>
-
-    <div class="col-4">
-      <img
-        class="search-img"
-        src="https://www.dzoom.org.es/wp-content/uploads/2017/07/seebensee-2384369-810x540.jpg"
-      />
-      <h6 class="title-result">LA GRAN SABANA</h6>
+    <div class="col-4" *ngFor="let destino of filteredDestinos">
+      <img class="search-img" [src]="destino.imagen" />
+      <h6 class="title-result">{{ destino.nombre }}</h6>
     </div>
   </div>
 </div>
