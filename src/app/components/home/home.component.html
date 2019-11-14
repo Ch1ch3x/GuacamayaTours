@@ -9,9 +9,6 @@
     <button class="btn">PLANEA TU VIAJE AHORA</button>
   </div>
 
-  <div class="">
-    <h2 class="">DESTINOS POPULARES</h2>
-  </div>
 
   <div class="slider">
     <ngb-carousel *ngIf="images">
@@ -33,10 +30,12 @@
     </div>
 
     <div class="actividades1 container-fluid">
-      <div class="elemento1">
-        <img [src]="actividades[0]" class="act hover" />
-        <p class="hover centered3">LOS ROQUES</p>
-      </div>
+        <div class="contenedor" *ngIf="destinos.length > 0">
+            <div class="elemento" *ngFor = "let actividad of destinos[0].actividades">
+              <img [src]="actividad.imagen" class="act hover" />
+              <p class="hover centered3">{{actividad.nombre}}</p>
+            </div>
+          </div>
       <div class="contenedor" *ngIf="destinos.length > 0">
         <div class="elemento" *ngFor = "let actividad of destinos[0].actividades">
           <img [src]="actividad.imagen" class="act hover" />
