@@ -133,7 +133,7 @@ export class ListaCiudadComponent {
           imagen: ciudad.payload.data()['imagen'],
           imagen2: ciudad.payload.data()['imagen2'],
           imagen3: ciudad.payload.data()['imagen3'],
-          desabilitar: ciudad.payload.data()['desabilitar'],
+          deshabilitar: ciudad.payload.data()['deshabilitar'],
         });
         editSubscribe.unsubscribe();
       });

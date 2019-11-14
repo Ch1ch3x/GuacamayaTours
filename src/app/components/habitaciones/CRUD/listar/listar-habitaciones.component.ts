@@ -121,7 +121,7 @@ export class ListarHabitacionesComponent implements OnInit {
           comodidades: habitacion.payload.data()['comodidades'],
           descripcion: habitacion.payload.data()['descripcion'],
           max: habitacion.payload.data()['max'],
-          desabilitar: habitacion.payload.data()['desabilitar'],
+          deshabilitar: habitacion.payload.data()['deshabilitar'],
         });
         editSubscribe.unsubscribe();
       });

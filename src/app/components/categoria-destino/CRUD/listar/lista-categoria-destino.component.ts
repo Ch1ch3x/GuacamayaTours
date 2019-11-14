@@ -22,7 +22,7 @@ export class ListaCategoriaDestinoComponent implements OnInit {
   formVisibility = false;
   modificarformVisibility = false;
   crearformVisibility = false;
-  selectedRowIndex: any;
+  selectedRowIndex: number;
 
 
   public categorias = [];
@@ -99,7 +99,7 @@ export class ListaCategoriaDestinoComponent implements OnInit {
           imagan: categoria.payload.data()['imagen'],
           imagen2: categoria.payload.data()['imagen2'],
           imagen3: categoria.payload.data()['imagen3'],
-          deshabilitar: categoria.payload.data()['desabilitar'],
+          deshabilitar: categoria.payload.data()['deshabilitar'],
         });
         editSubscribe.unsubscribe();
       });
@@ -128,19 +128,17 @@ export class ListaCategoriaDestinoComponent implements OnInit {
     this.modificarformVisibility = false;
   }
 
-  modificar() {
-  }
 
   modificarCategoria() {
+    console.log("hey")
+    console.log(this.selectedRowIndex)
+    console.log(this.categorias[this.selectedRowIndex].id)
+    this.currentStatus = 2;
     this.formVisibility = false;
     this.crearformVisibility = false;
     this.modificarformVisibility = false;
-    this.modificar();
   }
 
-  highlight(dato) {
-    this.selectedRowIndex = dato.id;
-  }
   deshabilitar() {
     for (let index = 0; index < tipos.length; index++) {
       console.log(this.categorias[index].nombre);

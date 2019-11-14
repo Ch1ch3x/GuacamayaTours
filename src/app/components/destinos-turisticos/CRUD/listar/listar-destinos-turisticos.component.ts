@@ -171,7 +171,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
         imagen: destino.payload.data()['imagen'],
         imagen2: destino.payload.data()['imagen2'],
         imagen3: destino.payload.data()['imagen3'],
-        desabilitar: destino.payload.data()['desabilitar'],
+        deshabilitar: destino.payload.data()['deshabilitar'],
       });
       editSubscribe.unsubscribe();
     });

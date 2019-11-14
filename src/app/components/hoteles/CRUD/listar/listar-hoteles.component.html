@@ -25,8 +25,6 @@
         <th scope="col">Costo FullDay</th>
         <th scope="col">Activo FullDay</th>
         <th scope="col">Imagen</th>
-        <th scope="col">Imagen2</th>
-        <th scope="col">Imagen3</th>
         <th scope="col">Vigencia</th>
       </tr>
     </thead>
@@ -43,8 +41,6 @@
         <td>{{dato.costoFullday}}</td>
         <td>{{dato.activoFullday}}</td>
         <td>{{dato.imagen}}</td>
-        <td>{{dato.imagen2}}</td>
-        <td>{{dato.imagen3}}</td>
         <td>{{dato.deshabilitar}}</td>
       </tr>
     </tbody>
@@ -142,7 +138,7 @@
       class="form-control mb-4"
       placeholder="Dirección"
     />
-
+<!--
     <label for="fullday">¿Ofrece fullday?</label>
     <select
       formControlName="activo"
@@ -161,11 +157,11 @@
       id="costo"
       class="form-control mb-4"
       placeholder="Costo por persona"
-    />
-
-    <label for="costo">Fotos del hotel</label>
+      
+      <label for="costo">Fotos del hotel</label>
+      /> --> 
     <input
-      formControlName="fotos"
+      formControlName="imagen"
       type="text"
       id="fotos"
       class="form-control mb-4"

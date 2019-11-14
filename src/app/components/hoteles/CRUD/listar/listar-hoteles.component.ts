@@ -73,14 +73,13 @@ export class ListarHotelesComponent implements OnInit {
     estado: new FormControl('', Validators.required),
     ciudad: new FormControl('', Validators.required),
     direccion: new FormControl('', Validators.required),
-    fullDay: new FormGroup({
-      costo: new FormControl('', Validators.required),
-      activo: new FormControl('', Validators.required),
-    }),
-    tipoHabitaciones: new FormControl('', Validators.required),
+    /* fullDay: new FormGroup({
+      costoFullday: new FormControl('', Validators.required),
+      activoFullday: new FormControl('', Validators.required),
+      tipoHabitaciones: new FormControl('', Validators.required),
+    }), */
     imagen: new FormControl(''),
-    imagen2: new FormControl(''),
-    imagen3: new FormControl(''),
+    tipoHabitaciones: new FormControl(''),
     deshabilitar: new FormControl('')
   });
 
@@ -96,11 +95,9 @@ export class ListarHotelesComponent implements OnInit {
       longitud: '',
       estado: '',
       ciudad: '',
-      fullDay: {costo: '', activo: ''},
+      // fullDay: {costo: '', activo: ''},
       tipoHabitaciones: '',
       imagen: '',
-      imagen2: '',
-      imagen3: '',
       deshabilitar: ''
     });
   }
@@ -121,11 +118,9 @@ export class ListarHotelesComponent implements OnInit {
           estado: ordenData.payload.doc.data().estado,
           ciudad: ordenData.payload.doc.data().ciudad,
           direccion: ordenData.payload.doc.data().direccion,
-          costoFullday: ordenData.payload.doc.data().fullday.costo,
-          activoFullday: ordenData.payload.doc.data().fullday.activo,
+          /* costoFullday: ordenData.payload.doc.data().fullday.costo,
+          activoFullday: ordenData.payload.doc.data().fullday.activo, */
           imagen: ordenData.payload.doc.data().imagen,
-          imagen2: ordenData.payload.doc.data().imagen2,
-          imagen3: ordenData.payload.doc.data().imagen3,
           deshabilitar: ordenData.payload.doc.data().deshabilitar
         });
         console.log(this.hoteles)
@@ -172,11 +167,9 @@ export class ListarHotelesComponent implements OnInit {
         estado: form.estado,
         ciudad: form.ciudad,
         direccion: form.direccion,
-        costo: form.costo,
-        activo: form.activo,
+        /*costoFullday: form.costoFullday,
+        activoFullday: form.activoFullday,*/
         imagen: form.imagen,
-        imagen2: form.imagen2,
-        imagen3: form.imagen3,
         deshabilitar: form.deshabilitar
       }
       this.HotelSV.create(data).then(() => {
@@ -190,12 +183,9 @@ export class ListarHotelesComponent implements OnInit {
           estado: '',
           ciudad: '',
           direccion: '',
-          costo: '',
-          activo: '',
+          /*costoFullday: '',
+          activoFullday: '',*/
           imagen: '',
-          imagen2: '',
-          imagen3: '',
-
           deshabilitar: ''
         });
       }, (error) => {
@@ -220,12 +210,10 @@ export class ListarHotelesComponent implements OnInit {
         estado:hotel.payload.data()['estado'],
         ciudad: hotel.payload.data()['ciudad'],
         direccion: hotel.payload.data()['direccion'],
-        costo: hotel.payload.data()['costo'],
-        activo: hotel.payload.data()['activo'],
+        /*costoFullday: hotel.payload.data()['costoFullday'],
+        activoFullday: hotel.payload.data()['activoFullday'],*/
         imagen: hotel.payload.data()['imagen'],
-        imagen2: hotel.payload.data()['imagen2'],
-        imagen3: hotel.payload.data()['imagen3'],
-        desabilitar: hotel.payload.data()['desabilitar'],
+        deshabilitar: hotel.payload.data()['deshabilitar'],
       });
       editSubscribe.unsubscribe();
     });
