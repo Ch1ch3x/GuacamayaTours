@@ -9,11 +9,11 @@
   #headdescription{
     text-align: center;
   }
-  .container{
+  .container-fluid{
     width: 80%;
-    padding-left: 40%;
+    padding-left: 35%;
+    padding-right: 0px;
     margin:0;
-
   }
   .agregar{
     margin: 5%;
@@ -24,13 +24,19 @@
   #form{
     margin-left: 30%;
     margin-right: 25%;
-    width: 55%;
   }
-
-  .table{
-    padding-top: 15px;
-    padding-right: 0;
-    margin:0px;
-    padding-left:55px;
+  .btn{
+    margin-bottom: 2%;
   }
-
+  .highlight{
+    background: lightblue;
+  }
+  .highlight2{
+    background: lightgray;
+  }
+  .highlight3{
+    background: lightblue;
+  }
+  .highlight4{
+    background: white;
+  }

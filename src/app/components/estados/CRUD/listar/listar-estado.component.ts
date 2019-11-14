@@ -16,7 +16,8 @@ export class ListarEstadoComponent implements OnInit {
   dataSource = this.estados;
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
   formVisibility = false;
-  prueba = 0;
+  modificarformVisibility = false;
+  crearformVisibility = false;
 
   public documentId = null;
   public currentStatus = 1;
@@ -53,7 +54,6 @@ export class ListarEstadoComponent implements OnInit {
           imagen3: estadoData.payload.doc.data().imagen3,
           deshabilitar: estadoData.payload.doc.data().deshabilitar,
         });
-        console.log(this.estados[this.prueba].nombre + ' ' + this.estados[this.prueba].deshabilitar);
       })
     });
 
@@ -83,26 +83,7 @@ export class ListarEstadoComponent implements OnInit {
         console.error(error);
       });
     } else {
-      let data = {
-        nombre: form.nombre,
-        imagen: form.imagen,
-        imagen2: form.imagen2,
-        imagen3: form.imagen3,
-        deshabilitar: form.deshabilitar
-      }
-      this.EstadoSV.update(documentId, data).then(() => {
-        this.currentStatus = 1;
-        this.newEstadoForm.setValue({
-          nombre: '',
-          deshabilitar: '',
-          imagen:'',
-          imagen2: '',
-          imagen3: '',
-        });
-        console.log('Documento editado exitósamente');
-      }, (error) => {
-        console.log(error);
-      });
+      this.close();
     }
   }
 
@@ -125,15 +106,24 @@ export class ListarEstadoComponent implements OnInit {
 
   openCrear() {
     this.formVisibility = true;
+    this.crearformVisibility = true;
+    this.currentStatus = 1;
   }
 
   crearEstado() {
     this.formVisibility = false;
-    this.newEstado("");
+    this.crearformVisibility = false;
   }
 
-  highlight(row) {
-    this.selectedRowIndex = row.id;
+  close() {
+    this.currentStatus = 3;
+    this.formVisibility = false;
+    this.crearformVisibility = false;
+    this.modificarformVisibility = false;
+  }
+
+  highlight(dato) {
+    this.selectedRowIndex = dato.id;
   }
 
   deshabilitar() {
@@ -142,23 +132,13 @@ export class ListarEstadoComponent implements OnInit {
   habilitar() {
     this.estados[this.selectedRowIndex].deshabilitar = false;
   }
-  addRowData() {
-    this.clearEstado();
-    this.table.renderRows();
-  }
 
-  modifyRowData() {
-    this.estados.push();
-    this.clearEstado();
-    this.table.renderRows();
-  }
 
   openModificar() {
   //  this.formVisibility = true;
   }
 
   modificarEstado() {
-    this.modifyRowData();
    // this.formVisibility = false;
   }
 }

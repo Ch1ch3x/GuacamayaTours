@@ -29,7 +29,6 @@ export class ListaCategoriaDestinoComponent implements OnInit {
   public documentId = null;
   public currentStatus = 1;
   public newCategoriaForm = new FormGroup({
-    
     nombre: new FormControl('', Validators.required),
     imagen: new FormControl('', Validators.required),
     imagen2: new FormControl('', Validators.required),
@@ -39,12 +38,11 @@ export class ListaCategoriaDestinoComponent implements OnInit {
 
   constructor(private CategoriaSV: CategoriasService) {
     this.newCategoriaForm.setValue({
-      
       nombre: '',
       imagen: '',
       imagen2: '',
       imagen3: '',
-      deshabilitar: ''
+      deshabilitar: true
     });
   }
 
@@ -71,7 +69,7 @@ export class ListaCategoriaDestinoComponent implements OnInit {
           imagen: form.imagen,
           imagen2: form.imagen2,
           imagen3: form.imagen3,
-          deshabilitar: form.deshabilitar
+          deshabilitar: true
         }
         this.CategoriaSV.create(data).then(() => {
           console.log('Documento creado exitósamente!');
@@ -80,34 +78,13 @@ export class ListaCategoriaDestinoComponent implements OnInit {
             imagen: '',
             imagen2: '',
             imagen3: '',
-            
-            deshabilitar: ''
+            deshabilitar: true
           });
         }, (error) => {
           console.error(error);
         });
       } else {
-        let data = {
-          nombre: form.nombre,
-          imagen: form.imagen,
-          imagen2: form.imagen2,
-          imagen3: form.imagen3,
-          deshabilitar: form.deshabilitar
-        }
-        this.CategoriaSV.update(documentId, data).then(() => {
-          this.currentStatus = 1;
-          this.newCategoriaForm.setValue({
-            nombre: '',
-            deshabilitar: '',
-            imagen:'',
-            imagen2: '',
-            imagen3: '',
-            id: ''
-          });
-          console.log('Documento editado exitósamente');
-        }, (error) => {
-          console.log(error);
-        });
+        this.close();
       }
     }
 
@@ -128,28 +105,15 @@ export class ListaCategoriaDestinoComponent implements OnInit {
       });
     }
 
-
-
-  clearEstado() {
-  }
-
   openCrear() {
     this.formVisibility = true;
     this.crearformVisibility = true;
+    this.currentStatus = 1;
   }
 
   crearCategoria() {
     this.formVisibility = false;
     this.crearformVisibility = false;
-  }
-
-  addRowData() {
-    this.clearEstado();
-    this.table.renderRows();
-  }
-
-  modifyRowData() {
-    this.table.renderRows();
   }
 
   openModificar() {
@@ -158,6 +122,7 @@ export class ListaCategoriaDestinoComponent implements OnInit {
   }
 
   close() {
+    this.currentStatus = 3;
     this.formVisibility = false;
     this.crearformVisibility = false;
     this.modificarformVisibility = false;
@@ -167,7 +132,6 @@ export class ListaCategoriaDestinoComponent implements OnInit {
   }
 
   modificarCategoria() {
-    this.modifyRowData();
     this.formVisibility = false;
     this.crearformVisibility = false;
     this.modificarformVisibility = false;

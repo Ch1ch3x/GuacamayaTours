@@ -35,7 +35,7 @@
   </div>
 
  <div [hidden]="!crearformVisibility" id="form">
-    <form class="border border-light p-5" (ngSubmit)="newCategoria(newCategoriaForm.value)" [formGroup]="newCategoriaForm">
+    <form class="border border-light p-5" [formGroup]="newCategoriaForm" (ngSubmit)="newCategoria(newCategoriaForm.value)">
       <div class="text-center">
         <p class="h4 mb-4">Ingrese los Datos de la nueva Categoría</p>
 
@@ -80,18 +80,9 @@
         formControlName="imagen3"
       />
 
-      <label for="costo">Deshabilitar</label>
-      <input
-        type="text"
-        id="fotos"
-        class="form-control mb-4"
-        placeholder="URL"
-        formControlName="deshabilitar"
-      />
-
 
       <button class="btn btn-info btn-block" (click)="crearCategoria()" type="submit">Crear Categoría</button>
-      <button class="btn btn-info btn-block" (click)="close()" >Cancelar</button>
+      <button class="btn btn-info btn-block" (click)="close()">Cancelar</button>
     </form>
   </div>
 

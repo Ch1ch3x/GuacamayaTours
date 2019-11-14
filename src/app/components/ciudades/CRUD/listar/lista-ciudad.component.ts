@@ -41,19 +41,18 @@ export class ListaCiudadComponent {
   public documentId = null;
   public currentStatus = 1;
   public newCiudadForm = new FormGroup({
-    
+
     nombre: new FormControl('', Validators.required),
     idEstado: new FormControl('', Validators.required),
     imagen: new FormControl('', Validators.required),
-    imagen2: new FormControl('', Validators.required),
-    imagen3: new FormControl('', Validators.required),
-    deshabilitar: new FormControl('', Validators.required)
+    imagen2: new FormControl(''),
+    imagen3: new FormControl(''),
+    deshabilitar: new FormControl(true)
 
   });
 
   constructor(private CiudadSV: CiudadesService, private EstadosSV: EstadosService) {
     this.newCiudadForm.setValue({
-      
       nombre: '',
       idEstado: '',
       imagen: '',
@@ -84,16 +83,16 @@ export class ListaCiudadComponent {
           id: ciudadData.payload.doc.data(),
           nombre: ciudadData.payload.doc.data().nombre,
           idEstado: ciudadData.payload.doc.data().idEstado,
-          estado: this.transform(ciudadData.payload.doc.data().idEstado),
           imagen: ciudadData.payload.doc.data().imagen,
           imagen2: ciudadData.payload.doc.data().imagen2,
           imagen3: ciudadData.payload.doc.data().imagen3,
           deshabilitar: ciudadData.payload.doc.data().deshabilitar
         });
       })
+      console.log(this.ciudades);
     });
   }
-    public newCiudad(form, documentId = this.documentId) {
+    public newCiudad(form, documentID = this.documentId) {
       console.log(`Status: ${this.currentStatus}`);
       if (this.currentStatus == 1) {
         let data = {
@@ -112,35 +111,14 @@ export class ListaCiudadComponent {
             imagen: '',
             imagen2: '',
             imagen3: '',
-            
+
             deshabilitar: true,
           });
         }, (error) => {
           console.error(error);
         });
       } else {
-        let data = {
-          nombre: form.nombre,
-          idEstado: form.idEstado,
-          imagen: form.imagen,
-          imagen2: form.imagen2,
-          imagen3: form.imagen3,
-          deshabilitar: form.deshabilitar
-        }
-        this.CiudadSV.update(documentId, data).then(() => {
-          this.currentStatus = 1;
-          this.newCiudadForm.setValue({
-            nombre: '',
-            idEstado: '',
-            deshabilitar: true,
-            imagen:'',
-            imagen2: '',
-            imagen3: ''
-          });
-          console.log('Documento editado exitósamente');
-        }, (error) => {
-          console.log(error);
-        });
+        this.close();
       }
     }
 
@@ -161,29 +139,15 @@ export class ListaCiudadComponent {
       });
     }
 
-  clearCiudad() {
-   /* this.Ciudad = {
-      nombre: '',
-      estado: '',
-      imagen: '',
-      deshabilitar: false,
-      id: this.ciudad.length,
-    }; */
-  }
-
   openCrear() {
     this.formVisibility = true;
     this.crearformVisibility = true;
+    this.currentStatus = 1;
   }
 
   crearCiudad() {
     this.formVisibility = false;
     this.crearformVisibility = false;
-    this.newCiudad("");
-  }
-
-  modifyRowData() {
-    this.table.renderRows();
   }
 
   openModificar() {
@@ -192,13 +156,13 @@ export class ListaCiudadComponent {
   }
 
   close() {
+    this.currentStatus = 3;
     this.formVisibility = false;
     this.crearformVisibility = false;
     this.modificarformVisibility = false;
   }
 
   modificarCiudad() {
-    this.modifyRowData();
     this.formVisibility = false;
     this.crearformVisibility = false;
     this.modificarformVisibility = false;
@@ -213,18 +177,5 @@ export class ListaCiudadComponent {
   }
   habilitar() {
     ciudades[this.selectedRowIndex].deshabilitar = false;
-  }
-
-  public transform(id) {
-    console.log("no entro al for");
-    for (let index = 0; index < this.estados.length; index++) {
-      console.log("entro");
-      if(id == this.estados[index].id){
-        console.log("siguio")
-        return this.estados[index].nombre;
-      }else{
-        continue
-      }
-    }
   }
 }
