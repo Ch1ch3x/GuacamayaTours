@@ -1,4 +1,4 @@
-<body>
+<div class ="body">
   <app-navbar> </app-navbar>
 
   <div class="containe">
@@ -16,7 +16,7 @@
     <ngb-carousel *ngIf="images">
       <ng-template ngbSlide *ngFor="let destino of destinos">
         <div class="picsum-img-wrapper">
-          <img [src]="destino.imagen" alt="" />
+          <img [src]="destino.imagen" alt="" class="maximo"/>
         </div>
         <div class="carousel-caption">
           <a routerLink="/destinos/destino.id"><h3>{{destino.nombre}}</h3></a>
@@ -31,7 +31,7 @@
       <h1 class="title">ACTIVIDADES</h1>
     </div>
 
-    <div class="row actividades1">
+    <div class="actividades1">
       <div class="elemento1">
         <img [src]="actividades[0]" class="act hover" />
         <p class="hover centered3">LOS ROQUES</p>
@@ -49,13 +49,13 @@
     <img src="../../../assets/img/algo.jpg" alt="Opciones" class="full" />
     <h1 class="title1">HOTELES</h1>
     <div class="hoteles row container-fluid">
-      <div class="col" *ngFor="let hotel of hoteles">
+      <div class="col-4" *ngFor="let hotel of hoteles">
         <a routerLink="/hoteles"><img [src]="hotel.imagen" class="hotel"/></a>
         <h3>{{hotel.nombre}}</h3>
       </div>
      
     </div>
   </div>
-</body>
+</div>
 
 <app-footer></app-footer>
