@@ -11,6 +11,8 @@
       <button type="button" class="btn btn-outline-primary" name="button" (click)="deshabilitar()">Deshabilitar
         Habitacion
       </button>
+      <button type="button" class="btn btn-outline-primary" name="button" (click)="soltar()">Quitar Seleccion
+      </button>
     </div>
 
     <table class="table">
@@ -58,6 +60,15 @@
       <label for="Nombre">Nombre de la Categoría</label>
       <input type="text" id="Nombre" class="form-control mb-4" placeholder="Nombre de la categoría"
         formControlName="nombre" />
+
+        <label for="Ciudad">Hotel donde pertenece la Habitacion</label>
+        <select formControlName="idHotel"
+          class="form-control mb-4"
+          id="Ciudad"
+        >
+          <option>Elije el hotel</option>
+          <option *ngFor="let hotel of hoteles">{{hotel.nombre}}</option>
+          </select>
 
       <label for="costo">Fotos de la categoría</label>
       <input type="text" id="fotos" class="form-control mb-4" placeholder="URL" formControlName="imagen" />

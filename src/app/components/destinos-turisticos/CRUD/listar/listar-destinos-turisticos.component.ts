@@ -200,4 +200,29 @@ export class ListarDestinosTuristicosComponent implements OnInit {
   highlight(dato) {
     this.selectedRowIndex = dato.id;
   }
+
+  soltar() {
+    this.highlight(-1)
+  }
+
+  deshabilitar() {
+    for (let index = 0; index < this.destinos.length; index++) {
+      if (this.destinos[index].id == this.selectedRowIndex) {
+        this.destinos[index].deshabilitar = false;
+      } else {
+        continue;
+      }
+    }
+  }
+
+  habilitar() {
+    for (let index = 0; index < this.destinos.length; index++) {
+      console.log(this.destinos[index].nombre);
+      if (this.destinos[index].id == this.selectedRowIndex){
+        this.destinos[index].deshabilitar = true;
+      } else {
+        continue;
+      }
+    }
+  }
 }

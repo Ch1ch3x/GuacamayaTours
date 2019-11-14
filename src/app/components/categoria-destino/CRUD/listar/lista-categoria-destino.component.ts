@@ -130,6 +130,10 @@ export class ListaCategoriaDestinoComponent implements OnInit {
     this.modificarformVisibility = false;
   }
 
+  highlight(dato) {
+    this.selectedRowIndex = dato.id;
+  }
+
   modificarCategoria() {
     console.log("hey")
     console.log(this.selectedRowIndex)
@@ -138,6 +142,10 @@ export class ListaCategoriaDestinoComponent implements OnInit {
     this.formVisibility = false;
     this.crearformVisibility = false;
     this.modificarformVisibility = false;
+  }
+
+  soltar() {
+    this.highlight(-1)
   }
 
   deshabilitar() {

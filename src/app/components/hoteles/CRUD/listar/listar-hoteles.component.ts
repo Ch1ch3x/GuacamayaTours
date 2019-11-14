@@ -224,7 +224,33 @@ export class ListarHotelesComponent implements OnInit {
     this.modificarformVisibility = false;
   }
 
+
   highlight(dato) {
     this.selectedRowIndex = dato.id;
+  }
+
+  soltar() {
+    this.highlight(-1)
+  }
+
+  deshabilitar() {
+    for (let index = 0; index < this.hoteles.length; index++) {
+      if (this.hoteles[index].id == this.selectedRowIndex) {
+        this.hoteles[index].deshabilitar = false;
+      } else {
+        continue;
+      }
+    }
+  }
+
+  habilitar() {
+    for (let index = 0; index < this.hoteles.length; index++) {
+      console.log(this.hoteles[index].nombre);
+      if (this.hoteles[index].id == this.selectedRowIndex){
+        this.hoteles[index].deshabilitar = true;
+      } else {
+        continue;
+      }
+    }
   }
 }

@@ -124,11 +124,29 @@ export class ListarEstadoComponent implements OnInit {
     this.selectedRowIndex = dato.id;
   }
 
-  deshabilitar() {
-    this.estados[this.selectedRowIndex].deshabilitar = true;
+  soltar() {
+    this.highlight(-1)
   }
+
+  deshabilitar() {
+    for (let index = 0; index < this.estados.length; index++) {
+      if (this.estados[index].id == this.selectedRowIndex) {
+        this.estados[index].deshabilitar = false;
+      } else {
+        continue;
+      }
+    }
+  }
+
   habilitar() {
-    this.estados[this.selectedRowIndex].deshabilitar = false;
+    for (let index = 0; index < this.estados.length; index++) {
+      console.log(this.estados[index].nombre);
+      if (this.estados[index].id == this.selectedRowIndex){
+        this.estados[index].deshabilitar = true;
+      } else {
+        continue;
+      }
+    }
   }
 
   openModificar() {

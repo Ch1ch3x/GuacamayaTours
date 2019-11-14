@@ -172,10 +172,28 @@ export class ListaCiudadComponent {
     this.selectedRowIndex = dato.id;
   }
 
-  deshabilitar() {
-    ciudades[this.selectedRowIndex].deshabilitar = true;
+  soltar() {
+    this.highlight(-1)
   }
+
+  deshabilitar() {
+    for (let index = 0; index < this.ciudades.length; index++) {
+      if (this.ciudades[index].id == this.selectedRowIndex) {
+        this.ciudades[index].deshabilitar = false;
+      } else {
+        continue;
+      }
+    }
+  }
+
   habilitar() {
-    ciudades[this.selectedRowIndex].deshabilitar = false;
+    for (let index = 0; index < this.ciudades.length; index++) {
+      console.log(this.ciudades[index].nombre);
+      if (this.ciudades[index].id == this.selectedRowIndex){
+        this.ciudades[index].deshabilitar = true;
+      } else {
+        continue;
+      }
+    }
   }
 }

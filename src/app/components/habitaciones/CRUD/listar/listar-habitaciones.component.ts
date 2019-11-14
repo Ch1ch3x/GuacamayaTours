@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TipoHabitacionService } from 'src/app/services/firebase/tipo-habitacion.service';
+import { HotelesService } from 'src/app/services/firebase/hoteles.service';
 
 @Component({
   selector: 'app-listar-habitaciones',
@@ -30,12 +31,13 @@ export class ListarHabitacionesComponent implements OnInit {
 
   selectedRowIndex: number = -1;
 
+  public hoteles = [];
   public tipoHabitaciones = [];
   public documentId = null;
   public currentStatus = 1;
   public newHabitacionForm = new FormGroup({
     nombre: new FormControl('', Validators.required),
-    hotel: new FormControl('', Validators.required),
+    idHotel: new FormControl('', Validators.required),
     descripcion: new FormControl('', Validators.required),
     imagen: new FormControl('', Validators.required),
     max: new FormControl('', Validators.required),
@@ -45,10 +47,10 @@ export class ListarHabitacionesComponent implements OnInit {
 
   });
 
-  constructor(private tipoHabitacionSV: TipoHabitacionService) {
+  constructor(private tipoHabitacionSV: TipoHabitacionService, private HotelSV: HotelesService) {
     this.newHabitacionForm.setValue({
       nombre: '',
-      hotel: '',
+      idHotel: '',
       descripcion: '',
       imagen: '',
       max:'',
@@ -65,7 +67,7 @@ export class ListarHabitacionesComponent implements OnInit {
         this.tipoHabitaciones.push({
           id: ciudadData.payload.doc.data(),
           nombre: ciudadData.payload.doc.data().nombre,
-          hotel: ciudadData.payload.doc.data().hotel,
+          idHotel: ciudadData.payload.doc.data().idHotel,
           comodidades: ciudadData.payload.doc.data().comodidades,
           descripcion: ciudadData.payload.doc.data().descripcion,
           max: ciudadData.payload.doc.data().max,
@@ -75,13 +77,33 @@ export class ListarHabitacionesComponent implements OnInit {
         });
       })
     });
+    this.HotelSV.getAll().subscribe((hotelesSnapshot) => {
+      this.hoteles = [];
+      hotelesSnapshot.forEach((ordenData: any) => {
+        this.hoteles.push({
+          id: ordenData.payload.doc.id,
+          nombre: ordenData.payload.doc.data().nombre,
+          estrellas: ordenData.payload.doc.data().estrellas,
+          servicios: ordenData.payload.doc.data().servicios,
+          latitud: ordenData.payload.doc.data().latitud,
+          longitud: ordenData.payload.doc.data().longitud,
+          idEstado: ordenData.payload.doc.data().idEstado,
+          idCiudad: ordenData.payload.doc.data().idCiudad,
+          direccion: ordenData.payload.doc.data().direccion,
+          /* costoFullday: ordenData.payload.doc.data().fullday.costo,
+          activoFullday: ordenData.payload.doc.data().fullday.activo, */
+          imagen: ordenData.payload.doc.data().imagen,
+          deshabilitar: ordenData.payload.doc.data().deshabilitar
+        });
+      })
+    });
   }
     public newHabitacion(form, documentId = this.documentId) {
       console.log(`Status: ${this.currentStatus}`);
       if (this.currentStatus == 1) {
         let data = {
           nombre: form.nombre,
-          hotel: form.hotel,
+          idHotel: form.idHotel,
           max: form.max,
           comodidades: form.comodidades,
           descripcion: form.descripcion,
@@ -93,7 +115,7 @@ export class ListarHabitacionesComponent implements OnInit {
           console.log('Documento creado exitósamente!');
           this.newHabitacionForm.setValue({
             nombre: '',
-            hotel: '',
+            idHotel: '',
             max: '',
             imagen: '',
             comodidades: '',
@@ -116,7 +138,7 @@ export class ListarHabitacionesComponent implements OnInit {
         this.newHabitacionForm.setValue({
           id: documentId,
           nombre: habitacion.payload.data()['nombre'],
-          hotel: habitacion.payload.data()['hotel'],
+          idHotel: habitacion.payload.data()['idHotel'],
           imagen: habitacion.payload.data()['imagen'],
           comodidades: habitacion.payload.data()['comodidades'],
           descripcion: habitacion.payload.data()['descripcion'],
@@ -161,9 +183,29 @@ export class ListarHabitacionesComponent implements OnInit {
     this.selectedRowIndex = dato.id;
   }
 
-  deshabilitar() {
+  soltar() {
+    this.highlight(-1)
   }
+  
+  deshabilitar() {
+    for (let index = 0; index < this.tipoHabitaciones.length; index++) {
+      if (this.tipoHabitaciones[index].id == this.selectedRowIndex) {
+        this.tipoHabitaciones[index].deshabilitar = false;
+      } else {
+        continue;
+      }
+    }
+  }
+
   habilitar() {
+    for (let index = 0; index < this.tipoHabitaciones.length; index++) {
+      console.log(this.tipoHabitaciones[index].nombre);
+      if (this.tipoHabitaciones[index].id == this.selectedRowIndex){
+        this.tipoHabitaciones[index].deshabilitar = true;
+      } else {
+        continue;
+      }
+    }
   }
 
 }
