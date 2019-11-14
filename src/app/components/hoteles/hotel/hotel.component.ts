@@ -11,6 +11,7 @@ export class HotelComponent implements OnInit {
   private hoteles: any[] = [];
   private tipoHabitaciones: any[] = [];
   private hotel: any;
+  private Hotel: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -19,22 +20,14 @@ export class HotelComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.hotel = this.route.snapshot.params["id"];
+    this.Hotel = this.route.snapshot.params["id"];
 
-    this.fireStoreService.getDoc("hoteles", this.hotel).subscribe(hotel => {
-      console.log(hotel);
-      this.hotel = hotel.payload.data();
-      this.hotel.tipoHabitaciones.map(tipo => {
-        this.fireStoreService
-          .getAll("tipoHabitacion")
-          .subscribe(tipoHabitaciones => {
-            tipoHabitaciones.docs.map(tipoH => {
-              if (tipoH.id === tipo) {
-                this.tipoHabitaciones.push(tipoH.data());
-              }
-            });
-          });
+    this.fireStoreService.getAll("hoteles").subscribe(hoteles => {
+      hoteles.docs.map(hotel => {
+        this.hoteles.push(hotel.data());
       });
     });
+    
+
   }
 }
