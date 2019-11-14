@@ -1,7 +1,3 @@
-img {
-  width: 100%;
-}
-
 .search-img{
   margin-left:1%;
   margin-right: 1%;
@@ -24,7 +20,6 @@ img {
 
 .fila{
   width: 90%;
-  margin-top:13%;
   margin-right: auto;
   margin-left: auto;
 }
@@ -36,12 +31,12 @@ img {
 
 .mountains {
   position: absolute;
-  margin-top: 30%;
+  margin-top: 15%;
 }
 .body{
   overflow-x: hidden;
   overflow-y: hidden;
-  background-color: #FEFCED;
+  background-color: #7C9A92;
   padding:0;
 }
 
@@ -54,9 +49,9 @@ img {
 }
 
 .containe {
-    background-color: #fbeace;
+    background-color: #7C9A92;;
     padding: 0px;
-    margin-bottom: 30%;
+    margin-bottom: 10%;
   }
 
   
@@ -69,15 +64,11 @@ img {
     position: absolute;
   
   }
-  
-  .mountains {
-    position: absolute;
-    margin-top: 10%;
-  }
+
   
  .select{    
      width: 90%;
-     margin-top:5%;
+     margin-top:17%;
      margin-left: auto;
      margin-right: auto;
     
@@ -87,10 +78,11 @@ img {
  h1{
     position:relative;
     left: 50%;
-    padding-top:40%;
+    padding-top:50%;
+    font-size: 200%;
     transform: translate(-50%, -50%);
-    font-family: 'Sedgwick Ave Display', cursive;
-    letter-spacing: 1pt;
+    font-family: Oswald;
+    letter-spacing: 4pt;
     text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
     font-style: normal;
     font-weight: normal;
@@ -105,7 +97,7 @@ img {
   font-family: Oswald;
   font-style: normal;
   font-weight: normal;
-  color:#002D51;
+  color:#FFF;
   text-align: center;
   padding-bottom: 4%;
  }
@@ -388,7 +380,7 @@ mat-form-field{
       margin-left: auto;
   }
   .mountains{
-    margin-top:10%;
+    margin-top:15%;
   }
 
   .reservas{
