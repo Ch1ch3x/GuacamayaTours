@@ -120,9 +120,7 @@ export class ListarEstadoComponent implements OnInit {
       editSubscribe.unsubscribe();
     });
   }
-  clearEstado() {
-  }
-
+  
   openCrear() {
     this.formVisibility = true;
   }
@@ -142,23 +140,11 @@ export class ListarEstadoComponent implements OnInit {
   habilitar() {
     this.estados[this.selectedRowIndex].deshabilitar = false;
   }
-  addRowData() {
-    this.clearEstado();
-    this.table.renderRows();
-  }
-
-  modifyRowData() {
-    this.estados.push();
-    this.clearEstado();
-    this.table.renderRows();
-  }
-
+ 
   openModificar() {
   //  this.formVisibility = true;
   }
 
   modificarEstado() {
-    this.modifyRowData();
-   // this.formVisibility = false;
   }
 }

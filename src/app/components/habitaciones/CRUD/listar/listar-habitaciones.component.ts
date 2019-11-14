@@ -35,7 +35,6 @@ export class ListarHabitacionesComponent implements OnInit {
     
     nombre: new FormControl('', Validators.required),
     hotel: new FormControl('', Validators.required),
-    idHotel: new FormControl('', Validators.required),
     fechasDisponibles: new FormControl('', Validators.required),
     imagen: new FormControl('', Validators.required),
     imagen2: new FormControl('', Validators.required),
@@ -49,7 +48,6 @@ export class ListarHabitacionesComponent implements OnInit {
       
       nombre: '',
       hotel: '',
-      idHotel: '',
       fechasDisponibles: '',
       imagen: '',
       imagen2: '',
@@ -66,24 +64,22 @@ export class ListarHabitacionesComponent implements OnInit {
           id: ciudadData.payload.doc.data(),
           nombre: ciudadData.payload.doc.data().nombre,
           hotel: ciudadData.payload.doc.data().hotel,
-          idHotel: ciudadData.payload.doc.data().idHotel,
           fechasDisponibles: ciudadData.payload.doc.data().fechasDisponibles,
           imagen: ciudadData.payload.doc.data().imagen,
           imagen2: ciudadData.payload.doc.data().imagen2,
           imagen3: ciudadData.payload.doc.data().imagen3,
           deshabilitar: ciudadData.payload.doc.data().deshabilitar
         });
-        console.log(this.tipoHabitaciones)
       })
+        console.log(this.tipoHabitaciones)
     });
   }
-    public newCiudad(form, documentId = this.documentId) {
+    public newHabitacion(form, documentId = this.documentId) {
       console.log(`Status: ${this.currentStatus}`);
       if (this.currentStatus == 1) {
         let data = {
           nombre: form.nombre,
           hotel: form.hotel,
-          idHotel: form.idHotel,
           fechasDisponibles: form.fechasDisponibles,
           imagen: form.imagen,
           imagen2: form.imagen2,
@@ -95,7 +91,6 @@ export class ListarHabitacionesComponent implements OnInit {
           this.newHabitacionForm.setValue({
             nombre: '',
             hotel: '',
-            idHotel: '',
             fechasDisponibles: '',
             imagen: '',
             imagen2: '',
@@ -110,7 +105,6 @@ export class ListarHabitacionesComponent implements OnInit {
         let data = {
           nombre: form.nombre,
           hotel: form.hotel,
-          idHotel: form.idHotel,
           fechasDisponibles: form.fechasDisponibles,
           imagen: form.imagen,
           imagen2: form.imagen2,
@@ -122,7 +116,6 @@ export class ListarHabitacionesComponent implements OnInit {
           this.newHabitacionForm.setValue({
             nombre: '',
             hotel: '',
-            idHotel: '',
             fechasDisponibles: '',
             deshabilitar: '',
             imagen:'',
@@ -137,7 +130,7 @@ export class ListarHabitacionesComponent implements OnInit {
       }
     }
 
-    public editTipoHabitacion(documentId) {
+    public editHabitacion(documentId) {
       let editSubscribe = this.tipoHabitacionSV.getHabitacion(documentId).subscribe((habitacion) => {
         this.currentStatus = 2;
         this.documentId = documentId;
@@ -145,7 +138,6 @@ export class ListarHabitacionesComponent implements OnInit {
           id: documentId,
           nombre: habitacion.payload.data()['nombre'],
           hotel: habitacion.payload.data()['hotel'],
-          idHotel: habitacion.payload.data()['idHotel'],
           imagen: habitacion.payload.data()['imagen'],
           imagen2: habitacion.payload.data()['imagen2'],
           imagen3: habitacion.payload.data()['imagen3'],
@@ -155,29 +147,17 @@ export class ListarHabitacionesComponent implements OnInit {
       });
     }
 
-  clearCiudad() {
-   /* this.Ciudad = {
-      nombre: '',
-      estado: '',
-      imagen: '',
-      deshabilitar: false,
-      id: this.ciudad.length,
-    }; */
-  }
 
   openCrear() {
     this.formVisibility = true;
     this.crearformVisibility = true;
+    
   }
 
-  crearCiudad() {
-    this.addRowData();
+  crearHabitacion() {
     this.formVisibility = false;
     this.crearformVisibility = false;
-  }
-
-  addRowData() {
-    this.clearCiudad();
+    this.newHabitacion("");
   }
 
   modifyRowData() {
