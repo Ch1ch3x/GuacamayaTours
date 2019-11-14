@@ -1,13 +1,13 @@
 <app-dashboard></app-dashboard>
-<div class="container-fluid col-12 text-center">
+<div [hidden]="formVisibility" class="container-fluid col-12 text-center">
   <div class="btn-group col-12" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-outline-primary" name="button" (click)="openCrear()">Nueva Categoria
+    <button type="button" class="btn btn-outline-primary" name="button" (click)="openCrear()">Nuevo Hotel
     </button>
-    <button type="button" class="btn btn-outline-primary" name="button" (click)="openCrear()">Modificar Categoria
+    <button type="button" class="btn btn-outline-primary" name="button" (click)="openCrear()">Modificar Hotel
     </button>
-    <button type="button" class="btn btn-outline-primary" name="button" >Habilitar Categoria
+    <button type="button" class="btn btn-outline-primary" name="button" >Habilitar Hotel
     </button>
-    <button type="button" class="btn btn-outline-primary" name="button" >Deshabilitar Categoria
+    <button type="button" class="btn btn-outline-primary" name="button" >Deshabilitar Hotel
     </button>
   </div>
 
@@ -31,11 +31,15 @@
       </tr>
     </thead>
     <tbody *ngFor="let dato of hoteles">
-      <tr>
+      <tr
+      [ngClass] = "{'highlight': selectedRowIndex == dato.id,
+        'highlight2': dato.deshabilitar == false,
+        'highlight3': selectedRowIndex == dato.nombre && dato.deshabilitar == false}"
+        (click)="highlight(dato)">
         <th scope="row">{{dato.nombre}}</th>
         <td>{{dato.estrellas}}</td>
-        <td>{{dato.ciudad}}</td>
-        <td>{{dato.estado}}</td>
+        <td>{{dato.idCiudad}}</td>
+        <td>{{dato.idEstado}}</td>
         <td>{{dato.latitud}}</td>
         <td>{{dato.longitud}}</td>
         <td>{{dato.direccion}}</td>
@@ -70,29 +74,24 @@
       class="form-control mb-4"
       placeholder="Nombre del Hotel"
     />
-    <!--<label for="Estado">Estado donde se ubica el Hotel</label>
-    <select
-      formControlName="estado"
-      class="browser-default custom-select mb-4"
-      id="Estado"
-    >
-      <option value="" disabled="" selected="">Elije el estado</option>
+    <label for="Estado">ID del Estado donde se ubica la Ciudad</label>
+    <select class="form-control mb-4" formControlName="idEstado" id="item">
+      <option>Seleccione un Estado</option>
       <option *ngFor="let estado of estados">{{estado.nombre}}</option>
     </select>
 
     <label for="Ciudad">Ciudad donde se ubica el Hotel</label>
-    <select
-      formControlName="ciudad"
-      class="browser-default custom-select mb-4"
+    <select formControlName="idCiudad"
+      class="form-control mb-4"
       id="Ciudad"
     >
-      <option value="" disabled="" selected="">Elije la ciudad</option>
+      <option>Elije la ciudad</option>
       <option *ngFor="let ciudad of ciudades">{{ciudad.nombre}}</option>
-    </select>-->
+    </select>
     <label for="Tipo">Número de estrellas que tiene el Hotel</label>
     <select
       formControlName="estrellas"
-      class="browser-default custom-select mb-4"
+      class="form-control mb-4"
       id="Estrellas"
     >
       <option>Elije la cantidad de estrellas</option>
@@ -143,29 +142,22 @@
       placeholder="Dirección"
     />
 
-    <label for="fullday">¿Ofrece fullday?</label>
-    <select
-      formControlName="activo"
-      class="browser-default custom-select mb-4"
-      id="Fullday"
-    >
-      <option value="" disabled="" selected=""></option>
-      <option value="true">Si</option>
-      <option value="false">No</option>
-    </select>
+    <div formGroupName="fullDay">
+      <label for="fullday">¿Ofrece fullday?</label>
+      <select formControlName="activo" class="form-control mb-4" id="Fullday">
+        <option>Seleccione una Opcion</option>
+        <option value=true>Si</option>
+        <option value=false>No</option>
+      </select>
 
-    <label for="costo">Costo del fullday por persona</label>
-    <input
-      formControlName="costo"
-      type="text"
-      id="costo"
-      class="form-control mb-4"
-      placeholder="Costo por persona"
-    />
+      <label for="costo">Costo del fullday por persona</label>
+      <input formControlName="costo" type="text" id="costo" class="form-control mb-4"
+        placeholder="Costo por persona" />
+    </div>
 
     <label for="costo">Fotos del hotel</label>
     <input
-      formControlName="fotos"
+      formControlName="imagen"
       type="text"
       id="fotos"
       class="form-control mb-4"
