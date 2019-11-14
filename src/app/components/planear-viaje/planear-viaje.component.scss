@@ -93,6 +93,7 @@
   flex-flow: column wrap;
   justify-content: center;
   padding-bottom: 3%;
+  max-height: 690px;
 }
 
 .reservas{
@@ -347,9 +348,7 @@ mat-form-field{
     width: 1%;
   
   }
-  .select{
-    margin-top: 10%;
-  }
+ 
 
   h3{
     font-size:200%;

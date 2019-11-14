@@ -1,10 +1,9 @@
 import { Component, ViewChild, OnInit } from "@angular/core";
 import { MatTable } from "@angular/material";
+import { EstadosService } from "../../../../services/firebase/estados.service";
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { format } from 'url';
 
-import estados from "../../../../data/estados.json";
-import { estado } from "../../../../interfaces/estado";
-
-const ELEMENT_DATA: estado[] = estados;
 
 @Component({
   selector: "app-listar-estado",
@@ -12,74 +11,148 @@ const ELEMENT_DATA: estado[] = estados;
   styleUrls: ["./listar-estado.component.scss"]
 })
 export class ListarEstadoComponent implements OnInit {
-  displayedColumns: string[] = ["nombre", "id"] ;
-  dataSource = ELEMENT_DATA;
+  estados: any[];
+  displayedColumns: string[] = ["nombre", "imagen", "imagen2", 'imagen3', 'deshabilitar'] ;
+  dataSource = this.estados;
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
   formVisibility = false;
-  constructor() {}
-  total = 3;
-  public estado = estados;
-  selectedRowIndex: number = -1;
+  modificarformVisibility = false;
+  crearformVisibility = false;
 
-  Estado = {
-    nombre: "",
-    imagen: "",
-    id: this.estado.length + 1,
-    deshabilitar: false,
-  };
+  public documentId = null;
+  public currentStatus = 1;
+  public newEstadoForm = new FormGroup({
+      nombre: new FormControl('', Validators.required),
+      imagen: new FormControl('', Validators.required),
+      imagen2: new FormControl(''),
+      imagen3: new FormControl(''),
+      deshabilitar: new FormControl(true),
+
+    });
 
 
-  ngOnInit() {
-    this.estado = estados;
+  constructor(private EstadoSV: EstadosService) {
+    this.newEstadoForm.setValue({
+      nombre: '',
+      imagen: '',
+      imagen2: '',
+      imagen3: '',
+      deshabilitar: true,
+    });
   }
 
-  clearEstado() {
-    this.Estado = {
-      nombre: "",
-      imagen: "",
-      id: this.estado.length + 1,
-      deshabilitar: false,
-    };
+  selectedRowIndex: number = -1;
+
+  ngOnInit() {
+    this.EstadoSV.getAll().subscribe((estadosSnapshot) => {
+      this.estados = [];
+      estadosSnapshot.forEach((estadoData: any) => {
+        this.estados.push({
+          nombre: estadoData.payload.doc.data().nombre,
+          imagen: estadoData.payload.doc.data().imagen,
+          imagen2: estadoData.payload.doc.data().imagen2,
+          imagen3: estadoData.payload.doc.data().imagen3,
+          deshabilitar: estadoData.payload.doc.data().deshabilitar,
+        });
+      })
+    });
+
+
+  }
+
+  public newEstado(form, documentId = this.documentId) {
+    console.log(`Status: ${this.currentStatus}`);
+    if (this.currentStatus == 1) {
+      let data = {
+        nombre: form.nombre,
+        imagen: form.imagen,
+        imagen2: form.imagen2,
+        imagen3: form.imagen3,
+        deshabilitar: form.deshabilitar
+      }
+      this.EstadoSV.create(data).then(() => {
+        console.log('Documento creado exitósamente!');
+        this.newEstadoForm.setValue({
+          nombre: '',
+          imagen: '',
+          imagen2: '',
+          imagen3: '',
+          deshabilitar: ''
+        });
+      }, (error) => {
+        console.error(error);
+      });
+    } else {
+      this.close();
+    }
+  }
+
+  public editEstado(documentId) {
+    let editSubscribe = this.EstadoSV.getEstado(documentId).subscribe((estado) => {
+      this.currentStatus = 2;
+      this.documentId = documentId;
+      this.newEstadoForm.setValue({
+        nombre: estado.payload.data()['nombre'],
+        imagen: estado.payload.data()['imagen'],
+        imagen2: estado.payload.data()['imagen2'],
+        imagen3: estado.payload.data()['imagen3'],
+        deshabilitar: estado.payload.data()['deshabilitar'],
+      });
+      editSubscribe.unsubscribe();
+    });
   }
 
   openCrear() {
     this.formVisibility = true;
+    this.crearformVisibility = true;
+    this.currentStatus = 1;
   }
 
   crearEstado() {
-    this.addRowData();
     this.formVisibility = false;
+    this.crearformVisibility = false;
   }
 
-  highlight(row) {
-    this.selectedRowIndex = row.id;
+  close() {
+    this.currentStatus = 3;
+    this.formVisibility = false;
+    this.crearformVisibility = false;
+    this.modificarformVisibility = false;
+  }
+
+  highlight(dato) {
+    this.selectedRowIndex = dato.id;
+  }
+
+  soltar() {
+    this.highlight(-1)
   }
 
   deshabilitar() {
-    estados[this.selectedRowIndex].deshabilitar = true;
+    for (let index = 0; index < this.estados.length; index++) {
+      if (this.estados[index].id == this.selectedRowIndex) {
+        this.estados[index].deshabilitar = false;
+      } else {
+        continue;
+      }
+    }
   }
+
   habilitar() {
-    estados[this.selectedRowIndex].deshabilitar = false;
-  }
-
-  addRowData() {
-    estados.push(this.Estado);
-    this.clearEstado();
-    this.table.renderRows();
-  }
-
-  modifyRowData() {
-    estados.push(this.Estado);
-    this.clearEstado();
-    this.table.renderRows();
+    for (let index = 0; index < this.estados.length; index++) {
+      console.log(this.estados[index].nombre);
+      if (this.estados[index].id == this.selectedRowIndex){
+        this.estados[index].deshabilitar = true;
+      } else {
+        continue;
+      }
+    }
   }
 
   openModificar() {
-    this.formVisibility = true;
+  //  this.formVisibility = true;
   }
 
   modificarEstado() {
-    this.modifyRowData();
-    this.formVisibility = false;
   }
 }
