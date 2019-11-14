@@ -7,7 +7,7 @@
                 src="../../../assets/img/saltoangel.jpg"
             />
             
-            <img class="mountains" src="../../../assets/img/mountains-svg.svg" />
+            <img class="mountains" src="../../../assets/mountains.svg" />
             <h1 class="centered">Planea tu viaje</h1>
             <div class="select row">
                 <mat-form-field class="col">
@@ -39,6 +39,7 @@
                     </mat-option>
                 </mat-select>
                 </mat-form-field>
+                <button mat-flat-button color="warn">FILTRAR</button>
             </div>
             
         </div>
@@ -136,13 +137,13 @@
                                 <p class="dropdown-item">1</p>
                             </div>
                         </div>
-                        <mat-form-field>
+                        <mat-form-field class="calendario">
                             <label class="labelBoton">Llegada</label>
                             <input matInput [matDatepicker]="myDatepicker" [min]="minDate">
                             <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
                             <mat-datepicker #myDatepicker></mat-datepicker>
                         </mat-form-field>
-                        <mat-form-field>
+                        <mat-form-field class="calendario">
                             <label class="labelBoton">Salida</label>
                             <input matInput [matDatepicker]="myDatepicker2">
                             <mat-datepicker-toggle matSuffix [for]="myDatepicker2"></mat-datepicker-toggle>
@@ -152,6 +153,7 @@
                     </div>
                 </form>
                 <div *ngFor="let hotel of hoteles">
+                    <div *ngIf="hotel.deshabilitar==false">
                     <div class="contenido">
                             <div class="img">
                                 
@@ -161,14 +163,17 @@
                                     
                                 <div class="info">
                                     <h3> {{hotel.nombre}} </h3>
-                                    <h4> {{hotel.direccion}} </h4>
-                                    <h4> {{hotel.servicios}} </h4>
+                                    <h5> {{hotel.direccion}} </h5><br>
+                                    <h6> {{hotel.servicios}} </h6>
                                 </div>
                                 <div class="precio">
                                     <h5>{{hotel.fullday.costo}}</h5>
-                                    <img class="pina" src="../../../assets/img/pina.svg" />
+
+                                    <button type="button" id="mas" routerLink="/hoteles/{{hotel.id}}" class="btn btn-danger" color="warn">VER MAS</button>
+                                   
                                 </div>
-                            </div>                                           
+                            </div> 
+                        </div>                                          
                     </div>
                 </div>  
         </div>
