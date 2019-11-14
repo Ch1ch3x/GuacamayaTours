@@ -1,63 +1,50 @@
 <app-dashboard></app-dashboard>
-<div [hidden]="formVisibility" class="container-fluid col-12 text-center">
-  <div class="btn-group col-12" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-secondary" ng-model="formVisibility" name="button" (click)="openCrear()"
-      [hidden]="formVisibility">Nueva Ciudad</button>
-    <button type="button" class="btn btn-secondary" ng-model="formVisibility" name="button" (click)="openCrear()"
-      [hidden]="formVisibility">Modificar Ciudad</button>
-    <button type="button" class="btn btn-secondary" ng-model="formVisibility" name="button" (click)="habilitar()"
-      [hidden]="formVisibility">Habilitar Ciudad</button>
-    <button type="button" class="btn btn-secondary" ng-model="formVisibility" name="button" (click)="deshabilitar()"
-      [hidden]="formVisibility">Deshabilitar Ciudad</button>
-  </div>
+<div>
+  <div [hidden]="formVisibility" class="container-fluid col-12 text-center">
+    <div class="btn-group col-12" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-outline-primary" name="button" (click)="openCrear()">Nueva Ciudad
+      </button>
+      <button type="button" class="btn btn-outline-primary" name="button" (click)="openCrear()">Modificar Ciudad
+      </button>
+      <button type="button" class="btn btn-outline-primary" name="button" (click)="habilitar()">Habilitar Ciudad
+      </button>
+      <button type="button" class="btn btn-outline-primary" name="button" (click)="deshabilitar()">Deshabilitar Ciudad
+      </button>
+      <button type="button" class="btn btn-outline-primary" name="button" (click)="soltar()">Quitar Seleccion
+      </button>
+    </div>
 
-  <table
-    mat-table
-    [dataSource]="dataSource"
-    #mytable
-    class="my-table mat-elevation-z8 col-12"
-  >
-    <!-- Nombre Column -->
-    <ng-container sticky matColumnDef="nombre">
-      <th id="headnombre" mat-header-cell *matHeaderCellDef>Nombre</th>
-      <td id="infonombre" mat-cell *matCellDef="let element">
-        {{ element.nombre }}
-      </td>
-    </ng-container>
-
-    <!-- Estado Column -->
-    <ng-container matColumnDef="estado">
-      <th id="headnombre" mat-header-cell *matHeaderCellDef>Estado</th>
-      <td id="infonombre" mat-cell *matCellDef="let element">
-        {{ element.estado }}
-      </td>
-    </ng-container>
-
-    <!-- Imagen Column -->
-    <ng-container matColumnDef="imagen">
-      <th id="headnombre" mat-header-cell *matHeaderCellDef>Imagen</th>
-      <td id="infonombre" mat-cell *matCellDef="let element">
-        {{ element.imagen }}
-      </td>
-    </ng-container>
-
-    <!-- Id Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>ID</th>
-      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"
-    [class.highlight2] = "ciudad[row.id].deshabilitar == true"
-         [class.highlight] = "selectedRowIndex == row.id"
-         [class.highlight3] = "selectedRowIndex == row.id && ciudad[row.id].deshabilitar == true"
-         (click)="highlight(row)"></tr>
-  </table>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Imagen</th>
+          <th scope="col">Imagen2</th>
+          <th scope="col">Imagen3</th>
+          <th scope="col">Vigencia</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let dato of ciudades" >
+        <tr
+        [ngClass] = "{'highlight': selectedRowIndex == dato.id,
+        'highlight2': dato.deshabilitar == false,
+        'highlight3': selectedRowIndex == dato.id && dato.deshabilitar == false}"
+        (click)="highlight(dato)" >
+          <td>{{dato.nombre}}</td>
+          <td>{{dato.idEstado}}</td>
+          <td>{{dato.imagen}}</td>
+          <td>{{dato.imagen2}}</td>
+          <td>{{dato.imagen3}}</td>
+          <td>{{dato.deshabilitar}}</td>
+        </tr>
+      </tbody>
+    </table>
 </div>
 
+
 <div [hidden]="!crearformVisibility" id="form">
-  <form class="border border-light p-5">
+  <form class="border border-light p-5" (ngSubmit)="newCiudad(newCiudadForm.value)" [formGroup]="newCiudadForm">
     <div class="text-center">
       <p class="h4 mb-4">Ingrese los Datos de la nueva Ciudad</p>
 
@@ -66,53 +53,59 @@
       </p>
     </div>
 
-    <label for="ID">ID de la Ciudad</label>
-    <input
-      [(ngModel)]="Ciudad.id"
-      type="text"
-      id="ID"
-      class="form-control mb-4"
-      placeholder="ID"
-      [ngModelOptions]="{ standalone: true }"
-    />
     <label for="Nombre">Nombre de la Ciudad</label>
     <input
-      [(ngModel)]="Ciudad.nombre"
+
       type="text"
       id="Nombre"
       class="form-control mb-4"
       placeholder="Nombre del Estado"
-      [ngModelOptions]="{ standalone: true }"
+      formControlName= "nombre"
     />
     <label for="Estado">ID del Estado donde se ubica la Ciudad</label>
-    <input
-      [(ngModel)]="Ciudad.estado"
-      type="text"
-      id="ID Estado"
-      class="form-control mb-4"
-      placeholder="Estado del Hotel"
-      [ngModelOptions]="{ standalone: true }"
-    />
+    <select class="form-control mb-4" formControlName="idEstado" id="item">
+      <option>Seleccione un Estado</option>
+      <option *ngFor= "let estado of estados">{{estado.nombre}}</option>
+     </select>
 
     <label for="costo">Fotos de la Ciudad</label>
       <input
-        [(ngModel)]="Ciudad.imagen"
+        formControlName="imagen"
         type="text"
         id="fotos"
         class="form-control mb-4"
         placeholder="URL"
-        [ngModelOptions]="{ standalone: true }"
+
       />
 
+      <label for="costo">Fotos de la Ciudad</label>
+      <input
+        formControlName="imagen2"
+        type="text"
+        id="fotos"
+        class="form-control mb-4"
+        placeholder="URL"
+
+      />
+
+      <label for="costo">Fotos de la Ciudad</label>
+      <input
+        formControlName="imagen3"
+        type="text"
+        id="fotos"
+        class="form-control mb-4"
+        placeholder="URL"
+
+      />
 
     <button class="btn btn-info btn-block" (click)="crearCiudad()" type="submit">
       Crear
     </button>
-    <button class="btn btn-info btn-block" (click)="close()" type="submit">Cancelar</button>
+    <button class="btn btn-info btn-block" (click)="close()" >Cancelar</button>
   </form>
 </div>
 
-<div [hidden]="!modificarformVisibility" id="form">
+<!--<div [hidden]="!modificarformVisibility" id="form">
   <form class="border border-light p-5">
     <div class="text-center">
       <p class="h4 mb-4">Ingrese los Datos de la nueva Ciudad</p>
@@ -123,24 +116,24 @@
     </div>
 
     <label for="ID">ID de la Ciudad</label>
-    <input [(ngModel)]="Ciudad.id" type="text" id="ID" class="form-control mb-4" placeholder="ID"
-      [ngModelOptions]="{ standalone: true }" />
+    <input formControlName="id" type="text" id="ID" class="form-control mb-4" placeholder="ID"
+       />
     <label for="Nombre">Nombre de la Ciudad</label>
-    <input [(ngModel)]="Ciudad.nombre" type="text" id="Nombre" class="form-control mb-4" placeholder="Nombre del Estado"
-      [ngModelOptions]="{ standalone: true }" />
+    <input formControlName="nombre" type="text" id="Nombre" class="form-control mb-4" placeholder="Nombre del Estado"
+       />
     <label for="Estado">ID del Estado donde se ubica la Ciudad</label>
-    <input [(ngModel)]="Ciudad.estado" type="text" id="ID Estado" class="form-control mb-4"
-      placeholder="Estado del Hotel" [ngModelOptions]="{ standalone: true }" />
+    <input formControlName="estado" type="text" id="ID Estado" class="form-control mb-4"
+      placeholder="Estado del Hotel"  />
 
     <label for="costo">Fotos de la Ciudad</label>
-    <input [(ngModel)]="Ciudad.imagen" type="text" id="fotos" class="form-control mb-4" placeholder="URL"
-      [ngModelOptions]="{ standalone: true }" />
+    <input formControlName="imagen" type="text" id="fotos" class="form-control mb-4" placeholder="URL"
+       />
 
 
     <button class="btn btn-info btn-block" (click)="modificarCiudad()" type="submit">
       Crear
     </button>
-    <button class="btn btn-info btn-block" (click)="close()" type="submit">Cancelar</button>
+    <button class="btn btn-info btn-block" (click)="close()" >Cancelar</button>
   </form>
-</div>
+</div>-->
 

@@ -1,87 +1,42 @@
 <app-dashboard></app-dashboard>
 <div [hidden]="formVisibility" class="container-fluid col-12 text-center">
-    <div class="btn-group col-12">
-      <button
-        class="btn agregar "
-        ng-model="formVisibility"
-        name="button"
-        mat-button
-        (click)="openCrear()"
-        [hidden]="formVisibility"
-        mat-flat-button
-        color="primary"
-      >
-        Nueva Categoría
+    <div class="btn-group col-12" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-outline-primary" name="button" (click)="openCrear()">Nueva Categoria
       </button>
-  
-      <button
-        class="btn agregar"
-        ng-model="formVisibility"
-        name="button"
-        mat-button
-        (click)="openModificar()"
-        [hidden]="formVisibility"
-        mat-flat-button
-        color="primary"
-      >
-        Modificar categoría
+      <button type="button" class="btn btn-outline-primary" name="button" (click)="openModificar()">Modificar Categoria
       </button>
-
-      <button class="btn agregar"
-        ng-model="formVisibility"
-        name="button"
-        mat-button
-        (click)="habilitar()"
-        [hidden]="formVisibility"
-        mat-flat-button
-        color="primary"
-        >
-        Habilitar Categoria
-    </button>
-    <button class="btn agregar"
-        ng-model="formVisibility"
-        name="button"
-        mat-button
-        (click)="deshabilitar()"
-        [hidden]="formVisibility"
-        mat-flat-button color="primary"
-      >
-        Deshabilitar Deshabilitar
-    </button>
+      <button type="button" class="btn btn-outline-primary" name="button" (click)="habilitar()">Habilitar Categoria
+      </button>
+      <button type="button" class="btn btn-outline-primary" name="button" (click)="deshabilitar()">Deshabilitar Categoria
+      </button>
+      <button type="button" class="btn btn-outline-primary" name="button" (click)="soltar()">Quitar Seleccion
+      </button>
     </div>
 
-
-    <table
-      mat-table
-      [dataSource]="dataSource"
-      #mytable
-      class="my-table mat-elevation-z8 col-12"
-    >
-      <!-- Nombre Column -->
-      <ng-container sticky matColumnDef="nombre">
-        <th id="headnombre" mat-header-cell *matHeaderCellDef>Nombre</th>
-        <td id="infonombre" mat-cell *matCellDef="let element">
-          {{ element.nombre }}
-        </td>
-      </ng-container>
-
-      <!-- Id Column -->
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef>ID.</th>
-        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns" 
-        [class.highlight2] = "tipos[row.id].deshabilitar == true"
-        [class.highlight] = "selectedRowIndex == row.id"
-        [class.highlight3] = "selectedRowIndex == row.id && tipos[row.id].deshabilitar == true"
-        (click)="highlight(row)"></tr>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Vigencia</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let dato of categorias">
+        <tr
+        [ngClass] = "{'highlight': selectedRowIndex == dato.id,
+        'highlight2': dato.deshabilitar == false,
+        'highlight3': selectedRowIndex == dato.nombre && dato.deshabilitar == false}"
+        (click)="highlight(dato)"
+        >
+          <td>{{dato.nombre}}</td>
+          <td>{{dato.deshabilitar}}</td>
+        </tr>
+      </tbody>
     </table>
+
   </div>
 
-  <div [hidden]="!crearformVisibility" id="form">
-    <form class="border border-light p-5">
+ <div [hidden]="!crearformVisibility" id="form">
+    <form class="border border-light p-5" [formGroup]="newCategoriaForm" (ngSubmit)="newCategoria(newCategoriaForm.value)">
       <div class="text-center">
         <p class="h4 mb-4">Ingrese los Datos de la nueva Categoría</p>
 
@@ -90,65 +45,74 @@
         </p>
       </div>
 
-      <label for="ID">ID del Hotel</label>
-      <input
-        [(ngModel)]="Tipo.id"
-        type="text"
-        id="ID"
-        class="form-control mb-4"
-        placeholder="ID"
-        [ngModelOptions]="{ standalone: true }"
-      />
       <label for="Nombre">Nombre de la Categoría</label>
       <input
-        [(ngModel)]="Tipo.nombre"
         type="text"
         id="Nombre"
         class="form-control mb-4"
         placeholder="Nombre de la categoría"
-        [ngModelOptions]="{ standalone: true }"
+        formControlName="nombre"
       />
 
       <label for="costo">Fotos de la categoría</label>
       <input
-        [(ngModel)]="Tipo.foto"
         type="text"
         id="fotos"
         class="form-control mb-4"
         placeholder="URL"
-        [ngModelOptions]="{ standalone: true }"
+        formControlName="imagen"
+      />
+
+      <label for="costo">Fotos de la categoría</label>
+      <input
+        type="text"
+        id="fotos"
+        class="form-control mb-4"
+        placeholder="URL"
+        formControlName="imagen2"
+      />
+
+      <label for="costo">Fotos de la categoría</label>
+      <input
+        type="text"
+        id="fotos"
+        class="form-control mb-4"
+        placeholder="URL"
+        formControlName="imagen3"
       />
 
 
       <button class="btn btn-info btn-block" (click)="crearCategoria()" type="submit">Crear Categoría</button>
-      <button class="btn btn-info btn-block" (click)="close()" type="submit">Cancelar</button>
+      <button class="btn btn-info btn-block" (click)="close()">Cancelar</button>
     </form>
   </div>
 
+
   <div [hidden]="!modificarformVisibility" id="form">
-    <form class="border border-light p-5">
-      <div class="text-center">
-        <p class="h4 mb-4">Ingrese los Datos de la nueva Categoría</p>
+    <form class = "border border-light p-5" (ngSubmit) = "newCategoria(newCategoriaForm.value)" [formGroup] = "newCategoriaForm">
+      <div class = "text-center">
+        <p class = "h4 mb-4">Modifique los Datos de la Categoría</p>
 
         <p>
           Coloque en la casilla correspondiente la información de la categoría.
         </p>
       </div>
 
-      <label for="ID">ID del Hotel</label>
-      <input [(ngModel)]="Tipo.id" type="text" id="ID" class="form-control mb-4" placeholder="ID"
-        [ngModelOptions]="{ standalone: true }" />
       <label for="Nombre">Nombre de la Categoría</label>
-      <input [(ngModel)]="Tipo.nombre" type="text" id="Nombre" class="form-control mb-4"
-        placeholder="Nombre de la categoría" [ngModelOptions]="{ standalone: true }" />
+      <input formControlName="nombre" type="text" id="Nombre" class="form-control mb-4" placeholder="categorias[tr.id].nombre" />
 
-      <label for="costo">Fotos de la categoría</label>
-      <input [(ngModel)]="Tipo.foto" type="text" id="fotos" class="form-control mb-4" placeholder="URL"
-        [ngModelOptions]="{ standalone: true }" />
+      <label for="costo">Foto 1 de la categoría</label>
+      <input formControlName="imagen" type="text" id="fotos" class="form-control mb-4" placeholder="categorias[row.id.nombre]"
+         />
+      <label for="costo">Foto 2 de la categoría</label>
+      <input formControlName="imagen2" type="text" id="fotos" class="form-control mb-4" placeholder="categorias[row.id.nombre]"
+         />
+      <label for="costo">Foto 3 de la categoría</label>
+      <input formControlName="imagen3" type="text" id="fotos" class="form-control mb-4" placeholder="categorias[row.id.nombre]"
+         />
 
 
       <button class="btn btn-info btn-block" (click)="modificarCategoria()" type="submit">Crear Categoría</button>
-      <button class="btn btn-info btn-block" (click)="close()" type="submit">Cancelar</button>
+      <button class="btn btn-info btn-block" (click)="close()" >Cancelar</button>
     </form>
   </div>
-

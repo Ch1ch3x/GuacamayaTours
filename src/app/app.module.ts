@@ -54,6 +54,8 @@ import { FirestoreService } from "./services/firebase/firebase.service";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { HotelComponent } from './components/hoteles/hotel/hotel.component';
 import { DestinoComponent } from './components/destinos-turisticos/destino/destino.component';
+import { Observable } from 'rxjs';
+
 
 @NgModule({
   declarations: [

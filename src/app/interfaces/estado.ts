@@ -1,5 +1,5 @@
 export interface estado{
-    estadoId: number;
+    estadoId: string;
     nombre: string;
     imagen: [string];
     desahabilitar: boolean;
