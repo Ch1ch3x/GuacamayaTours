@@ -1,320 +1,308 @@
-
-@media screen and (max-width: 3000px){
-  nav{
-    border:none;
+@media screen and (max-width: 3000px) {
+  nav {
+    border: none;
   }
-  
-  .navbar{
+
+  .navbar {
     width: 100%;
     height: 79px;
     left: 0px;
-    top: 0px;  
-    background: #FEFCED;
+    top: 0px;
+    background: #fefced;
     text-align: center;
-    padding:0;
+    padding: 0;
+    z-index: 1000;
   }
-  
-  .navbar-header{
+
+  .navbar-header {
     padding: 0;
   }
-  
-  
-  a{
+
+  a {
     font-family: Oswald;
     font-style: normal;
     font-weight: normal;
     font-size: 15px;
     line-height: 28px;
-    color: #FEFCED;
+    color: #fefced;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  
   }
-   
-  .size{
+
+  .size {
     width: 50px;
-    margin-right: 10px ;
+    margin-right: 10px;
   }
-  
-  .home{
-    background: #002D51;
+
+  .home {
+    background: #002d51;
     height: 80px;
-    padding-top:5px;
-    padding-left: 80px; 
+    padding-top: 5px;
+    padding-left: 80px;
     padding-right: 70px;
   }
-  
-  .sizeHome{
+
+  .sizeHome {
     width: 56px;
     height: 72px;
     left: 44px;
     top: 8px;
   }
-  
-  .active{
-    background: #FEFCED;
-    color: #002D51; 
+
+  .active {
+    background: #fefced;
+    color: #002d51;
     top: 0;
     height: 80px;
-    padding-top:15px;
+    padding-top: 15px;
     border-left-style: solid;
     border-color: rgb(158, 158, 158);
     border-width: thin;
   }
-  
-  .bord{
+
+  .bord {
     border-left-style: none;
   }
-  
-  a:active{
-    border-top-style: solid; 
-    border-left-style: none; 
-    border-color: #002D51;
-    border-width: medium;  
+
+  a:active {
+    border-top-style: solid;
+    border-left-style: none;
+    border-color: #002d51;
+    border-width: medium;
   }
 
-  .col-2{
+  .col-2 {
     padding-right: 0;
     padding-left: 1px;
   }
-
 }
 
-@media screen and (max-width: 1237px){
-  nav{
-    border:none;
+@media screen and (max-width: 1237px) {
+  nav {
+    border: none;
   }
-  
-  .navbar{
+
+  .navbar {
     width: 100%;
     height: 60px;
     left: 0px;
-    top: 0px;  
-    background: #FEFCED;
+    top: 0px;
+    background: #fefced;
     text-align: center;
-    padding:0;
-  }
-  
-  .navbar-header{
     padding: 0;
   }
-  
-  
-  a{
+
+  .navbar-header {
+    padding: 0;
+  }
+
+  a {
     font-family: Oswald;
     font-style: normal;
     font-weight: normal;
     font-size: 13px;
     line-height: 24px;
-    color: #FEFCED;
+    color: #fefced;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  
   }
-  
-  
-  .size{
+
+  .size {
     width: 30px;
-    margin-right: 10px ;
+    margin-right: 10px;
   }
-  
-  .home{
-    background: #002D51;
+
+  .home {
+    background: #002d51;
     height: 80px;
-    padding-top:2px;
-    padding-left: 55px; 
+    padding-top: 2px;
+    padding-left: 55px;
     padding-right: 45px;
   }
-  
-  .sizeHome{
+
+  .sizeHome {
     width: 36px;
     height: 62px;
     left: 44px;
     top: 5px;
   }
-  
-  .active{
-    background: #FEFCED;
-    color: #002D51; 
+
+  .active {
+    background: #fefced;
+    color: #002d51;
     top: 0;
     height: 80px;
-    padding-top:15px;
+    padding-top: 15px;
     border-left-style: solid;
     border-color: rgb(158, 158, 158);
     border-width: thin;
   }
-  
-  .bord{
+
+  .bord {
     border-left-style: none;
   }
-  
-  a:active{
-    border-top-style: solid; 
-    border-left-style: none; 
-    border-color: #002D51;
-    border-width: medium;  
+
+  a:active {
+    border-top-style: solid;
+    border-left-style: none;
+    border-color: #002d51;
+    border-width: medium;
   }
 
-  .col-2{
+  .col-2 {
     padding-right: 0;
     padding-left: 1px;
   }
 }
 
-@media screen and (max-width: 937px){
-  nav{
-    border:none;
+@media screen and (max-width: 937px) {
+  nav {
+    border: none;
   }
-  
-  .navbar{
+
+  .navbar {
     width: 100%;
     height: 46px;
     left: 0px;
-    top: 0px;  
-    background: #FEFCED;
+    top: 0px;
+    background: #fefced;
     text-align: center;
-    padding:0;
-  }
-  
-  .navbar-header{
     padding: 0;
   }
-  
-  
-  a{
+
+  .navbar-header {
+    padding: 0;
+  }
+
+  a {
     font-family: Oswald;
     font-style: normal;
     font-weight: normal;
     font-size: 10px;
     line-height: 18px;
-    color: #FEFCED;
+    color: #fefced;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  
   }
-  
-  
-  .size{
+
+  .size {
     width: 20px;
-    margin-right: 7px ;
+    margin-right: 7px;
   }
-  
-  .home{
-    background: #002D51;
+
+  .home {
+    background: #002d51;
     height: 80px;
-    padding-top:0px;
-    padding-left: 35px; 
+    padding-top: 0px;
+    padding-left: 35px;
     padding-right: 20px;
   }
-  
-  .sizeHome{
+
+  .sizeHome {
     width: 32px;
     height: 49px;
     left: 44px;
     top: 8px;
   }
-  
-  .active{
-    background: #FEFCED;
-    color: #002D51; 
+
+  .active {
+    background: #fefced;
+    color: #002d51;
     top: 0;
     height: 80px;
-    padding-top:13px;
+    padding-top: 13px;
     border-left-style: solid;
     border-color: rgb(158, 158, 158);
     border-width: thin;
   }
-  
-  .bord{
+
+  .bord {
     border-left-style: none;
   }
-  
-  a:active{
-    border-top-style: solid; 
-    border-left-style: none; 
-    border-color: #002D51;
-    border-width: medium;  
+
+  a:active {
+    border-top-style: solid;
+    border-left-style: none;
+    border-color: #002d51;
+    border-width: medium;
   }
 
-  .col-2{
+  .col-2 {
     padding-right: 0;
     padding-left: 1px;
   }
 }
 
-@media screen and (max-width: 561px){
-  nav{
-    border:none;
+@media screen and (max-width: 561px) {
+  nav {
+    border: none;
   }
-  
-  .navbar{
+
+  .navbar {
     width: 100%;
     height: 36px;
     left: 0px;
-    top: 0px;  
-    background: #FEFCED;
+    top: 0px;
+    background: #fefced;
     text-align: center;
-    padding:0;
-  }
-  
-  .navbar-header{
     padding: 0;
   }
-  
-  
-  a{
+
+  .navbar-header {
+    padding: 0;
+  }
+
+  a {
     font-family: Oswald;
     font-style: normal;
     font-weight: normal;
     font-size: 8px;
     line-height: 14px;
-    color: #FEFCED;
+    color: #fefced;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  
   }
-  
-  
-  .size{
-    display:none;
+
+  .size {
+    display: none;
     width: 20px;
-    margin-right: 7px ;
+    margin-right: 7px;
   }
-  
-  .home{
-    background: #002D51;
+
+  .home {
+    background: #002d51;
     height: 80px;
-    padding-top:3px;
-    padding-left: 25px; 
+    padding-top: 3px;
+    padding-left: 25px;
     padding-right: 12px;
   }
-  
-  .sizeHome{
+
+  .sizeHome {
     width: 22px;
     height: 30px;
     left: 44px;
     top: 8px;
   }
-  
-  .active{
-    background: #FEFCED;
-    color: #002D51; 
+
+  .active {
+    background: #fefced;
+    color: #002d51;
     top: 0;
     height: 80px;
-    padding-top:10px;
+    padding-top: 10px;
     border-left-style: solid;
     border-color: rgb(158, 158, 158);
     border-width: thin;
   }
-  
-  .bord{
+
+  .bord {
     border-left-style: none;
   }
-  
-  a:active{
-    border-top-style: solid; 
-    border-left-style: none; 
-    border-color: #002D51;
-    border-width: medium;  
+
+  a:active {
+    border-top-style: solid;
+    border-left-style: none;
+    border-color: #002d51;
+    border-width: medium;
   }
 
-  .col-2{
+  .col-2 {
     padding-right: 0;
     padding-left: 1px;
   }
