@@ -18,6 +18,9 @@ export class HomeComponent implements OnInit {
     "../../../assets/img/telefericojpg.jpg"
   ];
 
+  private destinos: any[] = [];
+  private hoteles: any [] = [];
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -27,6 +30,20 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.fireStoreService.getAll("ordenes").subscribe(data => {
       data.docs.map(orden => console.log(orden.data()));
+    });
+
+    this.fireStoreService.getAll("destinos").subscribe(destinos => {
+      this.destinos = destinos.docs.map(destino => ({
+        ...destino.data(),
+        id: destino.id
+      }));
+    });
+
+    this.fireStoreService.getAll("hoteles").subscribe(hoteles => {
+      this.hoteles = hoteles.docs.map(hotel => ({
+        ...hotel.data(),
+        id: hotel.id
+      }));
     });
   }
 }
