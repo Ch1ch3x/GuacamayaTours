@@ -3,7 +3,7 @@
 <div class="body">
 <div *ngFor="let h of hoteles">
 
-    <div *ngIf="h.id == Hotel">
+    <div *ngIf="Hotel === h.id">
 
         
 
@@ -42,7 +42,7 @@
                 
                 <div class="center">
                     <br>
-                    <h1>{{h.nombre}}</h1>
+                    <h1>{{h.nombre}} </h1>
                     
                     <h3>{{h.direccion}}</h3><br>
                     <h6 align="justify">{{h.descripcion}}</h6><br><br><br>
@@ -89,28 +89,26 @@
                         <p>UBICACIÓN</p>
                         <div class="servicios">
                             <p class="reservaciones">
-                                <i class="fa fa-building-o" aria-hidden="true" style="font-size: 0.9em;"></i>Ciudad: {{ h.ciudad }}
+                                <i class="fa fa-building-o" aria-hidden="true" style="font-size: 0.9em;"></i>Ciudad: {{ ciudad }}<br>
+                                <i class="fa fa-map-pin" aria-hidden="true" style="font-size: 0.9em;"></i>Estado: {{ estado }}<br>
+                                <i class="fa fa-location-arrow" aria-hidden="true" style="font-size: 0.9em;"></i>Coordenadas geográficas: <br> <span class="text-center">{{ h.longitud }} {{ h.latitud }}</span><br>
                             </p>
                         </div>
-                        <br>
+                        
                         <p>SERVICIOS</p>
                         <div class="servicios">
                             <p *ngFor="let serv of h.servicios" class="reservaciones">
                                 <i class="fa fa-circle-o" aria-hidden="true"></i>{{ serv }}
                             </p>
                         </div>
-                        
-                        <p>HABITACIONES</p>
-                        <div class="filtros">
-                            
-                                <div class="habitaciones">
-                                                                
-                                    
-            
-                                    
-                                </div>
-                            
+
+                        <p>RESERVAR</p>
+                        <div class="reserva">
+                            <p *ngFor="let serv of h.servicios" class="reservaciones">
+                                <i class="fa fa-circle-o" aria-hidden="true"></i>{{ serv }}
+                            </p>
                         </div>
+                        
 
                 </div>
                 

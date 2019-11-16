@@ -167,8 +167,9 @@
                                     <h6> {{hotel.servicios}} </h6>
                                 </div>
                                 <div class="precio">
-                                    <h5>{{hotel.fullday.costo}}</h5>
-
+                                    <h5>{{hotel.fullday.costo}}$</h5>
+                                    <button (click)="openDialog()" type="button" id="mas"  class="btn btn-danger" color="warn">RESERVAR</button>
+                                   
                                     <button type="button" id="mas" routerLink="/hoteles/{{hotel.id}}" class="btn btn-danger" color="warn">VER MAS</button>
                                    
                                 </div>

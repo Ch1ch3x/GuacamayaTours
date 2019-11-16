@@ -52,7 +52,7 @@ i{
 .left{
     width: 20%;
     height: auto;
-    max-height: 500px;
+    
     background: #FBEACE;
     border-radius: 20px;
     display: flex;
@@ -68,6 +68,16 @@ i{
 
 
 .servicios{
+    width: 90%;
+    height: auto;
+    background: white;
+    border-radius: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 5%;
+}
+
+.reserva{
     width: 90%;
     height: auto;
     background: white;

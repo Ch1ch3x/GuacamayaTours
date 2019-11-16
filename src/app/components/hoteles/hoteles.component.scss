@@ -252,12 +252,17 @@ mat-form-field{
     padding:3px;
 }
 
+h5{
+    font-size: 195%;
+    text-align: center;
+}
+
 @media screen and (max-width: 1240px){
     h6{
         display:none;
     }
     h5{
-        font-size: 150%;
+        font-size: 170%;
     }
     
 }
@@ -308,7 +313,7 @@ mat-form-field{
         font-size:200%;
     }
     h5{
-        font-size: 150%;
+        font-size: 190%;
     }
     .centered {
         font-size: 200%;

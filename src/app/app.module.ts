@@ -55,6 +55,7 @@ import { AngularFirestore } from "@angular/fire/firestore";
 import { HotelComponent } from './components/hoteles/hotel/hotel.component';
 import { DestinoComponent } from './components/destinos-turisticos/destino/destino.component';
 import { Observable } from 'rxjs';
+import { DialogComponent } from './components/planear-viaje/dialog/dialog.component';
 
 
 @NgModule({
@@ -98,7 +99,8 @@ import { Observable } from 'rxjs';
     NosotrosComponent,
     ContactanosComponent,
     HotelComponent,
-    DestinoComponent
+    DestinoComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -118,6 +120,7 @@ import { Observable } from 'rxjs';
     NgbModule
   ],
   providers: [FirestoreService, AngularFirestore],
+  entryComponents: [DialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

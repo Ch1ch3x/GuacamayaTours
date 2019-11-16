@@ -44,11 +44,13 @@
       </div>
     </div>
   </div>
+ 
 
-  <div class="container-fluid text-center">
-    <img src="../../../assets/img/algo.jpg" alt="Opciones" class="full" />
-    <h2 class="title1">HOTELES</h2>
+  <div class="container-fluid max text-center">
+    <img src="../../../assets/img/algo2.svg" alt="Opciones" class="full" />
+    <h2 class="title1 col-12">HOTELES</h2>
     <div class="hoteles row container-fluid">
+        
       <div class="col-4" *ngFor="let hotel of hoteles">
         <div *ngIf="hotel.deshabilitar===false" >
         <a routerLink="/hoteles"><img [src]="hotel.imagen" class="hotel"/></a>
@@ -58,6 +60,8 @@
      
     </div>
   </div>
+
+
 </div>
 
 <app-footer></app-footer>
