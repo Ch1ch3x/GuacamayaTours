@@ -30,13 +30,13 @@
     <div class="actividades1 container-fluid">
       <div class="contenedor" *ngIf="destinos.length > 0">
         <div class="elemento" *ngFor="let actividad of destinos[0].actividades">
-          <img [src]="actividad.imagen" class="act hover" />
+          <img [src]="actividad.imagen" class="act " />
           <p class="hover centered3">{{ actividad.nombre }}</p>
         </div>
       </div>
       <div class="contenedor" *ngIf="destinos.length > 0">
         <div class="elemento" *ngFor="let actividad of destinos[1].actividades">
-          <img [src]="actividad.imagen" class="act hover" />
+          <img [src]="actividad.imagen" class="act " />
           <p class="hover centered3">{{ actividad.nombre }}</p>
         </div>
       </div>

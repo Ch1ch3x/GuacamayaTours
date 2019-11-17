@@ -73,6 +73,7 @@ a,h3{
 .act{
   border-radius: 12px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  max-height: 150px;
 }
 
 .centered3 {
@@ -370,6 +371,32 @@ h5{
   padding-top:8%;
 }
 
+@media screen and (max-width: 1180px){
+  .act{
+    max-height: 120px;
+  }
+}
+
+@media screen and (max-width: 1000px){
+  .act{
+    max-height: 100px;
+  }
+  .actividades1{
+    display:flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .act{
+    max-height: 150px;
+  }
+
+  .contenedor{
+    width: 70%;
+  }
+
+}
 
 @media screen and(max-width:892px){
   .centered1{
@@ -379,6 +406,7 @@ h5{
     font-size:80%;
   }
 
+  
 }
 @media screen and(max-width:820px){
   .hover{
@@ -409,12 +437,8 @@ h5{
   
 }
 
-@media screen and(max-width:760px){
-  .contenedor{
-    display:flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-  }
+@media screen and(max-width:770px){
+
 
   .hover{
     font-size:130%;
@@ -447,14 +471,26 @@ h5{
     text-align: center;  
   }
 
-
-
-  .elemento{
-    width: 40%;
+  .act{
+    max-height: 121px;
   }
+
+  
   .elemento1{
     display:none;
 
+  }
+}
+
+@media screen and(max-width: 650px){
+  .contenedor{
+    display:flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    align-content: center;
+  }
+  .elemento{
+    width: 69%;
   }
 }
 
