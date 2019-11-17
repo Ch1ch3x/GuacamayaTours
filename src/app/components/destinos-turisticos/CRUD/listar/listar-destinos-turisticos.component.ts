@@ -1,19 +1,18 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from "@angular/core";
 
-import { MatTable } from '@angular/material';
+import { MatTable } from "@angular/material";
 // necesito conectar tipos,ciuades,estados
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { DestinosService } from '../../../../services/firebase/destinos.service';
-import { CiudadesService } from 'src/app/services/firebase/ciudades.service.js';
-import { EstadosService } from 'src/app/services/firebase/estados.service.js';
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { DestinosService } from "../../../../services/firebase/destinos.service";
+import { CiudadesService } from "src/app/services/firebase/ciudades.service.js";
+import { EstadosService } from "src/app/services/firebase/estados.service.js";
 
 // const ELEMENT_DATA: destinoTuristico[] = destinos; //el JSON no tiene cambios de interface
 
-
 @Component({
-  selector: 'app-listar-destinos-turisticos',
-  templateUrl: './listar-destinos-turisticos.component.html',
-  styleUrls: ['./listar-destinos-turisticos.component.scss']
+  selector: "app-listar-destinos-turisticos",
+  templateUrl: "./listar-destinos-turisticos.component.html",
+  styleUrls: ["./listar-destinos-turisticos.component.scss"]
 })
 export class ListarDestinosTuristicosComponent implements OnInit {
   formVisibility = false;
@@ -27,82 +26,82 @@ export class ListarDestinosTuristicosComponent implements OnInit {
   public documentId = null;
   public currentStatus = 1;
   public newDestinoForm = new FormGroup({
-
-    nombre: new FormControl('', Validators.required),
-    descripcion: new FormControl('', Validators.required),
-    categorias: new FormControl('', Validators.required),
-    servicios: new FormControl('', Validators.required),
-    actividades: new FormControl('', Validators.required),
-    latitud: new FormControl('', Validators.required),
-    longitud: new FormControl('', Validators.required),
-    idEstado: new FormControl('', Validators.required),
-    idCiudad: new FormControl('', Validators.required),
-    direccion: new FormControl('', Validators.required),
-    imagen: new FormControl('', Validators.required),
-    imagen2: new FormControl(''),
-    imagen3: new FormControl(''),
+    nombre: new FormControl("", Validators.required),
+    descripcion: new FormControl("", Validators.required),
+    categorias: new FormControl("", Validators.required),
+    servicios: new FormControl("", Validators.required),
+    actividades: new FormControl("", Validators.required),
+    latitud: new FormControl("", Validators.required),
+    longitud: new FormControl("", Validators.required),
+    idEstado: new FormControl("", Validators.required),
+    idCiudad: new FormControl("", Validators.required),
+    direccion: new FormControl("", Validators.required),
+    imagen: new FormControl("", Validators.required),
+    imagen2: new FormControl(""),
+    imagen3: new FormControl(""),
     deshabilitar: new FormControl(true)
-
   });
 
-
-  constructor(private DestinoSV: DestinosService, private CiudadSV: CiudadesService, private EstadosSV: EstadosService) {
+  constructor(
+    private DestinoSV: DestinosService,
+    private CiudadSV: CiudadesService,
+    private EstadosSV: EstadosService
+  ) {
     this.newDestinoForm.setValue({
-
-      nombre: '',
-      descripcion: '',
-      categorias: '',
-      servicios: '',
-      actividades: '',
-      latitud: '',
-      longitud: '',
-      direccion: '',
-      idEstado: '',
-      idCiudad: '',
-      imagen: '',
-      imagen2: '',
-      imagen3: '',
+      nombre: "",
+      descripcion: "",
+      categorias: "",
+      servicios: "",
+      actividades: "",
+      latitud: "",
+      longitud: "",
+      direccion: "",
+      idEstado: "",
+      idCiudad: "",
+      imagen: "",
+      imagen2: "",
+      imagen3: "",
       deshabilitar: true
     });
   }
 
-
   ngOnInit() {
-    this.DestinoSV.getAll().subscribe((destinosSnapshot) => {
+    this.DestinoSV.getAll().subscribe(destinosSnapshot => {
       this.destinos = [];
       destinosSnapshot.docs.forEach((destinoData: any) => {
         this.destinos.push({
-          id:           destinoData.id,
-          nombre:       destinoData.data().nombre,
-          descripcion:  destinoData.data().descripcion,
+          id: destinoData.id,
+          nombre: destinoData.data().nombre,
+          descripcion: destinoData.data().descripcion,
           categorias: destinoData.data().categorias,
-          servicios:    destinoData.data().servicios,
-          actividades:  destinoData.data().actividades,
-          latitud:      destinoData.data().latitud,
-          longitud:     destinoData.data().longitud,
+          servicios: destinoData.data().servicios,
+          actividades: destinoData
+            .data()
+            .actividades.map(actividad => actividad.nombre),
+          latitud: destinoData.data().latitud,
+          longitud: destinoData.data().longitud,
           idEstado: destinoData.data().idEstado,
           idCiudad: destinoData.data().idCiudad,
-          direccion:    destinoData.data().direccion,
-          imagen:       destinoData.data().imagen,
-          imagen2:      destinoData.data().imagen2,
-          imagen3:      destinoData.data().imagen3,
+          direccion: destinoData.data().direccion,
+          imagen: destinoData.data().imagen,
+          imagen2: destinoData.data().imagen2,
+          imagen3: destinoData.data().imagen3,
           deshabilitar: destinoData.data().deshabilitar
         });
-        console.log(this.destinos)
-      })
+      });
     });
-    this.EstadosSV.getAll().subscribe((estadosSnapshot) => {
+    this.EstadosSV.getAll().subscribe(estadosSnapshot => {
       this.estados = [];
       estadosSnapshot.docs.forEach((estadoData: any) => {
         this.estados.push({
           id: estadoData.id,
           nombre: estadoData.data().nombre,
           imagen: estadoData.data().imagen,
-          deshabilitar: estadoData.data().deshabilitar,
+          deshabilitar: estadoData.data().deshabilitar
         });
-      })
+      });
     });
-    this.CiudadSV.getAll().subscribe((ciudadesSnapshot) => {
+    this.CiudadSV.getAll().subscribe(ciudadesSnapshot => {
       this.ciudades = [];
       ciudadesSnapshot.docs.forEach((ciudadData: any) => {
         this.ciudades.push({
@@ -112,11 +111,8 @@ export class ListarDestinosTuristicosComponent implements OnInit {
           imagen: ciudadData.data().imagen,
           deshabilitar: ciudadData.data().deshabilitar
         });
-      })
-      console.log(this.ciudades);
+      });
     });
-
-
   }
 
   public newDestino(form, documentId = this.documentId) {
@@ -137,57 +133,62 @@ export class ListarDestinosTuristicosComponent implements OnInit {
         imagen2: form.imagen2,
         imagen3: form.imagen3,
         deshabilitar: true
-      }
-      this.DestinoSV.create(data).then(() => {
-        console.log('Documento creado exitósamente!');
-        this.newDestinoForm.setValue({
-          nombre: '',
-          descripcion: '',
-          categorias: '',
-          servicios: '',
-          actividades: '',
-          latitud: '',
-          longitud: '',
-          idEstado: '',
-          idCiudad: '',
-          direccion: '',
-          imagen: '',
-          imagen2: '',
-          imagen3: '',
+      };
+      this.DestinoSV.create(data).then(
+        () => {
+          console.log("Documento creado exitósamente!");
+          this.newDestinoForm.setValue({
+            nombre: "",
+            descripcion: "",
+            categorias: "",
+            servicios: "",
+            actividades: "",
+            latitud: "",
+            longitud: "",
+            idEstado: "",
+            idCiudad: "",
+            direccion: "",
+            imagen: "",
+            imagen2: "",
+            imagen3: "",
 
-          deshabilitar: true
-        });
-      }, (error) => {
-        console.error(error);
-      });
+            deshabilitar: true
+          });
+        },
+        error => {
+          console.error(error);
+        }
+      );
     } else {
       this.close();
     }
   }
 
   public editDestino(documentId) {
-    let editSubscribe = this.DestinoSV.getDestino(documentId).subscribe((destino) => {
-      this.currentStatus = 2;
-      this.documentId = documentId;
-      this.newDestinoForm.setValue({
-        id: documentId,
-        nombre: destino.payload.data()['nombre'],
-        descripcion: destino.payload.data()['descripcion'],
-        categorias: destino.payload.data()['categorias'],
-        servicios:destino.payload.data()['servicios'],
-        actividades: destino.payload.data()['actividades'],
-        latitud: destino.payload.data()['latitud'],
-        longitud: destino.payload.data()['longitud'],
-        idEstado: destino.payload.data()['idEstado'],
-        idCiudad: destino.payload.data()['ciudad'],
-        direccion: destino.payload.data()['direccion'],
-        imagen: destino.payload.data()['imagen'],
-        imagen2: destino.payload.data()['imagen2'],
-        imagen3: destino.payload.data()['imagen3'],
-        deshabilitar: destino.payload.data()['deshabilitar'],
-      });
-      editSubscribe.unsubscribe();
-    });
+    let editSubscribe = this.DestinoSV.getDestino(documentId).subscribe(
+      destino => {
+        this.currentStatus = 2;
+        this.documentId = documentId;
+        this.newDestinoForm.setValue({
+          id: documentId,
+          nombre: destino.payload.data()["nombre"],
+          descripcion: destino.payload.data()["descripcion"],
+          categorias: destino.payload.data()["categorias"],
+          servicios: destino.payload.data()["servicios"],
+          actividades: destino.payload.data()["actividades"],
+          latitud: destino.payload.data()["latitud"],
+          longitud: destino.payload.data()["longitud"],
+          idEstado: destino.payload.data()["idEstado"],
+          idCiudad: destino.payload.data()["ciudad"],
+          direccion: destino.payload.data()["direccion"],
+          imagen: destino.payload.data()["imagen"],
+          imagen2: destino.payload.data()["imagen2"],
+          imagen3: destino.payload.data()["imagen3"],
+          deshabilitar: destino.payload.data()["deshabilitar"]
+        });
+        editSubscribe.unsubscribe();
+      }
+    );
   }
 
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
@@ -215,7 +216,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
   }
 
   soltar() {
-    this.highlight(-1)
+    this.highlight(-1);
   }
 
   deshabilitar() {
@@ -231,7 +232,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
   habilitar() {
     for (let index = 0; index < this.destinos.length; index++) {
       console.log(this.destinos[index].nombre);
-      if (this.destinos[index].id == this.selectedRowIndex){
+      if (this.destinos[index].id == this.selectedRowIndex) {
         this.destinos[index].deshabilitar = true;
       } else {
         continue;
