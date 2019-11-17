@@ -2,16 +2,10 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 
 import { MatTable } from '@angular/material';
 // necesito conectar tipos,ciuades,estados
-import destinosJ from '../../../../data/destinos.json';
-import tipos from '../../../../data/tipos.json';
-import ciudades from '../../../../data/ciudades.json';
-import estados from '../../../../data/estados.json';
-import { destinoTuristico } from '../../../../interfaces/destinoTuristico';
-import { tipo } from '../../../../interfaces/tipo';
-import { ciudad } from '../../../../interfaces/ciudad';
-import { estado } from '../../../../interfaces/estado';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import {DestinosService} from '../../../../services/firebase/destinos.service';
+import { DestinosService } from '../../../../services/firebase/destinos.service';
+import { CiudadesService } from 'src/app/services/firebase/ciudades.service.js';
+import { EstadosService } from 'src/app/services/firebase/estados.service.js';
 
 // const ELEMENT_DATA: destinoTuristico[] = destinos; //el JSON no tiene cambios de interface
 
@@ -25,55 +19,50 @@ export class ListarDestinosTuristicosComponent implements OnInit {
   formVisibility = false;
   modificarformVisibility = false;
   crearformVisibility = false;
- // dataSource = ELEMENT_DATA;
-  // tslint:disable-next-line: max-line-length
   selectedRowIndex: any;
 
-  public NOUSAR = destinosJ;
-  public tipoD = tipos;
-  public ciudadD = ciudades;
-  public estadoD = estados;
-
   public destinos = [];
+  public ciudades = [];
+  public estados = [];
   public documentId = null;
   public currentStatus = 1;
   public newDestinoForm = new FormGroup({
 
     nombre: new FormControl('', Validators.required),
     descripcion: new FormControl('', Validators.required),
-    tipo: new FormControl('', Validators.required),
+    categorias: new FormControl('', Validators.required),
     servicios: new FormControl('', Validators.required),
     actividades: new FormControl('', Validators.required),
     latitud: new FormControl('', Validators.required),
     longitud: new FormControl('', Validators.required),
-    estado: new FormControl('', Validators.required),
-    ciudad:new FormControl('', Validators.required),
+    idEstado: new FormControl('', Validators.required),
+    idCiudad: new FormControl('', Validators.required),
     direccion: new FormControl('', Validators.required),
     imagen: new FormControl('', Validators.required),
     imagen2: new FormControl(''),
     imagen3: new FormControl(''),
-    deshabilitar: new FormControl('', Validators.required)
+    deshabilitar: new FormControl(true)
 
   });
 
 
-  constructor(private DestinoSV: DestinosService) {
+  constructor(private DestinoSV: DestinosService, private CiudadSV: CiudadesService, private EstadosSV: EstadosService) {
     this.newDestinoForm.setValue({
 
       nombre: '',
       descripcion: '',
-      tipo: '',
+      categorias: '',
       servicios: '',
       actividades: '',
       latitud: '',
       longitud: '',
       direccion: '',
-      estado: '',
-      ciudad: '',
+      idEstado: '',
+      idCiudad: '',
       imagen: '',
       imagen2: '',
       imagen3: '',
-      deshabilitar: ''
+      deshabilitar: true
     });
   }
 
@@ -81,26 +70,50 @@ export class ListarDestinosTuristicosComponent implements OnInit {
   ngOnInit() {
     this.DestinoSV.getAll().subscribe((destinosSnapshot) => {
       this.destinos = [];
-      destinosSnapshot.forEach((destinoData: any) => {
+      destinosSnapshot.docs.forEach((destinoData: any) => {
         this.destinos.push({
-          id: destinoData.payload.doc.id,
-          nombre: destinoData.payload.doc.data().nombre,
-          descripcion: destinoData.payload.doc.data().descripcion,
-          tipo:destinoData.payload.doc.data().tipo,
-          servicios: destinoData.payload.doc.data().servicios,
-          actividades: destinoData.payload.doc.data().actividades,
-          latitud: destinoData.payload.doc.data().latitud,
-          longitud: destinoData.payload.doc.data().longitud,
-          estado: destinoData.payload.doc.data().estado,
-          ciudad: destinoData.payload.doc.data().ciudad,
-          direccion: destinoData.payload.doc.data().direccion,
-          imagen: destinoData.payload.doc.data().imagen,
-          imagen2: destinoData.payload.doc.data().imagen2,
-          imagen3: destinoData.payload.doc.data().imagen3,
-          deshabilitar: destinoData.payload.doc.data().deshabilitar
+          id:           destinoData.id,
+          nombre:       destinoData.data().nombre,
+          descripcion:  destinoData.data().descripcion,
+          categorias: destinoData.data().categorias,
+          servicios:    destinoData.data().servicios,
+          actividades:  destinoData.data().actividades,
+          latitud:      destinoData.data().latitud,
+          longitud:     destinoData.data().longitud,
+          idEstado: destinoData.data().idEstado,
+          idCiudad: destinoData.data().idCiudad,
+          direccion:    destinoData.data().direccion,
+          imagen:       destinoData.data().imagen,
+          imagen2:      destinoData.data().imagen2,
+          imagen3:      destinoData.data().imagen3,
+          deshabilitar: destinoData.data().deshabilitar
         });
         console.log(this.destinos)
       })
+    });
+    this.EstadosSV.getAll().subscribe((estadosSnapshot) => {
+      this.estados = [];
+      estadosSnapshot.docs.forEach((estadoData: any) => {
+        this.estados.push({
+          id: estadoData.id,
+          nombre: estadoData.data().nombre,
+          imagen: estadoData.data().imagen,
+          deshabilitar: estadoData.data().deshabilitar,
+        });
+      })
+    });
+    this.CiudadSV.getAll().subscribe((ciudadesSnapshot) => {
+      this.ciudades = [];
+      ciudadesSnapshot.docs.forEach((ciudadData: any) => {
+        this.ciudades.push({
+          id: ciudadData.id,
+          nombre: ciudadData.data().nombre,
+          idEstado: ciudadData.data().idEstado,
+          imagen: ciudadData.data().imagen,
+          deshabilitar: ciudadData.data().deshabilitar
+        });
+      })
+      console.log(this.ciudades);
     });
 
 
@@ -112,37 +125,37 @@ export class ListarDestinosTuristicosComponent implements OnInit {
       let data = {
         nombre: form.nombre,
         descripcion: form.descripcion,
-        tipo: form.tipo,
+        categorias: form.categorias,
         servicios: form.servicios,
         actividades: form.actividades,
         latitud: form.latitud,
         longitud: form.longitud,
-        estado: form.estado,
-        ciudad: form.ciudad,
+        idEstado: form.idEstado,
+        idCiudad: form.idCiudad,
         direccion: form.direccion,
         imagen: form.imagen,
         imagen2: form.imagen2,
         imagen3: form.imagen3,
-        deshabilitar: form.deshabilitar
+        deshabilitar: true
       }
       this.DestinoSV.create(data).then(() => {
         console.log('Documento creado exitósamente!');
         this.newDestinoForm.setValue({
           nombre: '',
           descripcion: '',
-          tipo: '',
+          categorias: '',
           servicios: '',
           actividades: '',
           latitud: '',
           longitud: '',
-          estado: '',
-          ciudad: '',
+          idEstado: '',
+          idCiudad: '',
           direccion: '',
           imagen: '',
           imagen2: '',
           imagen3: '',
 
-          deshabilitar: ''
+          deshabilitar: true
         });
       }, (error) => {
         console.error(error);
@@ -160,13 +173,13 @@ export class ListarDestinosTuristicosComponent implements OnInit {
         id: documentId,
         nombre: destino.payload.data()['nombre'],
         descripcion: destino.payload.data()['descripcion'],
-        tipo: destino.payload.data()['tipo'],
+        categorias: destino.payload.data()['categorias'],
         servicios:destino.payload.data()['servicios'],
         actividades: destino.payload.data()['actividades'],
         latitud: destino.payload.data()['latitud'],
         longitud: destino.payload.data()['longitud'],
-        estado: destino.payload.data()['estado'],
-        ciudad: destino.payload.data()['ciudad'],
+        idEstado: destino.payload.data()['idEstado'],
+        idCiudad: destino.payload.data()['ciudad'],
         direccion: destino.payload.data()['direccion'],
         imagen: destino.payload.data()['imagen'],
         imagen2: destino.payload.data()['imagen2'],

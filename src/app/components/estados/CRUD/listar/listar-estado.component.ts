@@ -12,8 +12,6 @@ import { format } from 'url';
 })
 export class ListarEstadoComponent implements OnInit {
   estados: any[];
-  displayedColumns: string[] = ["nombre", "imagen", "imagen2", 'imagen3', 'deshabilitar'] ;
-  dataSource = this.estados;
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
   formVisibility = false;
   modificarformVisibility = false;
@@ -31,7 +29,7 @@ export class ListarEstadoComponent implements OnInit {
     });
 
 
-  constructor(private EstadoSV: EstadosService) {
+  constructor(private EstadosSV: EstadosService) {
     this.newEstadoForm.setValue({
       nombre: '',
       imagen: '',
@@ -44,20 +42,19 @@ export class ListarEstadoComponent implements OnInit {
   selectedRowIndex: number = -1;
 
   ngOnInit() {
-    this.EstadoSV.getAll().subscribe((estadosSnapshot) => {
+    this.EstadosSV.getAll().subscribe(estadosSnapshot => {
       this.estados = [];
-      estadosSnapshot.forEach((estadoData: any) => {
+      estadosSnapshot.docs.forEach(estadoData => {
         this.estados.push({
-          nombre: estadoData.payload.doc.data().nombre,
-          imagen: estadoData.payload.doc.data().imagen,
-          imagen2: estadoData.payload.doc.data().imagen2,
-          imagen3: estadoData.payload.doc.data().imagen3,
-          deshabilitar: estadoData.payload.doc.data().deshabilitar,
+          id: estadoData.id,
+          nombre: estadoData.data().nombre,
+          imagen: estadoData.data().imagen,
+          imagen2: estadoData.data().imagen2,
+          imagen3: estadoData.data().imagen3,
+          deshabilitar: estadoData.data().deshabilitar
         });
-      })
+      });
     });
-
-
   }
 
   public newEstado(form, documentId = this.documentId) {
@@ -70,7 +67,7 @@ export class ListarEstadoComponent implements OnInit {
         imagen3: form.imagen3,
         deshabilitar: form.deshabilitar
       }
-      this.EstadoSV.create(data).then(() => {
+      this.EstadosSV.create(data).then(() => {
         console.log('Documento creado exitósamente!');
         this.newEstadoForm.setValue({
           nombre: '',
@@ -88,7 +85,7 @@ export class ListarEstadoComponent implements OnInit {
   }
 
   public editEstado(documentId) {
-    let editSubscribe = this.EstadoSV.getEstado(documentId).subscribe((estado) => {
+    let editSubscribe = this.EstadosSV.getEstado(documentId).subscribe((estado) => {
       this.currentStatus = 2;
       this.documentId = documentId;
       this.newEstadoForm.setValue({

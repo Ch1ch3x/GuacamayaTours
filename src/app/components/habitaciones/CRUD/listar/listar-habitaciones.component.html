@@ -19,7 +19,6 @@
       <thead class="thead-dark">
         <tr>
           <th scope="col">Nombre</th>
-          <th scope="col">Hotel</th>
           <th scope="col">Imagen</th>
           <th scope="col">comodidades</th>
           <th scope="col">descripcion</th>
@@ -34,7 +33,6 @@
         'highlight3': selectedRowIndex == dato.nombre && dato.deshabilitar == false}"
         (click)="highlight(dato)">
           <td>{{dato.nombre}}</td>
-          <td>{{dato.hotel}}</td>
           <td>{{dato.imagen}}</td>
           <td>{{dato.comodidades}}</td>
           <td>{{dato.descripcion}}</td>
@@ -61,19 +59,10 @@
       <input type="text" id="Nombre" class="form-control mb-4" placeholder="Nombre de la categoría"
         formControlName="nombre" />
 
-        <label for="Ciudad">Hotel donde pertenece la Habitacion</label>
-        <select formControlName="idHotel"
-          class="form-control mb-4"
-          id="Ciudad"
-        >
-          <option>Elije el hotel</option>
-          <option *ngFor="let hotel of hoteles">{{hotel.nombre}}</option>
-          </select>
-
       <label for="costo">Fotos de la categoría</label>
       <input type="text" id="fotos" class="form-control mb-4" placeholder="URL" formControlName="imagen" />
 
-      <label for="costo">Cant Maxima de Personas</label>
+      <label for="costo">Cantidad Maxima de Personas</label>
       <input type="text" id="fotos" class="form-control mb-4" placeholder="Max Personas" formControlName="max" />
 
       <label for="costo">Descripcion</label>
