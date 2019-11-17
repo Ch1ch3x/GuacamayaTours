@@ -22,18 +22,19 @@ export class ListaCategoriaDestinoComponent implements OnInit {
   formVisibility = false;
   modificarformVisibility = false;
   crearformVisibility = false;
-  selectedRowIndex: number;
+  selectedRowIndex: any;
 
 
   public categorias = [];
+  public categoria: any;
   public documentId = null;
   public currentStatus = 1;
   public newCategoriaForm = new FormGroup({
     nombre: new FormControl('', Validators.required),
     imagen: new FormControl('', Validators.required),
-    imagen2: new FormControl('', Validators.required),
-    imagen3: new FormControl('', Validators.required),
-    deshabilitar: new FormControl('', Validators.required)
+    imagen2: new FormControl(''),
+    imagen3: new FormControl(''),
+    deshabilitar: new FormControl(true)
   });
 
   constructor(private CategoriaSV: CategoriasService) {
@@ -62,8 +63,6 @@ export class ListaCategoriaDestinoComponent implements OnInit {
     });
   }
     public newCategoria(form, documentId = this.documentId) {
-      console.log(`Status: ${this.currentStatus}`);
-      if (this.currentStatus == 1) {
         let data = {
           nombre: form.nombre,
           imagen: form.imagen,
@@ -83,25 +82,27 @@ export class ListaCategoriaDestinoComponent implements OnInit {
         }, (error) => {
           console.error(error);
         });
-      } else {
-        this.close();
-      }
     }
 
-    public editCategoria(documentId) {
-      let editSubscribe = this.CategoriaSV.getCategoria(documentId).subscribe((categoria) => {
-        this.currentStatus = 2;
-        this.documentId = documentId;
+    public editCategoria(form, documentId) {
+      let data = {
+        nombre: form.nombre,
+        imagen: form.imagen,
+        imagen2: form.imagen2,
+        imagen3: form.imagen3,
+        deshabilitar: true
+      }
+      this.CategoriaSV.update(documentId, data).then(() => {
+        console.log('Documento modificado exitósamente!');
         this.newCategoriaForm.setValue({
-          id: documentId,
-          nombre: categoria.payload.data()['nombre'],
-          estado: categoria.payload.data()['estado'],
-          imagan: categoria.payload.data()['imagen'],
-          imagen2: categoria.payload.data()['imagen2'],
-          imagen3: categoria.payload.data()['imagen3'],
-          deshabilitar: categoria.payload.data()['deshabilitar'],
+        nombre: '',
+        imagen: '',
+        imagen2: '',
+        imagen3: '',
+        deshabilitar: true
         });
-        editSubscribe.unsubscribe();
+      }, (error) => {
+          console.error(error);
       });
     }
 
@@ -117,12 +118,6 @@ export class ListaCategoriaDestinoComponent implements OnInit {
     this.formVisibility = false;
     this.crearformVisibility = false;
   }
-
-  openModificar() {
-    this.formVisibility = true;
-    this.modificarformVisibility = true;
-  }
-
   close() {
     this.currentStatus = 3;
     this.formVisibility = false;
@@ -134,10 +129,31 @@ export class ListaCategoriaDestinoComponent implements OnInit {
     this.selectedRowIndex = dato.id;
   }
 
+  openModificar() {
+    this.documentId = this.selectedRowIndex;
+    this.currentStatus = 2;
+    for (let index = 0; index < this.categorias.length; index++) {
+      console.log(this.categorias[index].id);
+      console.log(this.selectedRowIndex);
+      if (this.categorias[index].id == this.documentId) {
+        this.categorias[index] = this.categoria;
+      } else {
+        continue;
+      }
+    }
+    this.newCategoriaForm.setValue({
+      nombre: this.categoria.nombre,
+      imagen: this.categoria.imagen,
+      imagen2: this.categoria.imagen2,
+      imagen3: this.categoria.imagen3,
+      deshabilitar: this.categoria.deshabilitar
+    });
+    this.formVisibility = true;
+    this.modificarformVisibility = true;
+
+  }
+
   modificarCategoria() {
-    console.log("hey")
-    console.log(this.selectedRowIndex)
-    console.log(this.categorias[this.selectedRowIndex].id)
     this.currentStatus = 2;
     this.formVisibility = false;
     this.crearformVisibility = false;
@@ -145,7 +161,7 @@ export class ListaCategoriaDestinoComponent implements OnInit {
   }
 
   soltar() {
-    this.highlight(-1)
+    this.highlight(-1);
   }
 
   deshabilitar() {
