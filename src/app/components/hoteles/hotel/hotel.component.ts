@@ -13,8 +13,8 @@ export class HotelComponent implements OnInit {
   private tipoHabitaciones: any[] = [];
   private hotel: any;
   private Hotel: any;
-  private ciudad: any;
-  private estado: any;
+  ciudad: any;
+  estado: any;
 
 
   constructor(
@@ -29,10 +29,12 @@ export class HotelComponent implements OnInit {
 
     this.fireStoreService.getAll("hoteles").subscribe(hoteles => {
       hoteles.docs.map(hotel => {
-        this.hoteles.push(hotel.data());
+        this.hoteles.push({ ...hotel.data(), id: hotel.id});
       });
     });
     
+    this.hotel = this.hoteles.findIndex(hotel => hotel.id === this.Hotel);
+    console.log(this.hotel)
     
 
   }
