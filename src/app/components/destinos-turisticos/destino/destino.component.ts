@@ -1,6 +1,6 @@
-import { Component, OnInit } from "@angular/core";
-import { Router, ActivatedRoute, Params } from "@angular/router";
-import { FirestoreService } from "src/app/services/firebase/firebase.service";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FirestoreService } from 'src/app/services/firebase/firebase.service';
 
 @Component({
   selector: 'app-destino',
@@ -8,38 +8,36 @@ import { FirestoreService } from "src/app/services/firebase/firebase.service";
   styleUrls: ['./destino.component.scss']
 })
 export class DestinoComponent implements OnInit {
-  private destinos: any[] = [];
-  private categorias: any[] = [];
+  private tipoHabitaciones: any[] = [];
   private destino: any;
-  private Destino: any;
+  ciudad: any;
+  estado: any;
+  private destinoId: any;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private fireStoreService: FirestoreService
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.destino = this.route.snapshot.params["id"];
-    console.log(this.destino);
+    this.destinoId = this.route.snapshot.params["id"];
 
-    this.fireStoreService.getAll("destinos").subscribe(destinos => {
-      this.destinos = destinos.docs.map(destino => ({
-        ...destino.data(),
-        id: destino.id
-      }));
+    this.fireStoreService.getDoc("destinos", this.destinoId).subscribe(destino => {
+      this.destino = { ...destino.payload.data(), id: destino.payload.id };
+      this.fireStoreService
+        .getDoc("ciudades", this.destino.idCiudad)
+        .subscribe((ciudad: any) => {
+          this.destino.ciudad = ciudad.payload.data().nombre;
+        });
+      this.fireStoreService
+        .getDoc("estados", this.destino.idEstado)
+        .subscribe((estado: any) => {
+          this.destino.estado = estado.payload.data().nombre;
+        });
+      console.log(this.destino);
     });
 
-    this.Destino = this.destinos.find(destino => destino.id === this.destino);
-    console.log(this.Destino);
-
-
-
-    this.fireStoreService.getAll("categorias").subscribe(categorias => {
-      categorias.docs.map(categoria => {
-        this.categorias.push(categoria.data());
-      });
-    });
   }
 
 }

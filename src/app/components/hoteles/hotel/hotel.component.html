@@ -32,7 +32,42 @@
     <div class="contenedor container-fluid">
         <div class="center">
             <br />
-            <h1>{{ hotel.nombre }}</h1>
+            <h1>{{ hotel.nombre }}   </h1>
+            <div *ngIf="hotel.estrellas === 5">
+                    <div class="ec-stars-wrapper">
+                        <a data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+                        <a data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+                        <a data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+                        <a data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+                        <a data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+                    </div>
+            </div>
+            <div *ngIf="hotel.estrellas === 4">
+                    <div class="ec-stars-wrapper">
+                        <a data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+                        <a data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+                        <a data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+                        <a data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+                    </div>
+            </div>
+            <div *ngIf="hotel.estrellas === 3">
+                    <div class="ec-stars-wrapper">
+                        <a data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+                        <a data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+                        <a data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+                    </div>
+            </div>
+            <div *ngIf="hotel.estrellas === 2">
+                    <div class="ec-stars-wrapper">
+                        <a data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+                        <a data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+                    </div>
+            </div>
+            <div *ngIf="hotel.estrellas === 1">
+                    <div class="ec-stars-wrapper">
+                        <a data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+                    </div>
+            </div>
 
             <h3>{{ hotel.direccion }}</h3>
             <br />
@@ -41,6 +76,7 @@
 
             <h2>Tipo de Habitaciones</h2>
             <div class="habitaciones">
+                
                 <div class="habitacion">
                     <div class="cuarto">
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -69,34 +105,7 @@
                         <h6>Capacidad máxima:</h6>
                     </div>
                 </div>
-                <div class="habitacion">
-                        <div class="cuarto">
-                            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active" *ngFor="let imagen of hotel.imagenes">
-                                        <img class="d-block w-100" style="border-radius: 10px;" [src]="imagen"
-                                            alt="slide" />
-                                    </div>
-                                </div>
-                                <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
-                                    data-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" href="#carouselExampleControls" role="button"
-                                    data-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="detalle">
-                            <h3>NOMBRE DE LA HABITACION</h3>
-                            <h5>DESCRIPCION DE LA HABITACION</h5>
-                            <h6>COMODIDADES: AAAAAAAAAAAAAAAAAAAAAAAA</h6>
-                            <h6>Capacidad máxima:</h6>
-                        </div>
-                    </div>
+                
 
             </div>
             
@@ -133,14 +142,44 @@
                         <mat-form-field class="col">
                             <mat-label>Tipo de Habitación</mat-label>
                             <mat-select  >
-                                <mat-option
-                                
-                                
-                                >
+                                <mat-option>
                                 hola
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
+                        <mat-form-field class="calendario col">
+                            <label class="labelBoton">Llegada</label>
+                            <input matInput [matDatepicker]="myDatepicker" [min]="minDate">
+                            <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+                            <mat-datepicker #myDatepicker></mat-datepicker>
+                        </mat-form-field>
+                        <mat-form-field class="calendario col">
+                            <label class="labelBoton">Salida</label>
+                            <input matInput [matDatepicker]="myDatepicker2">
+                            <mat-datepicker-toggle matSuffix [for]="myDatepicker2"></mat-datepicker-toggle>
+                            <mat-datepicker #myDatepicker2></mat-datepicker>
+                        </mat-form-field>
+                        <mat-form-field class="col">
+                            <mat-label>Cantidad de personas</mat-label>
+                            <mat-select>
+                                <mat-option>
+                                1
+                                </mat-option>
+                                <mat-option>
+                                2
+                                </mat-option>
+                                <mat-option>
+                                3
+                                </mat-option>
+                                <mat-option>
+                                4
+                                </mat-option>
+                                <mat-option>
+                                5
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <button mat-flat-button color="warn">Reservar</button>
                 </div>
             </div>
         </div>

@@ -36,6 +36,7 @@ export class HotelesComponent implements OnInit {
     this.fireStoreService.getAll("hoteles").subscribe(hoteles => {
       hoteles.docs.map(hotel => {
         this.hoteles.push({ ...hotel.data(), id: hotel.id });
+        
       });
       this.filteredHoteles = this.hoteles;
     });
