@@ -24,6 +24,7 @@
         <th scope="col">Longitud</th>
         <th scope="col">Dirección</th>
         <th scope="col">Servicios</th>
+        <th scope="col">Tipos de Habitaciones</th>
         <th scope="col">Costo FullDay</th>
         <th scope="col">Activo FullDay</th>
         <th scope="col">Imagen</th>
@@ -44,6 +45,7 @@
         <td>{{dato.longitud}}</td>
         <td>{{dato.direccion}}</td>
         <td>{{dato.servicios}}</td>
+        <td>{{dato.tipoHabitaciones}}</td>
         <td>{{dato.costoFullday}}</td>
         <td>{{dato.activoFullday}}</td>
         <td>{{dato.imagen}}</td>
@@ -100,7 +102,7 @@
       <option value="4">4 estrellas</option>
       <option value="5">5 estrellas</option>
     </select>
-    
+
     <label for="Servicios">Servicios que ofrece el Hotel</label>
     <input
       formControlName="servicios"

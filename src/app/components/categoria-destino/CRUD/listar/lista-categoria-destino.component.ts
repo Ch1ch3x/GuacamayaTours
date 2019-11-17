@@ -49,14 +49,14 @@ export class ListaCategoriaDestinoComponent implements OnInit {
   ngOnInit() {
     this.CategoriaSV.getAll().subscribe((categoriasSnapshot) => {
       this.categorias = [];
-      categoriasSnapshot.forEach((categoriaData: any) => {
+      categoriasSnapshot.docs.forEach((categoriaData) => {
         this.categorias.push({
-          id: categoriaData.payload.doc.data(),
-          nombre: categoriaData.payload.doc.data().nombre,
-          imagen: categoriaData.payload.doc.data().imagen,
-          imagen2: categoriaData.payload.doc.data().imagen2,
-          imagen3: categoriaData.payload.doc.data().imagen3,
-          deshabilitar: categoriaData.payload.doc.data().deshabilitar
+          id: categoriaData.id,
+          nombre: categoriaData.data().nombre,
+          imagen: categoriaData.data().imagen,
+          imagen2: categoriaData.data().imagen2,
+          imagen3: categoriaData.data().imagen3,
+          deshabilitar: categoriaData.data().deshabilitar
         });
       })
     });
