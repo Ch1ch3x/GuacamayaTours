@@ -18,7 +18,7 @@
   <thead>
     <tr>
       <th scope="col">Nombre</th>
-      <th scope="col">Tipo</th>
+      <th scope="col">Categorias</th>
       <th scope="col">Ciudad</th>
       <th scope="col">Estado</th>
       <th scope="col">Descripción</th>
@@ -41,9 +41,9 @@
         'highlight3': selectedRowIndex == dato.nombre && dato.deshabilitar == false}"
         (click)="highlight(dato)">
       <td>{{dato.nombre}}</td>
-      <td>{{dato.tipo}}</td>
-      <td>{{dato.ciudad}}</td>
-      <td>{{dato.estado}}</td>
+      <td>{{dato.categorias}}</td>
+      <td>{{dato.idCiudad}}</td>
+      <td>{{dato.idEstado}}</td>
       <td>{{dato.descripcion}}</td>
       <td>{{dato.latitud}}</td>
       <td>{{dato.longitud}}</td>

@@ -1,6 +1,5 @@
 import { Component, ViewChild, OnInit } from "@angular/core";
 import { MatTable } from "@angular/material";
-import { hotel } from "../../../../interfaces/hotel";
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HotelesService } from "../../../../services/firebase/hoteles.service";
 import { CiudadesService } from 'src/app/services/firebase/ciudades.service.js';
@@ -13,8 +12,7 @@ import { EstadosService } from 'src/app/services/firebase/estados.service.js';
   styleUrls: ["./listar-hoteles.component.scss"]
 })
 export class ListarHotelesComponent implements OnInit {
-  ciudades = [];
-  estados = [];
+
 
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
 
@@ -24,7 +22,8 @@ export class ListarHotelesComponent implements OnInit {
 
   total = 2;
 
-
+  public ciudades = [];
+  public estados = [];
   public hoteles = [];
   public documentId = null;
   public currentStatus = 1;
@@ -76,44 +75,45 @@ export class ListarHotelesComponent implements OnInit {
   ngOnInit() {
     this.HotelSV.getAll().subscribe((hotelesSnapshot) => {
       this.hoteles = [];
-      hotelesSnapshot.forEach((ordenData: any) => {
+      hotelesSnapshot.docs.forEach((ordenData: any) => {
         this.hoteles.push({
-          id: ordenData.payload.doc.id,
-          nombre: ordenData.payload.doc.data().nombre,
-          estrellas: ordenData.payload.doc.data().estrellas,
-          servicios: ordenData.payload.doc.data().servicios,
-          latitud: ordenData.payload.doc.data().latitud,
-          longitud: ordenData.payload.doc.data().longitud,
-          idEstado: ordenData.payload.doc.data().idEstado,
-          idCiudad: ordenData.payload.doc.data().idCiudad,
-          direccion: ordenData.payload.doc.data().direccion,
-          /* costoFullday: ordenData.payload.doc.data().fullday.costo,
-          activoFullday: ordenData.payload.doc.data().fullday.activo, */
-          imagen: ordenData.payload.doc.data().imagen,
-          deshabilitar: ordenData.payload.doc.data().deshabilitar
+          id: ordenData.id,
+          nombre:        ordenData.data().nombre,
+          estrellas:     ordenData.data().estrellas,
+          servicios:     ordenData.data().servicios,
+          latitud:       ordenData.data().latitud,
+          longitud:      ordenData.data().longitud,
+          idEstado:      ordenData.data().idEstado,
+          idCiudad:      ordenData.data().idCiudad,
+          direccion:     ordenData.data().direccion,
+          costoFullday:  ordenData.data().fullday.costo,
+          activoFullday: ordenData.data().fullday.activo,
+          tipoHabitaciones: ordenData.data().tipoHabitaciones,
+          imagen:        ordenData.data().imagen,
+          deshabilitar:  ordenData.data().deshabilitar
         });
       })
     });
     this.EstadosSV.getAll().subscribe((estadosSnapshot) => {
       this.estados = [];
-      estadosSnapshot.forEach((estadoData: any) => {
+      estadosSnapshot.docs.forEach((estadoData: any) => {
         this.estados.push({
-          id: estadoData.payload.doc.data(),
-          nombre: estadoData.payload.doc.data().nombre,
-          imagen: estadoData.payload.doc.data().imagen,
-          deshabilitar: estadoData.payload.doc.data().deshabilitar,
+          id:           estadoData.id,
+          nombre:       estadoData.data().nombre,
+          imagen:       estadoData.data().imagen,
+          deshabilitar: estadoData.data().deshabilitar,
         });
       })
     });
     this.CiudadSV.getAll().subscribe((ciudadesSnapshot) => {
       this.ciudades = [];
-      ciudadesSnapshot.forEach((ciudadData: any) => {
+      ciudadesSnapshot.docs.forEach((ciudadData: any) => {
         this.ciudades.push({
-          id: ciudadData.payload.doc.data(),
-          nombre: ciudadData.payload.doc.data().nombre,
-          idEstado: ciudadData.payload.doc.data().idEstado,
-          imagen: ciudadData.payload.doc.data().imagen,
-          deshabilitar: ciudadData.payload.doc.data().deshabilitar
+          id:           ciudadData.id,
+          nombre:       ciudadData.data().nombre,
+          idEstado:     ciudadData.data().idEstado,
+          imagen:       ciudadData.data().imagen,
+          deshabilitar: ciudadData.data().deshabilitar
         });
       })
       console.log(this.ciudades);
