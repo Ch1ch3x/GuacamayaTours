@@ -1,7 +1,5 @@
 <app-navbar> </app-navbar>
-<div class ="body">
-  
-    
+<div class="body">
   <div class="containe">
     <p class="centered1">GUACAMAYA <br /></p>
     <p class="centered2">TOURS</p>
@@ -9,18 +7,18 @@
     <button class="btn">PLANEA TU VIAJE AHORA</button>
   </div>
 
-
   <div class="slider">
     <ngb-carousel *ngIf="images">
       <ng-template ngbSlide *ngFor="let destino of destinos">
         <div class="picsum-img-wrapper">
-          <img [src]="destino.imagen" alt="" class="maximo"/>
+          <img [src]="destino.imagen" alt="" class="maximo" />
         </div>
         <div class="carousel-caption">
-          <a routerLink="/destinos/destino.id"><h3>{{destino.nombre}}</h3></a>
+          <a routerLink="/destinos/destino.id"
+            ><h3>{{ destino.nombre }}</h3></a
+          >
         </div>
       </ng-template>
-     
     </ngb-carousel>
   </div>
 
@@ -30,16 +28,16 @@
     </div>
 
     <div class="actividades1 container-fluid">
-        <div class="contenedor" *ngIf="destinos.length > 0">
-            <div class="elemento" *ngFor = "let actividad of destinos[0].actividades">
-              <img [src]="actividad.imagen" class="act hover" />
-              <p class="hover centered3">{{actividad.nombre}}</p>
-            </div>
-          </div>
       <div class="contenedor" *ngIf="destinos.length > 0">
-        <div class="elemento" *ngFor = "let actividad of destinos[0].actividades">
+        <div class="elemento" *ngFor="let actividad of destinos[0].actividades">
           <img [src]="actividad.imagen" class="act hover" />
-          <p class="hover centered3">{{actividad.nombre}}</p>
+          <p class="hover centered3">{{ actividad.nombre }}</p>
+        </div>
+      </div>
+      <div class="contenedor" *ngIf="destinos.length > 0">
+        <div class="elemento" *ngFor="let actividad of destinos[1].actividades">
+          <img [src]="actividad.imagen" class="act hover" />
+          <p class="hover centered3">{{ actividad.nombre }}</p>
         </div>
       </div>
     </div>
@@ -50,12 +48,11 @@
     <h2 class="title1">HOTELES</h2>
     <div class="hoteles row container-fluid">
       <div class="col-4" *ngFor="let hotel of hoteles">
-        <div *ngIf="hotel.deshabilitar===false" >
-        <a routerLink="/hoteles"><img [src]="hotel.imagen" class="hotel"/></a>
-        <h5>{{hotel.nombre}}</h5>
+        <div *ngIf="hotel.deshabilitar === false">
+          <a routerLink="/hoteles"><img [src]="hotel.imagen" class="hotel"/></a>
+          <h5>{{ hotel.nombre }}</h5>
+        </div>
       </div>
-      </div>
-     
     </div>
   </div>
 </div>
