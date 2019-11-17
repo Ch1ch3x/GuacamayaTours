@@ -51,18 +51,20 @@ i{
 
 .left{
     width: 20%;
-    height: auto;
-    
+    height: auto;   
     background: #FBEACE;
     border-radius: 20px;
     display: flex;
     flex-flow: column wrap;
-    justify-content: center;
+    justify-content: space-between;
     padding-bottom: 3%;
+    padding-top:3%;
 }
 
 .center{
     width: 75%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -84,6 +86,7 @@ i{
     border-radius: 20px;
     margin-right: auto;
     margin-left: auto;
+   
 }
 
 .filtros{
@@ -104,11 +107,7 @@ i{
     margin-bottom: 2%;
 }
 
-.habitaciones{
-    text-align: left;
-    margin-left: 3.5%;
-    padding-top:1% ;
-}
+
 
 label{
     padding-top:0.2%;
@@ -118,8 +117,16 @@ label{
     font-size: 85%;
 }
 
+.habitaciones{
+    width: 98%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    margin-right: auto;
+    margin-left: auto;
+}
 .habitacion{
-    width: 100%;
+    width: 41%;
     background-color: black;    
     background: #FBEACE;
     border-radius: 10px;
@@ -148,6 +155,9 @@ img{
         display: flex;
         flex-flow: column wrap;
         justify-content: space-between;
+        margin-right: auto;
+        margin-left: auto;
+
     }
     .left{
         width: 100%;
@@ -230,12 +240,36 @@ img{
         border-radius: 20px;
         margin-right: auto;
         margin-left: auto;
-        margin-bottom: 1%;
-        margin-top: 1%;
+        margin-bottom: 3%;
+        margin-top: 8%;
     }
 
     h2{
         text-align: center;
     }
+
+    .habitaciones{
+        width: 98%;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: space-around;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .habitacion{
+        width: 75%;
+        background-color: black;    
+        background: #FBEACE;
+        border-radius: 10px;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        margin-top: 3%;
+        margin-bottom: 3%;
+        min-height: 110px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    
 }
 

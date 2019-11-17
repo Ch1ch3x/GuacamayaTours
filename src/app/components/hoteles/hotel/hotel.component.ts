@@ -11,7 +11,6 @@ import { HotelesService } from "src/app/services/firebase/hoteles.service";
 export class HotelComponent implements OnInit {
   private tipoHabitaciones: any[] = [];
   private hotel: any;
-  private Hotel: any;
   ciudad: any;
   estado: any;
 
@@ -33,6 +32,11 @@ export class HotelComponent implements OnInit {
         .getDoc("ciudades", this.hotel.idCiudad)
         .subscribe((ciudad: any) => {
           this.hotel.ciudad = ciudad.payload.data().nombre;
+        });
+      this.fireStoreService
+        .getDoc("estados", this.hotel.idEstado)
+        .subscribe((estado: any) => {
+          this.hotel.estado = estado.payload.data().nombre;
         });
       console.log(this.hotel);
     });
