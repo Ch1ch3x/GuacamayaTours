@@ -50,8 +50,6 @@
           <th scope="col">Nombre</th>
           <th scope="col">Estado</th>
           <th scope="col">Imagen</th>
-          <th scope="col">Imagen2</th>
-          <th scope="col">Imagen3</th>
           <th scope="col">Vigencia</th>
         </tr>
       </thead>
@@ -60,16 +58,13 @@
           [ngClass]="{
             highlight: selectedRowIndex == dato.id,
             highlight2: dato.deshabilitar == false,
-            highlight3:
-              selectedRowIndex == dato.id && dato.deshabilitar == false
+            highlight3: selectedRowIndex == dato.id && dato.deshabilitar == false
           }"
           (click)="highlight(dato)"
         >
           <td>{{ dato.nombre }}</td>
           <td>{{ dato.idEstado }}</td>
           <td>{{ dato.imagen }}</td>
-          <td>{{ dato.imagen2 }}</td>
-          <td>{{ dato.imagen3 }}</td>
           <td>{{ dato.deshabilitar }}</td>
         </tr>
       </tbody>
@@ -107,24 +102,6 @@
       <label for="costo">Fotos de la Ciudad</label>
       <input
         formControlName="imagen"
-        type="text"
-        id="fotos"
-        class="form-control mb-4"
-        placeholder="URL"
-      />
-
-      <label for="costo">Fotos de la Ciudad</label>
-      <input
-        formControlName="imagen2"
-        type="text"
-        id="fotos"
-        class="form-control mb-4"
-        placeholder="URL"
-      />
-
-      <label for="costo">Fotos de la Ciudad</label>
-      <input
-        formControlName="imagen3"
         type="text"
         id="fotos"
         class="form-control mb-4"
@@ -181,23 +158,6 @@
         placeholder="URL"
       />
 
-      <label for="costo">Fotos de la Ciudad</label>
-      <input
-        formControlName="imagen2"
-        type="text"
-        id="fotos"
-        class="form-control mb-4"
-        placeholder="URL"
-      />
-
-      <label for="costo">Fotos de la Ciudad</label>
-      <input
-        formControlName="imagen3"
-        type="text"
-        id="fotos"
-        class="form-control mb-4"
-        placeholder="URL"
-      />
       <button
         class="btn btn-info btn-block"
         (click)="modificarCiudad()"

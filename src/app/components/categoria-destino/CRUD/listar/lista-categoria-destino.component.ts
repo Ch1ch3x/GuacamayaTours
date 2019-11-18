@@ -1,12 +1,10 @@
 import { tipo } from '../../../../interfaces/tipo';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatTable } from '@angular/material';
-import tipos from '../../../../data/tipos.json';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CategoriasService } from 'src/app/services/firebase/categorias.service';
 
 
-const ELEMENT_DATA: tipo[] = tipos;
 
 @Component({
   selector: 'app-lista-categoria-destino',
@@ -15,7 +13,6 @@ const ELEMENT_DATA: tipo[] = tipos;
 })
 export class ListaCategoriaDestinoComponent implements OnInit {
   displayedColumns: string[] = ['nombre', 'id'];
-  dataSource = ELEMENT_DATA;
 
   @ViewChild(MatTable,  { static: true}) table: MatTable<any>;
 
@@ -31,18 +28,12 @@ export class ListaCategoriaDestinoComponent implements OnInit {
   public currentStatus = 1;
   public newCategoriaForm = new FormGroup({
     nombre: new FormControl('', Validators.required),
-    imagen: new FormControl('', Validators.required),
-    imagen2: new FormControl(''),
-    imagen3: new FormControl(''),
     deshabilitar: new FormControl(true)
   });
 
   constructor(private CategoriaSV: CategoriasService) {
     this.newCategoriaForm.setValue({
       nombre: '',
-      imagen: '',
-      imagen2: '',
-      imagen3: '',
       deshabilitar: true
     });
   }
@@ -54,9 +45,6 @@ export class ListaCategoriaDestinoComponent implements OnInit {
         this.categorias.push({
           id: categoriaData.id,
           nombre: categoriaData.data().nombre,
-          imagen: categoriaData.data().imagen,
-          imagen2: categoriaData.data().imagen2,
-          imagen3: categoriaData.data().imagen3,
           deshabilitar: categoriaData.data().deshabilitar
         });
       })
@@ -65,18 +53,12 @@ export class ListaCategoriaDestinoComponent implements OnInit {
     public newCategoria(form, documentId = this.documentId) {
         let data = {
           nombre: form.nombre,
-          imagen: form.imagen,
-          imagen2: form.imagen2,
-          imagen3: form.imagen3,
           deshabilitar: true
         }
         this.CategoriaSV.create(data).then(() => {
           console.log('Documento creado exitósamente!');
           this.newCategoriaForm.setValue({
             nombre: '',
-            imagen: '',
-            imagen2: '',
-            imagen3: '',
             deshabilitar: true
           });
         }, (error) => {
@@ -87,18 +69,12 @@ export class ListaCategoriaDestinoComponent implements OnInit {
     public editCategoria(form, documentId) {
       let data = {
         nombre: form.nombre,
-        imagen: form.imagen,
-        imagen2: form.imagen2,
-        imagen3: form.imagen3,
         deshabilitar: true
       }
       this.CategoriaSV.update(documentId, data).then(() => {
         console.log('Documento modificado exitósamente!');
         this.newCategoriaForm.setValue({
         nombre: '',
-        imagen: '',
-        imagen2: '',
-        imagen3: '',
         deshabilitar: true
         });
       }, (error) => {
@@ -115,6 +91,7 @@ export class ListaCategoriaDestinoComponent implements OnInit {
   }
 
   crearCategoria() {
+    location.reload(true);
     this.formVisibility = false;
     this.crearformVisibility = false;
   }
@@ -143,9 +120,6 @@ export class ListaCategoriaDestinoComponent implements OnInit {
     }
     this.newCategoriaForm.setValue({
       nombre: this.categoria.nombre,
-      imagen: this.categoria.imagen,
-      imagen2: this.categoria.imagen2,
-      imagen3: this.categoria.imagen3,
       deshabilitar: this.categoria.deshabilitar
     });
     this.formVisibility = true;
@@ -165,7 +139,7 @@ export class ListaCategoriaDestinoComponent implements OnInit {
   }
 
   deshabilitar() {
-    for (let index = 0; index < tipos.length; index++) {
+    for (let index = 0; index < this.categorias.length; index++) {
       console.log(this.categorias[index].nombre);
       if (this.categorias[index].id == this.selectedRowIndex) {
         this.categorias[index].deshabilitar = false;
@@ -176,7 +150,7 @@ export class ListaCategoriaDestinoComponent implements OnInit {
   }
 
   habilitar() {
-    for (let index = 0; index < tipos.length; index++) {
+    for (let index = 0; index < this.categorias.length; index++) {
       console.log(this.categorias[index].nombre);
       if (this.categorias[index].id == this.selectedRowIndex){
         this.categorias[index].deshabilitar = true;

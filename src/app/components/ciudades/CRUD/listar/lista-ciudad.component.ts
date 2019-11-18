@@ -1,14 +1,11 @@
-import { Component, ViewChild } from "@angular/core";
+import { Component } from "@angular/core";
 
 import { MatTable } from "@angular/material";
 
-import ciudades from "../../../../data/ciudades.json";
-import { ciudad } from "../../../../interfaces/ciudad";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { CiudadesService } from "src/app/services/firebase/ciudades.service.js";
 import { EstadosService } from "src/app/services/firebase/estados.service.js";
 
-const ELEMENT_DATA: ciudad[] = ciudades;
 
 @Component({
   selector: "app-lista-ciudad",
@@ -16,14 +13,6 @@ const ELEMENT_DATA: ciudad[] = ciudades;
   styleUrls: ["./lista-ciudad.component.scss"]
 })
 export class ListaCiudadComponent {
-  // tslint:disable-next-line: max-line-length
-  displayedColumns: string[] = ["nombre", "estado", "imagen"];
-  dataSource = ELEMENT_DATA;
-
-  // public ciudad = ciudades;
-
-  @ViewChild(MatTable, { static: true }) table: MatTable<any>;
-
   formVisibility = false;
   modificarformVisibility = false;
   crearformVisibility = false;
@@ -38,8 +27,6 @@ export class ListaCiudadComponent {
     nombre: new FormControl("", Validators.required),
     idEstado: new FormControl("", Validators.required),
     imagen: new FormControl("", Validators.required),
-    imagen2: new FormControl(""),
-    imagen3: new FormControl(""),
     deshabilitar: new FormControl(true)
   });
 
@@ -51,8 +38,6 @@ export class ListaCiudadComponent {
       nombre: "",
       idEstado: "",
       imagen: "",
-      imagen2: "",
-      imagen3: "",
       deshabilitar: true
     });
   }
@@ -65,8 +50,6 @@ export class ListaCiudadComponent {
           id: estadoData.id,
           nombre: estadoData.data().nombre,
           imagen: estadoData.data().imagen,
-          imagen2: estadoData.data().imagen2,
-          imagen3: estadoData.data().imagen3,
           deshabilitar: estadoData.data().deshabilitar
         });
       });
@@ -79,8 +62,6 @@ export class ListaCiudadComponent {
           nombre: ciudadData.data().nombre,
           idEstado: ciudadData.data().idEstado,
           imagen: ciudadData.data().imagen,
-          imagen2: ciudadData.data().imagen2,
-          imagen3: ciudadData.data().imagen3,
           deshabilitar: ciudadData.data().deshabilitar
         });
       });
@@ -92,8 +73,6 @@ export class ListaCiudadComponent {
         nombre: form.nombre,
         idEstado: form.idEstado,
         imagen: form.imagen,
-        imagen2: form.imagen2,
-        imagen3: form.imagen3,
         deshabilitar: form.deshabilitar
       };
       this.CiudadSV.create(data).then(
@@ -103,9 +82,6 @@ export class ListaCiudadComponent {
             nombre: "",
             idEstado: "",
             imagen: "",
-            imagen2: "",
-            imagen3: "",
-
             deshabilitar: true
           });
         },
@@ -128,8 +104,6 @@ export class ListaCiudadComponent {
           nombre: ciudad.payload.data()["nombre"],
           idEstado: ciudad.payload.data()["estado"],
           imagen: ciudad.payload.data()["imagen"],
-          imagen2: ciudad.payload.data()["imagen2"],
-          imagen3: ciudad.payload.data()["imagen3"],
           deshabilitar: ciudad.payload.data()["deshabilitar"]
         });
         editSubscribe.unsubscribe();

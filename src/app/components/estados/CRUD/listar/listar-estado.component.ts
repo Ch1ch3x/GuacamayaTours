@@ -1,7 +1,7 @@
 import { Component, ViewChild, OnInit } from "@angular/core";
 import { MatTable } from "@angular/material";
 import { EstadosService } from "../../../../services/firebase/estados.service";
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { format } from 'url';
 
 
@@ -21,20 +21,15 @@ export class ListarEstadoComponent implements OnInit {
   public currentStatus = 1;
   public newEstadoForm = new FormGroup({
       nombre: new FormControl('', Validators.required),
-      imagen: new FormControl('', Validators.required),
-      imagen2: new FormControl(''),
-      imagen3: new FormControl(''),
+      imagen: new FormArray([new FormControl('')]),
       deshabilitar: new FormControl(true),
-
     });
 
 
   constructor(private EstadosSV: EstadosService) {
     this.newEstadoForm.setValue({
       nombre: '',
-      imagen: '',
-      imagen2: '',
-      imagen3: '',
+      imagen: [''],
       deshabilitar: true,
     });
   }
@@ -49,8 +44,6 @@ export class ListarEstadoComponent implements OnInit {
           id: estadoData.id,
           nombre: estadoData.data().nombre,
           imagen: estadoData.data().imagen,
-          imagen2: estadoData.data().imagen2,
-          imagen3: estadoData.data().imagen3,
           deshabilitar: estadoData.data().deshabilitar
         });
       });
@@ -62,19 +55,17 @@ export class ListarEstadoComponent implements OnInit {
     if (this.currentStatus == 1) {
       let data = {
         nombre: form.nombre,
-        imagen: form.imagen,
-        imagen2: form.imagen2,
-        imagen3: form.imagen3,
-        deshabilitar: form.deshabilitar
+        imagen: [
+          form.imagen
+        ],
+        deshabilitar: true
       }
       this.EstadosSV.create(data).then(() => {
         console.log('Documento creado exitósamente!');
         this.newEstadoForm.setValue({
           nombre: '',
-          imagen: '',
-          imagen2: '',
-          imagen3: '',
-          deshabilitar: ''
+          imagen: [''],
+          deshabilitar: true
         });
       }, (error) => {
         console.error(error);
@@ -91,8 +82,6 @@ export class ListarEstadoComponent implements OnInit {
       this.newEstadoForm.setValue({
         nombre: estado.payload.data()['nombre'],
         imagen: estado.payload.data()['imagen'],
-        imagen2: estado.payload.data()['imagen2'],
-        imagen3: estado.payload.data()['imagen3'],
         deshabilitar: estado.payload.data()['deshabilitar'],
       });
       editSubscribe.unsubscribe();
@@ -106,6 +95,7 @@ export class ListarEstadoComponent implements OnInit {
   }
 
   crearEstado() {
+    //location.reload(true);
     this.formVisibility = false;
     this.crearformVisibility = false;
   }

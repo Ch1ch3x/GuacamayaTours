@@ -95,14 +95,8 @@ export class ListarHotelesComponent implements OnInit {
             direccion: ordenData.data().direccion,
             costoFullday: ordenData.data().fullday.costo,
             activoFullday: ordenData.data().fullday.activo,
-            tipoHabitaciones: ordenData
-              .data()
-              .tipoHabitaciones.map(
-                tipoH =>
-                  this.tipoHabitaciones.filter(
-                    tH => tH.id === tipoH.tipoHabitacion
-                  )[0].nombre
-              ),
+            tipoHabitaciones: ordenData.data().tipoHabitaciones.map(tipoH =>
+              this.tipoHabitaciones.filter(tH => tH.id === tipoH.tipoHabitacion)[0].nombre),
             imagen: ordenData.data().imagen,
             deshabilitar: ordenData.data().deshabilitar
           });

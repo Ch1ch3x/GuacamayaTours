@@ -13,13 +13,12 @@
       <button type="button" class="btn btn-outline-primary" name="button" (click)="soltar()">Quitar Seleccion
       </button>
     </div>
+
   <table class="table" >
     <thead class="thead-dark">
       <tr>
         <th scope="col">Nombre</th>
         <th scope="col">Imagen</th>
-        <th scope="col">Imagen2</th>
-        <th scope="col">Imagen3</th>
         <th scope="col">Vigencia</th>
       </tr>
     </thead>
@@ -31,8 +30,6 @@
         (click)="highlight(dato)">
         <td>{{dato.nombre}}</td>
         <td>{{dato.imagen}}</td>
-        <td>{{dato.imagen2}}</td>
-        <td>{{dato.imagen3}}</td>
         <td>{{dato.deshabilitar}}</td>
       </tr>
     </tbody>
@@ -61,24 +58,6 @@
       class="form-control mb-4"
       placeholder="URL"
       formControlName = "imagen"
-    />
-
-    <label for="fotos">Fotos del estado</label>
-    <input
-      type="text"
-      id="fotos"
-      class="form-control mb-4"
-      placeholder="URL"
-      formControlName = "imagen2"
-    />
-
-    <label for="fotos">Fotos del estado</label>
-    <input
-      type="text"
-      id="fotos"
-      class="form-control mb-4"
-      placeholder="URL"
-      formControlName = "imagen3"
     />
 
     <button
