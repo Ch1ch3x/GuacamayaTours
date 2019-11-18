@@ -30,16 +30,23 @@ export class HotelComponent implements OnInit {
             .getDoc("ciudades", this.hotel.idCiudad)
             .subscribe((ciudad: any) => {
               this.hotel.ciudad = ciudad.payload.data().nombre;
-              this.habitaciones = tipoHabitaciones.docs
-                .map(doc => ({ ...doc.data(), id: doc.id }))
-                .filter(tipoHabitacion =>
-                  this.hotel.tipoHabitaciones.some(
-                    tH => tH.tipoHabitacion == tipoHabitacion.id
-                  )
-                );
+              this.fireStoreService
+                .getDoc("estados", this.hotel.idEstado)
+                .subscribe((estado: any) => {
+                  this.hotel.estado = estado.payload.data().nombre;  
+                  console.log(this.hotel);      
+                  this.habitaciones = tipoHabitaciones.docs
+                    .map(doc => ({ ...doc.data(), id: doc.id }))
+                    .filter(tipoHabitacion =>
+                      this.hotel.tipoHabitaciones.some(
+                        tH => tH.tipoHabitacion == tipoHabitacion.id
+                      )
+                    );
+                });
             });
         });
     });
+    
 
   }
 }
