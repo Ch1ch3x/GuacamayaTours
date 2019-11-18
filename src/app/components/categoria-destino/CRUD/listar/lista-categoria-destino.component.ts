@@ -64,6 +64,7 @@ export class ListaCategoriaDestinoComponent implements OnInit {
         }, (error) => {
           console.error(error);
         });
+        this.categorias.push(data);
     }
 
     public editCategoria(form, documentId) {
@@ -91,7 +92,6 @@ export class ListaCategoriaDestinoComponent implements OnInit {
   }
 
   crearCategoria() {
-    location.reload(true);
     this.formVisibility = false;
     this.crearformVisibility = false;
   }

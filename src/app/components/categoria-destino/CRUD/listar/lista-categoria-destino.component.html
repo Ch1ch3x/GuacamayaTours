@@ -24,7 +24,7 @@
         <tr
         [ngClass] = "{'highlight': selectedRowIndex == dato.id,
         'highlight2': dato.deshabilitar == false,
-        'highlight3': selectedRowIndex == dato.nombre && dato.deshabilitar == false}"
+        'highlight3': selectedRowIndex == dato.id && dato.deshabilitar == false}"
         (click)="highlight(dato)"
         >
           <td>{{dato.nombre}}</td>
@@ -72,16 +72,6 @@
 
       <label for="Nombre">Nombre de la Categoría</label>
       <input formControlName="nombre" type="text" id="Nombre" class="form-control mb-4" />
-
-      <label for="costo">Foto 1 de la categoría</label>
-      <input formControlName="imagen" type="text" id="fotos" class="form-control mb-4"
-         />
-      <label for="costo">Foto 2 de la categoría</label>
-      <input formControlName="imagen2" type="text" id="fotos" class="form-control mb-4"
-         />
-      <label for="costo">Foto 3 de la categoría</label>
-      <input formControlName="imagen3" type="text" id="fotos" class="form-control mb-4"
-         />
 
 
       <button class="btn btn-info btn-block" (click)="modificarCategoria()" type="submit">Crear Categoría</button>
