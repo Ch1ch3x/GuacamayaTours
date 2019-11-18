@@ -78,79 +78,81 @@
 
            
        <h2>Tipo de Habitaciones</h2>      
-      <div class = "habitaciones"></div>      
-      <div class="habitacion" *ngFor="let habitacion of habitaciones">
-        <div class="cuarto">
-          <div
-            id="carouselExampleControls"
-            class="carousel slide"
-            data-ride="carousel"
-          >
-            <div class="carousel-inner">
-              <ng-container *ngFor="let imagen of habitacion.imagen">
-                <div
-                  class="carousel-item active"
-                  *ngIf="imagen == habitacion.imagen[0]"
-                >
-                  <img
-                    class="d-block w-100"
-                    style="border-radius: 10px;"
-                    [src]="imagen"
-                    alt="slide"
-                  />
-                </div>
-                <div
-                  class="carousel-item"
-                  *ngIf="imagen !== habitacion.imagen[0]"
-                >
-                  <img
-                    class="d-block w-100"
-                    style="border-radius: 10px;"
-                    [src]="imagen"
-                    alt="slide"
-                  />
-                </div>
-              </ng-container>
+      <div class = "habitaciones">
+        <div class="habitacion" *ngFor="let habitacion of habitaciones">
+          <div class="cuarto">
+            <div
+              id="carouselExampleControls"
+              class="carousel slide"
+              data-ride="carousel"
+            >
+              <div class="carousel-inner">
+                <ng-container *ngFor="let imagen of habitacion.imagen">
+                  <div
+                    class="carousel-item active"
+                    *ngIf="imagen == habitacion.imagen[0]"
+                  >
+                    <img
+                      class="d-block w-100"
+                      style="border-radius: 10px;"
+                      [src]="imagen"
+                      alt="slide"
+                    />
+                  </div>
+                  <div
+                    class="carousel-item"
+                    *ngIf="imagen !== habitacion.imagen[0]"
+                  >
+                    <img
+                      class="d-block w-100"
+                      style="border-radius: 10px;"
+                      [src]="imagen"
+                      alt="slide"
+                    />
+                  </div>
+                </ng-container>
+              </div>
+              <a
+                class="carousel-control-prev"
+                href="#carouselExampleControls"
+                role="button"
+                data-slide="prev"
+              >
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a
+                class="carousel-control-next"
+                href="#carouselExampleControls"
+                role="button"
+                data-slide="next"
+              >
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="sr-only">Next</span>
+              </a>
             </div>
-            <a
-              class="carousel-control-prev"
-              href="#carouselExampleControls"
-              role="button"
-              data-slide="prev"
-            >
-              <span
-                class="carousel-control-prev-icon"
-                aria-hidden="true"
-              ></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a
-              class="carousel-control-next"
-              href="#carouselExampleControls"
-              role="button"
-              data-slide="next"
-            >
-              <span
-                class="carousel-control-next-icon"
-                aria-hidden="true"
-              ></span>
-              <span class="sr-only">Next</span>
-            </a>
+          </div>
+          <div class="detalle">
+            <h3>{{ habitacion.nombre }}</h3>
+            <h6 class="descrip">{{ habitacion.descripcion }}</h6>
+            <h6>
+              Comodidades:
+              <ng-container *ngFor="let comodidad of habitacion.comodidades">
+                {{ comodidad }}</ng-container
+              >
+            </h6>
+            <h6>Capacidad máxima: {{ habitacion.max }}</h6>
           </div>
         </div>
-        <div class="detalle">
-          <h3>{{ habitacion.nombre }}</h3>
-          <h5>{{ habitacion.descripcion }}</h5>
-          <h6>
-            COMODIDADES:
-            <ng-container *ngFor="let comodidad of habitacion.comodidades">
-              {{ comodidad }}</ng-container
-            >
-          </h6>
-          <h6>Capacidad máxima: {{ habitacion.max }}</h6>
-        </div>
       </div>
-    </div>
+      </div>      
+      
         <div class="left">
             
 
