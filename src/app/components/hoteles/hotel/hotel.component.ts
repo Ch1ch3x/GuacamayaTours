@@ -37,7 +37,6 @@ export class HotelComponent implements OnInit {
                     tH => tH.tipoHabitacion == tipoHabitacion.id
                   )
                 );
-              console.log(this.habitaciones);
             });
         });
     });
