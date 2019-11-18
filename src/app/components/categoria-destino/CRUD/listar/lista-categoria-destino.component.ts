@@ -67,16 +67,16 @@ export class ListaCategoriaDestinoComponent implements OnInit {
         this.categorias.push(data);
     }
 
-    public editCategoria(form, documentId) {
+    public editCategoria(form, documentId = this.selectedRowIndex) {
       let data = {
         nombre: form.nombre,
-        deshabilitar: true
+        deshabilitar: true,
       }
       this.CategoriaSV.update(documentId, data).then(() => {
         console.log('Documento modificado exitósamente!');
         this.newCategoriaForm.setValue({
-        nombre: '',
-        deshabilitar: true
+          nombre: '',
+          deshabilitar: true
         });
       }, (error) => {
           console.error(error);
@@ -107,30 +107,14 @@ export class ListaCategoriaDestinoComponent implements OnInit {
   }
 
   openModificar() {
-    this.documentId = this.selectedRowIndex;
     this.currentStatus = 2;
-    for (let index = 0; index < this.categorias.length; index++) {
-      console.log(this.categorias[index].id);
-      console.log(this.selectedRowIndex);
-      if (this.categorias[index].id == this.documentId) {
-        this.categorias[index] = this.categoria;
-      } else {
-        continue;
-      }
-    }
-    this.newCategoriaForm.setValue({
-      nombre: this.categoria.nombre,
-      deshabilitar: this.categoria.deshabilitar
-    });
     this.formVisibility = true;
     this.modificarformVisibility = true;
 
   }
 
   modificarCategoria() {
-    this.currentStatus = 2;
     this.formVisibility = false;
-    this.crearformVisibility = false;
     this.modificarformVisibility = false;
   }
 
@@ -138,25 +122,63 @@ export class ListaCategoriaDestinoComponent implements OnInit {
     this.highlight(-1);
   }
 
+  public numerito;
+
   deshabilitar() {
     for (let index = 0; index < this.categorias.length; index++) {
-      console.log(this.categorias[index].nombre);
       if (this.categorias[index].id == this.selectedRowIndex) {
+        this.numerito = index
         this.categorias[index].deshabilitar = false;
       } else {
         continue;
       }
     }
+    this.deshabilitarCategoria(this.selectedRowIndex)
+  }
+  
+
+  public deshabilitarCategoria(documentId) {
+    let data = {
+      nombre: this.categorias[this.numerito].nombre,
+      deshabilitar: false,
+    }
+    this.CategoriaSV.update(documentId, data).then(() => {
+      console.log('Documento modificado exitósamente!');
+      this.newCategoriaForm.setValue({
+      nombre: '',
+      deshabilitar: true,
+      });
+    }, (error) => {
+        console.error(error);
+    });
   }
 
   habilitar() {
     for (let index = 0; index < this.categorias.length; index++) {
       console.log(this.categorias[index].nombre);
       if (this.categorias[index].id == this.selectedRowIndex){
+        this.numerito = index
         this.categorias[index].deshabilitar = true;
       } else {
         continue;
       }
     }
+    this.habilitarCategoria(this.selectedRowIndex)
+  }
+
+  public habilitarCategoria(documentId) {
+    let data = {
+      nombre: this.categorias[this.numerito].nombre,
+      deshabilitar: true,
+    }
+    this.CategoriaSV.update(documentId, data).then(() => {
+      console.log('Documento modificado exitósamente!');
+      this.newCategoriaForm.setValue({
+      nombre: '',
+      deshabilitar: true,
+      });
+    }, (error) => {
+        console.error(error);
+    });
   }
 }

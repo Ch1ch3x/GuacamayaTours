@@ -161,7 +161,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
       this.destinos.push(data);
   }
 
-  public editDestino(documentId) {
+  public editDestino(form, documentId) {
     let editSubscribe = this.DestinoSV.getDestino(documentId).subscribe(
       destino => {
         this.currentStatus = 2;
@@ -188,6 +188,8 @@ export class ListarDestinosTuristicosComponent implements OnInit {
     );
   }
 
+
+
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
 
   openCrear() {
@@ -200,7 +202,17 @@ export class ListarDestinosTuristicosComponent implements OnInit {
     this.formVisibility = false;
     this.crearformVisibility = false;
   }
-
+  openModificar() {
+    console.log(this.selectedRowIndex)
+    this.formVisibility = true;
+    this.modificarformVisibility = true;
+    this.currentStatus = 2
+  }
+  modificarDestino(){
+    this.editDestino(this.newDestinoForm, this.selectedRowIndex)
+    this.modificarformVisibility = false;
+    this.formVisibility = false;
+  }
   close() {
     this.currentStatus = 3;
     this.formVisibility = false;
@@ -224,6 +236,34 @@ export class ListarDestinosTuristicosComponent implements OnInit {
         continue;
       }
     }
+    this.deshabilitarDestino(this.selectedRowIndex)
+  }
+
+  public deshabilitarDestino(documentId) {
+    let editSubscribe = this.DestinoSV.getDestino(documentId).subscribe(
+      destino => {
+        this.currentStatus = 2;
+        this.documentId = documentId;
+        this.newDestinoForm.setValue({
+          id: documentId,
+          nombre: destino.payload.data()["nombre"],
+          descripcion: destino.payload.data()["descripcion"],
+          categorias: destino.payload.data()["categorias"],
+          servicios: destino.payload.data()["servicios"],
+          actividades: destino.payload.data()["actividades"],
+          latitud: destino.payload.data()["latitud"],
+          longitud: destino.payload.data()["longitud"],
+          idEstado: destino.payload.data()["idEstado"],
+          idCiudad: destino.payload.data()["ciudad"],
+          direccion: destino.payload.data()["direccion"],
+          imagen: destino.payload.data()["imagen"],
+          imagen2: destino.payload.data()["imagen2"],
+          imagen3: destino.payload.data()["imagen3"],
+          deshabilitar: false,
+        });
+        editSubscribe.unsubscribe();
+      }
+    );
   }
 
   habilitar() {

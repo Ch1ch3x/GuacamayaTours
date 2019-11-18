@@ -14,7 +14,7 @@
       type="button"
       class="btn btn-outline-primary"
       name="button"
-      (click)="openCrear()"
+      (click)="openModificar()"
     >
       Modificar Destino
     </button>
@@ -92,7 +92,7 @@
   </table>
 </div>
 
-<div [hidden]="!crearformVisibility" id="form">
+<div [hidden]="!modificarformVisibility" id="form">
   <form
     class="border border-light p-5"
     (ngSubmit)="newDestino(newDestinoForm.value)"
@@ -204,4 +204,117 @@
     </button>
     <button class="btn btn-info btn-block" (click)="close()">Cancelar</button>
   </form>
+
+  <div [hidden]="!crearformVisibility" id="form">
+    <form
+      class="border border-light p-5"
+      (ngSubmit)="newDestino(newDestinoForm.value)"
+      [formGroup]="newDestinoForm"
+    >
+      <div class="text-center">
+        <p class="h4 mb-4">Ingrese los Datos del Nuevo Destino</p>
+  
+        <p>
+          Coloque en la casilla correspondiente la información del destino
+          turistico seleccionado.
+        </p>
+      </div>
+      <label for="Nombre">Nombre del Destino</label>
+      <input
+        type="text"
+        id="Nombre"
+        class="form-control mb-4"
+        formControlName="nombre"
+        placeholder="Nombre de Destino"
+      />
+      <label for="Estado">Estado del Destino</label>
+      <select
+        class="browser-default custom-select mb-4"
+        formControlName="idEstado"
+        id="Estado"
+      >
+        <option value="" disabled="" selected="">Elije un Estado</option>
+        <option value="1">Falcon</option>
+        <option value="2">Sucre</option>
+        <option value="3">Nueva Esparta</option>
+      </select>
+      <label for="Ciudad">Ciudad del Destino</label>
+      <select
+        class="browser-default custom-select mb-4"
+        formControlName="idCiudad"
+        id="Ciudad"
+      >
+        <option value="" disabled="" selected="">Elije una Ciudad</option>
+        <option value="1">Chichiriviche</option>
+        <option value="2">Tucacas</option>
+        <option value="3">Puerto Cabello</option>
+      </select>
+      <label for="Tipo">Tipo de destino</label>
+      <select
+        class="browser-default custom-select mb-4"
+        formControlName="categorias"
+        id="Tipo"
+      >
+        <option value="" disabled="" selected="">Elije un Tipo de Destino</option>
+        <option value="1">Playa</option>
+        <option value="2">Montaña</option>
+        <option value="3">Arte</option>
+      </select>
+      <label for="Servicios">Servicios del Destino</label>
+      <input
+        type="text"
+        id="Servicios"
+        class="form-control mb-4"
+        formControlName="servicios"
+        placeholder="Servicios del Destino"
+      />
+      <label for="Actividades">Actividades del Destino</label>
+      <input
+        type="text"
+        id="Actividades"
+        class="form-control mb-4"
+        formControlName="actividades"
+        placeholder="Actividades del Destino"
+      />
+      <label for="Latitud">Latitud del Destino</label>
+      <input
+        type="text"
+        id="Latitud"
+        class="form-control mb-4"
+        formControlName="latitud"
+        placeholder="Latitud"
+      />
+      <label for="Longitud">Longitud del Destino</label>
+      <input
+        type="text"
+        id="Longitud"
+        class="form-control mb-4"
+        formControlName="longitud"
+        placeholder="Longitud"
+      />
+      <label for="Dirección">Dirección del Destino</label>
+      <input
+        type="text"
+        id="Dirección"
+        class="form-control mb-4"
+        formControlName="direccion"
+        placeholder="Dirección"
+      />
+      <label for="Descripción">Descripción</label>
+      <textarea
+        id="Descripción"
+        class="form-control mb-4"
+        formControlName="descripcion"
+        placeholder="Descripción del Destino"
+      ></textarea>
+  
+      <button
+        class="btn btn-info btn-block"
+        (click)="crearDestino()"
+        type="submit"
+      >
+        Crear
+      </button>
+      <button class="btn btn-info btn-block" (click)="close()">Cancelar</button>
+    </form>
 </div>
