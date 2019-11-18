@@ -151,6 +151,18 @@ export class ListaCiudadComponent {
   openModificar() {
     this.formVisibility = true;
     this.modificarformVisibility = true;
+    const ciudad = this.ciudades.filter(
+      ciudad => ciudad.id === this.selectedRowIndex
+    )[0];
+    console.log(ciudad);
+    this.newCiudadForm.setValue({
+      nombre: ciudad["nombre"],
+      idEstado: ciudad["idEstado"],
+      imagen: ciudad["imagen"] ? ciudad["imagen"] : "",
+      imagen2: ciudad["imagen2"] ? ciudad["imagen2"] : "",
+      imagen3: ciudad["imagen3"] ? ciudad["imagen3"] : "",
+      deshabilitar: ciudad["deshabilitar"]
+    });
   }
 
   close() {

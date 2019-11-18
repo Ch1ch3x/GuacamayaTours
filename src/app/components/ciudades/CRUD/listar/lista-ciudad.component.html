@@ -2,15 +2,45 @@
 <div>
   <div [hidden]="formVisibility" class="container-fluid col-12 text-center">
     <div class="btn-group col-12" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-outline-primary" name="button" (click)="openCrear()">Nueva Ciudad
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        name="button"
+        (click)="openCrear()"
+      >
+        Nueva Ciudad
       </button>
-      <button type="button" class="btn btn-outline-primary" name="button" (click)="openCrear()">Modificar Ciudad
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        name="button"
+        (click)="openModificar()"
+      >
+        Modificar Ciudad
       </button>
-      <button type="button" class="btn btn-outline-primary" name="button" (click)="habilitar()">Habilitar Ciudad
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        name="button"
+        (click)="habilitar()"
+      >
+        Habilitar Ciudad
       </button>
-      <button type="button" class="btn btn-outline-primary" name="button" (click)="deshabilitar()">Deshabilitar Ciudad
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        name="button"
+        (click)="deshabilitar()"
+      >
+        Deshabilitar Ciudad
       </button>
-      <button type="button" class="btn btn-outline-primary" name="button" (click)="soltar()">Quitar Seleccion
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        name="button"
+        (click)="soltar()"
+      >
+        Quitar Seleccion
       </button>
     </div>
 
@@ -25,57 +55,62 @@
           <th scope="col">Vigencia</th>
         </tr>
       </thead>
-      <tbody *ngFor="let dato of ciudades" >
+      <tbody *ngFor="let dato of ciudades">
         <tr
-        [ngClass] = "{'highlight': selectedRowIndex == dato.id,
-        'highlight2': dato.deshabilitar == false,
-        'highlight3': selectedRowIndex == dato.id && dato.deshabilitar == false}"
-        (click)="highlight(dato)" >
-          <td>{{dato.nombre}}</td>
-          <td>{{dato.idEstado}}</td>
-          <td>{{dato.imagen}}</td>
-          <td>{{dato.imagen2}}</td>
-          <td>{{dato.imagen3}}</td>
-          <td>{{dato.deshabilitar}}</td>
+          [ngClass]="{
+            highlight: selectedRowIndex == dato.id,
+            highlight2: dato.deshabilitar == false,
+            highlight3:
+              selectedRowIndex == dato.id && dato.deshabilitar == false
+          }"
+          (click)="highlight(dato)"
+        >
+          <td>{{ dato.nombre }}</td>
+          <td>{{ dato.idEstado }}</td>
+          <td>{{ dato.imagen }}</td>
+          <td>{{ dato.imagen2 }}</td>
+          <td>{{ dato.imagen3 }}</td>
+          <td>{{ dato.deshabilitar }}</td>
         </tr>
       </tbody>
     </table>
-</div>
+  </div>
 
+  <div [hidden]="!crearformVisibility" id="form">
+    <form
+      class="border border-light p-5"
+      (ngSubmit)="newCiudad(newCiudadForm.value)"
+      [formGroup]="newCiudadForm"
+    >
+      <div class="text-center">
+        <p class="h4 mb-4">Ingrese los Datos de la nueva Ciudad</p>
 
-<div [hidden]="!crearformVisibility" id="form">
-  <form class="border border-light p-5" (ngSubmit)="newCiudad(newCiudadForm.value)" [formGroup]="newCiudadForm">
-    <div class="text-center">
-      <p class="h4 mb-4">Ingrese los Datos de la nueva Ciudad</p>
+        <p>
+          Coloque en la casilla correspondiente la información de la ciudad.
+        </p>
+      </div>
 
-      <p>
-        Coloque en la casilla correspondiente la información de la ciudad.
-      </p>
-    </div>
+      <label for="Nombre">Nombre de la Ciudad</label>
+      <input
+        type="text"
+        id="Nombre"
+        class="form-control mb-4"
+        placeholder="Nombre del Estado"
+        formControlName="nombre"
+      />
+      <label for="Estado">ID del Estado donde se ubica la Ciudad</label>
+      <select class="form-control mb-4" formControlName="idEstado" id="item">
+        <option>Seleccione un Estado</option>
+        <option *ngFor="let estado of estados">{{ estado.nombre }}</option>
+      </select>
 
-    <label for="Nombre">Nombre de la Ciudad</label>
-    <input
-
-      type="text"
-      id="Nombre"
-      class="form-control mb-4"
-      placeholder="Nombre del Estado"
-      formControlName= "nombre"
-    />
-    <label for="Estado">ID del Estado donde se ubica la Ciudad</label>
-    <select class="form-control mb-4" formControlName="idEstado" id="item">
-      <option>Seleccione un Estado</option>
-      <option *ngFor= "let estado of estados">{{estado.nombre}}</option>
-     </select>
-
-    <label for="costo">Fotos de la Ciudad</label>
+      <label for="costo">Fotos de la Ciudad</label>
       <input
         formControlName="imagen"
         type="text"
         id="fotos"
         class="form-control mb-4"
         placeholder="URL"
-
       />
 
       <label for="costo">Fotos de la Ciudad</label>
@@ -85,7 +120,6 @@
         id="fotos"
         class="form-control mb-4"
         placeholder="URL"
-
       />
 
       <label for="costo">Fotos de la Ciudad</label>
@@ -95,45 +129,83 @@
         id="fotos"
         class="form-control mb-4"
         placeholder="URL"
-
       />
 
-    <button class="btn btn-info btn-block" (click)="crearCiudad()" type="submit">
-      Crear
-    </button>
-    <button class="btn btn-info btn-block" (click)="close()" >Cancelar</button>
-  </form>
+      <button
+        class="btn btn-info btn-block"
+        (click)="crearCiudad()"
+        type="submit"
+      >
+        Crear
+      </button>
+      <button class="btn btn-info btn-block" (click)="close()">Cancelar</button>
+    </form>
+  </div>
+
+  <div [hidden]="!modificarformVisibility" id="form">
+    <form
+      class="border border-light p-5"
+      (ngSubmit)="newCiudad(newCiudadForm.value)"
+      [formGroup]="newCiudadForm"
+    >
+      <div class="text-center">
+        <p class="h4 mb-4">Ingrese los Datos de la ciudad a modificar</p>
+
+        <p>
+          Coloque en la casilla correspondiente la información de la ciudad.
+        </p>
+      </div>
+
+      <label for="Nombre">Nombre de la Ciudad</label>
+      <input
+        type="text"
+        id="Nombre"
+        class="form-control mb-4"
+        placeholder="Nombre del Estado"
+        formControlName="nombre"
+      />
+      <label for="Estado">ID del Estado donde se ubica la Ciudad</label>
+      <select class="form-control mb-4" formControlName="idEstado" id="item">
+        <option>Seleccione un Estado</option>
+        <option *ngFor="let estado of estados" [value]="estado.id">{{
+          estado.nombre
+        }}</option>
+      </select>
+
+      <label for="costo">Fotos de la Ciudad</label>
+      <input
+        formControlName="imagen"
+        type="text"
+        id="fotos"
+        class="form-control mb-4"
+        placeholder="URL"
+      />
+
+      <label for="costo">Fotos de la Ciudad</label>
+      <input
+        formControlName="imagen2"
+        type="text"
+        id="fotos"
+        class="form-control mb-4"
+        placeholder="URL"
+      />
+
+      <label for="costo">Fotos de la Ciudad</label>
+      <input
+        formControlName="imagen3"
+        type="text"
+        id="fotos"
+        class="form-control mb-4"
+        placeholder="URL"
+      />
+      <button
+        class="btn btn-info btn-block"
+        (click)="modificarCiudad()"
+        type="submit"
+      >
+        Modificar
+      </button>
+      <button class="btn btn-info btn-block" (click)="close()">Cancelar</button>
+    </form>
+  </div>
 </div>
-
-<!--<div [hidden]="!modificarformVisibility" id="form">
-  <form class="border border-light p-5">
-    <div class="text-center">
-      <p class="h4 mb-4">Ingrese los Datos de la nueva Ciudad</p>
-
-      <p>
-        Coloque en la casilla correspondiente la información de la ciudad.
-      </p>
-    </div>
-
-    <label for="ID">ID de la Ciudad</label>
-    <input formControlName="id" type="text" id="ID" class="form-control mb-4" placeholder="ID"
-       />
-    <label for="Nombre">Nombre de la Ciudad</label>
-    <input formControlName="nombre" type="text" id="Nombre" class="form-control mb-4" placeholder="Nombre del Estado"
-       />
-    <label for="Estado">ID del Estado donde se ubica la Ciudad</label>
-    <input formControlName="estado" type="text" id="ID Estado" class="form-control mb-4"
-      placeholder="Estado del Hotel"  />
-
-    <label for="costo">Fotos de la Ciudad</label>
-    <input formControlName="imagen" type="text" id="fotos" class="form-control mb-4" placeholder="URL"
-       />
-
-
-    <button class="btn btn-info btn-block" (click)="modificarCiudad()" type="submit">
-      Crear
-    </button>
-    <button class="btn btn-info btn-block" (click)="close()" >Cancelar</button>
-  </form>
-</div>-->
-
