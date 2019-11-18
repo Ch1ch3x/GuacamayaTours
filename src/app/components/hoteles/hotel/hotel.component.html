@@ -33,7 +33,7 @@
         <div class="center">
             <br />
             <h1>{{ hotel.nombre }}   </h1>
-            <div *ngIf="hotel.estrellas === 5">
+            <div *ngIf="hotel.estrellas === 5">k
                     <div class="ec-stars-wrapper">
                         <a data-value="1" title="Votar con 1 estrellas">&#9733;</a>
                         <a data-value="2" title="Votar con 2 estrellas">&#9733;</a>
@@ -74,38 +74,10 @@
             <h6 align="justify">{{ hotel.descripcion }}</h6>
             <br /><br /><br />
 
-            <h2>Tipo de Habitaciones</h2>
-            <div class="habitaciones">
-                
-                <div class="habitacion">
-                    <div class="cuarto">
-                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active" *ngFor="let imagen of hotel.imagenes">
-                                    <img class="d-block w-100" style="border-radius: 10px;" [src]="imagen"
-                                        alt="slide" />
-                                </div>
-                            </div>
-                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
-                                data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselExampleControls" role="button"
-                                data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="detalle">
-                        <h3>NOMBRE DE LA HABITACION</h3>
-                        <h5>DESCRIPCION DE LA HABITACION</h5>
-                        <h6>COMODIDADES: AAAAAAAAAAAAAAAAAAAAAAAA</h6>
-                        <h6>Capacidad máxima:</h6>
-                    </div>
-                </div>
-                
+            
+
+           
+       <h2>Tipo de Habitaciones</h2>      
 
       <div class="habitacion" *ngFor="let habitacion of habitaciones">
         <div class="cuarto">
@@ -177,7 +149,8 @@
           </h6>
           <h6>Capacidad máxima: {{ habitacion.max }}</h6>
         </div>
-
+      </div>
+    </div>
         <div class="left">
             
 

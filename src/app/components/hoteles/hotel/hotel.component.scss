@@ -12,6 +12,7 @@
 
 h1{
     display: inline;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .ec-stars-wrapper{
@@ -71,7 +72,7 @@ i{
     justify-content: space-between;
     padding-bottom: 3%;
     padding-top:3%;
-    max-height: 890px;
+   
 }
 
 .center{
@@ -85,7 +86,6 @@ i{
 .servicios{
     width: 90%;
     height: auto;
-    max-height: 200px;
     background: white;
     border-radius: 20px;
     margin-right: auto;
@@ -194,7 +194,7 @@ button{
         display: flex;
         flex-flow: row wrap;
         justify-content: space-between;
-        
+        margin-top:5%;
     }
     .center{
         width: 95%;
