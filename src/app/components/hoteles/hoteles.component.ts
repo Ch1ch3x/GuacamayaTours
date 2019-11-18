@@ -20,6 +20,7 @@ export class HotelesComponent implements OnInit {
   private hoteles: any[] = [];
   private tipoHabitaciones: any[] = [];
   minDate = new Date();
+  private hotel: any;
 
   constructor(
     private route: ActivatedRoute,

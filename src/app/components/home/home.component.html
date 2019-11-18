@@ -14,7 +14,7 @@
           <img [src]="destino.imagen" alt="" class="maximo" />
         </div>
         <div class="carousel-caption">
-          <a routerLink="/destinos/destino.id"
+          <a routerLink="/destinos/{{ destino.id}}"
             ><h3>{{ destino.nombre }}</h3></a
           >
         </div>
@@ -30,13 +30,13 @@
     <div class="actividades1 container-fluid">
       <div class="contenedor" *ngIf="destinos.length > 0">
         <div class="elemento" *ngFor="let actividad of destinos[0].actividades">
-          <img [src]="actividad.imagen" class="act " />
+          <a routerLink="/destinos/{{destinos[0].id}}"><img [src]="actividad.imagen" class="act " /></a>
           <p class="hover centered3">{{ actividad.nombre }}</p>
         </div>
       </div>
       <div class="contenedor" *ngIf="destinos.length > 0">
         <div class="elemento" *ngFor="let actividad of destinos[1].actividades">
-          <img [src]="actividad.imagen" class="act " />
+          <a routerLink="/destinos/{{destinos[1].id}}"><img [src]="actividad.imagen" class="act " /></a>
           <p class="hover centered3">{{ actividad.nombre }}</p>
         </div>
       </div>
@@ -49,11 +49,13 @@
     <h2 class="title1 col-12">HOTELES</h2>
     <div class="hoteles row container-fluid">
         
-      <div class="col-4" *ngFor="let hotel of hoteles">
-        <div *ngIf="hotel.deshabilitar === false">
-          <a routerLink="/hoteles"><img [src]="hotel.imagen" class="hotel"/></a>
-          <h5>{{ hotel.nombre }}</h5>
-        </div>
+      <div class="col-4" *ngFor="let hotel of hoteles" >
+          
+            <div *ngIf="hotel.deshabilitar === false">
+              <a routerLink="/hoteles/{{ hotel.id }}"><img [src]="hotel.imagen" class="hotel"/></a>
+              <h5>{{ hotel.nombre }}</h5>
+            </div>
+          
       </div>
     </div>
   </div>
