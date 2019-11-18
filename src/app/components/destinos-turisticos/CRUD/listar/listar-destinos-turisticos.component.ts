@@ -116,8 +116,6 @@ export class ListarDestinosTuristicosComponent implements OnInit {
   }
 
   public newDestino(form, documentId = this.documentId) {
-    console.log(`Status: ${this.currentStatus}`);
-    if (this.currentStatus == 1) {
       let data = {
         nombre: form.nombre,
         descripcion: form.descripcion,
@@ -159,9 +157,8 @@ export class ListarDestinosTuristicosComponent implements OnInit {
           console.error(error);
         }
       );
-    } else {
-      this.close();
-    }
+
+      this.destinos.push(data);
   }
 
   public editDestino(documentId) {

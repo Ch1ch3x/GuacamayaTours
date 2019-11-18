@@ -68,7 +68,6 @@ export class ListaCiudadComponent {
     });
   }
   public newCiudad(form, documentID = this.documentId) {
-    if (this.currentStatus == 1) {
       let data = {
         nombre: form.nombre,
         idEstado: form.idEstado,
@@ -89,9 +88,8 @@ export class ListaCiudadComponent {
           console.error(error);
         }
       );
-    } else {
-      this.close();
-    }
+
+    this.ciudades.push(data);
   }
 
   public editCiudad(documentId) {

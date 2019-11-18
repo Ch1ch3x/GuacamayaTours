@@ -51,8 +51,6 @@ export class ListarEstadoComponent implements OnInit {
   }
 
   public newEstado(form, documentId = this.documentId) {
-    console.log(`Status: ${this.currentStatus}`);
-    if (this.currentStatus == 1) {
       let data = {
         nombre: form.nombre,
         imagen: [
@@ -70,9 +68,7 @@ export class ListarEstadoComponent implements OnInit {
       }, (error) => {
         console.error(error);
       });
-    } else {
-      this.close();
-    }
+      this.estados.push(data);
   }
 
   public editEstado(documentId) {
@@ -95,7 +91,6 @@ export class ListarEstadoComponent implements OnInit {
   }
 
   crearEstado() {
-    //location.reload(true);
     this.formVisibility = false;
     this.crearformVisibility = false;
   }

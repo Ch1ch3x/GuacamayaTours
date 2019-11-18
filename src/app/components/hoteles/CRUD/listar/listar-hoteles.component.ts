@@ -129,8 +129,6 @@ export class ListarHotelesComponent implements OnInit {
   }
 
   public newHotel(form, documentId = this.documentId) {
-    console.log(`Status: ${this.currentStatus}`);
-    if (this.currentStatus == 1) {
       let data = {
         nombre: form.nombre,
         estrellas: form.estrellas,
@@ -176,9 +174,8 @@ export class ListarHotelesComponent implements OnInit {
           console.error(error);
         }
       );
-    } else {
-      this.close();
-    }
+
+      this.hoteles.push(data);
   }
 
   public editHotel(documentId) {

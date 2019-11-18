@@ -61,8 +61,6 @@ export class ListarHabitacionesComponent implements OnInit {
 
   }
     public newHabitacion(form, documentId = this.documentId) {
-      console.log(`Status: ${this.currentStatus}`);
-      if (this.currentStatus == 1) {
         let data = {
           nombre: form.nombre,
           max: form.max,
@@ -86,9 +84,8 @@ export class ListarHabitacionesComponent implements OnInit {
         }, (error) => {
           console.error(error);
         });
-      } else {
-        this.close();
-      }
+
+      this.tipoHabitaciones.push(data);
     }
 
     public editHabitacion(documentId) {
