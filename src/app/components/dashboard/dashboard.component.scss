@@ -15,6 +15,8 @@ a:focus {
   border-radius: 0;
   margin-bottom: 40px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  z-index: 1;
 }
 
 .navbar-btn {
@@ -35,7 +37,7 @@ a:focus {
   max-width: 30%;
   min-width: 120px;
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   top: 0;
   left: 0;
   color: #fff;
@@ -135,7 +137,7 @@ li {
   .title:before {
       content: "GUACAMAYA TOURS";
   }
-  
+
 }
 
 @media (max-width: 700px) {
@@ -147,7 +149,7 @@ li {
   .title:before {
       content: "";
   }
-  
+
 }
 
 .scroll

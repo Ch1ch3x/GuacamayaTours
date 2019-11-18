@@ -20,17 +20,17 @@
         <tr>
           <th scope="col">Nombre</th>
           <th scope="col">Imagen</th>
-          <th scope="col">comodidades</th>
-          <th scope="col">descripcion</th>
-          <th scope="col">max</th>
-          <th scope="col">vista</th>
+          <th scope="col">Comodidades</th>
+          <th scope="col">Descripcion</th>
+          <th scope="col">Max.Personas</th>
+          <th scope="col">Vista</th>
           <th scope="col">Vigencia</th>
         </tr>
       </thead>
       <tbody *ngFor="let dato of tipoHabitaciones">
         <tr [ngClass]="{'highlight': selectedRowIndex == dato.id,
         'highlight2': dato.deshabilitar == false,
-        'highlight3': selectedRowIndex == dato.nombre && dato.deshabilitar == false}"
+        'highlight3': selectedRowIndex == dato.id && dato.deshabilitar == false}"
         (click)="highlight(dato)">
           <td>{{dato.nombre}}</td>
           <td>{{dato.imagen}}</td>

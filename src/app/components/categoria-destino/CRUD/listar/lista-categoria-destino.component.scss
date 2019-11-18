@@ -9,11 +9,28 @@
   #headdescription{
     text-align: center;
   }
+
+  td {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  table {
+    font-size: x-small;
+    padding-top: 10%;
+  }
+  .btn-group{
+    margin-bottom: 2%;
+  }
   .container-fluid{
     width: 80%;
-    padding-left: 35%;
-    padding-right: 0px;
+    padding-top: 10%;
+    padding-left: 30%;
+    padding-right: 5%;
     margin:0;
+    margin-right: 10%;
+    text-align: center;
   }
   .agregar{
     margin: 5%;
@@ -24,9 +41,6 @@
   #form{
     margin-left: 30%;
     margin-right: 25%;
-  }
-  .btn{
-    margin-bottom: 2%;
   }
   .highlight{
     background: lightblue;
