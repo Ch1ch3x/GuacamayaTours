@@ -1,67 +1,105 @@
 <app-dashboard></app-dashboard>
 
 <div [hidden]="formVisibility" class="container-fluid col-12 text-center">
-<div class="btn-group col-12" role="group" aria-label="Basic example">
-  <button type="button" class="btn btn-outline-primary" name="button" (click)="openCrear()">Nuevo Destino
-  </button>
-  <button type="button" class="btn btn-outline-primary" name="button" (click)="openCrear()">Modificar Destino
-  </button>
-  <button type="button" class="btn btn-outline-primary" name="button" (click)="habilitar()">Habilitar Destino
-  </button>
-  <button type="button" class="btn btn-outline-primary" name="button" (click)="deshabilitar()">Deshabilitar Destino
-  </button>
-  <button type="button" class="btn btn-outline-primary" name="button" (click)="soltar()">Quitar Seleccion
-  </button>
-</div>
+  <div class="btn-group col-12" role="group" aria-label="Basic example">
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      name="button"
+      (click)="openCrear()"
+    >
+      Nuevo Destino
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      name="button"
+      (click)="openCrear()"
+    >
+      Modificar Destino
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      name="button"
+      (click)="habilitar()"
+    >
+      Habilitar Destino
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      name="button"
+      (click)="deshabilitar()"
+    >
+      Deshabilitar Destino
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      name="button"
+      (click)="soltar()"
+    >
+      Quitar Seleccion
+    </button>
+  </div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Nombre</th>
-      <th scope="col">Categorias</th>
-      <th scope="col">Ciudad</th>
-      <th scope="col">Estado</th>
-      <th scope="col">Descripción</th>
-      <th scope="col">Latitud</th>
-      <th scope="col">Longitud</th>
-      <th scope="col">Dirección</th>
-      <th scope="col">Actividades</th>
-      <th scope="col">Servicios</th>
-      <th scope="col">Descripción</th>
-      <th scope="col">Imagen</th>
-      <th scope="col">Imagen2</th>
-      <th scope="col">Imagen3</th>
-      <th scope="col">Vigencia</th>
-    </tr>
-  </thead>
-  <tbody *ngFor="let dato of destinos">
-    <tr
-        [ngClass] = "{'highlight': selectedRowIndex == dato.id,
-        'highlight2': dato.deshabilitar == false,
-        'highlight3': selectedRowIndex == dato.nombre && dato.deshabilitar == false}"
-        (click)="highlight(dato)">
-      <td>{{dato.nombre}}</td>
-      <td>{{dato.categorias}}</td>
-      <td>{{dato.idCiudad}}</td>
-      <td>{{dato.idEstado}}</td>
-      <td>{{dato.descripcion}}</td>
-      <td>{{dato.latitud}}</td>
-      <td>{{dato.longitud}}</td>
-      <td>{{dato.direccion}}</td>
-      <td>{{dato.actividades}}</td>
-      <td>{{dato.servicios}}</td>
-      <td>{{dato.imagen}}</td>
-      <td>{{dato.imagen}}</td>
-      <td>{{dato.imagen2}}</td>
-      <td>{{dato.imagen3}}</td>
-      <td>{{dato.deshabilitar}}</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Categorias</th>
+        <th scope="col">Ciudad</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Latitud</th>
+        <th scope="col">Longitud</th>
+        <th scope="col">Dirección</th>
+        <th scope="col">Actividades</th>
+        <th scope="col">Servicios</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Imagen</th>
+        <th scope="col">Imagen2</th>
+        <th scope="col">Imagen3</th>
+        <th scope="col">Vigencia</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let dato of destinos">
+      <tr
+        [ngClass]="{
+          highlight: selectedRowIndex == dato.id,
+          highlight2: dato.deshabilitar == false,
+          highlight3:
+            selectedRowIndex == dato.nombre && dato.deshabilitar == false
+        }"
+        (click)="highlight(dato)"
+      >
+        <td>{{ dato.nombre }}</td>
+        <td>{{ dato.categorias }}</td>
+        <td>{{ dato.idCiudad }}</td>
+        <td>{{ dato.idEstado }}</td>
+        <td>{{ dato.descripcion }}</td>
+        <td>{{ dato.latitud }}</td>
+        <td>{{ dato.longitud }}</td>
+        <td>{{ dato.direccion }}</td>
+        <td>{{ dato.actividades }}</td>
+        <td>{{ dato.servicios }}</td>
+        <td>{{ dato.imagen }}</td>
+        <td>{{ dato.imagen }}</td>
+        <td>{{ dato.imagen2 }}</td>
+        <td>{{ dato.imagen3 }}</td>
+        <td>{{ dato.deshabilitar }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <div [hidden]="!crearformVisibility" id="form">
-  <form class="border border-light p-5" (ngSubmit)="newDestino(newDestinoForm.value)" [formGroup]="newDestinoForm">
+  <form
+    class="border border-light p-5"
+    (ngSubmit)="newDestino(newDestinoForm.value)"
+    [formGroup]="newDestinoForm"
+  >
     <div class="text-center">
       <p class="h4 mb-4">Ingrese los Datos del Nuevo Destino</p>
 
@@ -76,20 +114,25 @@
       id="Nombre"
       class="form-control mb-4"
       formControlName="nombre"
-
       placeholder="Nombre de Destino"
     />
     <label for="Estado">Estado del Destino</label>
-    <select class="browser-default custom-select mb-4" formControlName="estado"
-       id="Estado">
+    <select
+      class="browser-default custom-select mb-4"
+      formControlName="idEstado"
+      id="Estado"
+    >
       <option value="" disabled="" selected="">Elije un Estado</option>
       <option value="1">Falcon</option>
       <option value="2">Sucre</option>
       <option value="3">Nueva Esparta</option>
     </select>
     <label for="Ciudad">Ciudad del Destino</label>
-    <select class="browser-default custom-select mb-4" formControlName="ciudad"
-       id="Ciudad">
+    <select
+      class="browser-default custom-select mb-4"
+      formControlName="idCiudad"
+      id="Ciudad"
+    >
       <option value="" disabled="" selected="">Elije una Ciudad</option>
       <option value="1">Chichiriviche</option>
       <option value="2">Tucacas</option>
@@ -98,7 +141,7 @@
     <label for="Tipo">Tipo de destino</label>
     <select
       class="browser-default custom-select mb-4"
-      formControlName="tipo"
+      formControlName="categorias"
       id="Tipo"
     >
       <option value="" disabled="" selected="">Elije un Tipo de Destino</option>
@@ -112,7 +155,6 @@
       id="Servicios"
       class="form-control mb-4"
       formControlName="servicios"
-
       placeholder="Servicios del Destino"
     />
     <label for="Actividades">Actividades del Destino</label>
@@ -121,7 +163,6 @@
       id="Actividades"
       class="form-control mb-4"
       formControlName="actividades"
-
       placeholder="Actividades del Destino"
     />
     <label for="Latitud">Latitud del Destino</label>
@@ -130,7 +171,6 @@
       id="Latitud"
       class="form-control mb-4"
       formControlName="latitud"
-
       placeholder="Latitud"
     />
     <label for="Longitud">Longitud del Destino</label>
@@ -139,7 +179,6 @@
       id="Longitud"
       class="form-control mb-4"
       formControlName="longitud"
-
       placeholder="Longitud"
     />
     <label for="Dirección">Dirección del Destino</label>
@@ -148,7 +187,6 @@
       id="Dirección"
       class="form-control mb-4"
       formControlName="direccion"
-
       placeholder="Dirección"
     />
     <label for="Descripción">Descripción</label>
@@ -156,7 +194,6 @@
       id="Descripción"
       class="form-control mb-4"
       formControlName="descripcion"
-
       placeholder="Descripción del Destino"
     ></textarea>
 
@@ -167,9 +204,6 @@
     >
       Crear
     </button>
-    <button class="btn btn-info btn-block" (click)="close()" >Cancelar</button>
+    <button class="btn btn-info btn-block" (click)="close()">Cancelar</button>
   </form>
 </div>
-
-
-
