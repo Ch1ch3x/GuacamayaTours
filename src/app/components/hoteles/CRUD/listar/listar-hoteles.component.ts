@@ -22,6 +22,7 @@ export class ListarHotelesComponent implements OnInit {
 
   public ciudades = [];
   public estados = [];
+  public hotel: any;
   public hoteles = [];
   public tipoHabitaciones = [];
   public documentId = null;
@@ -42,6 +43,21 @@ export class ListarHotelesComponent implements OnInit {
     deshabilitar: new FormControl(null)
   });
 
+  public editHotelForm = new FormGroup({
+    nombre: new FormControl("", Validators.required),
+    estrellas: new FormControl(0, Validators.required),
+    servicios: new FormControl("", Validators.required),
+    latitud: new FormControl("", Validators.required),
+    longitud: new FormControl("", Validators.required),
+    idEstado: new FormControl("", Validators.required),
+    idCiudad: new FormControl("", Validators.required),
+    direccion: new FormControl("", Validators.required),
+    costo: new FormControl(0, Validators.required),
+    activo: new FormControl(true, Validators.required),
+    tipoHabitaciones: new FormControl("", Validators.required),
+    imagen: new FormControl(""),
+    deshabilitar: new FormControl(null)
+  });
   constructor(
     private HotelSV: HotelesService,
     private CiudadSV: CiudadesService,
@@ -63,9 +79,24 @@ export class ListarHotelesComponent implements OnInit {
       imagen: "",
       deshabilitar: true
     });
+    this.editHotelForm.setValue({
+      nombre: "",
+      estrellas: 0,
+      direccion: "",
+      servicios: "",
+      latitud: "",
+      longitud: "",
+      idEstado: "",
+      idCiudad: "",
+      costo: 0,
+      activo: null,
+      tipoHabitaciones: "",
+      imagen: "",
+      deshabilitar: true
+    });
   }
 
-  selectedRowIndex: number = -1;
+  selectedRowIndex: string;
 
   ngOnInit() {
     this.getData();
@@ -98,7 +129,7 @@ export class ListarHotelesComponent implements OnInit {
                 tipoH =>
                   this.tipoHabitaciones.filter(
                     tH => tH.id === tipoH.tipoHabitacion
-                  )[0].nombre
+                  )[0].id
               ),
             imagen: ordenData.data().imagen,
             deshabilitar: ordenData.data().deshabilitar
@@ -186,27 +217,59 @@ export class ListarHotelesComponent implements OnInit {
     }
   }
 
-  public editHotel(documentId) {
-    let editSubscribe = this.HotelSV.getHotel(documentId).subscribe(hotel => {
-      this.currentStatus = 2;
-      this.documentId = documentId;
-      this.newHotelForm.setValue({
-        id: documentId,
-        nombre: hotel.payload.data()["nombre"],
-        estrellas: hotel.payload.data()["estrellas"],
-        servicios: hotel.payload.data()["servicios"],
-        latitud: hotel.payload.data()["latitud"],
-        longitud: hotel.payload.data()["longitud"],
-        idEstado: hotel.payload.data()["idEstado"],
-        idCiudad: hotel.payload.data()["idCiudad"],
-        direccion: hotel.payload.data()["direccion"],
-        /*costoFullday: hotel.payload.data()['costoFullday'],
-        activoFullday: hotel.payload.data()['activoFullday'],*/
-        imagen: hotel.payload.data()["imagen"],
-        deshabilitar: hotel.payload.data()["deshabilitar"]
-      });
-      editSubscribe.unsubscribe();
-    });
+  public editHotel(form, documentId = this.selectedRowIndex) {
+    debugger;
+    const th = this.tipoHabitaciones.filter(
+      tH => tH.id == form.tipoHabitaciones
+    )[0];
+    let data = {
+      nombre: form.nombre,
+      estrellas: form.estrellas,
+      servicios: [form.servicios],
+      latitud: form.latitud,
+      longitud: form.longitud,
+      idEstado: form.idEstado,
+      idCiudad: form.idCiudad,
+      direccion: form.direccion,
+      fullday: {
+        costo: Number.parseInt(form.costo),
+        activo: form.activo == "true" ? true : false
+      },
+      tipoHabitaciones: [
+        {
+          tipoHabitacion: th.id,
+          fechaInicio: new Date(),
+          fechaFin: new Date(new Date().setMonth(new Date().getMonth() + 1))
+        }
+      ],
+      imagen: form.imagen,
+      deshabilitar: false
+    };
+    this.HotelSV.update(documentId, data).then(
+      () => {
+        console.log("Documento modificado exitósamente!");
+        this.editHotelForm.setValue({
+          nombre: "",
+          estrellas: "",
+          servicios: "",
+          latitud: "",
+          longitud: "",
+          idEstado: "",
+          idCiudad: "",
+          direccion: "",
+          tipoHabitaciones: "",
+          costo: 0,
+          activo: null,
+          imagen: "",
+          deshabilitar: false
+        });
+        this.getData();
+        this.close();
+      },
+      error => {
+        console.error(error);
+      }
+    );
   }
 
   openCrear() {
@@ -223,6 +286,22 @@ export class ListarHotelesComponent implements OnInit {
   openModificar() {
     this.formVisibility = true;
     this.modificarformVisibility = true;
+    this.editHotelForm.setValue({
+      nombre: this.hotel.nombre,
+      estrellas: this.hotel.estrellas,
+      servicios: this.hotel.servicios[0],
+      latitud: this.hotel.latitud,
+      longitud: this.hotel.longitud,
+      idEstado: this.hotel.idEstado,
+      idCiudad: this.hotel.idCiudad,
+      direccion: this.hotel.direccion,
+      costo: this.hotel.costoFullday,
+      activo: this.hotel.activoFullday,
+      imagen: this.hotel.imagen,
+      tipoHabitaciones: this.hotel.tipoHabitaciones[0],
+
+      deshabilitar: true
+    });
   }
 
   close() {
@@ -232,7 +311,7 @@ export class ListarHotelesComponent implements OnInit {
     this.modificarformVisibility = false;
   }
 
-  modificarCiudad() {
+  modificarHotel() {
     this.formVisibility = false;
     this.crearformVisibility = false;
     this.modificarformVisibility = false;
@@ -240,6 +319,7 @@ export class ListarHotelesComponent implements OnInit {
 
   highlight(dato) {
     this.selectedRowIndex = dato.id;
+    this.hotel = dato;
   }
 
   soltar() {
