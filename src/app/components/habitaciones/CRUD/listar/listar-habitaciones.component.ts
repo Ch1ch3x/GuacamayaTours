@@ -22,7 +22,7 @@ export class ListarHabitacionesComponent implements OnInit {
   public newHabitacionForm = new FormGroup({
     nombre: new FormControl('', Validators.required),
     descripcion: new FormControl('', Validators.required),
-    imagen: new FormControl('', Validators.required),
+    imagen: new FormControl(''),
     max: new FormControl('', Validators.required),
     vista: new FormControl('', Validators.required),
     comodidades: new FormControl('', Validators.required),
