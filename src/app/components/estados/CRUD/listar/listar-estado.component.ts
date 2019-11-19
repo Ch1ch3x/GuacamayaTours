@@ -28,7 +28,7 @@ export class ListarEstadoComponent implements OnInit {
     });
 
 
-  constructor(private EstadosSV: EstadosService) {
+  constructor(private EstadoSV: EstadosService) {
     this.newEstadoForm.setValue({
       nombre: '',
       imagen: [''],
@@ -39,7 +39,7 @@ export class ListarEstadoComponent implements OnInit {
   selectedRowIndex: number = -1;
 
   ngOnInit() {
-    this.EstadosSV.getAll().subscribe(estadosSnapshot => {
+    this.EstadoSV.getAll().subscribe(estadosSnapshot => {
       this.estados = [];
       estadosSnapshot.docs.forEach(estadoData => {
         this.estados.push({
@@ -60,7 +60,7 @@ export class ListarEstadoComponent implements OnInit {
         ],
         deshabilitar: true
       }
-      this.EstadosSV.create(data).then(() => {
+      this.EstadoSV.create(data).then(() => {
         console.log('Documento creado exitósamente!');
         this.newEstadoForm.setValue({
           nombre: '',
@@ -74,7 +74,7 @@ export class ListarEstadoComponent implements OnInit {
   }
 
   public editEstado(documentId) {
-    let editSubscribe = this.EstadosSV.getEstado(documentId).subscribe((estado) => {
+    let editSubscribe = this.EstadoSV.getEstado(documentId).subscribe((estado) => {
       this.currentStatus = 2;
       this.documentId = documentId;
       this.newEstadoForm.setValue({
@@ -97,6 +97,17 @@ export class ListarEstadoComponent implements OnInit {
     this.crearformVisibility = false;
   }
 
+  openModificar() {
+    this.currentStatus = 2;
+    this.formVisibility = true;
+    this.modificarformVisibility = true;
+  }
+
+  modificarEstado() {
+    this.formVisibility = false;
+    this.modificarformVisibility = false;
+  }
+
   close() {
     this.currentStatus = 3;
     this.formVisibility = false;
@@ -114,6 +125,8 @@ export class ListarEstadoComponent implements OnInit {
     this.highlight(-1);
   }
 
+  public numerito;
+
   deshabilitar() {
     for (let index = 0; index < this.estados.length; index++) {
       if (this.estados[index].id == this.selectedRowIndex) {
@@ -122,6 +135,25 @@ export class ListarEstadoComponent implements OnInit {
         continue;
       }
     }
+    this.deshabilitarEstado(this.selectedRowIndex)
+  }
+
+  deshabilitarEstado(documentId) {
+    let data = {
+      nombre: this.estados[this.numerito].nombre,
+      imagen: [this.estados[this.numerito].imagen],
+      deshabilitar: false,
+    }
+    this.EstadoSV.update(documentId, data).then(() => {
+      console.log('Documento modificado exitósamente!');
+      this.newEstadoForm.setValue({
+      nombre: '',
+      imagen: '',
+      deshabilitar: true,
+      });
+    }, (error) => {
+        console.error(error);
+    });
   }
 
   habilitar() {
@@ -133,12 +165,24 @@ export class ListarEstadoComponent implements OnInit {
         continue;
       }
     }
+    this.habilitarEstado(this.selectedRowIndex)
   }
 
-  openModificar() {
-  //  this.formVisibility = true;
-  }
-
-  modificarEstado() {
+  public habilitarEstado(documentId){
+    let data = {
+      nombre: this.estados[this.numerito].nombre,
+      imagen: [this.estados[this.numerito].imagen],
+      deshabilitar: true,
+    }
+    this.EstadoSV.update(documentId, data).then(() => {
+      console.log('Documento modificado exitósamente!');
+      this.newEstadoForm.setValue({
+      nombre: '',
+      imagen: '',
+      deshabilitar: true,
+      });
+    }, (error) => {
+        console.error(error);
+    });
   }
 }

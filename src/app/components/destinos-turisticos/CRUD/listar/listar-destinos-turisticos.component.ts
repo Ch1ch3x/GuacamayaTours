@@ -297,6 +297,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
         continue;
       }
     }
+    this.habilitarDestino(this.selectedRowIndex)
   }
 
   public habilitarDestino(documentId) {
