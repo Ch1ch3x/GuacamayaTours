@@ -53,35 +53,39 @@ export class ListarEstadoComponent implements OnInit {
   }
 
   public newEstado(form, documentId = this.documentId) {
-      let data = {
-        nombre: form.nombre,
-        imagen: form.imagen,
-        deshabilitar: true
-      }
-      this.EstadoSV.create(data).then(() => {
-        console.log('Documento creado exitósamente!');
-        this.newEstadoForm.setValue({
-          nombre: '',
-          imagen: '',
+      if (this.currentStatus == 1) {
+        let data = {
+          nombre: form.nombre,
+          imagen: form.imagen,
           deshabilitar: true
+        }
+        this.EstadosSV.create(data).then(() => {
+          console.log('Documento creado exitósamente!');
+          this.newEstadoForm.setValue({
+            nombre: '',
+            imagen: '',
+            deshabilitar: true
+          });
+        }, (error) => {
+          console.error(error);
         });
-      }, (error) => {
-        console.error(error);
-      });
-      this.estados.push(data);
+        this.estados.push(data);
+      }
   }
 
   public editEstado(documentId) {
-    let editSubscribe = this.EstadoSV.getEstado(documentId).subscribe((estado) => {
-      this.currentStatus = 2;
-      this.documentId = documentId;
-      this.newEstadoForm.setValue({
-        nombre: estado.payload.data()['nombre'],
-        imagen: estado.payload.data()['imagen'],
-        deshabilitar: estado.payload.data()['deshabilitar'],
+    if (this.currentStatus == 2) {
+      let editSubscribe = this.EstadosSV.getEstado(documentId).subscribe((estado) => {
+        this.currentStatus = 2;
+        this.documentId = documentId;
+        this.newEstadoForm.setValue({
+          nombre: estado.payload.data()['nombre'],
+          imagen: estado.payload.data()['imagen'],
+          deshabilitar: estado.payload.data()['deshabilitar'],
+        });
+        editSubscribe.unsubscribe();
       });
-      editSubscribe.unsubscribe();
-    });
+    }
   }
 
   openCrear() {

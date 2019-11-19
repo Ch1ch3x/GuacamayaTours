@@ -22,6 +22,14 @@ export class ListarDestinosTuristicosComponent implements OnInit {
   selectedRowIndex: any;
 
   public destinos = [];
+  public destinoNombre: any;
+  public destinoDescripcion: any;
+  public destinoServicio: any;
+  public destinoActividad: any;
+  public destinoLatitud: any;
+  public destinoLongitud: any;
+  public destinoDireccion: any;
+
   public ciudades = [];
   public estados = [];
   public categorias = [];
@@ -123,6 +131,50 @@ export class ListarDestinosTuristicosComponent implements OnInit {
   }
 
   public newDestino(form, documentId = this.documentId) {
+      if (this.currentStatus == 1) {
+        let data = {
+          nombre: form.nombre,
+          descripcion: form.descripcion,
+          categorias: form.categorias,
+          servicios: form.servicios,
+          actividades: form.actividades,
+          latitud: form.latitud,
+          longitud: form.longitud,
+          idEstado: form.idEstado,
+          idCiudad: form.idCiudad,
+          direccion: form.direccion,
+          imagen: form.imagen,
+          deshabilitar: true
+        };
+        this.DestinoSV.create(data).then(
+          () => {
+            console.log("Documento creado exitósamente!");
+            this.newDestinoForm.setValue({
+              nombre: "",
+              descripcion: "",
+              categorias: "",
+              servicios: "",
+              actividades: "",
+              latitud: "",
+              longitud: "",
+              idEstado: "",
+              idCiudad: "",
+              direccion: "",
+              imagen: "",
+              deshabilitar: true
+            });
+          },
+          error => {
+            console.error(error);
+          }
+        );
+
+        this.destinos.push(data);
+      }
+  }
+
+  public editDestino(form, documentId = this.selectedRowIndex) {
+    if (this.currentStatus == 2) {
       let data = {
         nombre: form.nombre,
         descripcion: form.descripcion,
@@ -135,68 +187,28 @@ export class ListarDestinosTuristicosComponent implements OnInit {
         idCiudad: form.idCiudad,
         direccion: form.direccion,
         imagen: form.imagen,
-        deshabilitar: true
-      };
-      this.DestinoSV.create(data).then(
-        () => {
-          console.log("Documento creado exitósamente!");
-          this.newDestinoForm.setValue({
-            nombre: "",
-            descripcion: "",
-            categorias: "",
-            servicios: "",
-            actividades: "",
-            latitud: "",
-            longitud: "",
-            idEstado: "",
-            idCiudad: "",
-            direccion: "",
-            imagen: "",
-            deshabilitar: true
-          });
-        },
-        error => {
-          console.error(error);
-        }
-      );
-
-      this.destinos.push(data);
-  }
-
-  public editDestino(form, documentId = this.selectedRowIndex) {
-    let data = {
-      nombre: form.nombre,
-      descripcion: form.descripcion,
-      categorias: form.categorias,
-      servicios: form.servicios,
-      actividades: form.actividades,
-      latitud: form.latitud,
-      longitud: form.longitud,
-      idEstado: form.idEstado,
-      idCiudad: form.idCiudad,
-      direccion: form.direccion,
-      imagen: form.imagen,
-      deshabilitar: true,
-    }
-    this.DestinoSV.update(documentId, data).then(() => {
-      console.log('Documento modificado exitósamente!');
-      this.newDestinoForm.setValue({
-      nombre: '',
-      descripcion: '',
-      categorias: '',
-      servicios: '',
-      actividades: '',
-      latitud: '',
-      longitud: '',
-      idEstado: '',
-      idCiudad: '',
-      direccion: '',
-      imagen: '',
-      deshabilitar: true,
-      });
-    }, (error) => {
+        deshabilitar: true,
+      }
+      this.DestinoSV.update(documentId, data).then(() => {
+        console.log('Documento modificado exitósamente!');
+        this.newDestinoForm.setValue({
+          nombre: '',
+          descripcion: '',
+          categorias: '',
+          servicios: '',
+          actividades: '',
+          latitud: '',
+          longitud: '',
+          idEstado: '',
+          idCiudad: '',
+          direccion: '',
+          imagen: '',
+          deshabilitar: true,
+        });
+      }, (error) => {
         console.error(error);
-    });
+      });
+    }
   }
 
 
@@ -232,6 +244,13 @@ export class ListarDestinosTuristicosComponent implements OnInit {
 
   highlight(dato) {
     this.selectedRowIndex = dato.id;
+    this.destinoNombre = dato.nombre;
+    this.destinoLongitud = dato.longitud;
+    this.destinoServicio = dato.servicios;
+    this.destinoDescripcion = dato.descripcion;
+    this.destinoActividad = dato.actividades;
+    this.destinoDireccion = dato.direccion;
+    this.destinoLatitud = dato.latitud;
   }
 
   soltar() {

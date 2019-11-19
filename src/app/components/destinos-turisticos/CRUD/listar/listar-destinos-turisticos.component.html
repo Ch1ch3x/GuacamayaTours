@@ -183,6 +183,7 @@
       </button>
       <button class="btn btn-info btn-block" (click)="close()">Cancelar</button>
     </form>
+  </div>
 
     <div [hidden]="!modificarformVisibility" id="form">
       <form
@@ -191,7 +192,7 @@
         [formGroup]="newDestinoForm"
       >
         <div class="text-center">
-          <p class="h4 mb-4">Ingrese los Datos del Nuevo Destino</p>
+          <p class="h4 mb-4">Ingrese los Datos que desea modificar del Destino</p>
 
           <p>
             Coloque en la casilla correspondiente la información del destino
@@ -204,7 +205,7 @@
           id="Nombre"
           class="form-control mb-4"
           formControlName="nombre"
-          placeholder="Nombre de Destino"
+          [(ngModel)]="destinoNombre"
         />
         <label for="Estado">Estado donde se ubica el Destino</label>
         <select class="form-control mb-4" formControlName="idEstado" id="item">
@@ -229,7 +230,7 @@
           id="Servicios"
           class="form-control mb-4"
           formControlName="servicios"
-          placeholder="Servicios del Destino"
+          [(ngModel)]="destinoServicio"
         />
         <label for="Actividades">Actividades del Destino</label>
         <input
@@ -237,7 +238,7 @@
           id="Actividades"
           class="form-control mb-4"
           formControlName="actividades"
-          placeholder="Actividades del Destino"
+          [(ngModel)]="destinoActividad"
         />
         <label for="Latitud">Latitud del Destino</label>
         <input
@@ -245,7 +246,7 @@
           id="Latitud"
           class="form-control mb-4"
           formControlName="latitud"
-          placeholder="Latitud"
+          [(ngModel)]="destinoLatitud"
         />
         <label for="Longitud">Longitud del Destino</label>
         <input
@@ -253,7 +254,7 @@
           id="Longitud"
           class="form-control mb-4"
           formControlName="longitud"
-          placeholder="Longitud"
+          [(ngModel)]="destinoLongitud"
         />
         <label for="Dirección">Dirección del Destino</label>
         <input
@@ -261,21 +262,21 @@
           id="Dirección"
           class="form-control mb-4"
           formControlName="direccion"
-          placeholder="Dirección"
+          [(ngModel)]="destinoDireccion"
         />
         <label for="Descripción">Descripción</label>
         <textarea
           id="Descripción"
           class="form-control mb-4"
           formControlName="descripcion"
-          placeholder="Descripción del Destino"
+          [(ngModel)]="destinoDescripcion"
         ></textarea>
 
         <button
           class="btn btn-info btn-block"
           (click)="modificarDestino()"
         >
-          Crear
+          Modificar Destino
         </button>
         <button class="btn btn-info btn-block" (click)="close()">Cancelar</button>
       </form>
