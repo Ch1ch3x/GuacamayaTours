@@ -66,7 +66,8 @@
         [ngClass]="{
           highlight: selectedRowIndex == dato.id,
           highlight2: dato.deshabilitar == false,
-          highlight3: selectedRowIndex == dato.id && dato.deshabilitar == false}"
+          highlight3: selectedRowIndex == dato.id && dato.deshabilitar == false
+        }"
         (click)="highlight(dato)"
       >
         <td>{{ dato.nombre }}</td>
@@ -86,198 +87,230 @@
   </table>
 </div>
 
-  <div [hidden]="!crearformVisibility" id="form">
-    <form
-      class="border border-light p-5"
-      (ngSubmit)="newDestino(newDestinoForm.value)"
-      [formGroup]="newDestinoForm"
+<div [hidden]="!crearformVisibility" id="form">
+  <form
+    class="border border-light p-5"
+    (ngSubmit)="newDestino(newDestinoForm.value)"
+    [formGroup]="newDestinoForm"
+  >
+    <div class="text-center">
+      <p class="h4 mb-4">Ingrese los Datos del Nuevo Destino</p>
+
+      <p>
+        Coloque en la casilla correspondiente la información del destino
+        turistico seleccionado.
+      </p>
+    </div>
+    <label for="Nombre">Nombre del Destino</label>
+    <input
+      type="text"
+      id="Nombre"
+      class="form-control mb-4"
+      formControlName="nombre"
+      placeholder="Nombre de Destino"
+    />
+    <label for="Estado">Estado donde se ubica el Destino</label>
+    <select class="form-control mb-4" formControlName="idEstado" id="item">
+      <option>Seleccione un Estado</option>
+      <option *ngFor="let estado of estados" [value]="estado.id">{{
+        estado.nombre
+      }}</option>
+    </select>
+
+    <label for="Ciudad">Ciudad donde se ubica el Destino</label>
+    <select formControlName="idCiudad" class="form-control mb-4" id="Ciudad">
+      <option>Elije la ciudad</option>
+      <option *ngFor="let ciudad of ciudades" [value]="ciudad.id">{{
+        ciudad.nombre
+      }}</option>
+    </select>
+
+    <label for="Tipo">Tipo de destino</label>
+    <select
+      formControlName="categorias"
+      class="form-control mb-4"
+      id="Categorias"
     >
-      <div class="text-center">
-        <p class="h4 mb-4">Ingrese los Datos del Nuevo Destino</p>
+      <option>Elije el tipo de Destino</option>
+      <option *ngFor="let categoria of categorias" [value]="categoria.id">{{
+        categoria.nombre
+      }}</option>
+    </select>
 
-        <p>
-          Coloque en la casilla correspondiente la información del destino
-          turistico seleccionado.
-        </p>
-      </div>
-      <label for="Nombre">Nombre del Destino</label>
-      <input
-        type="text"
-        id="Nombre"
-        class="form-control mb-4"
-        formControlName="nombre"
-        placeholder="Nombre de Destino"
-      />
-      <label for="Estado">Estado donde se ubica el Destino</label>
-      <select class="form-control mb-4" formControlName="idEstado" id="item">
-        <option>Seleccione un Estado</option>
-        <option *ngFor="let estado of estados">{{ estado.nombre }}</option>
-      </select>
+    <label for="Servicios">Servicios del Destino</label>
+    <input
+      type="text"
+      id="Servicios"
+      class="form-control mb-4"
+      formControlName="servicios"
+      placeholder="Servicios del Destino"
+    />
+    <label for="Actividades">Actividades del Destino</label>
+    <input
+      type="text"
+      id="Actividades"
+      class="form-control mb-4"
+      formControlName="actividades"
+      placeholder="Actividades del Destino"
+    />
+    <label for="Latitud">Latitud del Destino</label>
+    <input
+      type="text"
+      id="Latitud"
+      class="form-control mb-4"
+      formControlName="latitud"
+      placeholder="Latitud"
+    />
+    <label for="Longitud">Longitud del Destino</label>
+    <input
+      type="text"
+      id="Longitud"
+      class="form-control mb-4"
+      formControlName="longitud"
+      placeholder="Longitud"
+    />
+    <label for="Dirección">Dirección del Destino</label>
+    <input
+      type="text"
+      id="Dirección"
+      class="form-control mb-4"
+      formControlName="direccion"
+      placeholder="Dirección"
+    />
+    <label for="Descripción">Descripción</label>
+    <textarea
+      id="Descripción"
+      class="form-control mb-4"
+      formControlName="descripcion"
+      placeholder="Descripción del Destino"
+    ></textarea>
 
-      <label for="Ciudad">Ciudad donde se ubica el Destino</label>
-      <select formControlName="idCiudad" class="form-control mb-4" id="Ciudad">
-        <option>Elije la ciudad</option>
-        <option *ngFor="let ciudad of ciudades">{{ciudad.nombre}}</option>
-      </select>
+    <label for="imagen">Imagen del Destino</label>
+    <input
+      type="text"
+      id="imagen"
+      class="form-control mb-4"
+      formControlName="imagen"
+      [(ngModel)]="destinoImagen"
+    />
+    <button
+      class="btn btn-info btn-block"
+      (click)="crearDestino()"
+      type="submit"
+    >
+      Crear
+    </button>
+    <button class="btn btn-info btn-block" (click)="close()">Cancelar</button>
+  </form>
+</div>
 
-      <label for="Tipo">Tipo de destino</label>
-      <select formControlName="categorias" class="form-control mb-4" id="Categorias">
-        <option>Elije el tipo de Destino</option>
-        <option *ngFor="let categoria of categorias">{{categoria.nombre}}</option>
-      </select>
+<div [hidden]="!modificarformVisibility" id="form">
+  <form
+    class="border border-light p-5"
+    (ngSubmit)="editDestino(editDestinoForm.value)"
+    [formGroup]="editDestinoForm"
+  >
+    <div class="text-center">
+      <p class="h4 mb-4">Ingrese los Datos que desea modificar del Destino</p>
 
-      <label for="Servicios">Servicios del Destino</label>
-      <input
-        type="text"
-        id="Servicios"
-        class="form-control mb-4"
-        formControlName="servicios"
-        placeholder="Servicios del Destino"
-      />
-      <label for="Actividades">Actividades del Destino</label>
-      <input
-        type="text"
-        id="Actividades"
-        class="form-control mb-4"
-        formControlName="actividades"
-        placeholder="Actividades del Destino"
-      />
-      <label for="Latitud">Latitud del Destino</label>
-      <input
-        type="text"
-        id="Latitud"
-        class="form-control mb-4"
-        formControlName="latitud"
-        placeholder="Latitud"
-      />
-      <label for="Longitud">Longitud del Destino</label>
-      <input
-        type="text"
-        id="Longitud"
-        class="form-control mb-4"
-        formControlName="longitud"
-        placeholder="Longitud"
-      />
-      <label for="Dirección">Dirección del Destino</label>
-      <input
-        type="text"
-        id="Dirección"
-        class="form-control mb-4"
-        formControlName="direccion"
-        placeholder="Dirección"
-      />
-      <label for="Descripción">Descripción</label>
-      <textarea
-        id="Descripción"
-        class="form-control mb-4"
-        formControlName="descripcion"
-        placeholder="Descripción del Destino"
-      ></textarea>
+      <p>
+        Coloque en la casilla correspondiente la información del destino
+        turistico seleccionado.
+      </p>
+    </div>
+    <label for="Nombre">Nombre del Destino</label>
+    <input
+      type="text"
+      id="Nombre"
+      class="form-control mb-4"
+      formControlName="nombre"
+      [(ngModel)]="destinoNombre"
+    />
+    <label for="Estado">Estado donde se ubica el Destino</label>
+    <select class="form-control mb-4" formControlName="idEstado" id="item">
+      <option>Seleccione un Estado</option>
+      <option *ngFor="let estado of estados" [value]="estado.id">{{
+        estado.nombre
+      }}</option>
+    </select>
 
-      <button
-        class="btn btn-info btn-block"
-        (click)="crearDestino()"
-        type="submit"
-      >
-        Crear
-      </button>
-      <button class="btn btn-info btn-block" (click)="close()">Cancelar</button>
-    </form>
-  </div>
+    <label for="Ciudad">Ciudad donde se ubica el Destino</label>
+    <select formControlName="idCiudad" class="form-control mb-4" id="Ciudad">
+      <option>Elije la ciudad</option>
+      <option *ngFor="let ciudad of ciudades" [value]="ciudad.id">{{
+        ciudad.nombre
+      }}</option>
+    </select>
 
-    <div [hidden]="!modificarformVisibility" id="form">
-      <form
-        class="border border-light p-5"
-        (ngSubmit)="editDestino(newDestinoForm.value)"
-        [formGroup]="newDestinoForm"
-      >
-        <div class="text-center">
-          <p class="h4 mb-4">Ingrese los Datos que desea modificar del Destino</p>
-
-          <p>
-            Coloque en la casilla correspondiente la información del destino
-            turistico seleccionado.
-          </p>
-        </div>
-        <label for="Nombre">Nombre del Destino</label>
-        <input
-          type="text"
-          id="Nombre"
-          class="form-control mb-4"
-          formControlName="nombre"
-          [(ngModel)]="destinoNombre"
-        />
-        <label for="Estado">Estado donde se ubica el Destino</label>
-        <select class="form-control mb-4" formControlName="idEstado" id="item">
-          <option>Seleccione un Estado</option>
-          <option *ngFor="let estado of estados">{{ estado.nombre }}</option>
-        </select>
-
-        <label for="Ciudad">Ciudad donde se ubica el Destino</label>
-        <select formControlName="idCiudad" class="form-control mb-4" id="Ciudad">
-          <option>Elije la ciudad</option>
-          <option *ngFor="let ciudad of ciudades">{{ciudad.nombre}}</option>
-        </select>
-
-        <label for="Tipo">Tipo de destino</label>
-        <select formControlName="categorias" class="form-control mb-4" id="Categorias">
-          <option>Elije el tipo de Destino</option>
-          <option *ngFor="let categoria of categorias">{{categoria.nombre}}</option>
-        </select>
-        <label for="Servicios">Servicios del Destino</label>
-        <input
-          type="text"
-          id="Servicios"
-          class="form-control mb-4"
-          formControlName="servicios"
-          [(ngModel)]="destinoServicio"
-        />
-        <label for="Actividades">Actividades del Destino</label>
-        <input
-          type="text"
-          id="Actividades"
-          class="form-control mb-4"
-          formControlName="actividades"
-          [(ngModel)]="destinoActividad"
-        />
-        <label for="Latitud">Latitud del Destino</label>
-        <input
-          type="text"
-          id="Latitud"
-          class="form-control mb-4"
-          formControlName="latitud"
-          [(ngModel)]="destinoLatitud"
-        />
-        <label for="Longitud">Longitud del Destino</label>
-        <input
-          type="text"
-          id="Longitud"
-          class="form-control mb-4"
-          formControlName="longitud"
-          [(ngModel)]="destinoLongitud"
-        />
-        <label for="Dirección">Dirección del Destino</label>
-        <input
-          type="text"
-          id="Dirección"
-          class="form-control mb-4"
-          formControlName="direccion"
-          [(ngModel)]="destinoDireccion"
-        />
-        <label for="Descripción">Descripción</label>
-        <textarea
-          id="Descripción"
-          class="form-control mb-4"
-          formControlName="descripcion"
-          [(ngModel)]="destinoDescripcion"
-        ></textarea>
-
-        <button
-          class="btn btn-info btn-block"
-          (click)="modificarDestino()"
-        >
-          Modificar Destino
-        </button>
-        <button class="btn btn-info btn-block" (click)="close()">Cancelar</button>
-      </form>
+    <label for="Tipo">Tipo de destino</label>
+    <select
+      formControlName="categorias"
+      class="form-control mb-4"
+      id="Categorias"
+    >
+      <option>Elije el tipo de Destino</option>
+      <option *ngFor="let categoria of categorias" [value]="categoria.id">{{
+        categoria.nombre
+      }}</option>
+    </select>
+    <label for="Servicios">Servicios del Destino</label>
+    <input
+      type="text"
+      id="Servicios"
+      class="form-control mb-4"
+      formControlName="servicios"
+      [(ngModel)]="destinoServicio"
+    />
+    <label for="Actividades">Actividades del Destino</label>
+    <input
+      type="text"
+      id="Actividades"
+      class="form-control mb-4"
+      formControlName="actividades"
+      [(ngModel)]="destinoActividad"
+    />
+    <label for="Latitud">Latitud del Destino</label>
+    <input
+      type="text"
+      id="Latitud"
+      class="form-control mb-4"
+      formControlName="latitud"
+      [(ngModel)]="destinoLatitud"
+    />
+    <label for="Longitud">Longitud del Destino</label>
+    <input
+      type="text"
+      id="Longitud"
+      class="form-control mb-4"
+      formControlName="longitud"
+      [(ngModel)]="destinoLongitud"
+    />
+    <label for="Dirección">Dirección del Destino</label>
+    <input
+      type="text"
+      id="Dirección"
+      class="form-control mb-4"
+      formControlName="direccion"
+      [(ngModel)]="destinoDireccion"
+    />
+    <label for="Descripción">Descripción</label>
+    <textarea
+      id="Descripción"
+      class="form-control mb-4"
+      formControlName="descripcion"
+      [(ngModel)]="destinoDescripcion"
+    ></textarea>
+    <label for="imagen">Imagen del Destino</label>
+    <input
+      type="text"
+      id="imagen"
+      class="form-control mb-4"
+      formControlName="imagen"
+      [(ngModel)]="destinoImagen"
+    />
+    <button class="btn btn-info btn-block" (click)="modificarDestino()">
+      Modificar Destino
+    </button>
+    <button class="btn btn-info btn-block" (click)="close()">Cancelar</button>
+  </form>
 </div>
