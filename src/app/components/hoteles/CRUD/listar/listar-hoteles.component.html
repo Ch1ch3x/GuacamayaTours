@@ -1,15 +1,45 @@
 <app-dashboard></app-dashboard>
 <div [hidden]="formVisibility" class="container-fluid col-12 text-center">
   <div class="btn-group col-12" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-outline-primary" name="button" (click)="openCrear()">Nuevo Hotel
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      name="button"
+      (click)="openCrear()"
+    >
+      Nuevo Hotel
     </button>
-    <button type="button" class="btn btn-outline-primary" name="button" (click)="openCrear()">Modificar Hotel
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      name="button"
+      (click)="openCrear()"
+    >
+      Modificar Hotel
     </button>
-    <button type="button" class="btn btn-outline-primary" name="button" (click)="habilitar()">Habilitar Destino
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      name="button"
+      (click)="habilitar()"
+    >
+      Habilitar Destino
     </button>
-    <button type="button" class="btn btn-outline-primary" name="button" (click)="deshabilitar()">Deshabilitar Destino
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      name="button"
+      (click)="deshabilitar()"
+    >
+      Deshabilitar Destino
     </button>
-    <button type="button" class="btn btn-outline-primary" name="button" (click)="soltar()">Quitar Seleccion
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      name="button"
+      (click)="soltar()"
+    >
+      Quitar Seleccion
     </button>
   </div>
 
@@ -33,31 +63,37 @@
     </thead>
     <tbody *ngFor="let dato of hoteles">
       <tr
-      [ngClass] = "{'highlight': selectedRowIndex == dato.id,
-        'highlight2': dato.deshabilitar == false,
-        'highlight3': selectedRowIndex == dato.id && dato.deshabilitar == false}"
-        (click)="highlight(dato)">
-        <td>{{dato.nombre}}</td>
-        <td>{{dato.estrellas}}</td>
-        <td>{{dato.idCiudad}}</td>
-        <td>{{dato.idEstado}}</td>
-        <td>{{dato.latitud}}</td>
-        <td>{{dato.longitud}}</td>
-        <td>{{dato.direccion}}</td>
-        <td>{{dato.servicios}}</td>
-        <td>{{dato.tipoHabitaciones}}</td>
-        <td>{{dato.costoFullday}}</td>
-        <td>{{dato.activoFullday}}</td>
-        <td>{{dato.imagen}}</td>
-        <td>{{dato.deshabilitar}}</td>
+        [ngClass]="{
+          highlight: selectedRowIndex == dato.id,
+          highlight2: dato.deshabilitar == false,
+          highlight3: selectedRowIndex == dato.id && dato.deshabilitar == false
+        }"
+        (click)="highlight(dato)"
+      >
+        <td>{{ dato.nombre }}</td>
+        <td>{{ dato.estrellas }}</td>
+        <td>{{ dato.idCiudad }}</td>
+        <td>{{ dato.idEstado }}</td>
+        <td>{{ dato.latitud }}</td>
+        <td>{{ dato.longitud }}</td>
+        <td>{{ dato.direccion }}</td>
+        <td>{{ dato.servicios }}</td>
+        <td>{{ dato.tipoHabitaciones }}</td>
+        <td>{{ dato.costoFullday }}</td>
+        <td>{{ dato.activoFullday }}</td>
+        <td>{{ dato.imagen }}</td>
+        <td>{{ dato.deshabilitar }}</td>
       </tr>
     </tbody>
   </table>
-
 </div>
 
 <div [hidden]="!formVisibility" id="form">
-  <form class="border border-light p-5" (ngSubmit)="newHotel(newHotelForm.value)" [formGroup]="newHotelForm">
+  <form
+    class="border border-light p-5"
+    (ngSubmit)="newHotel(newHotelForm.value)"
+    [formGroup]="newHotelForm"
+  >
     <div class="text-center">
       <p class="h4 mb-4">Ingrese los Datos del Nuevo Hotel</p>
 
@@ -77,16 +113,13 @@
     <label for="Estado">Estado donde se ubica el Hotel</label>
     <select class="form-control mb-4" formControlName="idEstado" id="item">
       <option>Seleccione un Estado</option>
-      <option *ngFor="let estado of estados">{{estado.nombre}}</option>
+      <option *ngFor="let estado of estados">{{ estado.nombre }}</option>
     </select>
 
     <label for="Ciudad">Ciudad donde se ubica el Hotel</label>
-    <select formControlName="idCiudad"
-      class="form-control mb-4"
-      id="Ciudad"
-    >
+    <select formControlName="idCiudad" class="form-control mb-4" id="Ciudad">
       <option>Elije la ciudad</option>
-      <option *ngFor="let ciudad of ciudades">{{ciudad.nombre}}</option>
+      <option *ngFor="let ciudad of ciudades">{{ ciudad.nombre }}</option>
     </select>
 
     <label for="Tipo">Número de estrellas que tiene el Hotel</label>
@@ -136,17 +169,22 @@
       placeholder="Dirección"
     />
 
-    <div formGroupName="fullDay">
+    <div>
       <label for="fullday">¿Ofrece fullday?</label>
       <select formControlName="activo" class="form-control mb-4" id="Fullday">
         <option>Seleccione una Opcion</option>
-        <option value=true>Si</option>
-        <option value=false>No</option>
+        <option value="true">Si</option>
+        <option value="false">No</option>
       </select>
 
       <label for="costo">Costo del fullday por persona</label>
-      <input formControlName="costo" type="text" id="costo" class="form-control mb-4"
-        placeholder="Costo por persona" />
+      <input
+        formControlName="costo"
+        type="text"
+        id="costo"
+        class="form-control mb-4"
+        placeholder="Costo por persona"
+      />
     </div>
 
     <label for="costo">Fotos del hotel</label>
@@ -158,10 +196,21 @@
       placeholder="URL"
     />
 
+    <label for="tipo-habitacion">Tipo de Habitacion</label>
+    <select
+      class="form-control mb-4"
+      formControlName="tipoHabitaciones"
+      id="tipo-habitacion"
+    >
+      <option>Seleccione un Tipo de Habitacion</option>
+      <option *ngFor="let th of tipoHabitaciones" [value]="th.id">{{
+        th.nombre
+      }}</option>
+    </select>
+
     <button class="btn btn-info btn-block" (click)="crearHotel()" type="submit">
       Crear Hotel
     </button>
     <button class="btn btn-info btn-block" (click)="close()">Cancelar</button>
   </form>
 </div>
--->

@@ -35,14 +35,10 @@ export class ListarHotelesComponent implements OnInit {
     idEstado: new FormControl("", Validators.required),
     idCiudad: new FormControl("", Validators.required),
     direccion: new FormControl("", Validators.required),
-    fullDay: new FormGroup({
-      costo: new FormControl(0, Validators.required),
-      activo: new FormControl(true, Validators.required)
-    }),
+    costo: new FormControl(0, Validators.required),
+    activo: new FormControl(true, Validators.required),
     tipoHabitaciones: new FormControl("", Validators.required),
     imagen: new FormControl(""),
-    imagen2: new FormControl(""),
-    imagen3: new FormControl(""),
     deshabilitar: new FormControl(null)
   });
 
@@ -61,11 +57,10 @@ export class ListarHotelesComponent implements OnInit {
       longitud: "",
       idEstado: "",
       idCiudad: "",
-      fullDay: { costo: 0, activo: null },
+      costo: 0,
+      activo: null,
       tipoHabitaciones: "",
       imagen: "",
-      imagen2: "",
-      imagen3: "",
       deshabilitar: true
     });
   }
@@ -73,6 +68,10 @@ export class ListarHotelesComponent implements OnInit {
   selectedRowIndex: number = -1;
 
   ngOnInit() {
+    this.getData();
+  }
+
+  getData() {
     this.tipoHabitacionService.getAll().subscribe(tipoHabitaciones => {
       this.tipoHabitaciones = tipoHabitaciones.docs.map(tipoHabitacion => ({
         ...tipoHabitacion.data(),
@@ -93,8 +92,14 @@ export class ListarHotelesComponent implements OnInit {
             direccion: ordenData.data().direccion,
             costoFullday: ordenData.data().fullday.costo,
             activoFullday: ordenData.data().fullday.activo,
-            tipoHabitaciones: ordenData.data().tipoHabitaciones.map(tipoH =>
-              this.tipoHabitaciones.filter(tH => tH.id === tipoH.tipoHabitacion)[0].nombre),
+            tipoHabitaciones: ordenData
+              .data()
+              .tipoHabitaciones.map(
+                tipoH =>
+                  this.tipoHabitaciones.filter(
+                    tH => tH.id === tipoH.tipoHabitacion
+                  )[0].nombre
+              ),
             imagen: ordenData.data().imagen,
             deshabilitar: ordenData.data().deshabilitar
           });
@@ -127,55 +132,57 @@ export class ListarHotelesComponent implements OnInit {
   }
 
   public newHotel(form, documentId = this.documentId) {
-      if (this.currentStatus == 1) {
-        let data = {
-          nombre: form.nombre,
-          estrellas: form.estrellas,
-          servicios: form.servicios,
-          latitud: form.latitud,
-          longitud: form.longitud,
-          idEstado: form.idEstado,
-          idCiudad: form.idCiudad,
-          direccion: form.direccion,
-          fullDay: {
-            costo: form.costo,
-            activo: form.activo
-          },
-          imagen: form.imagen,
-          imagen2: form.imagen2,
-          imagen3: form.imagen3,
-          deshabilitar: true
-        };
-        this.HotelSV.create(data).then(
-          () => {
-            console.log("Documento creado exitósamente!");
-            this.newHotelForm.setValue({
-              nombre: "",
-              estrellas: 0,
-              servicios: "",
-              latitud: "",
-              longitud: "",
-              idEstado: "",
-              idCiudad: "",
-              direccion: "",
-              fullDay: {
-                costo: 0,
-                activo: null
-              },
-              imagen: "",
-              imagen2: "",
-              imagen3: "",
-
-              deshabilitar: true
-            });
-          },
-          error => {
-            console.error(error);
-          }
-        );
-
-        this.hoteles.push(data);
+    const th = this.tipoHabitaciones.filter(
+      tH => tH.id == form.tipoHabitaciones
+    )[0];
+    let data = {
+      nombre: form.nombre,
+      estrellas: form.estrellas,
+      servicios: [form.servicios],
+      latitud: form.latitud,
+      longitud: form.longitud,
+      idEstado: form.idEstado,
+      idCiudad: form.idCiudad,
+      direccion: form.direccion,
+      fullday: {
+        costo: Number.parseInt(form.costo),
+        activo: form.activo == "true" ? true : false
+      },
+      tipoHabitaciones: [
+        {
+          tipoHabitacion: th.id,
+          fechaInicio: new Date(),
+          fechaFin: new Date(new Date().setMonth(new Date().getMonth() + 1))
+        }
+      ],
+      imagen: form.imagen,
+      deshabilitar: false
+    };
+    this.HotelSV.create(data).then(
+      () => {
+        console.log("Documento creado exitósamente!");
+        this.newHotelForm.setValue({
+          nombre: "",
+          estrellas: "",
+          servicios: "",
+          latitud: "",
+          longitud: "",
+          idEstado: "",
+          idCiudad: "",
+          direccion: "",
+          tipoHabitaciones: "",
+          costo: 0,
+          activo: null,
+          imagen: "",
+          deshabilitar: false
+        });
+        this.getData();
+      },
+      error => {
+        console.error(error);
       }
+    );
+      if (this.currentStatus == 1) {
   }
 
   public editHotel(documentId) {
