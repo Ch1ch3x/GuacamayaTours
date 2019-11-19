@@ -26,6 +26,11 @@ export class ListarEstadoComponent implements OnInit {
     deshabilitar: new FormControl(true)
   });
 
+  public editEstadoForm = new FormGroup({
+    nombre: new FormControl("", Validators.required),
+    imagen: new FormControl(""),
+    deshabilitar: new FormControl(true)
+  });
   constructor(private EstadoSV: EstadosService) {
     this.newEstadoForm.setValue({
       nombre: "",
@@ -34,9 +39,13 @@ export class ListarEstadoComponent implements OnInit {
     });
   }
 
-  selectedRowIndex: number = -1;
+  selectedRowIndex: any;
 
   ngOnInit() {
+    this.getData();
+  }
+
+  getData() {
     this.EstadoSV.getAll().subscribe(estadosSnapshot => {
       this.estados = [];
       estadosSnapshot.docs.forEach(estadoData => {
@@ -65,27 +74,35 @@ export class ListarEstadoComponent implements OnInit {
             imagen: "",
             deshabilitar: true
           });
+          this.getData();
         },
         error => {
           console.error(error);
         }
       );
-      this.estados.push(data);
     }
   }
 
-  public editEstado(documentId) {
+  public editEstado(form, documentId = this.selectedRowIndex) {
     if (this.currentStatus == 2) {
-      let editSubscribe = this.EstadosSV.getEstado(documentId).subscribe(
-        estado => {
-          this.currentStatus = 2;
-          this.documentId = documentId;
-          this.newEstadoForm.setValue({
-            nombre: estado.payload.data()["nombre"],
-            imagen: estado.payload.data()["imagen"],
-            deshabilitar: estado.payload.data()["deshabilitar"]
+      let data = {
+        nombre: form.nombre,
+        imagen: form.imagen,
+        deshabilitar: false
+      };
+      let editSubscribe = this.EstadoSV.update(documentId, data).then(
+        () => {
+          console.log("Documento modificado exitósamente!");
+          this.editEstadoForm.setValue({
+            nombre: "",
+            imagen: "",
+            deshabilitar: true
           });
-          editSubscribe.unsubscribe();
+          this.getData();
+          this.close();
+        },
+        error => {
+          console.error(error);
         }
       );
     }
@@ -103,6 +120,11 @@ export class ListarEstadoComponent implements OnInit {
   }
 
   openModificar() {
+    this.editEstadoForm.setValue({
+      nombre: this.nombreEstado,
+      imagen: this.imagenEstado,
+      deshabilitar: true
+    });
     this.currentStatus = 2;
     this.formVisibility = true;
     this.modificarformVisibility = true;

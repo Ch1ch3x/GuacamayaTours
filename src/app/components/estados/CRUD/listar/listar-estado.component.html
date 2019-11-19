@@ -1,20 +1,50 @@
 <app-dashboard></app-dashboard>
 
 <div [hidden]="formVisibility" class="container-fluid col-12 text-center">
-    <div class="btn-group col-12" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-outline-primary" name="button" (click)="openCrear()">Nuevo Estado
-      </button>
-      <button type="button" class="btn btn-outline-primary" name="button" (click)="openModificar()">Modificar Estado
-      </button>
-      <button type="button" class="btn btn-outline-primary" name="button" (click)="habilitar()">Habilitar Estado
-      </button>
-      <button type="button" class="btn btn-outline-primary" name="button" (click)="deshabilitar()">Deshabilitar Estado
-      </button>
-      <button type="button" class="btn btn-outline-primary" name="button" (click)="soltar()">Quitar Seleccion
-      </button>
-    </div>
+  <div class="btn-group col-12" role="group" aria-label="Basic example">
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      name="button"
+      (click)="openCrear()"
+    >
+      Nuevo Estado
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      name="button"
+      (click)="openModificar()"
+    >
+      Modificar Estado
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      name="button"
+      (click)="habilitar()"
+    >
+      Habilitar Estado
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      name="button"
+      (click)="deshabilitar()"
+    >
+      Deshabilitar Estado
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      name="button"
+      (click)="soltar()"
+    >
+      Quitar Seleccion
+    </button>
+  </div>
 
-  <table class="table" >
+  <table class="table">
     <thead class="thead-dark">
       <tr>
         <th scope="col">Nombre</th>
@@ -24,19 +54,27 @@
     </thead>
     <tbody *ngFor="let dato of estados">
       <tr
-      [ngClass] = "{'highlight': selectedRowIndex == dato.id,
-        'highlight2': dato.deshabilitar == false,
-        'highlight3': selectedRowIndex == dato.id && dato.deshabilitar == false}"
-        (click)="highlight(dato)">
-        <td>{{dato.nombre}}</td>
-        <td>{{dato.imagen}}</td>
-        <td>{{dato.deshabilitar}}</td>
+        [ngClass]="{
+          highlight: selectedRowIndex == dato.id,
+          highlight2: dato.deshabilitar == false,
+          highlight3: selectedRowIndex == dato.id && dato.deshabilitar == false
+        }"
+        (click)="highlight(dato)"
+      >
+        <td>{{ dato.nombre }}</td>
+        <td>{{ dato.imagen }}</td>
+        <td>{{ dato.deshabilitar }}</td>
       </tr>
     </tbody>
   </table>
 </div>
 <div [hidden]="!crearformVisibility" id="form">
-  <form class="border border-light p-5" form (ngSubmit)="newEstado(newEstadoForm.value)" [formGroup] = "newEstadoForm">
+  <form
+    class="border border-light p-5"
+    form
+    (ngSubmit)="newEstado(newEstadoForm.value)"
+    [formGroup]="newEstadoForm"
+  >
     <div class="text-center">
       <p class="h4 mb-4">Ingrese Datos del Estado</p>
 
@@ -48,7 +86,7 @@
       id="Nombre"
       class="form-control mb-4"
       placeholder="Nombre del Estado"
-      formControlName = "nombre"
+      formControlName="nombre"
     />
 
     <label for="fotos">Fotos del estado</label>
@@ -57,7 +95,7 @@
       id="fotos"
       class="form-control mb-4"
       placeholder="URL"
-      formControlName = "imagen"
+      formControlName="imagen"
     />
 
     <button
@@ -69,38 +107,40 @@
     </button>
     <button class="btn btn-info btn-block" (click)="close()">Cancelar</button>
   </form>
+</div>
+<div [hidden]="!modificarformVisibility" id="form">
+  <form
+    class="border border-light p-5"
+    form
+    (ngSubmit)="editEstado(editEstadoForm.value)"
+    [formGroup]="editEstadoForm"
+  >
+    <div class="text-center">
+      <p class="h4 mb-4">Ingrese Datos del Estado</p>
 
-  <div [hidden]="!modificarformVisibility" id="form">
-    <form class="border border-light p-5" form (ngSubmit)="editEstado(newEstadoForm.value)" [formGroup] = "newEstadoForm">
-      <div class="text-center">
-        <p class="h4 mb-4">Ingrese Datos del Estado</p>
-  
-        <p>Coloque en la casilla correspondiente la información del Estado.</p>
-      </div>
-      <label for="Nombre">Nombre del Estado</label>
-      <input
-        type="text"
-        id="Nombre"
-        class="form-control mb-4"
-        placeholder="Nombre del Estado"
-        formControlName = "nombre"
-      />
-  
-      <label for="fotos">Fotos del estado</label>
-      <input
-        type="text"
-        id="fotos"
-        class="form-control mb-4"
-        placeholder="URL"
-        formControlName = "imagen"
-      />
-  
-      <button
-        class="btn btn-info btn-block"
-        (click)="modificarEstado()"
-      >
-        Agregar Estado
-      </button>
-      <button class="btn btn-info btn-block" (click)="close()">Cancelar</button>
-    </form>
+      <p>Coloque en la casilla correspondiente la información del Estado.</p>
+    </div>
+    <label for="Nombre">Nombre del Estado</label>
+    <input
+      type="text"
+      id="Nombre"
+      class="form-control mb-4"
+      placeholder="Nombre del Estado"
+      formControlName="nombre"
+    />
+
+    <label for="fotos">Fotos del estado</label>
+    <input
+      type="text"
+      id="fotos"
+      class="form-control mb-4"
+      placeholder="URL"
+      formControlName="imagen"
+    />
+
+    <button class="btn btn-info btn-block" type="submit">
+      Editar Estado
+    </button>
+    <button class="btn btn-info btn-block" (click)="close()">Cancelar</button>
+  </form>
 </div>
