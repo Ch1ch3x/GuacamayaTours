@@ -23,7 +23,7 @@ export class ListarEstadoComponent implements OnInit {
   public currentStatus = 1;
   public newEstadoForm = new FormGroup({
       nombre: new FormControl('', Validators.required),
-      imagen: new FormArray([new FormControl('')]),
+      imagen: new FormControl(''),
       deshabilitar: new FormControl(true),
     });
 
@@ -31,7 +31,7 @@ export class ListarEstadoComponent implements OnInit {
   constructor(private EstadoSV: EstadosService) {
     this.newEstadoForm.setValue({
       nombre: '',
-      imagen: [''],
+      imagen: '',
       deshabilitar: true,
     });
   }
@@ -55,16 +55,14 @@ export class ListarEstadoComponent implements OnInit {
   public newEstado(form, documentId = this.documentId) {
       let data = {
         nombre: form.nombre,
-        imagen: [
-          form.imagen
-        ],
+        imagen: form.imagen,
         deshabilitar: true
       }
       this.EstadoSV.create(data).then(() => {
         console.log('Documento creado exitósamente!');
         this.newEstadoForm.setValue({
           nombre: '',
-          imagen: [''],
+          imagen: '',
           deshabilitar: true
         });
       }, (error) => {
