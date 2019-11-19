@@ -182,7 +182,6 @@ export class ListarHotelesComponent implements OnInit {
         console.error(error);
       }
     );
-      if (this.currentStatus == 1) {
   }
 
   public editHotel(documentId) {
