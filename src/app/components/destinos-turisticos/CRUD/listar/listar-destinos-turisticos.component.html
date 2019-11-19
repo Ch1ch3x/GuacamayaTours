@@ -57,7 +57,6 @@
         <th scope="col">Dirección</th>
         <th scope="col">Actividades</th>
         <th scope="col">Servicios</th>
-        <th scope="col">Descripción</th>
         <th scope="col">Imagen</th>
         <th scope="col">Vigencia</th>
       </tr>
@@ -95,7 +94,7 @@
     >
       <div class="text-center">
         <p class="h4 mb-4">Ingrese los Datos del Nuevo Destino</p>
-  
+
         <p>
           Coloque en la casilla correspondiente la información del destino
           turistico seleccionado.
@@ -109,39 +108,24 @@
         formControlName="nombre"
         placeholder="Nombre de Destino"
       />
-      <label for="Estado">Estado del Destino</label>
-      <select
-        class="browser-default custom-select mb-4"
-        formControlName="idEstado"
-        id="Estado"
-      >
-        <option value="" disabled="" selected="">Elije un Estado</option>
-        <option value="1">Falcon</option>
-        <option value="2">Sucre</option>
-        <option value="3">Nueva Esparta</option>
+      <label for="Estado">Estado donde se ubica el Destino</label>
+      <select class="form-control mb-4" formControlName="idEstado" id="item">
+        <option>Seleccione un Estado</option>
+        <option *ngFor="let estado of estados">{{ estado.nombre }}</option>
       </select>
-      <label for="Ciudad">Ciudad del Destino</label>
-      <select
-        class="browser-default custom-select mb-4"
-        formControlName="idCiudad"
-        id="Ciudad"
-      >
-        <option value="" disabled="" selected="">Elije una Ciudad</option>
-        <option value="1">Chichiriviche</option>
-        <option value="2">Tucacas</option>
-        <option value="3">Puerto Cabello</option>
+
+      <label for="Ciudad">Ciudad donde se ubica el Destino</label>
+      <select formControlName="idCiudad" class="form-control mb-4" id="Ciudad">
+        <option>Elije la ciudad</option>
+        <option *ngFor="let ciudad of ciudades">{{ciudad.nombre}}</option>
       </select>
+
       <label for="Tipo">Tipo de destino</label>
-      <select
-        class="browser-default custom-select mb-4"
-        formControlName="categorias"
-        id="Tipo"
-      >
-        <option value="" disabled="" selected="">Elije un Tipo de Destino</option>
-        <option value="1">Playa</option>
-        <option value="2">Montaña</option>
-        <option value="3">Arte</option>
+      <select formControlName="categorias" class="form-control mb-4" id="Categorias">
+        <option>Elije el tipo de Destino</option>
+        <option *ngFor="let categoria of categorias">{{categoria.nombre}}</option>
       </select>
+
       <label for="Servicios">Servicios del Destino</label>
       <input
         type="text"
@@ -189,7 +173,7 @@
         formControlName="descripcion"
         placeholder="Descripción del Destino"
       ></textarea>
-  
+
       <button
         class="btn btn-info btn-block"
         (click)="crearDestino()"
@@ -208,7 +192,7 @@
       >
         <div class="text-center">
           <p class="h4 mb-4">Ingrese los Datos del Nuevo Destino</p>
-    
+
           <p>
             Coloque en la casilla correspondiente la información del destino
             turistico seleccionado.
@@ -222,38 +206,22 @@
           formControlName="nombre"
           placeholder="Nombre de Destino"
         />
-        <label for="Estado">Estado del Destino</label>
-        <select
-          class="browser-default custom-select mb-4"
-          formControlName="idEstado"
-          id="Estado"
-        >
-          <option value="" disabled="" selected="">Elije un Estado</option>
-          <option value="1">Falcon</option>
-          <option value="2">Sucre</option>
-          <option value="3">Nueva Esparta</option>
+        <label for="Estado">Estado donde se ubica el Destino</label>
+        <select class="form-control mb-4" formControlName="idEstado" id="item">
+          <option>Seleccione un Estado</option>
+          <option *ngFor="let estado of estados">{{ estado.nombre }}</option>
         </select>
-        <label for="Ciudad">Ciudad del Destino</label>
-        <select
-          class="browser-default custom-select mb-4"
-          formControlName="idCiudad"
-          id="Ciudad"
-        >
-          <option value="" disabled="" selected="">Elije una Ciudad</option>
-          <option value="1">Chichiriviche</option>
-          <option value="2">Tucacas</option>
-          <option value="3">Puerto Cabello</option>
+
+        <label for="Ciudad">Ciudad donde se ubica el Destino</label>
+        <select formControlName="idCiudad" class="form-control mb-4" id="Ciudad">
+          <option>Elije la ciudad</option>
+          <option *ngFor="let ciudad of ciudades">{{ciudad.nombre}}</option>
         </select>
+
         <label for="Tipo">Tipo de destino</label>
-        <select
-          class="browser-default custom-select mb-4"
-          formControlName="categorias"
-          id="Tipo"
-        >
-          <option value="" disabled="" selected="">Elije un Tipo de Destino</option>
-          <option value="1">Playa</option>
-          <option value="2">Montaña</option>
-          <option value="3">Arte</option>
+        <select formControlName="categorias" class="form-control mb-4" id="Categorias">
+          <option>Elije el tipo de Destino</option>
+          <option *ngFor="let categoria of categorias">{{categoria.nombre}}</option>
         </select>
         <label for="Servicios">Servicios del Destino</label>
         <input
@@ -302,7 +270,7 @@
           formControlName="descripcion"
           placeholder="Descripción del Destino"
         ></textarea>
-    
+
         <button
           class="btn btn-info btn-block"
           (click)="modificarDestino()"

@@ -12,6 +12,8 @@ import { format } from 'url';
 })
 export class ListarEstadoComponent implements OnInit {
   estados: any[];
+  nombreEstado: any;
+  imagenEstado: any[];
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
   formVisibility = false;
   modificarformVisibility = false;
@@ -104,10 +106,12 @@ export class ListarEstadoComponent implements OnInit {
 
   highlight(dato) {
     this.selectedRowIndex = dato.id;
+    this.nombreEstado = dato.nombre;
+    this.imagenEstado = dato.imagen;
   }
 
   soltar() {
-    this.highlight(-1)
+    this.highlight(-1);
   }
 
   deshabilitar() {

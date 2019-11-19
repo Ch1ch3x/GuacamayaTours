@@ -6,6 +6,7 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { DestinosService } from "../../../../services/firebase/destinos.service";
 import { CiudadesService } from "src/app/services/firebase/ciudades.service.js";
 import { EstadosService } from "src/app/services/firebase/estados.service.js";
+import { CategoriasService } from 'src/app/services/firebase/categorias.service';
 
 // const ELEMENT_DATA: destinoTuristico[] = destinos; //el JSON no tiene cambios de interface
 
@@ -23,6 +24,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
   public destinos = [];
   public ciudades = [];
   public estados = [];
+  public categorias = [];
   public documentId = null;
   public currentStatus = 1;
   public newDestinoForm = new FormGroup({
@@ -43,7 +45,8 @@ export class ListarDestinosTuristicosComponent implements OnInit {
   constructor(
     private DestinoSV: DestinosService,
     private CiudadSV: CiudadesService,
-    private EstadosSV: EstadosService
+    private EstadosSV: EstadosService,
+    private CategoriaSV: CategoriasService
   ) {
     this.newDestinoForm.setValue({
       nombre: "",
@@ -106,6 +109,16 @@ export class ListarDestinosTuristicosComponent implements OnInit {
           deshabilitar: ciudadData.data().deshabilitar
         });
       });
+    });
+    this.CategoriaSV.getAll().subscribe((categoriasSnapshot) => {
+      this.categorias = [];
+      categoriasSnapshot.docs.forEach((categoriaData) => {
+        this.categorias.push({
+          id: categoriaData.id,
+          nombre: categoriaData.data().nombre,
+          deshabilitar: categoriaData.data().deshabilitar
+        });
+      })
     });
   }
 
