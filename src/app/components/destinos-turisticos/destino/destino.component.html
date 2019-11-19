@@ -53,7 +53,9 @@
                 <div class="servicios">
                     <p class="text-center">CATEGORÍAS</p>
                     <div class="datos">
-                            
+                        <p *ngFor="let cat of categorias" class="reservaciones">
+                            <i class="fa fa-bookmark" aria-hidden="true" style="font-size: 0.9em;"></i>{{ cat }}
+                        </p> 
                     </div>
                 </div>
         </div>

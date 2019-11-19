@@ -8,7 +8,7 @@ import { FirestoreService } from 'src/app/services/firebase/firebase.service';
   styleUrls: ['./destino.component.scss']
 })
 export class DestinoComponent implements OnInit {
-  private tipoHabitaciones: any[] = [];
+  private categorias: any[] = [];
   private destino: any;
   ciudad: any;
   estado: any;
@@ -23,21 +23,31 @@ export class DestinoComponent implements OnInit {
   ngOnInit() {
     this.destinoId = this.route.snapshot.params["id"];
 
-    this.fireStoreService.getDoc("destinos", this.destinoId).subscribe(destino => {
-      this.destino = { ...destino.payload.data(), id: destino.payload.id };
+    this.fireStoreService.getDoc("destinos", this.destinoId).subscribe(hotel => {
       this.fireStoreService
-        .getDoc("ciudades", this.destino.idCiudad)
-        .subscribe((ciudad: any) => {
-          this.destino.ciudad = ciudad.payload.data().nombre;
+        .getAll("categorias")
+        .subscribe(destino => {
+          this.destino = { ...hotel.payload.data(), id: hotel.payload.id };
+          this.fireStoreService
+            .getDoc("ciudades", this.destino.idCiudad)
+            .subscribe((ciudad: any) => {
+              this.destino.ciudad = ciudad.payload.data().nombre;
+              this.fireStoreService
+                .getDoc("estados", this.destino.idEstado)
+                .subscribe((estado: any) => {
+                  this.destino.estado = estado.payload.data().nombre;  
+                  console.log(this.destino);      
+                  this.categorias = destino.docs
+                    .map(doc => ({ ...doc.data(), id: doc.id }))
+                    .filter(cat =>
+                      this.destino.categorias.some(
+                        c => c.categorias == cat.id
+                      )
+                    );
+                });
+            });
         });
-      this.fireStoreService
-        .getDoc("estados", this.destino.idEstado)
-        .subscribe((estado: any) => {
-          this.destino.estado = estado.payload.data().nombre;
-        });
-      console.log(this.destino);
     });
 
-  }
-
+}
 }
