@@ -31,6 +31,12 @@ export class ListaCiudadComponent {
     imagen: new FormControl("", Validators.required),
     deshabilitar: new FormControl(true)
   });
+  public editCiudadForm = new FormGroup({
+    nombre: new FormControl("", Validators.required),
+    idEstado: new FormControl("", Validators.required),
+    imagen: new FormControl("", Validators.required),
+    deshabilitar: new FormControl(true)
+  });
 
   constructor(
     private CiudadSV: CiudadesService,
@@ -42,9 +48,20 @@ export class ListaCiudadComponent {
       imagen: "",
       deshabilitar: true
     });
+
+    this.editCiudadForm.setValue({
+      nombre: "",
+      idEstado: "",
+      imagen: "",
+      deshabilitar: true
+    });
   }
 
   ngOnInit() {
+    this.getData();
+  }
+
+  getData() {
     this.EstadosSV.getAll().subscribe(estadosSnapshot => {
       this.estados = [];
       estadosSnapshot.docs.forEach(estadoData => {
@@ -69,6 +86,7 @@ export class ListaCiudadComponent {
       });
     });
   }
+
   public newCiudad(form, documentID = this.documentId) {
     if (this.currentStatus == 1) {
       let data = {
@@ -106,29 +124,18 @@ export class ListaCiudadComponent {
       this.CiudadSV.update(documentId, data).then(
         () => {
           console.log("Documento modificado exitósamente!");
-          this.newCiudadForm.setValue({
+          this.editCiudadForm.setValue({
             nombre: "",
             idEstado: "",
             imagen: "",
             deshabilitar: true
           });
+          this.getData();
         },
         error => {
           console.error(error);
         }
       );
-      this.CiudadSV.getAll().subscribe(ciudadesSnapshot => {
-        this.ciudades = [];
-        ciudadesSnapshot.docs.forEach(ciudadData => {
-          this.ciudades.push({
-            id: ciudadData.id,
-            nombre: ciudadData.data().nombre,
-            idEstado: ciudadData.data().idEstado,
-            imagen: ciudadData.data().imagen,
-            deshabilitar: ciudadData.data().deshabilitar
-          });
-        });
-      });
     }
   }
 
@@ -144,6 +151,12 @@ export class ListaCiudadComponent {
   }
 
   openModificar() {
+    this.editCiudadForm.setValue({
+      nombre: this.ciudadNombre,
+      idEstado: this.ciudadEstado,
+      imagen: this.ciudadImagen,
+      deshabilitar: false
+    });
     this.currentStatus = 2;
     this.formVisibility = true;
     this.modificarformVisibility = true;

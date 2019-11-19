@@ -125,8 +125,8 @@
   <div [hidden]="!modificarformVisibility" id="form">
     <form
       class="border border-light p-5"
-      (ngSubmit)="editCiudad(newCiudadForm.value)"
-      [formGroup]="newCiudadForm"
+      (ngSubmit)="editCiudad(editCiudadForm.value)"
+      [formGroup]="editCiudadForm"
     >
       <div class="text-center">
         <p class="h4 mb-4">Ingrese los Datos de la ciudad a modificar</p>
