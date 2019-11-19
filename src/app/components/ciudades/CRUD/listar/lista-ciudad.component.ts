@@ -6,7 +6,6 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { CiudadesService } from "src/app/services/firebase/ciudades.service.js";
 import { EstadosService } from "src/app/services/firebase/estados.service.js";
 
-
 @Component({
   selector: "app-lista-ciudad",
   templateUrl: "./lista-ciudad.component.html",
@@ -71,29 +70,29 @@ export class ListaCiudadComponent {
     });
   }
   public newCiudad(form, documentID = this.documentId) {
-      if (this.currentStatus == 1) {
-        let data = {
-          nombre: form.nombre,
-          idEstado: form.idEstado,
-          imagen: form.imagen,
-          deshabilitar: form.deshabilitar
-        };
-        this.CiudadSV.create(data).then(
-          () => {
-            console.log("Documento creado exitósamente!");
-            this.newCiudadForm.setValue({
-              nombre: "",
-              idEstado: "",
-              imagen: "",
-              deshabilitar: true
-            });
-          },
-          error => {
-            console.error(error);
-          }
-        );
-        this.ciudades.push(data);
-      }
+    if (this.currentStatus == 1) {
+      let data = {
+        nombre: form.nombre,
+        idEstado: form.idEstado,
+        imagen: form.imagen,
+        deshabilitar: false
+      };
+      this.CiudadSV.create(data).then(
+        () => {
+          console.log("Documento creado exitósamente!");
+          this.newCiudadForm.setValue({
+            nombre: "",
+            idEstado: "",
+            imagen: "",
+            deshabilitar: false
+          });
+        },
+        error => {
+          console.error(error);
+        }
+      );
+      this.ciudades.push(data);
+    }
   }
 
   public editCiudad(form, documentId = this.selectedRowIndex) {
@@ -102,19 +101,22 @@ export class ListaCiudadComponent {
         nombre: form.nombre,
         idEstado: form.idEstado,
         imagen: form.imagen,
-        deshabilitar: true,
-      }
-      this.CiudadSV.update(documentId, data).then(() => {
-        console.log('Documento modificado exitósamente!');
-        this.newCiudadForm.setValue({
-          nombre: '',
-          idEstado: '',
-          imagen: '',
-          deshabilitar: true
-        });
-      }, (error) => {
-        console.error(error);
-      });
+        deshabilitar: true
+      };
+      this.CiudadSV.update(documentId, data).then(
+        () => {
+          console.log("Documento modificado exitósamente!");
+          this.newCiudadForm.setValue({
+            nombre: "",
+            idEstado: "",
+            imagen: "",
+            deshabilitar: true
+          });
+        },
+        error => {
+          console.error(error);
+        }
+      );
       this.CiudadSV.getAll().subscribe(ciudadesSnapshot => {
         this.ciudades = [];
         ciudadesSnapshot.docs.forEach(ciudadData => {
@@ -159,7 +161,6 @@ export class ListaCiudadComponent {
     this.modificarformVisibility = false;
   }
 
-
   highlight(dato) {
     this.selectedRowIndex = dato.id;
     this.ciudadNombre = dato.nombre;
@@ -176,13 +177,13 @@ export class ListaCiudadComponent {
   deshabilitar() {
     for (let index = 0; index < this.ciudades.length; index++) {
       if (this.ciudades[index].id == this.selectedRowIndex) {
-        this.numerito = index
+        this.numerito = index;
         this.ciudades[index].deshabilitar = false;
       } else {
         continue;
       }
     }
-    this.deshabilitarCiudad(this.selectedRowIndex)
+    this.deshabilitarCiudad(this.selectedRowIndex);
   }
 
   public deshabilitarCiudad(documentId) {
@@ -190,53 +191,57 @@ export class ListaCiudadComponent {
       nombre: this.ciudades[this.numerito].nombre,
       idEstado: this.ciudades[this.numerito].idEstado,
       imagen: this.ciudades[this.numerito].imagen,
-      deshabilitar: false,
-    }
-    this.CiudadSV.update(documentId, data).then(() => {
-      console.log('Documento modificado exitósamente!');
-      this.newCiudadForm.setValue({
-      nombre: '',
-      idEstado: '',
-      imagen: '',
-      deshabilitar: true,
-      });
-    }, (error) => {
+      deshabilitar: false
+    };
+    this.CiudadSV.update(documentId, data).then(
+      () => {
+        console.log("Documento modificado exitósamente!");
+        this.newCiudadForm.setValue({
+          nombre: "",
+          idEstado: "",
+          imagen: "",
+          deshabilitar: true
+        });
+      },
+      error => {
         console.error(error);
-    });
+      }
+    );
   }
 
   habilitar() {
     for (let index = 0; index < this.ciudades.length; index++) {
       console.log(this.ciudades[index].nombre);
       if (this.ciudades[index].id == this.selectedRowIndex) {
-        this.numerito = index
+        this.numerito = index;
         this.ciudades[index].deshabilitar = true;
       } else {
         continue;
       }
     }
-    this.habilitarCiudad(this.selectedRowIndex)
+    this.habilitarCiudad(this.selectedRowIndex);
   }
-
 
   public habilitarCiudad(documentId) {
     let data = {
       nombre: this.ciudades[this.numerito].nombre,
       idEstado: this.ciudades[this.numerito].idEstado,
       imagen: this.ciudades[this.numerito].imagen,
-      deshabilitar: true,
-    }
-    this.CiudadSV.update(documentId, data).then(() => {
-      console.log('Documento modificado exitósamente!');
-      this.newCiudadForm.setValue({
-      nombre: '',
-      idEstado: '',
-      imagen: '',
-      deshabilitar: true,
-      });
-    }, (error) => {
+      deshabilitar: true
+    };
+    this.CiudadSV.update(documentId, data).then(
+      () => {
+        console.log("Documento modificado exitósamente!");
+        this.newCiudadForm.setValue({
+          nombre: "",
+          idEstado: "",
+          imagen: "",
+          deshabilitar: true
+        });
+      },
+      error => {
         console.error(error);
-    });
+      }
+    );
   }
 }
-
