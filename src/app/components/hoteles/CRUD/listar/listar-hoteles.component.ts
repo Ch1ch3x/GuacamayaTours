@@ -28,9 +28,8 @@ export class ListarHotelesComponent implements OnInit {
   public currentStatus = 1;
   public newHotelForm = new FormGroup({
     nombre: new FormControl("", Validators.required),
-    estrellas: new FormControl("", Validators.required),
+    estrellas: new FormControl(0, Validators.required),
     servicios: new FormControl("", Validators.required),
-    actividades: new FormControl("", Validators.required),
     latitud: new FormControl("", Validators.required),
     longitud: new FormControl("", Validators.required),
     idEstado: new FormControl("", Validators.required),
@@ -55,10 +54,9 @@ export class ListarHotelesComponent implements OnInit {
   ) {
     this.newHotelForm.setValue({
       nombre: "",
-      estrellas: "",
+      estrellas: 0,
       direccion: "",
       servicios: "",
-      actividades: "",
       latitud: "",
       longitud: "",
       idEstado: "",
@@ -129,53 +127,55 @@ export class ListarHotelesComponent implements OnInit {
   }
 
   public newHotel(form, documentId = this.documentId) {
-      let data = {
-        nombre: form.nombre,
-        estrellas: form.estrellas,
-        servicios: form.servicios,
-        latitud: form.latitud,
-        longitud: form.longitud,
-        idEstado: form.idEstado,
-        idCiudad: form.idCiudad,
-        direccion: form.direccion,
-        fullDay: {
-          costo: form.costo,
-          activo: form.activo
-        },
-        imagen: form.imagen,
-        imagen2: form.imagen2,
-        imagen3: form.imagen3,
-        deshabilitar: true
-      };
-      this.HotelSV.create(data).then(
-        () => {
-          console.log("Documento creado exitósamente!");
-          this.newHotelForm.setValue({
-            nombre: "",
-            estrellas: "",
-            servicios: "",
-            latitud: "",
-            longitud: "",
-            idEstado: "",
-            idCiudad: "",
-            direccion: "",
-            fullDay: {
-              costo: 0,
-              activo: null
-            },
-            imagen: "",
-            imagen2: "",
-            imagen3: "",
+      if (this.currentStatus == 1) {
+        let data = {
+          nombre: form.nombre,
+          estrellas: form.estrellas,
+          servicios: form.servicios,
+          latitud: form.latitud,
+          longitud: form.longitud,
+          idEstado: form.idEstado,
+          idCiudad: form.idCiudad,
+          direccion: form.direccion,
+          fullDay: {
+            costo: form.costo,
+            activo: form.activo
+          },
+          imagen: form.imagen,
+          imagen2: form.imagen2,
+          imagen3: form.imagen3,
+          deshabilitar: true
+        };
+        this.HotelSV.create(data).then(
+          () => {
+            console.log("Documento creado exitósamente!");
+            this.newHotelForm.setValue({
+              nombre: "",
+              estrellas: 0,
+              servicios: "",
+              latitud: "",
+              longitud: "",
+              idEstado: "",
+              idCiudad: "",
+              direccion: "",
+              fullDay: {
+                costo: 0,
+                activo: null
+              },
+              imagen: "",
+              imagen2: "",
+              imagen3: "",
 
-            deshabilitar: true
-          });
-        },
-        error => {
-          console.error(error);
-        }
-      );
+              deshabilitar: true
+            });
+          },
+          error => {
+            console.error(error);
+          }
+        );
 
-      this.hoteles.push(data);
+        this.hoteles.push(data);
+      }
   }
 
   public editHotel(documentId) {
@@ -238,24 +238,115 @@ export class ListarHotelesComponent implements OnInit {
     this.highlight(-1);
   }
 
+  public numerito;
+
   deshabilitar() {
     for (let index = 0; index < this.hoteles.length; index++) {
       if (this.hoteles[index].id == this.selectedRowIndex) {
+        this.numerito = index
         this.hoteles[index].deshabilitar = false;
       } else {
         continue;
       }
     }
+    this.deshabilitarHotel(this.selectedRowIndex);
   }
 
   habilitar() {
     for (let index = 0; index < this.hoteles.length; index++) {
       console.log(this.hoteles[index].nombre);
       if (this.hoteles[index].id == this.selectedRowIndex) {
+        this.numerito = index
         this.hoteles[index].deshabilitar = true;
       } else {
         continue;
       }
     }
+    this.habilitarHotel(this.selectedRowIndex);
   }
+
+  public habilitarHotel(documentId) {
+    console.log('hasta aqui todo bien');
+    let data = {
+      nombre: this.hoteles[this.numerito].nombre,
+      estrellas: this.hoteles[this.numerito].estrellas,
+      servicios: this.hoteles[this.numerito].servicios,
+      latitud: this.hoteles[this.numerito].latitud,
+      longitud: this.hoteles[this.numerito].longitud,
+      idEstado: this.hoteles[this.numerito].idEstado,
+      idCiudad: this.hoteles[this.numerito].idCiudad,
+      direccion: this.hoteles[this.numerito].direccion,
+      fullDay: {
+        costo: this.hoteles[this.numerito].costoFullday,
+        activo: this.hoteles[this.numerito].activoFullday
+      },
+      imagen: this.hoteles[this.numerito].imagen,
+      deshabilitar: true
+    };
+    console.log('hasta aqui todo bien');
+    this.HotelSV.update(documentId, data).then(() => {
+      console.log('Documento modificado exitósamente!');
+      this.newHotelForm.setValue({
+        nombre: "",
+        estrellas: 0,
+        servicios: "",
+        latitud: "",
+        longitud: "",
+        idEstado: "",
+        idCiudad: "",
+        direccion: "",
+        fullDay: {
+          costo: 0,
+          activo: null
+        },
+        imagen: "",
+
+        deshabilitar: true
+      });
+    }, (error) => {
+      console.error(error);
+    });
+  }
+
+  public deshabilitarHotel(documentId) {
+    let data = {
+      nombre: this.hoteles[this.numerito].nombre,
+      estrellas: this.hoteles[this.numerito].estrellas,
+      servicios: this.hoteles[this.numerito].servicios,
+      latitud: this.hoteles[this.numerito].latitud,
+      longitud: this.hoteles[this.numerito].longitud,
+      idEstado: this.hoteles[this.numerito].idEstado,
+      idCiudad: this.hoteles[this.numerito].idCiudad,
+      direccion: this.hoteles[this.numerito].direccion,
+      fullDay: {
+        costo: this.hoteles[this.numerito].costoFullday,
+        activo: this.hoteles[this.numerito].activoFullday
+      },
+      imagen: this.hoteles[this.numerito].imagen,
+      deshabilitar: false
+    };
+    this.HotelSV.update(documentId, data).then(() => {
+      console.log('Documento modificado exitósamente!');
+      this.newHotelForm.setValue({
+        nombre: "",
+        estrellas: "",
+        servicios: "",
+        latitud: "",
+        longitud: "",
+        idEstado: "",
+        idCiudad: "",
+        direccion: "",
+        fullDay: {
+          costo: 0,
+          activo: null
+        },
+        imagen: "",
+
+        deshabilitar: true
+      });
+    }, (error) => {
+      console.error(error);
+    });
+  }
+
 }

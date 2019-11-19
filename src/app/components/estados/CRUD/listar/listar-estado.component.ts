@@ -132,6 +132,7 @@ export class ListarEstadoComponent implements OnInit {
   deshabilitar() {
     for (let index = 0; index < this.estados.length; index++) {
       if (this.estados[index].id == this.selectedRowIndex) {
+        this.numerito = index;
         this.estados[index].deshabilitar = false;
       } else {
         continue;
@@ -143,7 +144,7 @@ export class ListarEstadoComponent implements OnInit {
   deshabilitarEstado(documentId) {
     let data = {
       nombre: this.estados[this.numerito].nombre,
-      imagen: [this.estados[this.numerito].imagen],
+      imagen: this.estados[this.numerito].imagen,
       deshabilitar: false,
     }
     this.EstadoSV.update(documentId, data).then(() => {
@@ -162,6 +163,7 @@ export class ListarEstadoComponent implements OnInit {
     for (let index = 0; index < this.estados.length; index++) {
       console.log(this.estados[index].nombre);
       if (this.estados[index].id == this.selectedRowIndex){
+        this.numerito = index;
         this.estados[index].deshabilitar = true;
       } else {
         continue;
@@ -173,7 +175,7 @@ export class ListarEstadoComponent implements OnInit {
   public habilitarEstado(documentId){
     let data = {
       nombre: this.estados[this.numerito].nombre,
-      imagen: [this.estados[this.numerito].imagen],
+      imagen: this.estados[this.numerito].imagen,
       deshabilitar: true,
     }
     this.EstadoSV.update(documentId, data).then(() => {

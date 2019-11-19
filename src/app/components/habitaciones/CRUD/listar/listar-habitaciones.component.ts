@@ -174,10 +174,11 @@ export class ListarHabitacionesComponent implements OnInit {
       imagen: this.tipoHabitaciones[this.numerito].imagen,
       comodidades: this.tipoHabitaciones[this.numerito].comodidades,
       descripcion: this.tipoHabitaciones[this.numerito].descripcion,
+      vista: this.tipoHabitaciones[this.numerito].vista,
       max: this.tipoHabitaciones[this.numerito].max,
       deshabilitar: false,
       }
-      this.tipoHabitacionSV.update(documentId, data).then(() => {
+    this.tipoHabitacionSV.update(documentId, data).then(() => {
         console.log('Documento modificado exitósamente!');
         this.newHabitacionForm.setValue({
         nombre: '',
@@ -201,7 +202,35 @@ export class ListarHabitacionesComponent implements OnInit {
         continue;
       }
     }
-    
-  this.habilitarHabitacion(this.selectedRowIndex)
+
+    this.habilitarHabitacion(this.selectedRowIndex)
   }
+
+
+public habilitarHabitacion(documentId) {
+  let data = {
+    id: documentId,
+    nombre: this.tipoHabitaciones[this.numerito].nombre,
+    imagen: this.tipoHabitaciones[this.numerito].imagen,
+    comodidades: this.tipoHabitaciones[this.numerito].comodidades,
+    descripcion: this.tipoHabitaciones[this.numerito].descripcion,
+    vista: this.tipoHabitaciones[this.numerito].vista,
+    max: this.tipoHabitaciones[this.numerito].max,
+    deshabilitar: true,
+    }
+  this.tipoHabitacionSV.update(documentId, data).then(() => {
+      console.log('Documento modificado exitósamente!');
+      this.newHabitacionForm.setValue({
+      nombre: '',
+      imagen: '',
+      comodidades: '',
+      descripcion: '',
+      max: '',
+      deshabilitar: true,
+      });
+    }, (error) => {
+        console.error(error);
+    });
+  };
+
 }
