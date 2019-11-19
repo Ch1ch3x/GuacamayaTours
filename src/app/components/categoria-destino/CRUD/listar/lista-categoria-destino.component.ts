@@ -1,4 +1,3 @@
-import { tipo } from '../../../../interfaces/tipo';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatTable } from '@angular/material';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -21,7 +20,7 @@ export class ListaCategoriaDestinoComponent implements OnInit {
 
 
   public categorias = [];
-  public categoria: any;
+  public nombreCategoria: any;
   public documentId = null;
   public currentStatus = 1;
   public newCategoriaForm = new FormGroup({
@@ -48,7 +47,7 @@ export class ListaCategoriaDestinoComponent implements OnInit {
       })
     });
   }
-    public newCategoria(form) {
+  public newCategoria(form) {
         if (this.currentStatus == 1) {
           let data = {
             nombre: form.nombre,
@@ -67,7 +66,7 @@ export class ListaCategoriaDestinoComponent implements OnInit {
         }
     }
 
-    public editCategoria(form, documentId = this.selectedRowIndex) {
+  public editCategoria(form, documentId = this.selectedRowIndex) {
       if (this.currentStatus == 2) {
         let data = {
           nombre: form.nombre,
@@ -84,8 +83,6 @@ export class ListaCategoriaDestinoComponent implements OnInit {
         });
       }
     }
-
-
 
   openCrear() {
     this.formVisibility = true;
@@ -106,6 +103,7 @@ export class ListaCategoriaDestinoComponent implements OnInit {
 
   highlight(dato) {
     this.selectedRowIndex = dato.id;
+    this.nombreCategoria = dato.nombre;
   }
 
   openModificar() {

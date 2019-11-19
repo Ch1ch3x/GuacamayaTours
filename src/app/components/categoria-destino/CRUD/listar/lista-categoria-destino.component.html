@@ -71,7 +71,7 @@
       </div>
 
       <label for="Nombre">Nombre de la Categoría</label>
-      <input formControlName="nombre" type="text" id="Nombre" class="form-control mb-4" />
+      <input formControlName="nombre" [(ngModel)]="nombreCategoria" type="text" id="Nombre" class="form-control mb-4" />
 
 
       <button class="btn btn-info btn-block" (click)="modificarCategoria()" >Modificar Categoría</button>
