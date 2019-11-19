@@ -92,21 +92,26 @@ export class ListaCiudadComponent {
     this.ciudades.push(data);
   }
 
-  public editCiudad(documentId) {
-    let editSubscribe = this.CiudadSV.getCiudad(documentId).subscribe(
-      ciudad => {
-        this.currentStatus = 2;
-        this.documentId = documentId;
+  public editCiudad(form, documentId = this.selectedRowIndex) {
+    if (this.currentStatus == 2) {
+      let data = {
+        nombre: form.nombre,
+        idEstado: form.idEstado,
+        imagen: form.imagen,
+        deshabilitar: true,
+      } 
+      this.CiudadSV.update(documentId, data).then(() => {
+        console.log('Documento modificado exitósamente!');
         this.newCiudadForm.setValue({
-          id: documentId,
-          nombre: ciudad.payload.data()["nombre"],
-          idEstado: ciudad.payload.data()["estado"],
-          imagen: ciudad.payload.data()["imagen"],
-          deshabilitar: ciudad.payload.data()["deshabilitar"]
+          nombre: '',
+          idEstado: '',
+          imagen: '',
+          deshabilitar: true
         });
-        editSubscribe.unsubscribe();
-      }
-    );
+      }, (error) => {
+        console.error(error);
+      });
+    }
   }
 
   openCrear() {
@@ -121,20 +126,14 @@ export class ListaCiudadComponent {
   }
 
   openModificar() {
+    this.currentStatus = 2;
     this.formVisibility = true;
     this.modificarformVisibility = true;
-    const ciudad = this.ciudades.filter(
-      ciudad => ciudad.id === this.selectedRowIndex
-    )[0];
-    console.log(ciudad);
-    this.newCiudadForm.setValue({
-      nombre: ciudad["nombre"],
-      idEstado: ciudad["idEstado"],
-      imagen: ciudad["imagen"] ? ciudad["imagen"] : "",
-      imagen2: ciudad["imagen2"] ? ciudad["imagen2"] : "",
-      imagen3: ciudad["imagen3"] ? ciudad["imagen3"] : "",
-      deshabilitar: ciudad["deshabilitar"]
-    });
+  }
+
+  modificarCiudad() {
+    this.formVisibility = false;
+    this.modificarformVisibility = false;
   }
 
   close() {
@@ -144,11 +143,6 @@ export class ListaCiudadComponent {
     this.modificarformVisibility = false;
   }
 
-  modificarCiudad() {
-    this.formVisibility = false;
-    this.crearformVisibility = false;
-    this.modificarformVisibility = false;
-  }
 
   highlight(dato) {
     this.selectedRowIndex = dato.id;
@@ -158,14 +152,38 @@ export class ListaCiudadComponent {
     this.highlight(-1);
   }
 
+  public numerito;
+
   deshabilitar() {
     for (let index = 0; index < this.ciudades.length; index++) {
       if (this.ciudades[index].id == this.selectedRowIndex) {
+        this.numerito = index
         this.ciudades[index].deshabilitar = false;
       } else {
         continue;
       }
     }
+    this.deshabilitarCiudad(this.selectedRowIndex)
+  }
+
+  public deshabilitarCiudad(documentId) {
+    let data = {
+      nombre: this.ciudades[this.numerito].nombre,
+      idEstado: this.ciudades[this.numerito].idEstado,
+      imagen: this.ciudades[this.numerito].imagen,
+      deshabilitar: false,
+    }
+    this.CiudadSV.update(documentId, data).then(() => {
+      console.log('Documento modificado exitósamente!');
+      this.newCiudadForm.setValue({
+      nombre: '',
+      idEstado: '',
+      imagen: '',
+      deshabilitar: true,
+      });
+    }, (error) => {
+        console.error(error);
+    });
   }
 
   habilitar() {
@@ -177,5 +195,29 @@ export class ListaCiudadComponent {
         continue;
       }
     }
+    this.habilitarCiudad(this.selectedRowIndex)
+  }
+  
+
+  public habilitarCiudad(documentId) {
+    let data = {
+      nombre: this.ciudades[this.numerito].nombre,
+      idEstado: this.ciudades[this.numerito].idEstado,
+      imagen: this.ciudades[this.numerito].imagen,
+      deshabilitar: true,
+    }
+    this.CiudadSV.update(documentId, data).then(() => {
+      console.log('Documento modificado exitósamente!');
+      this.newCiudadForm.setValue({
+      nombre: '',
+      idEstado: '',
+      imagen: '',
+      deshabilitar: true,
+      });
+    }, (error) => {
+        console.error(error);
+    });
   }
 }
+
+  

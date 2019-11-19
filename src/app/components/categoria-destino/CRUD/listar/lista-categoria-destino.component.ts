@@ -82,16 +82,6 @@ export class ListaCategoriaDestinoComponent implements OnInit {
         }, (error) => {
           console.error(error);
         });
-        this.CategoriaSV.getAll().subscribe((categoriasSnapshot) => {
-          this.categorias = [];
-          categoriasSnapshot.docs.forEach((categoriaData) => {
-            this.categorias.push({
-              id: categoriaData.id,
-              nombre: categoriaData.data().nombre,
-              deshabilitar: categoriaData.data().deshabilitar
-            });
-          })
-        });
       }
     }
 
@@ -122,7 +112,6 @@ export class ListaCategoriaDestinoComponent implements OnInit {
     this.currentStatus = 2;
     this.formVisibility = true;
     this.modificarformVisibility = true;
-
   }
 
   modificarCategoria() {

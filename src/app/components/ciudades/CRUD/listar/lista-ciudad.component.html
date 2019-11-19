@@ -122,7 +122,7 @@
   <div [hidden]="!modificarformVisibility" id="form">
     <form
       class="border border-light p-5"
-      (ngSubmit)="newCiudad(newCiudadForm.value)"
+      (ngSubmit)="editCiudad(newCiudadForm.value)"
       [formGroup]="newCiudadForm"
     >
       <div class="text-center">
@@ -161,7 +161,6 @@
       <button
         class="btn btn-info btn-block"
         (click)="modificarCiudad()"
-        type="submit"
       >
         Modificar
       </button>
