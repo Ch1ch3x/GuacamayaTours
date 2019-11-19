@@ -1,88 +1,93 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { MatTable } from '@angular/material';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { CategoriasService } from 'src/app/services/firebase/categorias.service';
-
-
+import { Component, ViewChild, OnInit } from "@angular/core";
+import { MatTable } from "@angular/material";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { CategoriasService } from "src/app/services/firebase/categorias.service";
 
 @Component({
-  selector: 'app-lista-categoria-destino',
-  templateUrl: './lista-categoria-destino.component.html',
-  styleUrls: ['./lista-categoria-destino.component.scss']
+  selector: "app-lista-categoria-destino",
+  templateUrl: "./lista-categoria-destino.component.html",
+  styleUrls: ["./lista-categoria-destino.component.scss"]
 })
 export class ListaCategoriaDestinoComponent implements OnInit {
-  @ViewChild(MatTable,  { static: true}) table: MatTable<any>;
+  @ViewChild(MatTable, { static: true }) table: MatTable<any>;
 
   formVisibility = false;
   modificarformVisibility = false;
   crearformVisibility = false;
   selectedRowIndex: any;
 
-
   public categorias = [];
   public nombreCategoria: any;
   public documentId = null;
   public currentStatus = 1;
   public newCategoriaForm = new FormGroup({
-    nombre: new FormControl('', Validators.required),
+    nombre: new FormControl("", Validators.required),
     deshabilitar: new FormControl(true)
   });
 
   constructor(private CategoriaSV: CategoriasService) {
     this.newCategoriaForm.setValue({
-      nombre: '',
+      nombre: "",
       deshabilitar: true
     });
   }
 
   ngOnInit() {
-    this.CategoriaSV.getAll().subscribe((categoriasSnapshot) => {
+    this.CategoriaSV.getAll().subscribe(categoriasSnapshot => {
       this.categorias = [];
-      categoriasSnapshot.docs.forEach((categoriaData) => {
+      categoriasSnapshot.docs.forEach(categoriaData => {
         this.categorias.push({
           id: categoriaData.id,
           nombre: categoriaData.data().nombre,
           deshabilitar: categoriaData.data().deshabilitar
         });
-      })
+      });
     });
   }
   public newCategoria(form) {
-        if (this.currentStatus == 1) {
-          let data = {
-            nombre: form.nombre,
-            deshabilitar: true
-          }
-          this.CategoriaSV.create(data).then(() => {
-            console.log('Documento creado exitósamente!');
-            this.newCategoriaForm.setValue({
-              nombre: '',
-              deshabilitar: true
-            });
-          }, (error) => {
-            console.error(error);
+    if (this.currentStatus == 1) {
+      let data = {
+        nombre: form.nombre,
+        deshabilitar: false
+      };
+      this.CategoriaSV.create(data).then(
+        () => {
+          console.log("Documento creado exitósamente!");
+          this.newCategoriaForm.setValue({
+            nombre: "",
+            deshabilitar: false
           });
-          this.categorias.push(data);
+        },
+        error => {
+          console.error(error);
         }
+      );
+      this.categorias.push(data);
     }
+  }
 
   public editCategoria(form, documentId = this.selectedRowIndex) {
-      if (this.currentStatus == 2) {
-        let data = {
-          nombre: form.nombre,
-          deshabilitar: true,
-        }
-        this.CategoriaSV.update(documentId, data).then(() => {
-          console.log('Documento modificado exitósamente!');
+    if (this.currentStatus == 2) {
+      let data = {
+        nombre: form.nombre,
+        deshabilitar: this.categorias.filter(
+          categoria => categoria.id == this.selectedRowIndex
+        )[0].deshabilitar
+      };
+      this.CategoriaSV.update(documentId, data).then(
+        () => {
+          console.log("Documento modificado exitósamente!");
           this.newCategoriaForm.setValue({
-            nombre: '',
-            deshabilitar: true
+            nombre: "",
+            deshabilitar: false
           });
-        }, (error) => {
+        },
+        error => {
           console.error(error);
-        });
-      }
+        }
+      );
     }
+  }
 
   openCrear() {
     this.formVisibility = true;
@@ -126,58 +131,63 @@ export class ListaCategoriaDestinoComponent implements OnInit {
   deshabilitar() {
     for (let index = 0; index < this.categorias.length; index++) {
       if (this.categorias[index].id == this.selectedRowIndex) {
-        this.numerito = index
+        this.numerito = index;
         this.categorias[index].deshabilitar = false;
       } else {
         continue;
       }
     }
-    this.deshabilitarCategoria(this.selectedRowIndex)
+    this.deshabilitarCategoria(this.selectedRowIndex);
   }
-
 
   public deshabilitarCategoria(documentId) {
     let data = {
       nombre: this.categorias[this.numerito].nombre,
-      deshabilitar: false,
-    }
-    this.CategoriaSV.update(documentId, data).then(() => {
-      console.log('Documento modificado exitósamente!');
-      this.newCategoriaForm.setValue({
-      nombre: '',
-      deshabilitar: true,
-      });
-    }, (error) => {
+      deshabilitar: false
+    };
+    this.CategoriaSV.update(documentId, data).then(
+      () => {
+        console.log("Documento modificado exitósamente!");
+        this.newCategoriaForm.setValue({
+          nombre: "",
+          deshabilitar: true
+        });
+      },
+      error => {
         console.error(error);
-    });
+      }
+    );
   }
 
   habilitar() {
     for (let index = 0; index < this.categorias.length; index++) {
       console.log(this.categorias[index].nombre);
-      if (this.categorias[index].id == this.selectedRowIndex){
-        this.numerito = index
+      if (this.categorias[index].id == this.selectedRowIndex) {
+        this.numerito = index;
         this.categorias[index].deshabilitar = true;
       } else {
         continue;
       }
     }
-    this.habilitarCategoria(this.selectedRowIndex)
+    this.habilitarCategoria(this.selectedRowIndex);
   }
 
   public habilitarCategoria(documentId) {
     let data = {
       nombre: this.categorias[this.numerito].nombre,
-      deshabilitar: true,
-    }
-    this.CategoriaSV.update(documentId, data).then(() => {
-      console.log('Documento modificado exitósamente!');
-      this.newCategoriaForm.setValue({
-      nombre: '',
-      deshabilitar: true,
-      });
-    }, (error) => {
+      deshabilitar: true
+    };
+    this.CategoriaSV.update(documentId, data).then(
+      () => {
+        console.log("Documento modificado exitósamente!");
+        this.newCategoriaForm.setValue({
+          nombre: "",
+          deshabilitar: true
+        });
+      },
+      error => {
         console.error(error);
-    });
+      }
+    );
   }
 }
