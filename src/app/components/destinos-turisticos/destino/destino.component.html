@@ -1,64 +1,75 @@
 <app-navbar></app-navbar>
 
 <div class="body" *ngIf="destino">
-        <div class="containe">
-            <img src= {{destino.imagen}}>
-        </div> 
+  <div class="containe">
+    <img src="{{ destino.imagen }}" />
+  </div>
 
-        <h1 class="text-center">{{destino.nombre}}</h1>
-        <h4 class="text-center">{{destino.descripcion}}</h4>
+  <h1 class="text-center">{{ destino.nombre }}</h1>
+  <h4 class="text-center">{{ destino.descripcion }}</h4>
 
-        <div class="informacion">
-                
-            <div class="centro">
-                <div *ngFor="let actividad of destino.actividades">
-                        <div class="card" style="width: 20rem;">
-                            <img src="{{actividad.imagen}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-text text-center">{{actividad.nombre}}</p>
-                            </div>
-                        </div>
-                </div>
-
-                
-                
-                
-            </div>
-            
+  <div class="informacion">
+    <div class="centro">
+      <div *ngFor="let actividad of destino.actividades">
+        <div class="card" style="width: 20rem;">
+          <img src="{{ actividad.imagen }}" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text text-center">{{ actividad.nombre }}</p>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
 
-        <div class="left">
-            
+  <div class="left">
+    <div class="servicios">
+      <p class="text-center">UBICACIÓN</p>
+      <p class="reservaciones">
+        <i
+          class="fa fa-building-o"
+          aria-hidden="true"
+          style="font-size: 0.9em;"
+        ></i
+        >Ciudad: {{ destino.ciudad }}<br />
+        <i
+          class="fa fa-map-pin"
+          aria-hidden="true"
+          style="font-size: 0.9em;"
+        ></i
+        >Estado: {{ destino.estado }}<br />
+        <i
+          class="fa fa-location-arrow"
+          aria-hidden="true"
+          style="font-size: 0.9em;"
+        ></i
+        >Coordenadas geográficas: <br />
+        <span class="text-center"
+          >{{ destino.longitud }} {{ destino.latitud }}</span
+        ><br />
+      </p>
+    </div>
 
-                <div class="servicios">
-                    <p class="text-center">UBICACIÓN</p>
-                    <p class="reservaciones">
-                        <i class="fa fa-building-o" aria-hidden="true" style="font-size: 0.9em;"></i>Ciudad: {{ destino.ciudad }}<br />
-                        <i class="fa fa-map-pin" aria-hidden="true" style="font-size: 0.9em;"></i>Estado: {{ destino.estado }}<br />
-                        <i class="fa fa-location-arrow" aria-hidden="true" style="font-size: 0.9em;"></i>Coordenadas
-                        geográficas: <br> <span class="text-center">{{ destino.longitud }} {{ destino.latitud }}</span><br>
-    
-                    </p>
-                </div>
-                
-    
-                <div class="servicios">
-                    <p class="text-center">SERVICIOS</p>
-                    <p *ngFor="let serv of destino.servicios" class="reservaciones">
-                        <i class="fa fa-circle-o" aria-hidden="true"></i>{{ serv }}
-                    </p>
-                </div>
-    
-    
-                <div class="servicios">
-                    <p class="text-center">CATEGORÍAS</p>
-                    <div class="datos">
-                        <p *ngFor="let cat of categorias" class="reservaciones">
-                            <i class="fa fa-bookmark" aria-hidden="true" style="font-size: 0.9em;"></i>{{ cat }}
-                        </p> 
-                    </div>
-                </div>
-        </div>
+    <div class="servicios">
+      <p class="text-center">SERVICIOS</p>
+      <p *ngFor="let serv of destino.servicios" class="reservaciones">
+        <i class="fa fa-circle-o" aria-hidden="true"></i>{{ serv }}
+      </p>
+    </div>
+
+    <div class="servicios">
+      <p class="text-center">CATEGORÍAS</p>
+      <div class="datos">
+        <p *ngFor="let cat of categorias" class="reservaciones">
+          <i
+            class="fa fa-bookmark"
+            aria-hidden="true"
+            style="font-size: 0.9em;"
+          ></i
+          >{{ cat.nombre }}
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <app-footer></app-footer>
