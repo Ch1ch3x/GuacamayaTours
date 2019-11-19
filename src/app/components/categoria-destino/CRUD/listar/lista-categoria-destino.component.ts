@@ -33,6 +33,10 @@ export class ListaCategoriaDestinoComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.obtenerCategorias();
+  }
+
+  obtenerCategorias() {
     this.CategoriaSV.getAll().subscribe(categoriasSnapshot => {
       this.categorias = [];
       categoriasSnapshot.docs.forEach(categoriaData => {
@@ -44,6 +48,7 @@ export class ListaCategoriaDestinoComponent implements OnInit {
       });
     });
   }
+
   public newCategoria(form) {
     if (this.currentStatus == 1) {
       let data = {
@@ -57,12 +62,12 @@ export class ListaCategoriaDestinoComponent implements OnInit {
             nombre: "",
             deshabilitar: false
           });
+          this.obtenerCategorias();
         },
         error => {
           console.error(error);
         }
       );
-      this.categorias.push(data);
     }
   }
 
@@ -81,6 +86,7 @@ export class ListaCategoriaDestinoComponent implements OnInit {
             nombre: "",
             deshabilitar: false
           });
+          this.obtenerCategorias();
         },
         error => {
           console.error(error);
