@@ -190,6 +190,7 @@ export class ListaCiudadComponent {
     for (let index = 0; index < this.ciudades.length; index++) {
       console.log(this.ciudades[index].nombre);
       if (this.ciudades[index].id == this.selectedRowIndex) {
+        this.numerito = index
         this.ciudades[index].deshabilitar = true;
       } else {
         continue;

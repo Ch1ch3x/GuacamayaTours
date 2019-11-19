@@ -293,6 +293,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
       console.log(this.destinos[index].nombre);
       if (this.destinos[index].id == this.selectedRowIndex) {
         this.destinos[index].deshabilitar = true;
+        this.numerito = index
       } else {
         continue;
       }

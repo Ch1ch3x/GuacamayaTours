@@ -51,11 +51,11 @@
         <p class="h4 mb-4">Ingrese los Datos de la nueva Categoría</p>
 
         <p>
-          Coloque en la casilla correspondiente la información de la categoría.
+          Coloque en la casilla correspondiente la información de la Habitacion.
         </p>
       </div>
 
-      <label for="Nombre">Nombre de la Categoría</label>
+      <label for="Nombre">Nombre de la Habitacion</label>
       <input type="text" id="Nombre" class="form-control mb-4" placeholder="Nombre de la categoría"
         formControlName="nombre" />
 
@@ -81,32 +81,37 @@
       <button class="btn btn-info btn-block" (click)="crearHabitacion()" type="submit">Crear Categoría</button>
       <button class="btn btn-info btn-block" (click)="close()">Cancelar</button>
     </form>
-  </div>
-  <!--
+  
     <div [hidden]="!modificarformVisibility" id="form">
-      <form class = "border border-light p-5" form (ngSubmit) = "newHabitacion(newHabitacionForm.value)" [formGroup] = "newHabitacionForm">
+      <form class = "border border-light p-5" form (ngSubmit) = "editHabitacion(newHabitacionForm.value)" [formGroup] = "newHabitacionForm">
         <div class = "text-center">
-          <p class = "h4 mb-4">Modifique los Datos de la Categoría</p>
+          <p class = "h4 mb-4">Modifique los Datos de la Habitacion</p>
 
           <p>
-            Coloque en la casilla correspondiente la información de la categoría.
+            Coloque en la casilla correspondiente la información de la Habitacion.
           </p>
         </div>
 
-        <label for="Nombre">Nombre de la Categoría</label>
-        <input formControlName="nombre" type="text" id="Nombre" class="form-control mb-4" placeholder="categorias[tr.id].nombre" />
+        <label for="costo">Fotos de la Habitacion</label>
+      <input type="text" id="fotos" class="form-control mb-4" placeholder="URL" formControlName="imagen" />
 
-        <label for="costo">Foto 1 de la categoría</label>
-        <input formControlName="imagen" type="text" id="fotos" class="form-control mb-4" placeholder="categorias[row.id.nombre]"
-           />
-        <label for="costo">Foto 2 de la categoría</label>
-        <input formControlName="imagen2" type="text" id="fotos" class="form-control mb-4" placeholder="categorias[row.id.nombre]"
-           />
-        <label for="costo">Foto 3 de la categoría</label>
-        <input formControlName="imagen3" type="text" id="fotos" class="form-control mb-4" placeholder="categorias[row.id.nombre]"
-           />
+      <label for="costo">Cantidad Maxima de Personas</label>
+      <input type="text" id="fotos" class="form-control mb-4" placeholder="Max Personas" formControlName="max" />
+
+      <label for="costo">Descripcion</label>
+      <input type="text" id="fotos" class="form-control mb-4" placeholder="Descripcion" formControlName="descripcion" />
+
+      <label for="costo">Comodidades</label>
+      <input type="text" id="fotos" class="form-control mb-4" placeholder="Comodidades" formControlName="comodidades" />
+
+      <label for="costo">Vista</label>
+      <input type="text" id="fotos" class="form-control mb-4" placeholder="Vista" formControlName="vista" />
+
+      <label for="costo">Descripcion</label>
+      <input type="text" id="fotos" class="form-control mb-4" placeholder="Descripcion" formControlName="descripcion" />
 
 
-        <button class="btn btn-info btn-block" (click)="modificarCategoria()" type="submit">Crear Categoría</button>
+        <button class="btn btn-info btn-block" (click)="modificarHabitacion()">Modificar Habitacion</button>
         <button class="btn btn-info btn-block" (click)="close()" >Cancelar</button>
-      </form> -->
+      </form> 
+    </div>
