@@ -1,14 +1,11 @@
 import { Component, ViewChild, OnInit } from "@angular/core";
-
 import { MatTable } from "@angular/material";
-// necesito conectar tipos,ciuades,estados
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { DestinosService } from "../../../../services/firebase/destinos.service";
 import { CiudadesService } from "src/app/services/firebase/ciudades.service.js";
 import { EstadosService } from "src/app/services/firebase/estados.service.js";
 import { CategoriasService } from "src/app/services/firebase/categorias.service";
-
-// const ELEMENT_DATA: destinoTuristico[] = destinos; //el JSON no tiene cambios de interface
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: "app-listar-destinos-turisticos",
@@ -73,7 +70,8 @@ export class ListarDestinosTuristicosComponent implements OnInit {
     private DestinoSV: DestinosService,
     private CiudadSV: CiudadesService,
     private EstadosSV: EstadosService,
-    private CategoriaSV: CategoriasService
+    private CategoriaSV: CategoriasService,
+    private titleService: Title
   ) {
     this.newDestinoForm.setValue({
       nombre: "",
@@ -89,6 +87,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
       imagen: "",
       deshabilitar: true
     });
+    this.titleService.setTitle('Admin: Destinos Turisticos');
   }
 
   ngOnInit() {

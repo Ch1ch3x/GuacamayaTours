@@ -1,4 +1,4 @@
-import { BrowserModule } from "@angular/platform-browser";
+import { BrowserModule, Title } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
@@ -119,7 +119,7 @@ import { DialogComponent } from './components/planear-viaje/dialog/dialog.compon
     AngularFireModule.initializeApp(environment.firebase),
     NgbModule
   ],
-  providers: [FirestoreService, AngularFirestore],
+  providers: [FirestoreService, AngularFirestore, Title],
   entryComponents: [DialogComponent],
   bootstrap: [AppComponent]
 })

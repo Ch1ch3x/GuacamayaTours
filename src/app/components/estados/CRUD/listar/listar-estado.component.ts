@@ -3,6 +3,7 @@ import { MatTable } from "@angular/material";
 import { EstadosService } from "../../../../services/firebase/estados.service";
 import { FormGroup, FormControl, Validators, FormArray } from "@angular/forms";
 import { format } from "url";
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: "app-listar-estado",
@@ -32,7 +33,7 @@ export class ListarEstadoComponent implements OnInit {
     deshabilitar: new FormControl(true)
   });
 
-  constructor(private EstadoSV: EstadosService) {
+  constructor(private EstadoSV: EstadosService, private titleService: Title) {
     this.newEstadoForm.setValue({
       nombre: "",
       imagen: "",
@@ -44,6 +45,7 @@ export class ListarEstadoComponent implements OnInit {
 
   ngOnInit() {
     this.getData();
+    this.titleService.setTitle('Admin: Estados');
   }
 
   getData() {

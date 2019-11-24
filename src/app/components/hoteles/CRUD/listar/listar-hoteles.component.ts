@@ -5,6 +5,7 @@ import { HotelesService } from "../../../../services/firebase/hoteles.service";
 import { CiudadesService } from "src/app/services/firebase/ciudades.service.js";
 import { EstadosService } from "src/app/services/firebase/estados.service.js";
 import { TipoHabitacionService } from "src/app/services/firebase/tipo-habitacion.service";
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: "app-listar-hoteles",
@@ -62,7 +63,8 @@ export class ListarHotelesComponent implements OnInit {
     private HotelSV: HotelesService,
     private CiudadSV: CiudadesService,
     private EstadosSV: EstadosService,
-    private tipoHabitacionService: TipoHabitacionService
+    private tipoHabitacionService: TipoHabitacionService,
+    private titleService: Title
   ) {
     this.newHotelForm.setValue({
       nombre: "",
@@ -94,6 +96,7 @@ export class ListarHotelesComponent implements OnInit {
       imagen: "",
       deshabilitar: true
     });
+    this.titleService.setTitle('Admin: Hoteles');
   }
 
   selectedRowIndex: string;

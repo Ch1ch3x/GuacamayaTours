@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
-
 import { MatTable } from "@angular/material";
-
+import { Title } from '@angular/platform-browser';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { CiudadesService } from "src/app/services/firebase/ciudades.service.js";
 import { EstadosService } from "src/app/services/firebase/estados.service.js";
@@ -40,7 +39,8 @@ export class ListaCiudadComponent {
 
   constructor(
     private CiudadSV: CiudadesService,
-    private EstadosSV: EstadosService
+    private EstadosSV: EstadosService,
+    private titleService: Title
   ) {
     this.newCiudadForm.setValue({
       nombre: "",
@@ -59,6 +59,7 @@ export class ListaCiudadComponent {
 
   ngOnInit() {
     this.getData();
+    this.titleService.setTitle('Admin: Ciudades');
   }
 
   getData() {

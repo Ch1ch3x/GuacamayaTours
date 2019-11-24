@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { TipoHabitacionService } from "src/app/services/firebase/tipo-habitacion.service";
-import { HotelesService } from "src/app/services/firebase/hoteles.service";
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: "app-listar-habitaciones",
@@ -30,7 +30,7 @@ export class ListarHabitacionesComponent implements OnInit {
 
   constructor(
     private tipoHabitacionSV: TipoHabitacionService,
-    private HotelSV: HotelesService
+    private titleService: Title
   ) {
     this.newHabitacionForm.setValue({
       nombre: "",
@@ -41,6 +41,7 @@ export class ListarHabitacionesComponent implements OnInit {
       comodidades: "",
       deshabilitar: true
     });
+    this.titleService.setTitle('Admin: Tipos de Habitaciones');
   }
 
   ngOnInit() {

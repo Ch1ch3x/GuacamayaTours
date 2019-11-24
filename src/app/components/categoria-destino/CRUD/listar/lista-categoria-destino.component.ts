@@ -2,6 +2,7 @@ import { Component, ViewChild, OnInit } from "@angular/core";
 import { MatTable } from "@angular/material";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { CategoriasService } from "src/app/services/firebase/categorias.service";
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: "app-lista-categoria-destino",
@@ -25,7 +26,7 @@ export class ListaCategoriaDestinoComponent implements OnInit {
     deshabilitar: new FormControl(true)
   });
 
-  constructor(private CategoriaSV: CategoriasService) {
+  constructor(private CategoriaSV: CategoriasService, private titleService: Title) {
     this.newCategoriaForm.setValue({
       nombre: "",
       deshabilitar: true
@@ -34,6 +35,7 @@ export class ListaCategoriaDestinoComponent implements OnInit {
 
   ngOnInit() {
     this.obtenerCategorias();
+    this.titleService.setTitle('Admin: Categorias de Destinos');
   }
 
   obtenerCategorias() {
