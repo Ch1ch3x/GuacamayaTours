@@ -138,7 +138,7 @@ export class ListaCategoriaDestinoComponent implements OnInit {
     for (let index = 0; index < this.categorias.length; index++) {
       if (this.categorias[index].id == this.selectedRowIndex) {
         this.numerito = index;
-        this.categorias[index].deshabilitar = false;
+        this.categorias[index].deshabilitar = true;
       } else {
         continue;
       }
@@ -149,7 +149,7 @@ export class ListaCategoriaDestinoComponent implements OnInit {
   public deshabilitarCategoria(documentId) {
     let data = {
       nombre: this.categorias[this.numerito].nombre,
-      deshabilitar: false
+      deshabilitar: true
     };
     this.CategoriaSV.update(documentId, data).then(
       () => {
@@ -170,7 +170,7 @@ export class ListaCategoriaDestinoComponent implements OnInit {
       console.log(this.categorias[index].nombre);
       if (this.categorias[index].id == this.selectedRowIndex) {
         this.numerito = index;
-        this.categorias[index].deshabilitar = true;
+        this.categorias[index].deshabilitar = false;
       } else {
         continue;
       }
@@ -181,7 +181,7 @@ export class ListaCategoriaDestinoComponent implements OnInit {
   public habilitarCategoria(documentId) {
     let data = {
       nombre: this.categorias[this.numerito].nombre,
-      deshabilitar: true
+      deshabilitar: false
     };
     this.CategoriaSV.update(documentId, data).then(
       () => {

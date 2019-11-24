@@ -60,8 +60,8 @@
       <tr
         [ngClass]="{
           highlight: selectedRowIndex == dato.id,
-          highlight2: dato.deshabilitar == false,
-          highlight3: selectedRowIndex == dato.id && dato.deshabilitar == false
+          highlight2: dato.deshabilitar == true,
+          highlight3: selectedRowIndex == dato.id && dato.deshabilitar == true
         }"
         (click)="highlight(dato)"
       >

@@ -191,7 +191,7 @@ export class ListaCiudadComponent {
     for (let index = 0; index < this.ciudades.length; index++) {
       if (this.ciudades[index].id == this.selectedRowIndex) {
         this.numerito = index;
-        this.ciudades[index].deshabilitar = false;
+        this.ciudades[index].deshabilitar = true;
       } else {
         continue;
       }
@@ -204,7 +204,7 @@ export class ListaCiudadComponent {
       nombre: this.ciudades[this.numerito].nombre,
       idEstado: this.ciudades[this.numerito].idEstado,
       imagen: this.ciudades[this.numerito].imagen,
-      deshabilitar: false
+      deshabilitar: true
     };
     this.CiudadSV.update(documentId, data).then(
       () => {
@@ -227,7 +227,7 @@ export class ListaCiudadComponent {
       console.log(this.ciudades[index].nombre);
       if (this.ciudades[index].id == this.selectedRowIndex) {
         this.numerito = index;
-        this.ciudades[index].deshabilitar = true;
+        this.ciudades[index].deshabilitar = false;
       } else {
         continue;
       }
@@ -240,7 +240,7 @@ export class ListaCiudadComponent {
       nombre: this.ciudades[this.numerito].nombre,
       idEstado: this.ciudades[this.numerito].idEstado,
       imagen: this.ciudades[this.numerito].imagen,
-      deshabilitar: true
+      deshabilitar: false
     };
     this.CiudadSV.update(documentId, data).then(
       () => {

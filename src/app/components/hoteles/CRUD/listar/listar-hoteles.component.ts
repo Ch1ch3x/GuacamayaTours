@@ -332,7 +332,7 @@ export class ListarHotelesComponent implements OnInit {
     for (let index = 0; index < this.hoteles.length; index++) {
       if (this.hoteles[index].id == this.selectedRowIndex) {
         this.numerito = index;
-        this.hoteles[index].deshabilitar = false;
+        this.hoteles[index].deshabilitar = true;
       } else {
         continue;
       }
@@ -345,7 +345,7 @@ export class ListarHotelesComponent implements OnInit {
       console.log(this.hoteles[index].nombre);
       if (this.hoteles[index].id == this.selectedRowIndex) {
         this.numerito = index;
-        this.hoteles[index].deshabilitar = true;
+        this.hoteles[index].deshabilitar = false;
       } else {
         continue;
       }
@@ -354,7 +354,6 @@ export class ListarHotelesComponent implements OnInit {
   }
 
   public habilitarHotel(documentId) {
-    console.log("hasta aqui todo bien");
     let data = {
       nombre: this.hoteles[this.numerito].nombre,
       estrellas: this.hoteles[this.numerito].estrellas,
@@ -369,9 +368,8 @@ export class ListarHotelesComponent implements OnInit {
         activo: this.hoteles[this.numerito].activoFullday
       },
       imagen: this.hoteles[this.numerito].imagen,
-      deshabilitar: true
+      deshabilitar: false
     };
-    console.log("hasta aqui todo bien");
     this.HotelSV.update(documentId, data).then(
       () => {
         console.log("Documento modificado exitósamente!");
@@ -414,7 +412,7 @@ export class ListarHotelesComponent implements OnInit {
         activo: this.hoteles[this.numerito].activoFullday
       },
       imagen: this.hoteles[this.numerito].imagen,
-      deshabilitar: false
+      deshabilitar: true
     };
     this.HotelSV.update(documentId, data).then(
       () => {

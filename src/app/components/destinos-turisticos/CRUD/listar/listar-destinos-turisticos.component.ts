@@ -304,7 +304,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
     for (let index = 0; index < this.destinos.length; index++) {
       if (this.destinos[index].id == this.selectedRowIndex) {
         this.numerito = index;
-        this.destinos[index].deshabilitar = false;
+        this.destinos[index].deshabilitar = true;
       } else {
         continue;
       }
@@ -325,7 +325,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
       idCiudad: this.destinos[this.numerito].idCiudad,
       direccion: this.destinos[this.numerito].direccion,
       imagen: this.destinos[this.numerito].imagen,
-      deshabilitar: false
+      deshabilitar: true
     };
     this.DestinoSV.update(documentId, data).then(
       () => {
@@ -355,7 +355,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
     for (let index = 0; index < this.destinos.length; index++) {
       console.log(this.destinos[index].nombre);
       if (this.destinos[index].id == this.selectedRowIndex) {
-        this.destinos[index].deshabilitar = true;
+        this.destinos[index].deshabilitar = false;
         this.numerito = index;
       } else {
         continue;
@@ -377,7 +377,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
       idCiudad: this.destinos[this.numerito].idCiudad,
       direccion: this.destinos[this.numerito].direccion,
       imagen: this.destinos[this.numerito].imagen,
-      deshabilitar: true
+      deshabilitar: false
     };
     this.DestinoSV.update(documentId, data).then(
       () => {

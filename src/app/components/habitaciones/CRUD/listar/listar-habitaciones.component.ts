@@ -159,7 +159,7 @@ export class ListarHabitacionesComponent implements OnInit {
     for (let index = 0; index < this.tipoHabitaciones.length; index++) {
       if (this.tipoHabitaciones[index].id == this.selectedRowIndex) {
         this.numerito = index
-        this.tipoHabitaciones[index].deshabilitar = false;
+        this.tipoHabitaciones[index].deshabilitar = true;
       } else {
         continue;
       }
@@ -176,7 +176,7 @@ export class ListarHabitacionesComponent implements OnInit {
       descripcion: this.tipoHabitaciones[this.numerito].descripcion,
       vista: this.tipoHabitaciones[this.numerito].vista,
       max: this.tipoHabitaciones[this.numerito].max,
-      deshabilitar: false,
+      deshabilitar: true,
       }
     this.tipoHabitacionSV.update(documentId, data).then(() => {
         console.log('Documento modificado exitósamente!');
@@ -197,7 +197,7 @@ export class ListarHabitacionesComponent implements OnInit {
     for (let index = 0; index < this.tipoHabitaciones.length; index++) {
       console.log(this.tipoHabitaciones[index].nombre);
       if (this.tipoHabitaciones[index].id == this.selectedRowIndex) {
-        this.tipoHabitaciones[index].deshabilitar = true;
+        this.tipoHabitaciones[index].deshabilitar = false;
       } else {
         continue;
       }
@@ -216,7 +216,7 @@ public habilitarHabitacion(documentId) {
     descripcion: this.tipoHabitaciones[this.numerito].descripcion,
     vista: this.tipoHabitaciones[this.numerito].vista,
     max: this.tipoHabitaciones[this.numerito].max,
-    deshabilitar: true,
+    deshabilitar: false,
     }
   this.tipoHabitacionSV.update(documentId, data).then(() => {
       console.log('Documento modificado exitósamente!');

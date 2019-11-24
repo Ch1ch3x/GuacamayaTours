@@ -31,6 +31,7 @@ export class ListarEstadoComponent implements OnInit {
     imagen: new FormControl(""),
     deshabilitar: new FormControl(true)
   });
+
   constructor(private EstadoSV: EstadosService) {
     this.newEstadoForm.setValue({
       nombre: "",
@@ -158,7 +159,7 @@ export class ListarEstadoComponent implements OnInit {
     for (let index = 0; index < this.estados.length; index++) {
       if (this.estados[index].id == this.selectedRowIndex) {
         this.numerito = index;
-        this.estados[index].deshabilitar = false;
+        this.estados[index].deshabilitar = true;
       } else {
         continue;
       }
@@ -170,7 +171,7 @@ export class ListarEstadoComponent implements OnInit {
     let data = {
       nombre: this.estados[this.numerito].nombre,
       imagen: this.estados[this.numerito].imagen,
-      deshabilitar: false
+      deshabilitar: true
     };
     this.EstadoSV.update(documentId, data).then(
       () => {
@@ -192,7 +193,7 @@ export class ListarEstadoComponent implements OnInit {
       console.log(this.estados[index].nombre);
       if (this.estados[index].id == this.selectedRowIndex) {
         this.numerito = index;
-        this.estados[index].deshabilitar = true;
+        this.estados[index].deshabilitar = false;
       } else {
         continue;
       }
@@ -204,7 +205,7 @@ export class ListarEstadoComponent implements OnInit {
     let data = {
       nombre: this.estados[this.numerito].nombre,
       imagen: this.estados[this.numerito].imagen,
-      deshabilitar: true
+      deshabilitar: false
     };
     this.EstadoSV.update(documentId, data).then(
       () => {
