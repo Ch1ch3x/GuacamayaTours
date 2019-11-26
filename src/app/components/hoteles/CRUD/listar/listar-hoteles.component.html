@@ -111,15 +111,25 @@
       placeholder="Nombre del Hotel"
     />
     <label for="Estado">Estado donde se ubica el Hotel</label>
-    <select class="form-control mb-4" formControlName="idEstado" id="item">
+    <select
+      class="form-control mb-4"
+      formControlName="idEstado"
+      id="item"
+      [ngModel]="estado"
+      (ngModelChange)="onChangeEstado($event)"
+    >
       <option>Seleccione un Estado</option>
-      <option *ngFor="let estado of estados">{{ estado.nombre }}</option>
+      <option *ngFor="let estado of estados" [value]="estado.id">{{
+        estado.nombre
+      }}</option>
     </select>
 
     <label for="Ciudad">Ciudad donde se ubica el Hotel</label>
     <select formControlName="idCiudad" class="form-control mb-4" id="Ciudad">
       <option>Elije la ciudad</option>
-      <option *ngFor="let ciudad of ciudades">{{ ciudad.nombre }}</option>
+      <option *ngFor="let ciudad of filteredCiudades">{{
+        ciudad.nombre
+      }}</option>
     </select>
 
     <label for="Tipo">Número de estrellas que tiene el Hotel</label>
@@ -237,15 +247,25 @@
       placeholder="Nombre del Hotel"
     />
     <label for="Estado">Estado donde se ubica el Hotel</label>
-    <select class="form-control mb-4" formControlName="idEstado" id="item">
+    <select
+      class="form-control mb-4"
+      formControlName="idEstado"
+      id="item"
+      [ngModel]="estado"
+      (ngModelChange)="onChangeEstado($event)"
+    >
       <option>Seleccione un Estado</option>
-      <option *ngFor="let estado of estados">{{ estado.nombre }}</option>
+      <option *ngFor="let estado of estados" [value]="estado.id">{{
+        estado.nombre
+      }}</option>
     </select>
 
     <label for="Ciudad">Ciudad donde se ubica el Hotel</label>
     <select formControlName="idCiudad" class="form-control mb-4" id="Ciudad">
       <option>Elije la ciudad</option>
-      <option *ngFor="let ciudad of ciudades">{{ ciudad.nombre }}</option>
+      <option *ngFor="let ciudad of filteredCiudades">{{
+        ciudad.nombre
+      }}</option>
     </select>
 
     <label for="Tipo">Número de estrellas que tiene el Hotel</label>

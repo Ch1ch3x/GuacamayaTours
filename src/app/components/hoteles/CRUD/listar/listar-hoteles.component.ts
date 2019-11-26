@@ -5,7 +5,7 @@ import { HotelesService } from "../../../../services/firebase/hoteles.service";
 import { CiudadesService } from "src/app/services/firebase/ciudades.service.js";
 import { EstadosService } from "src/app/services/firebase/estados.service.js";
 import { TipoHabitacionService } from "src/app/services/firebase/tipo-habitacion.service";
-import { Title } from '@angular/platform-browser';
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: "app-listar-hoteles",
@@ -25,6 +25,7 @@ export class ListarHotelesComponent implements OnInit {
   public estados = [];
   public hotel: any;
   public hoteles = [];
+  public filteredCiudades = [];
   public tipoHabitaciones = [];
   public documentId = null;
   public currentStatus = 1;
@@ -96,7 +97,7 @@ export class ListarHotelesComponent implements OnInit {
       imagen: "",
       deshabilitar: true
     });
-    this.titleService.setTitle('Admin: Hoteles');
+    this.titleService.setTitle("Admin: Hoteles");
   }
 
   selectedRowIndex: string;
@@ -354,6 +355,12 @@ export class ListarHotelesComponent implements OnInit {
       }
     }
     this.habilitarHotel(this.selectedRowIndex);
+  }
+
+  onChangeEstado(event) {
+    this.filteredCiudades = this.ciudades.filter(
+      ciudad => ciudad.idEstado === event
+    );
   }
 
   public habilitarHotel(documentId) {

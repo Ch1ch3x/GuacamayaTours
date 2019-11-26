@@ -110,7 +110,13 @@
       placeholder="Nombre de Destino"
     />
     <label for="Estado">Estado donde se ubica el Destino</label>
-    <select class="form-control mb-4" formControlName="idEstado" id="item">
+    <select
+      class="form-control mb-4"
+      formControlName="idEstado"
+      id="item"
+      [ngModel]="estado"
+      (ngModelChange)="onChangeEstado($event)"
+    >
       <option>Seleccione un Estado</option>
       <option *ngFor="let estado of estados" [value]="estado.id">{{
         estado.nombre
@@ -120,7 +126,7 @@
     <label for="Ciudad">Ciudad donde se ubica el Destino</label>
     <select formControlName="idCiudad" class="form-control mb-4" id="Ciudad">
       <option>Elije la ciudad</option>
-      <option *ngFor="let ciudad of ciudades" [value]="ciudad.id">{{
+      <option *ngFor="let ciudad of filteredCiudades" [value]="ciudad.id">{{
         ciudad.nombre
       }}</option>
     </select>
@@ -227,7 +233,13 @@
       [(ngModel)]="destinoNombre"
     />
     <label for="Estado">Estado donde se ubica el Destino</label>
-    <select class="form-control mb-4" formControlName="idEstado" id="item">
+    <select
+      class="form-control mb-4"
+      formControlName="idEstado"
+      id="item"
+      [ngModel]="estado"
+      (ngModelChange)="onChangeEstado($event)"
+    >
       <option>Seleccione un Estado</option>
       <option *ngFor="let estado of estados" [value]="estado.id">{{
         estado.nombre
@@ -237,7 +249,7 @@
     <label for="Ciudad">Ciudad donde se ubica el Destino</label>
     <select formControlName="idCiudad" class="form-control mb-4" id="Ciudad">
       <option>Elije la ciudad</option>
-      <option *ngFor="let ciudad of ciudades" [value]="ciudad.id">{{
+      <option *ngFor="let ciudad of filteredCiudades" [value]="ciudad.id">{{
         ciudad.nombre
       }}</option>
     </select>

@@ -5,7 +5,7 @@ import { DestinosService } from "../../../../services/firebase/destinos.service"
 import { CiudadesService } from "src/app/services/firebase/ciudades.service.js";
 import { EstadosService } from "src/app/services/firebase/estados.service.js";
 import { CategoriasService } from "src/app/services/firebase/categorias.service";
-import { Title } from '@angular/platform-browser';
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: "app-listar-destinos-turisticos",
@@ -33,6 +33,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
 
   public ciudades = [];
   public estados = [];
+  public filteredCiudades = [];
   public categorias = [];
   public documentId = null;
   public currentStatus = 1;
@@ -87,7 +88,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
       imagen: "",
       deshabilitar: true
     });
-    this.titleService.setTitle('Admin: Destinos Turisticos');
+    this.titleService.setTitle("Admin: Destinos Turisticos");
   }
 
   ngOnInit() {
@@ -150,6 +151,12 @@ export class ListarDestinosTuristicosComponent implements OnInit {
         });
       });
     });
+  }
+
+  onChangeEstado(event) {
+    this.filteredCiudades = this.ciudades.filter(
+      ciudad => ciudad.idEstado === event
+    );
   }
 
   public newDestino(form, documentId = this.documentId) {
