@@ -50,8 +50,9 @@
             <p>RESERVACIONES</p>
             <div class="reservas">
                 <p *ngFor="let reserva of reservas" class="reservaciones">
-                    {{ reserva.ads }}
+                    {{ reserva.hotel }}
                 </p>
+                <button id="buscar" class="btn btn-outline-secondary pagar" routerLink="/ordenes" color="warm">Pagar</button>
             </div>
             <p>FILTROS</p>
             <div class="filtros">
@@ -167,7 +168,7 @@
                                     <h6> {{hotel.servicios}} </h6>
                                 </div>
                                 <div class="precio">
-                                    <h5>{{hotel.fullday.costo}}$</h5>
+                                    <h5>${{hotel.fullday.costo}}</h5>
                                     <button (click)="openDialog()" type="button" id="mas"  class="btn btn-danger" color="warn">RESERVAR</button>
                                    
                                     <button type="button" id="mas" routerLink="/hoteles/{{hotel.id}}" class="btn btn-danger" color="warn">VER MAS</button>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="header" themeId="0" version="65540" templateID="SimpleProjectTemplate">
   <MediaItems>
-    <MediaItem id="1" filePath="C:\Users\Mari\Downloads\y2mate.com - in_south_america_venezuela_LUtEtQEwi_8_1080p.mp4" arWidth="1920" arHeight="1080" duration="344.54802719999998" songTitle="" songArtist="" songAlbum="" songCopyrightUrl="" songArtistUrl="" songAudioFileUrl="" stabilizationMode="0" mediaItemType="1" />
+    <MediaItem id="1" filePath="C:\Users\Mari\Downloads\y2mate.com - in_south_america_venezuela_LUtEtQEwi_8_1080p.mp4" arWidth="1920" arHeight="1080" duration="344.46899999999999" songTitle="" songArtist="" songAlbum="" songCopyrightUrl="" songArtistUrl="" songAudioFileUrl="" stabilizationMode="0" mediaItemType="1" />
   </MediaItems>
   <Extents>
     <VideoClip extentID="7" gapBefore="0" mediaItemID="1" inTime="35.799999999999997" outTime="41.5" speed="0.5" stabilizationMode="0">

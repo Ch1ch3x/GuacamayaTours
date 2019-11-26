@@ -1,1 +1,69 @@
-<p>ordenes works!</p>
+<app-navbar></app-navbar>
+<div class="body">
+    <h1 class="titulo"> GUACAMAYA TOURS - Pagar </h1>
+    <div class="pagar">
+        <div class="left">
+            <h4>Introduce tus datos para pagar con Paypal: </h4><br>
+            <form action="/action_page.php">
+                Correo electrónico:<br>
+                <input type="text" name="nombre" class="form-control ancho" placeholder="Ingrese su correo">
+                <br>
+                Contraseña:<br>
+                <input type="password" name="correo" class="form-control ancho" placeholder="Ingrese su contraseña">
+                <br><br>
+                <input type="submit" value="Validar" class="btn btn-light">
+                <input type="reset" class="btn btn-light">
+            </form> 
+
+        </div>
+        <div class="derecha">
+            <hr style="color: #0056b2;" />
+            <h5>Total a pagar: </h5>
+            <hr style="color: #0056b2;" />
+            <button type="button" class="btn btn-success btn-lg btn-block">Pagar</button>
+        </div>
+    </div>
+    <div class="datos">
+        <div class="formulario">
+            <h4>Datos de la reserva: </h4>
+            <form>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputEmail4">Nombre y apellido</label>
+                        <input type="email" class="form-control" id="inputEmail4" placeholder="Ingrese su nombre y apellido">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="inputPassword4">Teléfono</label>
+                        <input type="password" class="form-control" id="inputPassword4" placeholder="Ingrese su teléfono">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputAddress">Dirección</label>
+                      <input type="text" class="form-control" id="inputAddress" placeholder="">
+                    </div>
+                    <div class="form-group">
+                      <label for="inputAddress2">Dirección 2</label>
+                      <input type="text" class="form-control" id="inputAddress2" placeholder="">
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-4">
+                        <label for="inputCity">Ciudad</label>
+                        <input type="text" class="form-control" id="IngresarCiudad" placeholder="Ingrese ciudad">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="inputCity">Estado</label>
+                        <input type="text" class="form-control" id="IngresarEstado" placeholder="Ingrese estado">
+                      </div>
+                      
+                      <div class="form-group col-md-4">
+                        <label for="inputZip">Código Postal</label>
+                        <input type="text" class="form-control" id="IngresarCodigoPostal" placeholder="Ingrese código postal"> 
+                      </div>
+                    </div>
+                    
+                    
+                  </form>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

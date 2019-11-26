@@ -58,6 +58,7 @@ import { Observable } from 'rxjs';
 import { DialogComponent } from './components/planear-viaje/dialog/dialog.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -100,7 +101,7 @@ import { DialogComponent } from './components/planear-viaje/dialog/dialog.compon
     ContactanosComponent,
     HotelComponent,
     DestinoComponent,
-    DialogComponent
+    DialogComponent,
   ],
   imports: [
     BrowserModule,

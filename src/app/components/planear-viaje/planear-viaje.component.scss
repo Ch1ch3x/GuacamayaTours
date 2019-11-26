@@ -84,16 +84,22 @@
     justify-content: space-between;
 }
 
+.pagar{
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5%;
+}
+
 .side{
   width: 30%;
   height: auto;
   background: #FBEACE;
-  border-radius: 20px;
+  margin-bottom: 8%;
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
   padding-bottom: 3%;
-  max-height: 690px;
+  max-height: 1000px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
@@ -105,6 +111,7 @@
   border-radius: 20px;
   margin-right: auto;
   margin-left: auto;
+  text-align: center;
 }
 
 .filtros{
