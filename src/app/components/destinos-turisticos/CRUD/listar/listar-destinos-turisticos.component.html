@@ -132,25 +132,31 @@
     </select>
 
     <label for="Tipo">Tipo de destino</label>
-    <select
+    <mat-select
       formControlName="categorias"
       class="form-control mb-4"
       id="Categorias"
+      multiple
     >
-      <option>Elije el tipo de Destino</option>
-      <option *ngFor="let categoria of categorias" [value]="categoria.id">{{
+      <mat-option>Elije el tipo de Destino</mat-option>
+      <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">{{
         categoria.nombre
-      }}</option>
-    </select>
+      }}</mat-option>
+    </mat-select>
 
     <label for="Servicios">Servicios del Destino</label>
-    <input
-      type="text"
-      id="Servicios"
-      class="form-control mb-4"
-      formControlName="servicios"
-      placeholder="Servicios del Destino"
-    />
+
+    <mat-chip-list #chipList aria-label="Servicios">
+      <mat-chip *ngFor="let servicio of servicios" (removed)="remove(servicio)">
+        {{ servicio }}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+      <input
+        placeholder="Servicios del Destino"
+        [matChipInputFor]="chipList"
+        (matChipInputTokenEnd)="add($event)"
+      />
+    </mat-chip-list>
     <label for="Actividades">Actividades del Destino</label>
     <input
       type="text"
@@ -255,24 +261,29 @@
     </select>
 
     <label for="Tipo">Tipo de destino</label>
-    <select
+    <mat-select
       formControlName="categorias"
       class="form-control mb-4"
       id="Categorias"
+      multiple
     >
-      <option>Elije el tipo de Destino</option>
-      <option *ngFor="let categoria of categorias" [value]="categoria.id">{{
+      <mat-option>Elije el tipo de Destino</mat-option>
+      <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">{{
         categoria.nombre
-      }}</option>
-    </select>
+      }}</mat-option>
+    </mat-select>
     <label for="Servicios">Servicios del Destino</label>
-    <input
-      type="text"
-      id="Servicios"
-      class="form-control mb-4"
-      formControlName="servicios"
-      [(ngModel)]="destinoServicio"
-    />
+    <mat-chip-list #chipList aria-label="Servicios">
+      <mat-chip *ngFor="let servicio of servicios" (removed)="remove(servicio)">
+        {{ servicio }}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+      <input
+        placeholder="Servicios del Destino"
+        [matChipInputFor]="chipList"
+        (matChipInputTokenEnd)="add($event)"
+      />
+    </mat-chip-list>
     <label for="Actividades">Actividades del Destino</label>
     <input
       type="text"

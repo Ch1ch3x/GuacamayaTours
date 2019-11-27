@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit } from "@angular/core";
-import { MatTable } from "@angular/material";
+import { MatTable, MatChipInputEvent } from "@angular/material";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { DestinosService } from "../../../../services/firebase/destinos.service";
 import { CiudadesService } from "src/app/services/firebase/ciudades.service.js";
@@ -32,6 +32,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
   public destinoImagen: any;
 
   public ciudades = [];
+  public servicios = [];
   public estados = [];
   public filteredCiudades = [];
   public categorias = [];
@@ -161,11 +162,12 @@ export class ListarDestinosTuristicosComponent implements OnInit {
 
   public newDestino(form, documentId = this.documentId) {
     if (this.currentStatus == 1) {
+      debugger;
       let data = {
         nombre: form.nombre,
         descripcion: form.descripcion,
-        categorias: [form.categorias],
-        servicios: [form.servicios],
+        categorias: form.categorias,
+        servicios: this.servicios,
         actividades: [{ nombre: form.actividades, imagen: "" }],
         latitud: form.latitud,
         longitud: form.longitud,
@@ -206,8 +208,8 @@ export class ListarDestinosTuristicosComponent implements OnInit {
       let data = {
         nombre: form.nombre,
         descripcion: form.descripcion,
-        categorias: [form.categorias],
-        servicios: [form.servicios],
+        categorias: form.categorias,
+        servicios: this.servicios,
         actividades: [{ nombre: form.actividades, imagen: "" }],
         latitud: form.latitud,
         longitud: form.longitud,
@@ -256,6 +258,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
     this.crearformVisibility = false;
   }
   openModificar() {
+    debugger;
     this.formVisibility = true;
     this.modificarformVisibility = true;
     this.currentStatus = 2;
@@ -273,6 +276,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
       imagen: this.destinoImagen,
       deshabilitar: true
     });
+    this.servicios = this.destinoServicio;
   }
   modificarDestino() {
     this.modificarformVisibility = false;
@@ -292,8 +296,8 @@ export class ListarDestinosTuristicosComponent implements OnInit {
     this.destinoLongitud = dato.longitud;
     this.destinoEstado = dato.idEstado;
     this.destinoCiudad = dato.idCiudad;
-    this.destinoCategorias = dato.categorias[0];
-    this.destinoServicio = dato.servicios[0];
+    this.destinoCategorias = dato.categorias;
+    this.destinoServicio = dato.servicios;
     this.destinoDescripcion = dato.descripcion;
     this.destinoActividad = dato.actividades[0];
     this.destinoDireccion = dato.direccion;
@@ -407,5 +411,28 @@ export class ListarDestinosTuristicosComponent implements OnInit {
         console.error(error);
       }
     );
+  }
+
+  add(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    // Add our fruit
+    if ((value || "").trim()) {
+      this.servicios.push(value);
+    }
+
+    // Reset the input value
+    if (input) {
+      input.value = "";
+    }
+  }
+
+  remove(servicio): void {
+    const index = this.servicios.indexOf(servicio);
+
+    if (index >= 0) {
+      this.servicios.splice(index, 1);
+    }
   }
 }
