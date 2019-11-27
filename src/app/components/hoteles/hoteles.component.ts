@@ -29,6 +29,11 @@ export class HotelesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.fireStoreService.getAll("reservas").subscribe(reservas => {
+      reservas.docs.map(reserva => {
+        this.reservas.push(reserva.data());
+      });
+    });
     this.fireStoreService.getAll("destinos").subscribe(destinos => {
       destinos.docs.map(destino => {
         this.destinos.push({ ...destino.data(), id: destino.id });

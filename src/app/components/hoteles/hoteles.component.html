@@ -7,6 +7,13 @@
 
 <div class="contenedor container-fluid">
   <div class="side">
+      <p>RESERVACIONES</p>
+      <div class="reservas">
+          <p *ngFor="let reserva of reservas" class="reservaciones">
+              {{ reserva.hotel }}
+          </p>
+          <button id="buscar" class="btn btn-outline-secondary pagar" routerLink="/ordenes" color="warm"><i class="fa fa-paypal" aria-hidden="true"></i>  Pagar</button>
+      </div>
     <p>FILTROS</p>
     <div class="filtros">
       <form>
