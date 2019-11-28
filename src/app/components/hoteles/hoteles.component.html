@@ -7,13 +7,6 @@
 
 <div class="contenedor container-fluid">
   <div class="side">
-      <p>RESERVACIONES</p>
-      <div class="reservas">
-          <p *ngFor="let reserva of reservas" class="reservaciones">
-              {{ reserva.hotel }}
-          </p>
-          <button id="buscar" class="btn btn-outline-secondary pagar" routerLink="/ordenes" color="warm"><i class="fa fa-paypal" aria-hidden="true"></i>  Pagar</button>
-      </div>
     <p>FILTROS</p>
     <div class="filtros">
       <form>
@@ -52,7 +45,7 @@
           >
             <span class="sr-only">Toggle Dropdown</span>
           </button>
-          
+
           <div class="dropdown-menu">
             <span class="dropdown-item" *ngFor="let destino of destinos">
               <span (click)="onChangeDestinos(destino.id)">{{
@@ -91,10 +84,9 @@
           </div>
         </div>
         <mat-form-field class="calendario">
-          <label class="labelBoton" >Llegada</label>
+          <label class="labelBoton">Llegada</label>
           <input
             matInput
-            
             [matDatepicker]="myDatepicker"
             [ngModel]="llegada"
             [ngModelOptions]="{ standalone: true }"
@@ -102,7 +94,6 @@
           />
           <mat-datepicker-toggle
             matSuffix
-            
             [for]="myDatepicker"
           ></mat-datepicker-toggle>
           <mat-datepicker #myDatepicker></mat-datepicker>
@@ -133,8 +124,10 @@
           <div id="informacion" class="informacion">
             <div class="info">
               <h3>{{ hotel.nombre }}</h3>
-              <h5 class="text-left">{{ hotel.direccion }}, {{ hotel.estado}} </h5>
-              
+              <h5 class="text-left">
+                {{ hotel.direccion }}, {{ hotel.estado }}
+              </h5>
+
               <br />
               <h6>Servicios: {{ hotel.servicios }}</h6>
             </div>
