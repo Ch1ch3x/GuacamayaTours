@@ -1,4 +1,4 @@
-import { BrowserModule } from "@angular/platform-browser";
+import { BrowserModule, Title } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
@@ -53,6 +53,11 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { FirestoreService } from "./services/firebase/firebase.service";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { HotelComponent } from './components/hoteles/hotel/hotel.component';
+import { DestinoComponent } from './components/destinos-turisticos/destino/destino.component';
+import { Observable } from 'rxjs';
+import { DialogComponent } from './components/planear-viaje/dialog/dialog.component';
+
+
 
 @NgModule({
   declarations: [
@@ -94,7 +99,9 @@ import { HotelComponent } from './components/hoteles/hotel/hotel.component';
     ItinerarioComponent,
     NosotrosComponent,
     ContactanosComponent,
-    HotelComponent
+    HotelComponent,
+    DestinoComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -113,7 +120,8 @@ import { HotelComponent } from './components/hoteles/hotel/hotel.component';
     AngularFireModule.initializeApp(environment.firebase),
     NgbModule
   ],
-  providers: [FirestoreService, AngularFirestore],
+  providers: [FirestoreService, AngularFirestore, Title],
+  entryComponents: [DialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

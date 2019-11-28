@@ -1,7 +1,7 @@
 import { fullday } from './fullday';
 
 export interface hotel{
-    hotelId: number;
+    id: string;
     nombre: string;
     estrellas: number;
     latitud:string;

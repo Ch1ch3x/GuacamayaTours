@@ -1,24 +1,24 @@
-<nav class="navbar navbar-default">  
+<nav class="navbar navbar-default">
     <div class="navbar-header row container-fluid">
-      <a class="home" href="#">
+      <a class="home" href="#" (click)= 'setTitle("Guacamaya Tours")'>
           <img
           class="sizeHome"
           src="assets/icon/png/guacamaya.svg"
           />
           </a>
-      <a class="active col-2 bord" routerLink="/destinos">
+      <a class="active col-2 bord" routerLink="/destinos" (click)= 'setTitle("Destinos Turisticos")'>
         <img
         class="size"
         src="assets/icon/png/destinos.png"
         />
         DESTINOS</a>
-      <a class="active col-2" routerLink="/hoteles">
+      <a class="active col-2" routerLink="/hoteles" (click)= 'setTitle("Hoteles")'>
           <img
           class="size"
           src="assets/icon/png/hotel.png"
           />
           HOTELES</a>
-      <a class="active col-2" routerLink="/planea">
+      <a class="active col-2" routerLink="/planea" (click)= 'setTitle("Planea Tu Viaje")'>
           <img
           class="size"
           src="assets/icon/png/planea.png"
@@ -33,9 +33,9 @@
       <a class="active col-2" href="#">
           <img
           class="size"
-          src="assets/icon/png/destinos.png"
+          src="assets/icon/png/008-mundial.png"
           />
           CONTÁCTANOS</a>
     </div>
-  
+
 </nav>

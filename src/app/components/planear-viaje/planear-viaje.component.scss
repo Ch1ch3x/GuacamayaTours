@@ -13,8 +13,9 @@
 }
 
 .containe {
-    background-color: #fbeace;
+  background-color: white;
     padding: 0px;
+    width: 100%;
   }
 
   
@@ -40,7 +41,7 @@
  }
 
  .container-fluid{
-   margin-bottom: 10%;
+   margin-bottom: 25%;
  }
 
  h1{
@@ -48,8 +49,8 @@
     left: 50%;
     padding-top:40%;
     transform: translate(-50%, -50%);
-    font-family: 'Sedgwick Ave Display', cursive;
-    letter-spacing: 1pt;
+    font-family: Oswald;
+    letter-spacing: 4pt;
     text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
     font-style: normal;
     font-weight: normal;
@@ -83,15 +84,24 @@
     justify-content: space-between;
 }
 
+.pagar{
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5%;
+}
+
 .side{
   width: 30%;
   height: auto;
   background: #FBEACE;
-  border-radius: 20px;
+  margin-bottom: 8%;
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
   padding-bottom: 3%;
+  max-height: 1000px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 
 .reservas{
@@ -101,6 +111,7 @@
   border-radius: 20px;
   margin-right: auto;
   margin-left: auto;
+  text-align: center;
 }
 
 .filtros{
@@ -121,30 +132,6 @@
   padding-top:1% ;
 }
 
-
-.ec-stars-wrapper {
-	font-size: 0;
-    display: inline-block;
-    margin-right: auto;
-    margin-left: auto;
-    
-}
-.ec-stars-wrapper a {
-	text-decoration: none;
-	display: inline-block;
-	font-size: 32px;
-	font-size: 1.5rem;
-	color: #888;
-}
-
-.ec-stars-wrapper:hover a {
-	color: #002D51;
-}
-
-.ec-stars-wrapper > a:hover ~ a {
-	color: #888;
-}
-
 .custom-select{
   font-family: Oswald;
   margin-bottom: 2%;
@@ -155,6 +142,8 @@
 
 button{
   margin-top: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 
 #buscar{
@@ -205,6 +194,7 @@ label{
   flex-flow: row wrap;
   margin-top: 3%;
   margin-bottom: 3%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
 
@@ -236,8 +226,12 @@ label{
 }
 
 .precio{
-  width: 24%;
+  width: 20%;
+  margin-top: 2%;
   text-align: left;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
 }
 
 .info{
@@ -290,12 +284,31 @@ mat-form-field{
   padding-left:3%;
 }
 
-.pina{
-  padding-top: 90%;
-  padding-left: 5%;
+
+#mas{
+  margin-right:17%;
+  margin-bottom:15%;
+  font-size:10px;
+  text-align: center;
+  margin-top: 0%;
+  padding:3px;
 }
 
-@media screen and (max-width: 760px){
+
+@media screen and (max-width: 1240px){
+  h6{
+      display:none;
+  }
+  h5{
+      font-size: 150%;
+  }
+  
+  .container-fluid {
+    margin-bottom: 20%;
+  }
+}
+
+@media screen and (max-width: 800px){
   .contenedorBotones{
       display:flex;
       flex-flow: column wrap;
@@ -305,10 +318,20 @@ mat-form-field{
       width: 100%;
   
   }
+  h3{
+    font-size:190%;
+  }
+  h5{
+      font-size: 140%;
+  }
+  .mountains{
+    margin-top:4%;
+  }
+
 }
 
 
-@media screen and (max-width: 550px){
+@media screen and (max-width: 700px){
   .contenedor{
       display:flex;
       flex-flow: column;
@@ -327,6 +350,31 @@ mat-form-field{
   .right{
       padding-top:10px;
       width: 100%;
+  }
+
+  .mountains{
+    margin-top: 4% ;
+  }
+
+  mat-form-field{
+    width: 1%;
+  
+  }
+ 
+
+  h3{
+    font-size:200%;
+  }
+  h5{
+      font-size: 150%;
+  }
+
+  .container-fluid {
+    margin-bottom: 18%;
+  }
+
+  .calendario{
+    width: 100%;
   }
 
 

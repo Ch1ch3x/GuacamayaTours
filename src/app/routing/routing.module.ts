@@ -18,6 +18,8 @@ import { ListarEstadoComponent } from "../components/estados/CRUD/listar/listar-
 import { ListaCiudadComponent } from "../components/ciudades/CRUD/listar/lista-ciudad.component";
 import { ListaCategoriaDestinoComponent } from "../components/categoria-destino/CRUD/listar/lista-categoria-destino.component";
 import { HotelComponent } from '../components/hoteles/hotel/hotel.component';
+import { ListarHabitacionesComponent } from '../components/habitaciones/CRUD/listar/listar-habitaciones.component';
+import { DestinoComponent } from '../components/destinos-turisticos/destino/destino.component';
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
@@ -25,14 +27,15 @@ const routes: Routes = [
   { path: "hoteles", component: HotelesComponent},
   { path: "planea", component: PlanearViajeComponent},
   { path: "hoteles/:id", component: HotelComponent},
+  { path: "destinos/:id", component: DestinoComponent},
   { path: "admin/hoteles", component: ListarHotelesComponent },
   { path: "admin/destinos", component: ListarDestinosTuristicosComponent },
   { path: "admin/categorias", component: ListaCategoriaDestinoComponent },
-  { path: "habitaciones", component: HabitacionesComponent },
   { path: "ordenes", component: OrdenesComponent },
   { path: "admin/ciudades", component: ListaCiudadComponent },
   { path: "admin/estados", component: ListarEstadoComponent },
   { path: "admin/dashboard", component: DashboardComponent },
+  { path: "admin/habitaciones", component: ListarHabitacionesComponent},
   { path: "itinerario", component: ItinerarioComponent },
   { path: "nosotros", component: NosotrosComponent },
   { path: "contactanos", component: ContactanosComponent },

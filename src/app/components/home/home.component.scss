@@ -1,21 +1,122 @@
-.flores{
-  position: relative;
-  top:50%;
+
+.body{
+  overflow: hidden;
+  padding:0;
+  margin: 0;
+  background-color: #FFF;
 }
+
+img{
+  width: 100%;
+}
+
+.imitacion{
+  position: relative;
+  text-align: center;
+ 
+}
+
+.sobreImitacion{
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
+
+.nueva{
+  font-family: 'Fredericka the Great', cursive;
+  font-size: 430%;
+  margin-top:2%;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  color: #002d51;
+}
+
+.introduccion{
+  margin-bottom: 0;
+  margin-left: 19%;
+  margin-right: 19%;
+  font-size: 85%;
+  margin-top:0;
+  padding-top:0;
+  font-family: 'Open Sans', sans-serif;
+  color: #002d51;
+}
+
+.mat_card{
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 3%;
+  padding-right: 3%;
+  margin-bottom: 7%;
+  background-color: rgb(236, 234, 234);
+}
+
+.sliderNombre{
+  color: #FFF;
+}
+
+mat-card-actions{
+  padding-top:15;
+
+}
+
+mat-card{
+  padding:0;
+  padding-bottom: 5%;
+  padding-top: 7%;
+  height: auto;
+  text-align-last: center;
+  align-content: center;
+  border-radius: 5px;
+  box-shadow: 0 16px 48px rgba(0,0,0,.6);
+}
+
+.mat-button{
+  font-family: 'Open Sans', sans-serif;
+  color: #002d51;
+  text-align-last: left;
+  background-color: #FFF;
+  height: auto;
+}
+
+.margin{
+  padding:5px;
+}
+
+.mat-card-image{
+  width: 100%;
+  margin-bottom: 0;
+  min-height: 189px;
+  max-height: 189px;
+}
+
 .actividades{
   margin: 0;
   padding: 0;
   width: 100%;
-  background-color: #FEFCED;
 }
 
-.abajo{
-  margin: 0;
-  padding: 0;
-  width: 100%;
+.vacaciones{
+  margin-top: 7%;
+  font-family: 'Fredericka the Great', cursive;
+  margin-left:4%;
+  margin-bottom: 1%;
+  color: #002d51;
+  background-color: rgb(236, 234, 234);
+}
+
+.conoce{
+  margin-bottom: 7%;
+}
+
+.mat-card-title{
+  text-align-last: left;
+  font-family: 'Open Sans', sans-serif;
+  color: #002d51;
 }
 
 .actividades1{
+  width: 90%;
   display:flex;
   justify-content: center;
   text-align: center;
@@ -25,6 +126,7 @@
 }
 
 .elemento{
+  width:60%;
   position:relative;
   margin: 10px;  
   margin-right: 7px;
@@ -36,7 +138,7 @@
   margin: 10px;
   margin-right: 0;
   padding-right: 0;
-  width: 300px;  
+  width: 30%;  
   justify-content: center;
 }
 
@@ -54,22 +156,19 @@
   width: 100%;
   display:flex;
   justify-content: center;
-
+  margin-right: auto;
+  margin-left:auto;
+  max-height: 600px;
+  background-color: #FEFCED important; 
+  margin-bottom: 3%;
 }
 
-a,h3{
-  color: #FFFFFF;
-  font-family: Oswald;
-  font-style: normal;
-  font-weight: normal;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  stroke: #002D51;
-  stroke-width: 1px;
-}
+
 
 .act{
   border-radius: 12px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  max-height: 150px;
 }
 
 .centered3 {
@@ -80,7 +179,7 @@ a,h3{
   font-family: Oswald;
   font-style: normal;
   font-weight: normal;
-  font-size: 15px;
+  font-size: 30%;;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   display: flex;
   color: #FFFFFF;
@@ -102,7 +201,9 @@ a,h3{
 }
 
 .slider {
-  margin-top: 2.5%;  
+  margin-top: 4%;  
+ 
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 h1{
@@ -149,8 +250,7 @@ h1{
     font-family: Oswald;
     font-style: normal;
     font-weight: normal;
-    font-size: 25px;
-    line-height: 37px;
+
     display: flex;
     align-items: center;
     text-align: center;  
@@ -165,13 +265,13 @@ h1{
     top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-family: 'Sedgwick Ave Display', cursive;
-    letter-spacing: 1pt;
+    font-family:  Oswald;
+    letter-spacing: 4pt;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     font-style: normal;
     font-weight: normal;
-    font-size: 319%;
-    line-height: 60px;
+    font-size: 200%;
+    
     display: flex;
     align-items: center;
     text-align: center;
@@ -184,13 +284,13 @@ h1{
     top: 42%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-family: Rock Salt;
-    letter-spacing: 1pt;
+    font-family: Oswald;
+    letter-spacing: 4pt;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     font-style: normal;
     font-weight: normal;
-    font-size: 150%;
-    line-height: 70px;
+    font-size: 120%;
+    
     display: flex;
     align-items: center;
     text-align: center;
@@ -207,21 +307,22 @@ h1{
     color: #002D51;;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     text-align: center;
+    background-color: #FEFCED;
   }
 
   .title1{
+    width: 97%;
     position: absolute;
-    left: 41%;
+    padding-left: 0;
     font-family: Oswald;
-    letter-spacing: 1pt;
+    letter-spacing: 4pt;
     font-style: normal;
     font-weight: normal;
-    font-size: 299%;
-    line-height: 50px;
+    padding-right: 0;
     color: #002D51;;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     text-align: center;
-    padding-top:25px;
+
   }
 
   .size{
@@ -256,628 +357,298 @@ h1{
 
 }
 
-@media screen and (max-width: 1200px){
-  body{
-    background-color: #FBEACE;  
-    overflow-x: hidden;
-    overflow-y: hidden;
+
+.maximo{
+  width: 100%;
+  max-height: 300px;
+ 
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.actividades{
+  margin: 0;
+  margin-bottom: 3%;
+  padding: 0;
+  width: 98%;
+  background-color: #FEFCED;
+  margin-left:auto;
+  margin-right:auto;
+  border-radius: 7%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+
+.actividades1{
+  width: 100%;
+  display:flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  text-align: center;
+  margin-top: 25px;
+  padding-bottom: 2%;
+  margin-left:auto;
+  margin-right:auto;
+  align-content: center;
+  
+}
+
+.elemento{
+  width:47%;
+  position:relative;
+    
+  margin-right: 7px;
+  
+}
+
+.elemento1{
+  width: 29%;
+  position: relative;
+  margin-right: 0;
+  padding-right: 0;  
+  justify-content: center;
+}
+
+.contenedor{
+  width: 50%;
+  height: 50%;
+  display:flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.act{
+  width: 100%;
+}
+
+.hover{
+  -webkit-text-stroke: 0.7px black;
+  font-size: 170%;
+  max-height: 363;
+}
+
+h2{
+  padding-top: 2%;
+  font-family: Oswald;
+  letter-spacing: 4pt;
+  font-style: normal;
+  font-weight: normal;
+  color: #002D51;;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  overflow: hidden;
+}
+
+h5{
+  padding-top: 2%;
+  font-family: Oswald;
+  letter-spacing: 1pt;
+  font-style: normal;
+  font-weight: normal;
+  color: #FEFCED;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+.title1{
+  position: absolute;
+
+  font-family: Oswald;
+  letter-spacing: 4pt;
+  padding-right: 0;
+  padding-left: 0;
+  font-style: normal;
+  font-weight: normal;
+  color: #002D51;;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  padding-top:8%;
+}
+
+@media screen and (max-width: 1180px){
+  .act{
+    max-height: 120px;
   }
+}
 
-
+@media screen and (max-width: 1000px){
+  .act{
+    max-height: 100px;
+  }
   .actividades1{
-    margin-top: 5px;
-  }
-
-
-  /* Container needed to position the button. Adjust the width as needed */
-  .containe {
-    margin:0;
-    padding: 0;
-    position: relative;
-    width: 100%;
-    text-align: center; 
-  }
-
-  /* Make the image responsive */
-  .containe img {
-    width: 100%;
-    height: auto;
-  }
-
-  /* Style the button and place it in the middle of the container/image */
-  .containe .btn {
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    background-color: #DA1A29;
-    border-radius: 10px;
-    color: white;
-
-    padding: 5px 15px;
-    border: none;
-    cursor: pointer;
-    font-family: Oswald;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 37px;
-    display: flex;
-    align-items: center;
-    text-align: center;  
-  }
-
-  .containe .btn:hover {
-    background-color: #002D51;
-  }
-
-  .centered1 {
-    position: absolute;
-    top: 37%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: 'Sedgwick Ave Display', cursive;
-    letter-spacing: 1pt;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-style: normal;
-    font-weight: normal;
-    font-size: 290%;
-    line-height: 51px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #FFFFFF;
-
-  }
-
-  .centered2 {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: Rock Salt;
-    letter-spacing: 1pt;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-style: normal;
-    font-weight: normal;
-    font-size: 120%;
-    line-height: 70px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #FFFFFF;
-  }
-
-  .title{
-    font-family: Oswald;
-    letter-spacing: 1pt;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 245%;
-    line-height: 45px;
-    color: #002D51;;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display:flex;
+    flex-flow: column wrap;
+    justify-content: center;
     text-align: center;
   }
 
-  .title1{
-    position: absolute;
-    left: 41.5%;
-    font-family: Oswald;
-    letter-spacing: 1pt;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 255%;
-    line-height: 50px;
-    color: #002D51;;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    text-align: center;
-    padding-top:25px;
+  .act{
+    max-height: 150px;
   }
 
-  .size{
-    width: 22%;
-    position: absolute;
-    left:39.5%;
-
-
+  .contenedor{
+    width: 70%;
   }
 
-  .size2{
-    width: 16.5%;
-    position: absolute;
-    left:42%;
-    padding-top: 2%;
-
+  .nueva{
+    font-size: 300%;
   }
-
-  p{
-    padding: 2%;
-    margin-bottom: 5%;
-  }
-
-  .full{
-    width: 100%;
-    position: relative;
-    
-  }
-
-  .actividades{
-    padding-top: 2%;
+  
+  .introduccion{
+    font-size: 70%;
   }
 
 }
 
-@media screen and (max-width: 1043px){
-  body{
-    background-color: #FBEACE;  
-    overflow-x: hidden;
-    overflow-y: hidden;
+@media screen and(max-width:892px){
+  .centered1{
+    font-size:170%;
+  }
+  .centered2{
+    font-size:80%;
   }
 
-
-  /* Container needed to position the button. Adjust the width as needed */
-  .containe {
-    margin:0;
-    padding: 0;
-    position: relative;
-    width: 100%;
-    text-align: center; 
+  
+}
+@media screen and(max-width:820px){
+  .hover{
+    font-size: 110%;
   }
-
-  /* Make the image responsive */
-  .containe img {
-    width: 100%;
-    height: auto;
-  }
-
-  /* Style the button and place it in the middle of the container/image */
   .containe .btn {
     position: absolute;
-    top: 70%;
+    top: 68%;
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     background-color: #DA1A29;
     border-radius: 10px;
     color: white;
-
-    padding: 5px 15px;
+    font-size: 12px;
+    padding: 7px 12px;
     border: none;
     cursor: pointer;
     font-family: Oswald;
     font-style: normal;
     font-weight: normal;
-    font-size: 20px;
-    line-height: 37px;
+
     display: flex;
     align-items: center;
     text-align: center;  
   }
 
-  .containe .btn:hover {
-    background-color: #002D51;
-  }
-
-  .centered1 {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: 'Sedgwick Ave Display', cursive;
-    letter-spacing: 1pt;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-style: normal;
-    font-weight: normal;
-    font-size: 290%;
-    line-height: 51px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #FFFFFF;
-
-  }
-
-  .centered2 {
-    position: absolute;
-    top: 48%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: Rock Salt;
-    letter-spacing: 1pt;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-style: normal;
-    font-weight: normal;
-    font-size: 120%;
-    line-height: 70px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #FFFFFF;
-  }
-
-  .title{
-    font-family: Oswald;
-    letter-spacing: 2pt;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 203%;
-    line-height: 40px;
-    color: #002D51;;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    text-align: center;
-  }
-
-  .size{
-    width: 22%;
-    position: absolute;
-    left:39.5%;
-
-  }
-
-  .size2{
-    width: 16.5%;
-    position: absolute;
-    left:42%;
-    padding-top: 1.75%;
-
-  }
-
-  .act{
-    width: 92%;
-  }
-
-  .elemento{
-    width: 225px;
-  }
-
-  .elemento1{
-    width: 225px;
-  }
-
-  .contenedor{
-    width: 60%;
-  }
-
-  p{
-    padding: 2%;
-    margin-bottom: 5%;
-  }
-
-  .full{
-    width: 100%;
-    position: relative;
-    
-  }
-
-  .actividades{
-    padding-top: 2%;
-  }
-
+  
 }
 
-@media screen and (max-width: 790px){
-  body{
-    background-color: #FBEACE;  
-    overflow-x: hidden;
-    overflow-y: hidden;
+@media screen and(max-width:770px){
+
+
+  .hover{
+    font-size:130%;
   }
-
-
-  /* Container needed to position the button. Adjust the width as needed */
-  .containe {
-    margin:0;
-    padding: 0;
-    position: relative;
-    width: 100%;
-    text-align: center; 
+  .centered1{
+    font-size:150%;
   }
-
-  /* Make the image responsive */
-  .containe img {
-    width: 100%;
-    height: auto;
+  .centered2{
+    font-size:70%;
   }
-
-  /* Style the button and place it in the middle of the container/image */
   .containe .btn {
     position: absolute;
-    top: 70%;
+    top: 68%;
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     background-color: #DA1A29;
     border-radius: 10px;
     color: white;
-
-    padding: 3px 10px;
+    font-size: 9px;
+    padding: 5px 10px;
     border: none;
     cursor: pointer;
     font-family: Oswald;
     font-style: normal;
     font-weight: normal;
-    font-size: 13px;
-    line-height: 30px;
+
     display: flex;
     align-items: center;
     text-align: center;  
   }
 
-  .containe .btn:hover {
-    background-color: #002D51;
-  }
-
-  .centered1 {
-    position: absolute;
-    top: 39%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: 'Sedgwick Ave Display', cursive;
-    letter-spacing: 1pt;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-style: normal;
-    font-weight: normal;
-    font-size: 200%;
-    line-height: 40px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #FFFFFF;
-
-  }
-
-  .centered2 {
-    position: absolute;
-    top: 49%;
-    left: 51%;
-    transform: translate(-50%, -50%);
-    font-family: Rock Salt;
-    letter-spacing: 1pt;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-style: normal;
-    font-weight: normal;
-    font-size: 94%;
-    line-height: 55px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #FFFFFF;
-  }
-
-  .title{
-    font-family: Oswald;
-    letter-spacing: 1pt;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 190%;
-    line-height: 35px;
-    color: #002D51;;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    text-align: center;
-    
-  }
-
-  .title1{
-    position: absolute;
-    left: 41%;
-    font-family: Oswald;
-    letter-spacing: 1pt;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 199%;
-    line-height: 35px;
-    color: #002D51;;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    text-align: center;
-    padding-top:25px;
-  }
-
-  .size{
-    width: 24%;
-    position: absolute;
-    left:38%;
-
-  }
-
-  .size2{
-    width: 16.5%;
-    position: absolute;
-    left:42%;
-    padding-top: 2.25%;
-
-  }
-
   .act{
-    width: 90%;
+    max-height: 121px;
+  }
+
+  
+  .elemento1{
+    display:none;
+
+  }
+
+  .nueva{
+    font-size: 260%;
+  }
+  
+  .introduccion{
+    font-size: 60%;
+  }
+}
+
+@media screen and(max-width: 650px){
+  .contenedor{
+    display:flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    align-content: center;
+  }
+  .elemento{
+    width: 69%;
+  }
+
+  .nueva{
+    font-size: 220%;
+  }
+  
+  .introduccion{
+    font-size: 49%;
+  }
+}
+
+@media screen and(max-width:460px){
+  .contenedor{
+    display:flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    align-content: center;
+  }
+
+  .hover{
+    font-size:100%;
+  }
+  .centered1{
+    font-size:120%;
+  }
+  .centered2{
+    font-size:50%;
   }
 
   .elemento{
-    width: 190px;
-  }
-
-  .elemento1{
-    width: 190px;
-  }
-
-  .contenedor{
     width: 65%;
   }
+  .elemento1{
+    display:none;
 
-  p{
-    padding: 2%;
-    margin-bottom: 5%;
   }
 
-  .full{
-    width: 100%;
-    position: relative;
-    
+  .nueva{
+    font-size: 180%;
   }
-
-  .actividades{
-    padding-top: 2%;
+  
+  .introduccion{
+    font-size: 45%;
   }
-
 }
 
-@media screen and (max-width: 551px){
-  body{
-    background-color: #FBEACE;  
-    overflow-x: hidden;
-    overflow-y: hidden;
-  }
 
 
-  /* Container needed to position the button. Adjust the width as needed */
-  .containe {
-    margin:0;
-    padding: 0;
-    position: relative;
-    width: 100%;
-    text-align: center; 
-  }
 
-  /* Make the image responsive */
-  .containe img {
-    width: 100%;
-    height: auto;
-  }
 
-  /* Style the button and place it in the middle of the container/image */
-  .containe .btn {
-    position: absolute;
-    top: 70%;
-    left: 50.5%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    background-color: #DA1A29;
-    border-radius: 10px;
-    color: white;
-
-    padding: 0px 5px;
-    border: none;
-    cursor: pointer;
-    font-family: Oswald;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 9px;
-    line-height: 25px;
-    display: flex;
-    align-items: center;
-    text-align: center;  
-  }
-
-  .containe .btn:hover {
-    background-color: #002D51;
-  }
-
-  .centered1 {
-    position: absolute;
-    top: 39%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: 'Sedgwick Ave Display', cursive;
-    letter-spacing: 1pt;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-style: normal;
-    font-weight: normal;
-    font-size: 140%;
-    line-height: 30px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #FFFFFF;
-
-  }
-
-  .centered2 {
-    position: absolute;
-    top: 49%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: Rock Salt;
-    letter-spacing: 1pt;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-style: normal;
-    font-weight: normal;
-    font-size: 70%;
-    line-height: 50px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #FFFFFF;
-  }
-
-  .title{
-    font-family: Oswald;
-    letter-spacing: 1pt;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 150%;
-    line-height: 30px;
-    color: #002D51;;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    text-align: center;
-  }
-
-  h3{
-    font-family: Oswald;
-    letter-spacing: 1pt;
-    font-style: normal;
-    font-weight: normal;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-size: 50%;
-    margin-top:3%;
-  }
-
-  .title1{
-    position: absolute;
-    left: 40%;
-    font-family: Oswald;
-    letter-spacing: 1pt;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 163%;
-    line-height: 32px;
-    color: #002D51;;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    text-align: center;
-    padding-top:25px;
-  }
-
-  .size{
-    width: 30.5%;
-    position: absolute;
-    left:36%;
-
-  }
-
-  .size2{
-    width: 25%;
-    position: absolute;
-    left:38%;
-    padding-top: 2%;
-
-  }
-
-  .elemento{
-    margin-right: 0;
-  }
-
-  p{
-    padding: 2%;
-    margin-bottom: 5%;
-  }
-
-  .full{
-    width: 100%;
-    position: relative;
-    
-  }
-
-  .actividades{
-    padding-top: 2%;
-  }
-
-}

@@ -1,40 +1,69 @@
-#infonombre {
-  text-align: center;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-#headnombre {
-  text-align: center;
-}
-#headselect {
-  text-align: left;
-}
-#headdescription {
-  text-align: center;
-}
-.container {
-  width: 70%;
-  margin-left: 18%;
-  margin-right: 0%;
-  margin-top: 0%;
-  margin-bottom: 1%;
-}
-.boton {
-  margin: 2% 0.5% 1% 35%;
-}
-.boton2 {
-  margin: 2% 0.5% 1% 0.5%;
-}
-#form {
-  margin-left: 30%;
-  margin-right: 25%;
-}
-.highlight{
-  background: lightblue;
-}
-.highlight2{
-  background: lightgray;
-}
-.highlight3{
-  background: lightblue;
-}
+  #infonombre{
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  #headnombre{
+    text-align: center;
+  }
+
+  #headdescription{
+    text-align: center;
+  }
+
+  td {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  table {
+    font-size: x-small;
+    padding-top: 10%;
+  }
+
+  .btn-group{
+    margin-bottom: 2%;
+    padding-left: 50%;
+  }
+
+  .container-fluid{
+    width: 80%;
+    padding-top: 10%;
+    padding-left: 30%;
+    padding-right: 5%;
+    margin:0;
+    margin-right: 10%;
+    text-align: center;
+  }
+
+  .agregar{
+    margin: 5%;
+    padding-right: 20px;
+    background-color: #43425D;
+    color: #fff;
+  }
+
+  #form{
+    margin-left: 30%;
+    margin-right: 25%;
+    padding-top: 10%;
+  }
+
+  .highlight{
+    background: lightblue;
+  }
+
+  .highlight2{
+    background: lightgray;
+  }
+
+  .highlight3{
+    background: lightblue;
+  }
+
+  .highlight4{
+    background: white;
+  }

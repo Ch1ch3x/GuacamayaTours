@@ -1,99 +1,66 @@
 <app-navbar></app-navbar>
-<div class="container-fluid">
-  <div class="row fila">
-    <div class="col-12">
-      <img
-        class="back"
-        src="https://upload.wikimedia.org/wikipedia/commons/3/3b/LA_LAGUNA_VICTORIA.JPG"
-      />
-      <img class="mountains" src="./assets/mountains.svg" />
-      <div class="select">
-        <mat-form-field class="separador">
-          <mat-label>Estado</mat-label>
-          <mat-select [ngModel]="estado" (ngModelChange)="onChange($event)">
-            <mat-option *ngFor="let estado of estados" [value]="estado.id">
-              {{ estado.nombre }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+<div class="body">
+<div class="container-fluid containe">
+   
+  <div class="">
+    <img
+      class="back"
+      src="https://upload.wikimedia.org/wikipedia/commons/3/3b/LA_LAGUNA_VICTORIA.JPG"
+    />
+    <img class="mountains" src="./assets/img/mountains-svg.svg" />
+    <h1 class="centered">DESTINOS</h1>
+    <div class="select row">
+      <mat-form-field class="col">
+        <mat-label>Estado</mat-label>
+        <mat-select [ngModel]="estado" (ngModelChange)="onChangeEstado($event)">
+          <mat-option *ngFor="let estado of estados" [value]="estado.id">
+            {{ estado.nombre }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
-        <mat-form-field class="separador">
-          <mat-label>Ciudad</mat-label>
-          <mat-select>
-            <mat-option
-              *ngFor="let ciudad of filteredCiudades"
-              [value]="ciudad.id"
-            >
-              {{ ciudad.nombre }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+      <mat-form-field class="col">
+        <mat-label>Ciudad</mat-label>
+        <mat-select [ngModel]="ciudad" (ngModelChange)="onChangeCiudad($event)">
+          <mat-option
+            *ngFor="let ciudad of filteredCiudades"
+            [value]="ciudad.id"
+          >
+            {{ ciudad.nombre }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
-        <mat-form-field class="separador">
-          <mat-label>Categoría</mat-label>
-          <mat-select>
-            <mat-option
-              *ngFor="let categoria of categorias"
-              [value]="categoria.nombre"
-            >
-              {{ categoria.nombre }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
+      <mat-form-field class="col">
+        <mat-label>Categoría</mat-label>
+        <mat-select
+          [ngModel]="categoria"
+          (ngModelChange)="onChangeCategoria($event)"
+        >
+          <mat-option
+            *ngFor="let categoria of filteredCategorias"
+            [value]="categoria.id"
+          >
+            {{ categoria.nombre }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-flat-button color="warn" (click)="filtrar()">FILTRAR</button>
     </div>
-  </div>
-  <div class="row fila busqueda">
-    <div class="col-3"></div>
-    <div class="col-2 result">
-      <img src="./assets/flores.gif" />
-    </div>
-    <div class="col-2 result">
-      <h1>RESULTADOS</h1>
-    </div>
-    <div class="col-2 result">
-      <button mat-flat-button color="warn">FILTRAR</button>
-    </div>
-    <div class="col-3"></div>
-  </div>
-
-  <div class="row fila">
-    <div class="col-3">
-      <img
-        class="search-img"
-        src="https://www.dzoom.org.es/wp-content/uploads/2017/07/seebensee-2384369-810x540.jpg"
-      />
-      <h6 class="title-result">LA GRAN SABANA</h6>
-    </div>
-
-    <div class="col-1"></div>
-
-    <div class="col-3">
-      <img
-        class="search-img"
-        src="https://www.dzoom.org.es/wp-content/uploads/2017/07/seebensee-2384369-810x540.jpg"
-      />
-      <h6 class="title-result">LA GRAN SABANA</h6>
-    </div>
-    <div class="col-1"></div>
-
-    <div class="col-3">
-      <img
-        class="search-img"
-        src="https://www.dzoom.org.es/wp-content/uploads/2017/07/seebensee-2384369-810x540.jpg"
-      />
-      <h6 class="title-result">LA GRAN SABANA</h6>
-    </div>
-    <div class="col-1"></div>
-
-    <div class="col-3">
-      <img
-        class="search-img"
-        src="https://www.dzoom.org.es/wp-content/uploads/2017/07/seebensee-2384369-810x540.jpg"
-      />
-      <h6 class="title-result">LA GRAN SABANA</h6>
-    </div>
-
-    <div class="col-1"></div>
   </div>
 </div>
+
+<div class="fila container-fluid" *ngIf="filteredDestinos.length > 0">
+  <h2>RESULTADOS</h2>
+
+  <div class="row">
+    <div class="col-6" *ngFor="let destino of filteredDestinos">
+      <a routerLink="/destinos/{{destino.id}}"><img class="search-img" [src]="destino.imagen" /></a>
+      <h6 class="title-result">{{ destino.nombre }}</h6>
+    </div>
+  </div>
+</div>
+
+</div>
+<app-footer></app-footer>
+

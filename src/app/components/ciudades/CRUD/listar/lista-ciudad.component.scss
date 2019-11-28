@@ -9,13 +9,27 @@
 #headdescription{
   text-align: center;
 }
-.container-fluid{
-  width: 80%;
-  padding-left: 35%;
-  padding-right: 0px;
-  margin:0;
-
-}
+td {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  table {
+    font-size: x-small;
+    padding-top: 10%;
+  }
+  .btn-group{
+    margin-bottom: 2%;
+  }
+  .container-fluid{
+    width: 100%;
+    padding-top: 10%;
+    padding-left: 40%;
+    padding-right: 15%;
+    margin:0;
+    margin-right: 10%;
+  }
 .agregar{
   margin: 5%;
   padding-right: 20px;
@@ -25,5 +39,19 @@
 #form{
   margin-left: 30%;
   margin-right: 25%;
+  padding-top: 10%;
 }
+.highlight{
+    background: lightblue;
+  }
+  .highlight2{
+    background: lightgray;
+  }
+  .highlight3{
+    background: lightblue;
+  }
+  .highlight4{
+    background: white;
+  }
+
 

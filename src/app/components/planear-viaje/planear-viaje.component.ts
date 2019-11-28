@@ -1,7 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Router } from "@angular/router";
+import { MatDialog } from '@angular/material';
 import { FirestoreService } from "src/app/services/firebase/firebase.service";
+import { DialogComponent } from './dialog/dialog.component';
 
 @Component({
   selector: 'app-planear-viaje',
@@ -17,8 +19,10 @@ export class PlanearViajeComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private fireStoreService: FirestoreService
+    private fireStoreService: FirestoreService,
+    private dialog: MatDialog
   ) { }
+
 
   ngOnInit() {
     this.fireStoreService.getAll("reservas").subscribe(reservas => {
@@ -36,6 +40,13 @@ export class PlanearViajeComponent implements OnInit {
         this.hoteles.push(hotel.data());
       });
     });
+
+
+  }
+
+  openDialog(){
+    this.dialog.open(DialogComponent)
   }
 
 }
+

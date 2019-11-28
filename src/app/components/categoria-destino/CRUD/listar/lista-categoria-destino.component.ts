@@ -1,104 +1,201 @@
-import { tipoDeDestino } from './../../../../interfaces/tipo-de-destinos';
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { MatTable } from '@angular/material';
-import tipos from '../../../../data/tipos.json';
-
-const ELEMENT_DATA: tipoDeDestino[] = tipos;
+import { Component, ViewChild, OnInit } from "@angular/core";
+import { MatTable } from "@angular/material";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { CategoriasService } from "src/app/services/firebase/categorias.service";
+import { Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-lista-categoria-destino',
-  templateUrl: './lista-categoria-destino.component.html',
-  styleUrls: ['./lista-categoria-destino.component.scss']
+  selector: "app-lista-categoria-destino",
+  templateUrl: "./lista-categoria-destino.component.html",
+  styleUrls: ["./lista-categoria-destino.component.scss"]
 })
 export class ListaCategoriaDestinoComponent implements OnInit {
-  displayedColumns: string[] = ['nombre', 'id'];
-  dataSource = ELEMENT_DATA;
-
-  @ViewChild(MatTable,  { static: true}) table: MatTable<any>;
+  @ViewChild(MatTable, { static: true }) table: MatTable<any>;
 
   formVisibility = false;
   modificarformVisibility = false;
   crearformVisibility = false;
-  selectedRowIndex: number = -1;
+  selectedRowIndex: any;
 
+  public categorias = [];
+  public nombreCategoria: any;
+  public documentId = null;
+  public currentStatus = 1;
+  public newCategoriaForm = new FormGroup({
+    nombre: new FormControl("", Validators.required),
+    deshabilitar: new FormControl(true)
+  });
 
-  constructor() { }
-  public tipo = tipos;
-  public tipos: tipoDeDestino[] = [];
-  public Tipo: tipoDeDestino = {
-    id: this.tipo.length,
-    nombre: "",
-    foto: "",
-    deshabilitar: false
+  constructor(private CategoriaSV: CategoriasService, private titleService: Title) {
+    this.newCategoriaForm.setValue({
+      nombre: "",
+      deshabilitar: true
+    });
   }
 
   ngOnInit() {
-    this.tipo = tipos;
+    this.obtenerCategorias();
+    this.titleService.setTitle('Admin: Categorias de Destinos');
   }
 
-  clearEstado() {
-    this.Tipo = {
-      nombre: "",
-      foto: "",
-      id: this.tipo.length + 1,
-      deshabilitar: false
-    };
+  obtenerCategorias() {
+    this.CategoriaSV.getAll().subscribe(categoriasSnapshot => {
+      this.categorias = [];
+      categoriasSnapshot.docs.forEach(categoriaData => {
+        this.categorias.push({
+          id: categoriaData.id,
+          nombre: categoriaData.data().nombre,
+          deshabilitar: categoriaData.data().deshabilitar
+        });
+      });
+    });
+  }
+
+  public newCategoria(form) {
+    if (this.currentStatus == 1) {
+      let data = {
+        nombre: form.nombre,
+        deshabilitar: false
+      };
+      this.CategoriaSV.create(data).then(
+        () => {
+          console.log("Documento creado exitósamente!");
+          this.newCategoriaForm.setValue({
+            nombre: "",
+            deshabilitar: false
+          });
+          this.obtenerCategorias();
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    }
+  }
+
+  public editCategoria(form, documentId = this.selectedRowIndex) {
+    if (this.currentStatus == 2) {
+      let data = {
+        nombre: form.nombre,
+        deshabilitar: this.categorias.filter(
+          categoria => categoria.id == this.selectedRowIndex
+        )[0].deshabilitar
+      };
+      this.CategoriaSV.update(documentId, data).then(
+        () => {
+          console.log("Documento modificado exitósamente!");
+          this.newCategoriaForm.setValue({
+            nombre: "",
+            deshabilitar: false
+          });
+          this.obtenerCategorias();
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    }
   }
 
   openCrear() {
     this.formVisibility = true;
     this.crearformVisibility = true;
+    this.currentStatus = 1;
   }
 
   crearCategoria() {
-    this.addRowData();
     this.formVisibility = false;
     this.crearformVisibility = false;
   }
-
-  addRowData() {
-    tipos.push(this.Tipo);
-    this.clearEstado();
-    this.table.renderRows();
+  close() {
+    this.currentStatus = 3;
+    this.formVisibility = false;
+    this.crearformVisibility = false;
+    this.modificarformVisibility = false;
   }
 
-  modifyRowData() {
-    this.table.renderRows();
+  highlight(dato) {
+    this.selectedRowIndex = dato.id;
+    this.nombreCategoria = dato.nombre;
   }
 
   openModificar() {
+    this.currentStatus = 2;
     this.formVisibility = true;
     this.modificarformVisibility = true;
-    this.Tipo = this.tipo[this.selectedRowIndex];
-  }
-
-  close() {
-    this.formVisibility = false;
-    this.crearformVisibility = false;
-    this.modificarformVisibility = false;
-  }
-
-  modificar() {
-    this.tipo[this.selectedRowIndex].nombre = this.Tipo.nombre;
-    this.tipo[this.selectedRowIndex].foto = this.Tipo.foto;
   }
 
   modificarCategoria() {
-    this.modifyRowData();
     this.formVisibility = false;
-    this.crearformVisibility = false;
     this.modificarformVisibility = false;
-    this.modificar();
   }
 
-  highlight(row) {
-    this.selectedRowIndex = row.id;
+  soltar() {
+    this.highlight(-1);
   }
+
+  public numerito;
 
   deshabilitar() {
-    tipos[this.selectedRowIndex].deshabilitar = true;
+    for (let index = 0; index < this.categorias.length; index++) {
+      if (this.categorias[index].id == this.selectedRowIndex) {
+        this.numerito = index;
+        this.categorias[index].deshabilitar = true;
+      } else {
+        continue;
+      }
+    }
+    this.deshabilitarCategoria(this.selectedRowIndex);
   }
+
+  public deshabilitarCategoria(documentId) {
+    let data = {
+      nombre: this.categorias[this.numerito].nombre,
+      deshabilitar: true
+    };
+    this.CategoriaSV.update(documentId, data).then(
+      () => {
+        console.log("Documento modificado exitósamente!");
+        this.newCategoriaForm.setValue({
+          nombre: "",
+          deshabilitar: true
+        });
+      },
+      error => {
+        console.error(error);
+      }
+    );
+  }
+
   habilitar() {
-    tipos[this.selectedRowIndex].deshabilitar = false;
+    for (let index = 0; index < this.categorias.length; index++) {
+      console.log(this.categorias[index].nombre);
+      if (this.categorias[index].id == this.selectedRowIndex) {
+        this.numerito = index;
+        this.categorias[index].deshabilitar = false;
+      } else {
+        continue;
+      }
+    }
+    this.habilitarCategoria(this.selectedRowIndex);
+  }
+
+  public habilitarCategoria(documentId) {
+    let data = {
+      nombre: this.categorias[this.numerito].nombre,
+      deshabilitar: false
+    };
+    this.CategoriaSV.update(documentId, data).then(
+      () => {
+        console.log("Documento modificado exitósamente!");
+        this.newCategoriaForm.setValue({
+          nombre: "",
+          deshabilitar: true
+        });
+      },
+      error => {
+        console.error(error);
+      }
+    );
   }
 }

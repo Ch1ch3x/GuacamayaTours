@@ -1,96 +1,81 @@
-<body>
-  <app-navbar> </app-navbar>
-
+<app-navbar> </app-navbar>
+<div class="body">
   <div class="containe">
     <p class="centered1">GUACAMAYA <br /></p>
     <p class="centered2">TOURS</p>
+    
     <img src="../../../assets/img/home.png" alt="Planea tu viaje" />
     <button class="btn">PLANEA TU VIAJE AHORA</button>
   </div>
 
-  <div class="">
-    <h1 class="title">DESTINOS POPULARES</h1>
-  </div>
-
   <div class="slider">
     <ngb-carousel *ngIf="images">
-      <ng-template ngbSlide>
+      <ng-template ngbSlide *ngFor="let destino of destinos">
         <div class="picsum-img-wrapper">
-          <img [src]="images[0]" alt="" />
+          <img [src]="destino.imagen" alt="" class="maximo" />
         </div>
         <div class="carousel-caption">
-          <a routerLink="/destinos/Mochima"><h3>Mochima, Sucre</h3></a>
-        </div>
-      </ng-template>
-      <ng-template ngbSlide>
-        <div class="picsum-img-wrapper">
-          <img [src]="images[1]" alt="" />
-        </div>
-        <div class="carousel-caption">
-          <a routerLink="/destinos/roraima"><h3>Roraima, Bolivar</h3></a>
-        </div>
-      </ng-template>
-      <ng-template ngbSlide>
-        <div class="picsum-img-wrapper">
-          <img [src]="images[2]" alt="" />
-        </div>
-        <div class="carousel-caption">
-          <a routerLink="/destinos/juangriego"
-            ><h3>Juan Griego, Nueva Esparta</h3></a
+          <a routerLink="/destinos/{{ destino.id}}"
+            ><h3 class="sliderNombre">{{ destino.nombre }}</h3></a
           >
         </div>
       </ng-template>
     </ngb-carousel>
   </div>
-
-  <div class="actividades container-fluid">
-    <div class="">
-      <h1 class="title">ACTIVIDADES</h1>
-    </div>
-
-    <div class="row actividades1">
-      <div class="elemento1">
-        <img [src]="actividades[0]" class="act hover" />
-        <p class="hover centered3">LOS ROQUES</p>
-      </div>
-      <div class="contenedor">
-        <div class="elemento">
-          <img [src]="actividades[1]" class="act hover" />
-          <p class="hover centered3">TELEFÉRICO DE MÉRIDA</p>
-        </div>
-        <div class="elemento">
-          <img [src]="actividades[1]" class="act hover" />
-          <p class="hover centered3">TELEFÉRICO DE MÉRIDA</p>
-        </div>
-
-        <div class="elemento">
-          <img [src]="actividades[1]" class="act hover" />
-        </div>
-        <div class="elemento">
-          <img [src]="actividades[1]" class="act hover" />
-        </div>
-      </div>
-    </div>
+  
+  <div>
+    <h1 class="text-center nueva" >CONOCE VENEZUELA</h1>
+    <h5 class="text-center introduccion">  Aventuras únicas pueden ser encontradas en cada rincón de Venezuela,
+    cielos azules, montañas, ríos y playas te darán una experiencia inolvidable </h5>
+    <img src="../../../assets/roraima.png" alt="" class="imitacion" />
+    
   </div>
 
-  <div class="container-fluid abajo text-center">
-    <img src="../../../assets/img/algo.jpg" alt="Opciones" class="full" />
-    <h1 class="title1">HOTELES</h1>
+
+  <h4 class="vacaciones">PLANEA TUS PRÓXIMAS VACACIONES</h4>
+  <div class="container-fluid row mat_card">
+    <div class= "col-sm-6 col-md-6 col-lg-3 margin" *ngFor="let actividad of destinos[0].actividades">
+        <mat-card >
+           
+            <img mat-card-image class="mat-card-image "src="{{actividad.imagen}}" >
+    
+            <mat-card-actions>
+              
+             <button mat-button>{{actividad.nombre}}</button>
+            </mat-card-actions>
+          </mat-card>
+    </div>
+    <div class= "col-sm-6 col-md-6 col-lg-3 margin" *ngFor="let actividad of destinos[1].actividades">
+        <mat-card >
+            
+            <img mat-card-image class="mat-card-image "src="{{actividad.imagen}}" >
+    
+            <mat-card-actions>
+              
+             <button mat-button>{{actividad.nombre}}</button>
+            </mat-card-actions>
+          </mat-card>
+    </div>
+  </div>
+ 
+
+  <div class="container-fluid max text-center">
+    <img src="../../../assets/img/algo2.svg" alt="Opciones" class="full" />
+    <h2 class="title1 col-12">HOTELES</h2>
     <div class="hoteles row container-fluid">
-      <div class="col">
-        <a routerLink="/hoteles"><img [src]="actividades[1]" class="hotel"/></a>
-        <h3>Hotel Ávila</h3>
-      </div>
-      <div class="col">
-        <a routerLink="/hoteles"><img [src]="actividades[1]" class="hotel"/></a>
-        <h3>Hotel Tibisay</h3>
-      </div>
-      <div class="col">
-        <a routerLink="/hoteles"><img [src]="actividades[1]" class="hotel"/></a>
-        <h3>Hotel caracas</h3>
+        
+      <div class="col-4" *ngFor="let hotel of hoteles" >
+          
+            <div *ngIf="hotel.deshabilitar === false">
+              <a routerLink="/hoteles/{{ hotel.id }}"><img [src]="hotel.imagen" class="hotel"/></a>
+              <h5>{{ hotel.nombre }}</h5>
+            </div>
+          
       </div>
     </div>
   </div>
-</body>
+
+
+</div>
 
 <app-footer></app-footer>
