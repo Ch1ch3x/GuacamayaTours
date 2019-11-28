@@ -6,6 +6,7 @@ import { CiudadesService } from "src/app/services/firebase/ciudades.service.js";
 import { EstadosService } from "src/app/services/firebase/estados.service.js";
 import { CategoriasService } from "src/app/services/firebase/categorias.service";
 import { Title } from "@angular/platform-browser";
+import { FirestoreService } from "src/app/services/firebase/firebase.service";
 
 @Component({
   selector: "app-listar-destinos-turisticos",
@@ -73,6 +74,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
     private CiudadSV: CiudadesService,
     private EstadosSV: EstadosService,
     private CategoriaSV: CategoriasService,
+    private firebaseService: FirestoreService,
     private titleService: Title
   ) {
     this.newDestinoForm.setValue({
@@ -151,6 +153,13 @@ export class ListarDestinosTuristicosComponent implements OnInit {
           deshabilitar: categoriaData.data().deshabilitar
         });
       });
+    });
+
+    this.firebaseService.getAll("servicios").subscribe(servicios => {
+      this.servicios = servicios.docs.map(serv => ({
+        ...serv.data(),
+        id: serv.id
+      }));
     });
   }
 
