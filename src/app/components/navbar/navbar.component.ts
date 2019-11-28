@@ -14,6 +14,7 @@ import { AdminService } from "src/app/services/admin.service";
 import * as crypto from "crypto-js";
 import { Router } from "@angular/router";
 import { FormControl, Validators } from "@angular/forms";
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: "app-navbar",
@@ -25,10 +26,15 @@ export class NavbarComponent implements OnInit {
   constructor(
     private modalService: BsModalService,
     private adminService: AdminService,
-    private router: Router
+    private router: Router,
+    private titleService: Title
   ) {}
 
   ngOnInit() {}
+
+  public setTitle(title) {
+    this.titleService.setTitle(title);
+  }
 
 
 }

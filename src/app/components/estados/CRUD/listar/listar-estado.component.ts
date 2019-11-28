@@ -1,9 +1,9 @@
 import { Component, ViewChild, OnInit } from "@angular/core";
 import { MatTable } from "@angular/material";
 import { EstadosService } from "../../../../services/firebase/estados.service";
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { format } from 'url';
-
+import { FormGroup, FormControl, Validators, FormArray } from "@angular/forms";
+import { format } from "url";
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: "app-listar-estado",
@@ -12,6 +12,8 @@ import { format } from 'url';
 })
 export class ListarEstadoComponent implements OnInit {
   estados: any[];
+  nombreEstado: any;
+  imagenEstado: any[];
   @ViewChild(MatTable, { static: true }) table: MatTable<any>;
   formVisibility = false;
   modificarformVisibility = false;
@@ -20,37 +22,40 @@ export class ListarEstadoComponent implements OnInit {
   public documentId = null;
   public currentStatus = 1;
   public newEstadoForm = new FormGroup({
-      nombre: new FormControl('', Validators.required),
-      imagen: new FormControl('', Validators.required),
-      imagen2: new FormControl(''),
-      imagen3: new FormControl(''),
-      deshabilitar: new FormControl(true),
+    nombre: new FormControl("", Validators.required),
+    imagen: new FormControl(""),
+    deshabilitar: new FormControl(true)
+  });
 
-    });
+  public editEstadoForm = new FormGroup({
+    nombre: new FormControl("", Validators.required),
+    imagen: new FormControl(""),
+    deshabilitar: new FormControl(true)
+  });
 
-
-  constructor(private EstadosSV: EstadosService) {
+  constructor(private EstadoSV: EstadosService, private titleService: Title) {
     this.newEstadoForm.setValue({
-      nombre: '',
-      imagen: '',
-      imagen2: '',
-      imagen3: '',
-      deshabilitar: true,
+      nombre: "",
+      imagen: "",
+      deshabilitar: true
     });
   }
 
-  selectedRowIndex: number = -1;
+  selectedRowIndex: any;
 
   ngOnInit() {
-    this.EstadosSV.getAll().subscribe(estadosSnapshot => {
+    this.getData();
+    this.titleService.setTitle('Admin: Estados');
+  }
+
+  getData() {
+    this.EstadoSV.getAll().subscribe(estadosSnapshot => {
       this.estados = [];
       estadosSnapshot.docs.forEach(estadoData => {
         this.estados.push({
           id: estadoData.id,
           nombre: estadoData.data().nombre,
           imagen: estadoData.data().imagen,
-          imagen2: estadoData.data().imagen2,
-          imagen3: estadoData.data().imagen3,
           deshabilitar: estadoData.data().deshabilitar
         });
       });
@@ -58,45 +63,52 @@ export class ListarEstadoComponent implements OnInit {
   }
 
   public newEstado(form, documentId = this.documentId) {
-    console.log(`Status: ${this.currentStatus}`);
     if (this.currentStatus == 1) {
       let data = {
         nombre: form.nombre,
         imagen: form.imagen,
-        imagen2: form.imagen2,
-        imagen3: form.imagen3,
-        deshabilitar: form.deshabilitar
-      }
-      this.EstadosSV.create(data).then(() => {
-        console.log('Documento creado exitósamente!');
-        this.newEstadoForm.setValue({
-          nombre: '',
-          imagen: '',
-          imagen2: '',
-          imagen3: '',
-          deshabilitar: ''
-        });
-      }, (error) => {
-        console.error(error);
-      });
-    } else {
-      this.close();
+        deshabilitar: true
+      };
+      this.EstadoSV.create(data).then(
+        () => {
+          console.log("Documento creado exitósamente!");
+          this.newEstadoForm.setValue({
+            nombre: "",
+            imagen: "",
+            deshabilitar: true
+          });
+          this.getData();
+        },
+        error => {
+          console.error(error);
+        }
+      );
     }
   }
 
-  public editEstado(documentId) {
-    let editSubscribe = this.EstadosSV.getEstado(documentId).subscribe((estado) => {
-      this.currentStatus = 2;
-      this.documentId = documentId;
-      this.newEstadoForm.setValue({
-        nombre: estado.payload.data()['nombre'],
-        imagen: estado.payload.data()['imagen'],
-        imagen2: estado.payload.data()['imagen2'],
-        imagen3: estado.payload.data()['imagen3'],
-        deshabilitar: estado.payload.data()['deshabilitar'],
-      });
-      editSubscribe.unsubscribe();
-    });
+  public editEstado(form, documentId = this.selectedRowIndex) {
+    if (this.currentStatus == 2) {
+      let data = {
+        nombre: form.nombre,
+        imagen: form.imagen,
+        deshabilitar: false
+      };
+      let editSubscribe = this.EstadoSV.update(documentId, data).then(
+        () => {
+          console.log("Documento modificado exitósamente!");
+          this.editEstadoForm.setValue({
+            nombre: "",
+            imagen: "",
+            deshabilitar: true
+          });
+          this.getData();
+          this.close();
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    }
   }
 
   openCrear() {
@@ -110,6 +122,22 @@ export class ListarEstadoComponent implements OnInit {
     this.crearformVisibility = false;
   }
 
+  openModificar() {
+    this.editEstadoForm.setValue({
+      nombre: this.nombreEstado,
+      imagen: this.imagenEstado,
+      deshabilitar: true
+    });
+    this.currentStatus = 2;
+    this.formVisibility = true;
+    this.modificarformVisibility = true;
+  }
+
+  modificarEstado() {
+    this.formVisibility = false;
+    this.modificarformVisibility = false;
+  }
+
   close() {
     this.currentStatus = 3;
     this.formVisibility = false;
@@ -119,37 +147,80 @@ export class ListarEstadoComponent implements OnInit {
 
   highlight(dato) {
     this.selectedRowIndex = dato.id;
+    this.nombreEstado = dato.nombre;
+    this.imagenEstado = dato.imagen;
   }
 
   soltar() {
-    this.highlight(-1)
+    this.highlight(-1);
   }
+
+  public numerito;
 
   deshabilitar() {
     for (let index = 0; index < this.estados.length; index++) {
       if (this.estados[index].id == this.selectedRowIndex) {
-        this.estados[index].deshabilitar = false;
-      } else {
-        continue;
-      }
-    }
-  }
-
-  habilitar() {
-    for (let index = 0; index < this.estados.length; index++) {
-      console.log(this.estados[index].nombre);
-      if (this.estados[index].id == this.selectedRowIndex){
+        this.numerito = index;
         this.estados[index].deshabilitar = true;
       } else {
         continue;
       }
     }
+    this.deshabilitarEstado(this.selectedRowIndex);
   }
 
-  openModificar() {
-  //  this.formVisibility = true;
+  deshabilitarEstado(documentId) {
+    let data = {
+      nombre: this.estados[this.numerito].nombre,
+      imagen: this.estados[this.numerito].imagen,
+      deshabilitar: true
+    };
+    this.EstadoSV.update(documentId, data).then(
+      () => {
+        console.log("Documento modificado exitósamente!");
+        this.newEstadoForm.setValue({
+          nombre: "",
+          imagen: "",
+          deshabilitar: true
+        });
+      },
+      error => {
+        console.error(error);
+      }
+    );
   }
 
-  modificarEstado() {
+  habilitar() {
+    for (let index = 0; index < this.estados.length; index++) {
+      console.log(this.estados[index].nombre);
+      if (this.estados[index].id == this.selectedRowIndex) {
+        this.numerito = index;
+        this.estados[index].deshabilitar = false;
+      } else {
+        continue;
+      }
+    }
+    this.habilitarEstado(this.selectedRowIndex);
+  }
+
+  public habilitarEstado(documentId) {
+    let data = {
+      nombre: this.estados[this.numerito].nombre,
+      imagen: this.estados[this.numerito].imagen,
+      deshabilitar: false
+    };
+    this.EstadoSV.update(documentId, data).then(
+      () => {
+        console.log("Documento modificado exitósamente!");
+        this.newEstadoForm.setValue({
+          nombre: "",
+          imagen: "",
+          deshabilitar: true
+        });
+      },
+      error => {
+        console.error(error);
+      }
+    );
   }
 }

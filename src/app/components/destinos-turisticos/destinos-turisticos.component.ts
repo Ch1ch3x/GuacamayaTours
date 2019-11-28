@@ -60,6 +60,8 @@ export class DestinosTuristicosComponent implements OnInit {
     this.filteredCiudades = this.ciudades.filter(
       ciudad => ciudad.idEstado === this.estado
     );
+    this.ciudad = null;
+    this.categoria = null;
 
     this.destinos
       .filter(destino => {
@@ -82,6 +84,7 @@ export class DestinosTuristicosComponent implements OnInit {
   onChangeCiudad(event) {
     this.ciudad = event;
     this.filteredCategorias = [];
+    this.categoria = null;
     this.destinos
       .filter(destino => {
         if (this.estado) {
@@ -104,7 +107,6 @@ export class DestinosTuristicosComponent implements OnInit {
   filtrar() {
     this.fireStoreService.getAll("destinos").subscribe(destinos => {
       destinos.docs.map(destino => {
-        const dest = destino.data();
         if (this.ciudad) {
           if (this.estado) {
             if (this.categoria) {
