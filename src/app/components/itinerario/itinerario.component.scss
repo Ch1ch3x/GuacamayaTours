@@ -1,0 +1,56 @@
+.titulo{
+    font-family: 'Oswald';
+    color:#002d51;
+    margin-left: 5%;
+    font-size: 340%;
+}
+
+.contenido{
+    width: 60%;
+    margin-top: 5%;
+    margin-left: 4%;
+    margin-bottom: 5%;
+    text-align-last: center;
+    align-content: center;
+}
+
+form{
+    text-align-last: center;
+    align-content: center;
+    width: auto;
+}
+
+.btn{
+    background-color: #DA1A29;
+    border: none;
+    margin-left: 2px;
+}
+
+
+
+@media screen and(max-width:810px){
+    .contenido{
+        width: 92%;
+    }
+
+    .titulo{
+        font-size: 290%;
+    }
+
+    .input{
+        
+        margin-right: 3px;
+    }
+}
+
+@media screen and(max-width:480px){
+    .titulo{
+        font-size: 240%;
+    }
+
+    .input{
+        width: 19%;
+        margin-right: 11px;
+    }
+}
+
