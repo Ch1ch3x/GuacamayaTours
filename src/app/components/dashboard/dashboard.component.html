@@ -81,3 +81,24 @@
     </div>
   </nav>
 </body>
+
+<body>
+  <div class = "tabla">
+      <div style="display: block">
+          <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+          [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
+          <button mat-button mat-raised-button color="primary" (click)="randomize()" class="boton">Cambiar Forma</button>
+      </div>
+  </div>
+  <div class="tabla">
+      <div style="display: block">
+          <canvas baseChart
+            [data]="polarAreaChartData"
+            [labels]="polarAreaChartLabels"
+            [legend]="polarAreaLegend"
+            [chartType]="polarAreaChartType">
+          </canvas>
+        </div>
+  </div>
+</body>

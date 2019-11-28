@@ -56,7 +56,8 @@ import { HotelComponent } from './components/hoteles/hotel/hotel.component';
 import { DestinoComponent } from './components/destinos-turisticos/destino/destino.component';
 import { Observable } from 'rxjs';
 import { DialogComponent } from './components/planear-viaje/dialog/dialog.component';
-
+import { ChartsModule } from 'ng2-charts';
+import { DinamicoComponent } from './components/graficos/dinamico/dinamico.component';
 
 @NgModule({
   declarations: [
@@ -100,7 +101,8 @@ import { DialogComponent } from './components/planear-viaje/dialog/dialog.compon
     ContactanosComponent,
     HotelComponent,
     DestinoComponent,
-    DialogComponent
+    DialogComponent,
+    DinamicoComponent
   ],
   imports: [
     BrowserModule,
@@ -117,7 +119,8 @@ import { DialogComponent } from './components/planear-viaje/dialog/dialog.compon
     ModalModule.forRoot(),
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
-    NgbModule
+    NgbModule,
+    ChartsModule
   ],
   providers: [FirestoreService, AngularFirestore, Title],
   entryComponents: [DialogComponent],
