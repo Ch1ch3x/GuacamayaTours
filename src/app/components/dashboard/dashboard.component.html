@@ -6,60 +6,63 @@
     </div>
 
     <ul class="list-unstyled components">
-      <li>
+      <li >
         <a
           routerLink="/admin/dashboard"
           (click)= 'setTitle("Admin: Dashboard")'
           data-toggle="collapse"
           aria-expanded="false"
-          ><i class="fa fa-home img" aria-hidden="true"></i>Home</a
+          (click) = "aparecerGraficos()"
+          ><i class="fa fa-home img" aria-hidden="true" ></i>Home</a
         >
       </li>
       <li>
         <a routerLink="/admin/dashboard"
+        (click) = "aparecerGraficos()"
         (click)= 'setTitle("Admin: Dashboard")'
           ><i class="fa fa-bar-chart img" aria-hidden="true"></i>Dashboard</a
         >
       </li>
-      <li>
+      <li  >
         <a routerLink="/admin/estados"
           (click)= 'setTitle("Admin: Estados")'
+          
           ><i class="fa fa-map-pin img" aria-hidden="true"></i>Estados</a
         >
       </li>
-      <li>
+      <li  >
         <a routerLink="/admin/ciudades"
           (click)= 'setTitle("Admin: Ciudades")'
           ><i class="fa fa-building-o img" aria-hidden="true"></i>Ciudades</a
         >
       </li>
-      <li>
+      <li  >
         <a routerLink="/admin/destinos"
           (click)= 'setTitle("Admin: Destinos Turisticos")'
           ><i class="fa fa-plane img" aria-hidden="true"></i>Destinos
           Turísticos</a
         >
       </li>
-      <li>
+      <li  >
         <a routerLink="/admin/categorias"
           (click)= 'setTitle("Admin: Categorias de Destinos")'
           ><i class="fa fa-asterisk img" aria-hidden="true"></i>Categorías de
           Destinos</a
         >
       </li>
-      <li>
+      <li  >
         <a routerLink="/admin/hoteles"
           (click)= 'setTitle("Admin: Hoteles")'
           ><i class="fa fa-bed img" aria-hidden="true"></i>Hoteles</a
         >
       </li>
-      <li>
+      <li  >
         <a routerLink="/admin/habitaciones"
           (click)= 'setTitle("Admin: Tipos de Habitaciones")'
           ><i class="fa fa-suitcase img" aria-hidden="true"></i>Habitaciones</a
         >
       </li>
-      <li>
+      <li  >
         <a routerLink="/admin/**"
           ><i class="fa fa-check img" aria-hidden="true"></i>Reservas</a
         >
@@ -82,6 +85,7 @@
   </nav>
 </body>
 
+<div [hidden] = "esconder">
 <body>
   <div class = "tabla">
       <div style="display: block">
@@ -102,3 +106,4 @@
         </div>
   </div>
 </body>
+</div>
