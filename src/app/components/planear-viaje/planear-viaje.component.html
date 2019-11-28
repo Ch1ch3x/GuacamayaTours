@@ -35,10 +35,11 @@
 
 <div class="contenedor container-fluid">
   <div class="side">
-    <p>RESERVACIONES</p>
-    <div class="reservas">
+    <p 
+    *ngIf="reservas.length > 0">RESERVACIONES</p>
+    <div class="reservas" *ngIf="reservas.length > 0">
       <p *ngFor="let reserva of reservas" class="reservaciones">
-        {{ reserva.hotel }}
+        {{ reserva.hotel.nombre }}, {{ reserva.tipoHabitacion.nombre }}
       </p>
       <button
         id="buscar"
@@ -175,7 +176,7 @@
             <div class="precio">
               <h5>${{ hotel.fullday.costo }}</h5>
               <button
-                (click)="openDialog()"
+                (click)="openDialog(hotel)"
                 type="button"
                 id="mas"
                 class="btn btn-danger"

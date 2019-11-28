@@ -24,6 +24,7 @@ export class PlanearViajeComponent implements OnInit {
   private ciudades: any[] = [];
   private filteredCiudades: any[] = [];
   private tipoHabitaciones: any[] = [];
+  private dialogTipoHabitaciones: any[] = [];
   private llegadaFilter: Date;
   private salidaFilter: Date;
   minDate = new Date();
@@ -36,11 +37,6 @@ export class PlanearViajeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.fireStoreService.getAll("reservas").subscribe(reservas => {
-      reservas.docs.map(reserva => {
-        this.reservas.push(reserva.data());
-      });
-    });
     this.fireStoreService.getAll("destinos").subscribe(destinos => {
       destinos.docs.map(destino => {
         this.destinos.push({ ...destino.data(), id: destino.id });
@@ -51,7 +47,6 @@ export class PlanearViajeComponent implements OnInit {
         this.hoteles.push(hotel.data());
       });
       this.filteredHoteles = this.hoteles;
-      console.log(this.filteredHoteles);
     });
     this.fireStoreService.getAll("estados").subscribe(estados => {
       estados.docs.map(estado => {
@@ -72,8 +67,24 @@ export class PlanearViajeComponent implements OnInit {
     });
   }
 
-  openDialog() {
-    this.dialog.open(DialogComponent);
+  openDialog(hotel) {
+    this.dialogTipoHabitaciones = hotel.tipoHabitaciones;
+    this.dialogTipoHabitaciones = this.tipoHabitaciones.filter(th =>
+      this.dialogTipoHabitaciones.some(tipoH => tipoH.tipoHabitacion === th.id)
+    );
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: this.dialogTipoHabitaciones
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.reservas.push({
+          hotel,
+          tipoHabitacion: this.dialogTipoHabitaciones.filter(
+            tH => tH.id === result
+          )[0]
+        });
+      }
+    });
   }
 
   onChangePrice(precio) {
