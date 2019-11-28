@@ -5,6 +5,7 @@ import { NavbarComponent } from "./components/navbar/navbar.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { NgImageSliderModule } from "ng-image-slider";
 import { CommonModule } from "@angular/common";
+import { NgxPayPalModule } from "ngx-paypal";
 import { HomeComponent } from "./components/home/home.component";
 import { AppRoutingModule } from "./routing/routing.module";
 import { HeaderComponent } from "./components/header/header.component";
@@ -52,12 +53,9 @@ import { environment } from "../environments/environment";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { FirestoreService } from "./services/firebase/firebase.service";
 import { AngularFirestore } from "@angular/fire/firestore";
-import { HotelComponent } from './components/hoteles/hotel/hotel.component';
-import { DestinoComponent } from './components/destinos-turisticos/destino/destino.component';
-import { Observable } from 'rxjs';
-import { DialogComponent } from './components/planear-viaje/dialog/dialog.component';
-
-
+import { HotelComponent } from "./components/hoteles/hotel/hotel.component";
+import { DestinoComponent } from "./components/destinos-turisticos/destino/destino.component";
+import { DialogComponent } from "./components/planear-viaje/dialog/dialog.component";
 
 @NgModule({
   declarations: [
@@ -101,7 +99,7 @@ import { DialogComponent } from './components/planear-viaje/dialog/dialog.compon
     ContactanosComponent,
     HotelComponent,
     DestinoComponent,
-    DialogComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -118,7 +116,8 @@ import { DialogComponent } from './components/planear-viaje/dialog/dialog.compon
     ModalModule.forRoot(),
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
-    NgbModule
+    NgbModule,
+    NgxPayPalModule
   ],
   providers: [FirestoreService, AngularFirestore, Title],
   entryComponents: [DialogComponent],

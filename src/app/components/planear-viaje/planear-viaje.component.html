@@ -35,20 +35,12 @@
 
 <div class="contenedor container-fluid">
   <div class="side">
-    <p 
-    *ngIf="reservas.length > 0">RESERVACIONES</p>
+    <p *ngIf="reservas.length > 0">RESERVACIONES</p>
     <div class="reservas" *ngIf="reservas.length > 0">
       <p *ngFor="let reserva of reservas" class="reservaciones">
         {{ reserva.hotel.nombre }}, {{ reserva.tipoHabitacion.nombre }}
       </p>
-      <button
-        id="buscar"
-        class="btn btn-outline-secondary pagar"
-        routerLink="/ordenes"
-        color="warm"
-      >
-        <i class="fa fa-paypal" aria-hidden="true"></i> Pagar
-      </button>
+      <ngx-paypal [config]="payPalConfig"></ngx-paypal>
     </div>
     <p>FILTROS</p>
     <div class="filtros">
