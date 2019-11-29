@@ -1,29 +1,43 @@
 <app-navbar></app-navbar>
 
 <div class="body">
-    <div class="header w3-display-container w3-text-white"> 
-        <img src="../../../assets/img/roraima(2).png" alt="" />
-        <div class="w3-display-middle w3-large" style="font-family:'Oswald'" ><h1 style="font-family:'Oswald'">ACCEDE A TU ITINERARIO</h1></div>
+  <div class="header w3-display-container w3-text-white">
+    <img src="../../../assets/img/roraima(2).png" alt="" />
+    <div class="w3-display-middle w3-large" style="font-family:'Oswald'">
+      <h1 style="font-family:'Oswald'">ACCEDE A TU ITINERARIO</h1>
     </div>
-    <div class="contenido">
-        <form class="form-inline">
-            <div class="form-group mb-2">
-              <label for="]" class="sr-only">código de verficación</label>
-              <input type="text" readonly class="form-control-plaintext" id="" value="Introduzca el código: ">
-            </div>
-            <div class="form-group mx-sm-3 mb-2 input">
-              <label for="inputPassword" class="sr-only">código de verficación</label>
-              <input type="password" class="form-control" id="inputPassword2" placeholder="código">
-            </div>
-            <button type="submit" class="btn btn-primary mb-2">Buscar</button>
-          </form>
-    </div>
-    <div class="reservaciones">
-        <div class="reserva">
-            
-        </div>
-    </div>
+  </div>
+  <div class="contenido">
+    <form class="form-inline">
+      <div class="form-group mb-2">
+        <label for="]" class="sr-only">código de verficación</label>
+        <input
+          type="text"
+          readonly
+          class="form-control-plaintext"
+          id=""
+          value="Introduzca el código: "
+        />
+      </div>
+      <div class="form-group mx-sm-3 mb-2 input">
+        <label for="inputPassword" class="sr-only">código de verficación</label>
+        <input
+          type="password"
+          class="form-control"
+          id="inputPassword2"
+          placeholder="código"
+          [(ngModel)]="localizador"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+      <button type="button" class="btn btn-primary mb-2" (click)="buscar()">
+        Buscar
+      </button>
+    </form>
+  </div>
+  <div class="reservaciones">
+    <div class="reserva"></div>
+  </div>
 </div>
-
 
 <app-footer></app-footer>
