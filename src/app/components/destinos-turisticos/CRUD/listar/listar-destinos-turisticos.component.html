@@ -144,8 +144,21 @@
       }}</mat-option>
     </mat-select>
 
-    <label for="Servicios">Servicios del Destino</label>
+    <label for="Servicios">Servicios</label>
+    <mat-select
+      formControlName="servicios"
+      class="form-control mb-4"
+      id="Servicios"
+      multiple
+    >
+      <mat-option>Elije los Servicios</mat-option>
+      <mat-option *ngFor="let servicio of servicios" [value]="servicio.id">{{
+        servicio.nombre
+      }}</mat-option>
+    </mat-select>
 
+    <!--
+    <label for="Servicios">Servicios del Destino</label>    
     <mat-chip-list #chipList aria-label="Servicios">
       <mat-chip *ngFor="let servicio of servicios" (removed)="remove(servicio)">
         {{ servicio }}
@@ -165,6 +178,21 @@
       formControlName="actividades"
       placeholder="Actividades del Destino"
     />
+  -->
+
+  <label for="Actividades">Actividades</label>
+  <mat-select
+    formControlName="actividades"
+    class="form-control mb-4"
+    id="Actividades"
+    multiple
+  >
+    <mat-option>Elije las Actividades</mat-option>
+    <mat-option *ngFor="let actividad of actividades" [value]="actividad.id">{{
+      actividad.nombre
+    }}</mat-option>
+  </mat-select>
+
     <label for="Latitud">Latitud del Destino</label>
     <input
       type="text"
@@ -272,6 +300,8 @@
         categoria.nombre
       }}</mat-option>
     </mat-select>
+ 
+    <!-- 
     <label for="Servicios">Servicios del Destino</label>
     <mat-chip-list #chipList aria-label="Servicios">
       <mat-chip *ngFor="let servicio of servicios" (removed)="remove(servicio)">
@@ -292,6 +322,34 @@
       formControlName="actividades"
       [(ngModel)]="destinoActividad"
     />
+-->
+
+<label for="Servicios">Servicios</label>
+<mat-select
+  formControlName="servicios"
+  class="form-control mb-4"
+  id="Servicios"
+  multiple
+>
+  <mat-option>Elije los Servicios</mat-option>
+  <mat-option *ngFor="let servicio of servicios" [value]="servicio.id">{{
+    servicio.nombre
+  }}</mat-option>
+</mat-select>
+
+<label for="Actividades">Actividades</label>
+<mat-select
+  formControlName="actividades"
+  class="form-control mb-4"
+  id="Actividades"
+  multiple
+>
+  <mat-option>Elije las Actividades</mat-option>
+  <mat-option *ngFor="let actividad of actividades" [value]="actividad.id">{{
+    actividad.nombre
+  }}</mat-option>
+</mat-select>
+
     <label for="Latitud">Latitud del Destino</label>
     <input
       type="text"

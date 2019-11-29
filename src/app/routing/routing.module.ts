@@ -17,9 +17,10 @@ import { ContactanosComponent } from "../components/contactanos/contactanos.comp
 import { ListarEstadoComponent } from "../components/estados/CRUD/listar/listar-estado.component";
 import { ListaCiudadComponent } from "../components/ciudades/CRUD/listar/lista-ciudad.component";
 import { ListaCategoriaDestinoComponent } from "../components/categoria-destino/CRUD/listar/lista-categoria-destino.component";
-import { HotelComponent } from "../components/hoteles/hotel/hotel.component";
-import { ListarHabitacionesComponent } from "../components/habitaciones/CRUD/listar/listar-habitaciones.component";
-import { DestinoComponent } from "../components/destinos-turisticos/destino/destino.component";
+import { HotelComponent } from '../components/hoteles/hotel/hotel.component';
+import { ListarHabitacionesComponent } from '../components/habitaciones/CRUD/listar/listar-habitaciones.component';
+import { DestinoComponent } from '../components/destinos-turisticos/destino/destino.component';
+import { Hotel1Component } from '../components/hoteles/hotel1/hotel1.component';
 import { ActividadesComponent } from "../components/actividades/actividades.component";
 import { ServiciosComponent } from "../components/servicios/servicios.component";
 import { ReservasComponent } from "../components/itinerario/CRUD/reservas/reservas.component";
@@ -28,10 +29,11 @@ import { GraficosComponent } from "../components/dashboard/graficos/graficos.com
 const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "destinos", component: DestinosTuristicosComponent },
-  { path: "hoteles", component: HotelesComponent },
-  { path: "planea", component: PlanearViajeComponent },
-  { path: "hoteles/:id", component: HotelComponent },
-  { path: "destinos/:id", component: DestinoComponent },
+  { path: "hoteles", component: HotelesComponent},
+  { path: "planea", component: PlanearViajeComponent},
+  { path: "planea/:id", component: HotelComponent},
+  { path: "hoteles/:id", component: Hotel1Component},
+  { path: "destinos/:id", component: DestinoComponent},
   { path: "admin/hoteles", component: ListarHotelesComponent },
   { path: "admin/dashboard", component: GraficosComponent },
   { path: "admin/destinos", component: ListarDestinosTuristicosComponent },

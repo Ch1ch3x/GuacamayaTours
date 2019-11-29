@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
+import { MatTable, MatChipInputEvent } from "@angular/material";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { TipoHabitacionService } from "src/app/services/firebase/tipo-habitacion.service";
-import { Title } from '@angular/platform-browser';
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: "app-listar-habitaciones",
@@ -15,6 +16,9 @@ export class ListarHabitacionesComponent implements OnInit {
 
   selectedRowIndex: any;
 
+  public imagenes = [];
+  public comodidades = [];
+  public tipoHabitacion: any;
   public tipoHabitaciones = [];
   public documentId = null;
   public currentStatus = 1;
@@ -41,10 +45,14 @@ export class ListarHabitacionesComponent implements OnInit {
       comodidades: "",
       deshabilitar: true
     });
-    this.titleService.setTitle('Admin: Tipos de Habitaciones');
+    this.titleService.setTitle("Admin: Tipos de Habitaciones");
   }
 
   ngOnInit() {
+    this.getData();
+  }
+
+  getData() {
     this.tipoHabitacionSV.getAll().subscribe(tipoHabitacionSnapshot => {
       this.tipoHabitaciones = [];
       tipoHabitacionSnapshot.docs.forEach((ciudadData: any) => {
@@ -62,57 +70,67 @@ export class ListarHabitacionesComponent implements OnInit {
     });
   }
   public newHabitacion(form, documentId = this.documentId) {
-    if (this.currentStatus == 1) {
-      let data = {
-        nombre: form.nombre,
-        max: Number.parseInt(form.max),
-        comodidades: [form.comodidades],
-        descripcion: form.descripcion,
-        vista: form.vista,
-        imagen: [form.imagen],
-        deshabilitar: false
-      };
-      this.tipoHabitacionSV.create(data).then(
-        () => {
-          console.log("Documento creado exitósamente!");
-          this.newHabitacionForm.setValue({
-            nombre: "",
-            max: "",
-            imagen: "",
-            comodidades: "",
-            descripcion: "",
-            vista: "",
-            deshabilitar: false
-          });
-        },
-        error => {
-          console.error(error);
-        }
-      );
+    let data = {
+      nombre: form.nombre,
+      max: Number.parseInt(form.max),
+      comodidades: this.comodidades,
+      descripcion: form.descripcion,
+      vista: form.vista,
+      imagen: this.imagenes,
+      deshabilitar: false
+    };
+    this.tipoHabitacionSV.create(data).then(
+      () => {
+        console.log("Documento creado exitósamente!");
+        this.newHabitacionForm.setValue({
+          nombre: "",
+          max: "",
+          imagen: "",
+          comodidades: "",
+          descripcion: "",
+          vista: "",
+          deshabilitar: false
+        });
+
+        this.getData();
+      },
+      error => {
+        console.error(error);
+      }
+    );
 
       this.tipoHabitaciones.push(data);
     }
-  }
 
-  public editHabitacion(documentId) {
-    if(this.currentStatus == 2){
-      let editSubscribe = this.tipoHabitacionSV
-      .getHabitacion(documentId)
-      .subscribe(habitacion => {
-        this.currentStatus = 2;
-        this.documentId = documentId;
+  public editHabitacion(form, documentId = this.documentId) {
+    let data = {
+      nombre: form.nombre,
+      max: Number.parseInt(form.max),
+      comodidades: this.comodidades,
+      descripcion: form.descripcion,
+      vista: form.vista,
+      imagen: this.imagenes,
+      deshabilitar: false
+    };
+    this.tipoHabitacionSV.update(documentId, data).then(
+      () => {
+        console.log("Documento creado exitósamente!");
         this.newHabitacionForm.setValue({
-          id: documentId,
-          nombre: habitacion.payload.data()["nombre"],
-          imagen: habitacion.payload.data()["imagen"],
-          comodidades: habitacion.payload.data()["comodidades"],
-          descripcion: habitacion.payload.data()["descripcion"],
-          max: habitacion.payload.data()["max"],
-          deshabilitar: habitacion.payload.data()["deshabilitar"]
+          nombre: "",
+          max: "",
+          imagen: "",
+          comodidades: "",
+          descripcion: "",
+          vista: "",
+          deshabilitar: false
         });
-        editSubscribe.unsubscribe();
-      });
-    }
+
+        this.getData();
+      },
+      error => {
+        console.error(error);
+      }
+    );
   }
 
   openCrear() {
@@ -125,11 +143,27 @@ export class ListarHabitacionesComponent implements OnInit {
     this.formVisibility = false;
     this.crearformVisibility = false;
   }
+  editarHabitacion() {
+    this.formVisibility = false;
+    this.modificarformVisibility = false;
+  }
 
   openModificar() {
     this.currentStatus = 2;
     this.formVisibility = true;
     this.modificarformVisibility = true;
+    console.log(this.tipoHabitacion);
+    this.newHabitacionForm.setValue({
+      nombre: this.tipoHabitacion.nombre,
+      descripcion: this.tipoHabitacion.descripcion,
+      imagen: "",
+      max: this.tipoHabitacion.max,
+      vista: this.tipoHabitacion.vista,
+      comodidades: "",
+      deshabilitar: false
+    });
+    this.imagenes = this.tipoHabitacion.imagen;
+    this.comodidades = this.tipoHabitacion.comodidades;
   }
 
   modificarCiudad() {
@@ -152,6 +186,8 @@ export class ListarHabitacionesComponent implements OnInit {
 
   highlight(dato) {
     this.selectedRowIndex = dato.id;
+    this.tipoHabitacion = dato;
+    this.documentId = dato.id;
   }
 
   soltar() {
@@ -163,33 +199,43 @@ export class ListarHabitacionesComponent implements OnInit {
   deshabilitar() {
     for (let index = 0; index < this.tipoHabitaciones.length; index++) {
       if (this.tipoHabitaciones[index].id == this.selectedRowIndex) {
-        this.numerito = index
+        this.numerito = index;
         this.tipoHabitaciones[index].deshabilitar = true;
       } else {
         continue;
       }
     }
-    this.deshabilitarHabitacion(this.selectedRowIndex)
+    this.deshabilitarHabitacion(this.selectedRowIndex);
   }
 
   public deshabilitarHabitacion(documentId) {
     let data = {
-      deshabilitar: true,
-      }
-    this.tipoHabitacionSV.actualizar(documentId, data).then(() => {
-        console.log('Documento modificado exitósamente!');
-        this.newHabitacionForm.setValue({
-        nombre: '',
-        imagen: '',
-        comodidades: '',
-        descripcion: '',
-        max: '',
-        deshabilitar: true,
-        });
-      }, (error) => {
-          console.error(error);
-      });
+      id: documentId,
+      nombre: this.tipoHabitaciones[this.numerito].nombre,
+      imagen: this.tipoHabitaciones[this.numerito].imagen,
+      comodidades: this.tipoHabitaciones[this.numerito].comodidades,
+      descripcion: this.tipoHabitaciones[this.numerito].descripcion,
+      vista: this.tipoHabitaciones[this.numerito].vista,
+      max: this.tipoHabitaciones[this.numerito].max,
+      deshabilitar: true
     };
+    this.tipoHabitacionSV.update(documentId, data).then(
+      () => {
+        console.log("Documento modificado exitósamente!");
+        this.newHabitacionForm.setValue({
+          nombre: "",
+          imagen: "",
+          comodidades: "",
+          descripcion: "",
+          max: "",
+          deshabilitar: true
+        });
+      },
+      error => {
+        console.error(error);
+      }
+    );
+  }
 
   habilitar() {
     for (let index = 0; index < this.tipoHabitaciones.length; index++) {
@@ -201,27 +247,81 @@ export class ListarHabitacionesComponent implements OnInit {
       }
     }
 
-    this.habilitarHabitacion(this.selectedRowIndex)
+    this.habilitarHabitacion(this.selectedRowIndex);
   }
 
-
-public habilitarHabitacion(documentId) {
-  let data = {
-    deshabilitar: false,
-    }
-  this.tipoHabitacionSV.actualizar(documentId, data).then(() => {
-      console.log('Documento modificado exitósamente!');
-      this.newHabitacionForm.setValue({
-      nombre: '',
-      imagen: '',
-      comodidades: '',
-      descripcion: '',
-      max: '',
-      deshabilitar: true,
-      });
-    }, (error) => {
+  public habilitarHabitacion(documentId) {
+    let data = {
+      id: documentId,
+      nombre: this.tipoHabitaciones[this.numerito].nombre,
+      imagen: this.tipoHabitaciones[this.numerito].imagen,
+      comodidades: this.tipoHabitaciones[this.numerito].comodidades,
+      descripcion: this.tipoHabitaciones[this.numerito].descripcion,
+      vista: this.tipoHabitaciones[this.numerito].vista,
+      max: this.tipoHabitaciones[this.numerito].max,
+      deshabilitar: false
+    };
+    this.tipoHabitacionSV.update(documentId, data).then(
+      () => {
+        console.log("Documento modificado exitósamente!");
+        this.newHabitacionForm.setValue({
+          nombre: "",
+          imagen: "",
+          comodidades: "",
+          descripcion: "",
+          max: "",
+          deshabilitar: true
+        });
+      },
+      error => {
         console.error(error);
-    });
-  };
+      }
+    );
+  }
 
+  addImagenes(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    // Add our chip
+    if ((value || "").trim()) {
+      this.imagenes.push(value);
+    }
+
+    // Reset the input value
+    if (input) {
+      input.value = "";
+    }
+  }
+
+  removeImagenes(imagen): void {
+    const index = this.imagenes.indexOf(imagen);
+
+    if (index >= 0) {
+      this.imagenes.splice(index, 1);
+    }
+  }
+
+  add(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    // Add our chip
+    if ((value || "").trim()) {
+      this.comodidades.push(value);
+    }
+
+    // Reset the input value
+    if (input) {
+      input.value = "";
+    }
+  }
+
+  remove(comodidad): void {
+    const index = this.comodidades.indexOf(comodidad);
+
+    if (index >= 0) {
+      this.comodidades.splice(index, 1);
+    }
+  }
 }

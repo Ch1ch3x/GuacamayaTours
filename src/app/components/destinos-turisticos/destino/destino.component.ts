@@ -13,6 +13,8 @@ export class DestinoComponent implements OnInit {
   ciudad: any;
   estado: any;
   private destinoId: any;
+  private destinoActividades: any[] = [];
+  private destinoServicios: any[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -28,6 +30,8 @@ export class DestinoComponent implements OnInit {
       .subscribe(destino => {
         this.fireStoreService.getAll("categorias").subscribe(categorias => {
           this.destino = { ...destino.payload.data(), id: destino.payload.id };
+          this.destinoActividades = this.destino.actividades;
+          this.destinoServicios = this.destino.servicios;
           this.fireStoreService
             .getDoc("ciudades", this.destino.idCiudad)
             .subscribe((ciudad: any) => {
@@ -41,9 +45,32 @@ export class DestinoComponent implements OnInit {
                     .filter(categoria =>
                       this.destino.categorias.some(c => c == categoria.id)
                     );
-                  console.log(this.categorias);
                 });
             });
+
+          this.fireStoreService.getAll("actividades").subscribe(actividades => {
+            this.destinoActividades = actividades.docs
+              .filter(actividad =>
+                this.destinoActividades.some(da => da === actividad.id)
+              )
+              .map(destinoActividad => ({
+                ...destinoActividad.data(),
+                id: destinoActividad.id
+              }));
+            console.log(this.destinoActividades);
+          });
+
+          this.fireStoreService.getAll("servicios").subscribe(servicios => {
+            this.destinoServicios = servicios.docs
+              .filter(servicio =>
+                this.destinoServicios.some(da => da === servicio.id)
+              )
+              .map(destinoServicio => ({
+                ...destinoServicio.data(),
+                id: destinoServicio.id
+              }));
+            console.log(this.destinoServicios);
+          });
         });
       });
   }
