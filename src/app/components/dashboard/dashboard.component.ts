@@ -7,6 +7,7 @@ import { Label, SingleDataSet } from 'ng2-charts';
 import { HotelesService } from 'src/app/services/firebase/hoteles.service';
 import { TipoHabitacionService } from 'src/app/services/firebase/tipo-habitacion.service';
 import { DestinosService } from 'src/app/services/firebase/destinos.service';
+import { FirestoreService } from 'src/app/services/firebase/firebase.service';
 
 @Component({
   selector: "app-dashboard",
@@ -18,8 +19,9 @@ export class DashboardComponent implements OnInit {
   public tipoHabitaciones = [];
   public hoteles = [];
   public destinos = [];
+  public reservas = [];
 
-  constructor(private adminService: AdminService, private router: Router, private titleService: Title, private HotelSV: HotelesService, private TipoHabitacionSV: TipoHabitacionService, private DestinoSV: DestinosService ) {}
+  constructor(private adminService: AdminService, private router: Router, private titleService: Title, private HotelSV: HotelesService, private TipoHabitacionSV: TipoHabitacionService, private DestinoSV: DestinosService, private ReservaSV: FirestoreService ) {}
   ngOnInit() {
     this.getData();
   }
@@ -48,11 +50,18 @@ export class DashboardComponent implements OnInit {
       });
       console.log(this.destinos)
     });
-    this.HotelSV.getAll().subscribe(hoteles => {
-        hoteles.docs.map(hotel=> {
-        this.hoteles.push({ ...hotel.data(), id: hotel.id });
-      });
-    });
+    this.ReservaSV.getAll("reservas").subscribe((reservasSnapshot => {
+      this.reservas = [];
+      reservasSnapshot.docs.forEach((reservaData: any) => {
+        this.reservas.push({
+          id: reservaData.id,
+          itinerario: reservaData
+            .data()
+            .itinerario.map(itinerario => itinerario.nombre)
+        })
+      })
+      console.log(this.reservas)
+    }))
   }
 
   public setTitle(title){
@@ -65,10 +74,21 @@ export class DashboardComponent implements OnInit {
     console.log(this.esconder)
   }
 
+  public numerito: number;
   public prueba = [];
   public valores() {
-    for (let index = 0; index < this.destinos.length; index++) {
-      this.prueba[index] = this.destinos[index].nombre;
+    for (let index = 0; index < this.reservas.length; index++) {
+      if (this.numerito == 1) {
+        this.prueba[index] = this.reservas[index].itinerario;
+        this.numerito = 0
+      }
+      else if (this.numerito == 0) {
+        for (let j = 0; j < this.reservas.length; j++) {
+          if (this.reservas[index]==this.reservas[j+1]) {
+            this.numerito = 1
+          };
+        }
+      }
   } 
 }
 
@@ -78,14 +98,14 @@ export class DashboardComponent implements OnInit {
     // We use these empty structures as placeholders for dynamic theming.
     scales: { xAxes: [{}], yAxes: [{}] },
   };
-  public barChartLabels: Label[] = this.prueba;
+  public barChartLabels: Label[] = [];
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
 
   public barChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81, 56, 55], label: 'Series A' },
-    { data: [28, 48, 40, 19, 86, 27], label: 'Series B' },
-    { data: [7, 4, 10, 59, 47, 15], label: 'Series C' }
+    { data: [65], label: 'Series A' },
+    { data: [28], label: 'Series B' },
+    { data: [100], label: 'Series C' }
   ];
     // events
     public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
@@ -108,4 +128,7 @@ export class DashboardComponent implements OnInit {
 
   public polarAreaChartType: ChartType = 'polarArea';
 
+  public salirSesion() {
+    localStorage.removeItem("admin")
+  }
 }

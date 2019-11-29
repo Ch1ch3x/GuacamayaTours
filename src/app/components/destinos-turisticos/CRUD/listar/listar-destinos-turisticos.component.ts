@@ -7,6 +7,11 @@ import { EstadosService } from "src/app/services/firebase/estados.service.js";
 import { CategoriasService } from "src/app/services/firebase/categorias.service";
 import { Title } from "@angular/platform-browser";
 import { FirestoreService } from "src/app/services/firebase/firebase.service";
+import { Routes, CanActivate } from '@angular/router';
+import { 
+  AuthGuardService as AuthGuard 
+} from '../../../../services/auth-guard.service';
+import { HomeComponent } from 'src/app/components/home/home.component';
 
 @Component({
   selector: "app-listar-destinos-turisticos",
@@ -445,3 +450,13 @@ export class ListarDestinosTuristicosComponent implements OnInit {
     }
   }
 }
+
+export const ROUTES: Routes = [
+  { path: 'home', component: HomeComponent },
+  { 
+    path: 'admin/destinos',
+    component: ListarDestinosTuristicosComponent,
+    canActivate: [AuthGuard] 
+  },
+  { path: 'home', redirectTo: 'HomeComponent' }
+];

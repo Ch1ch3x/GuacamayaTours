@@ -14,6 +14,8 @@ import { AdminService } from "src/app/services/admin.service";
 import * as crypto from "crypto-js";
 import { Router } from "@angular/router";
 import { FormControl, Validators } from "@angular/forms";
+import { AuthGuardService } from 'src/app/services/auth-guard.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-footer',
@@ -28,7 +30,8 @@ export class FooterComponent implements OnInit {
   constructor(
     private modalService: BsModalService,
     private adminService: AdminService,
-    private router: Router
+    private router: Router,
+    private auth: AuthService
   ) {}
   ngOnInit() {
   }
@@ -39,7 +42,7 @@ export class FooterComponent implements OnInit {
   signIn() {
     if (
       this.adminService.login(
-        crypto.SHA256(this.password.value, "guacamaya").toString()
+        crypto.SHA256(this.password.value, "guacamaya").toString(),
       )
     ) {
       this.modalRef.hide();
