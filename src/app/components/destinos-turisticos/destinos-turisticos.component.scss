@@ -1,7 +1,8 @@
 .search-img{
   margin-left:1%;
   margin-right: 1%;
-  border-radius: 10px;
+  border-radius: 5px;
+  box-shadow: 0 16px 48px rgba(0,0,0,.3);
   position:relative;
 }
 
@@ -14,8 +15,10 @@
   font-family: Oswald;
   font-style: normal;
   font-weight: normal;
-  padding-top: 5px;;
-  color:#002D51;
+  padding-top: 5px;
+  letter-spacing: 3px;
+  color:#FFFFFF;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .fila{
@@ -79,7 +82,7 @@
     position:relative;
     left: 50%;
     padding-top:50%;
-    font-size: 200%;
+    font-size: 250%;
     transform: translate(-50%, -50%);
     font-family: Oswald;
     letter-spacing: 4pt;
@@ -100,6 +103,12 @@
   color:#FFF;
   text-align: center;
   padding-bottom: 4%;
+  text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+ }
+
+ .col-6{
+   margin-left: auto;
+   margin-right: auto;
  }
 
  .resultado{

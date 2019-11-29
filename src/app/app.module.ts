@@ -53,9 +53,11 @@ import { environment } from "../environments/environment";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { FirestoreService } from "./services/firebase/firebase.service";
 import { AngularFirestore } from "@angular/fire/firestore";
-import { HotelComponent } from "./components/hoteles/hotel/hotel.component";
-import { DestinoComponent } from "./components/destinos-turisticos/destino/destino.component";
-import { DialogComponent } from "./components/planear-viaje/dialog/dialog.component";
+import { HotelComponent } from './components/hoteles/hotel/hotel.component';
+import { DestinoComponent } from './components/destinos-turisticos/destino/destino.component';
+import { Observable } from 'rxjs';
+import { DialogComponent } from './components/planear-viaje/dialog/dialog.component';
+import { Hotel1Component } from './components/hoteles/hotel1/hotel1.component';
 import { ChartsModule } from "ng2-charts";
 import { DinamicoComponent } from "./components/graficos/dinamico/dinamico.component";
 import { ActividadesComponent } from "./components/actividades/actividades.component";
@@ -107,6 +109,7 @@ import { ReservasComponent } from './components/itinerario/CRUD/reservas/reserva
     HotelComponent,
     DestinoComponent,
     DialogComponent,
+    Hotel1Component,
     DinamicoComponent,
     ActividadesComponent,
     ServiciosComponent,

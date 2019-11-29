@@ -60,12 +60,11 @@
   <div class="fila container-fluid" *ngIf="filteredDestinos.length > 0">
     <h2>RESULTADOS</h2>
 
-    <div class="row">
-      <div class="col-6" *ngFor="let destino of filteredDestinos">
-        <a routerLink="/destinos/{{ destino.id }}"
-          ><img class="search-img" [src]="destino.imagen"
-        /></a>
-        <h6 class="title-result">{{ destino.nombre }}</h6>
+  <div class="row">
+    <div class="col-6" *ngFor="let destino of filteredDestinos" >
+      <div *ngIf="destino.deshabilitar == false">
+      <a routerLink="/destinos/{{destino.id}}"><img class="search-img" [src]="destino.imagen" /></a>
+      <h5 class="title-result">{{ destino.nombre }}</h5>
       </div>
     </div>
   </div>

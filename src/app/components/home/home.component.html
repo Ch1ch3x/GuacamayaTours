@@ -1,12 +1,9 @@
 <app-navbar> </app-navbar>
 <div class="body">
-  <div class="containe">
-    <p class="centered1">GUACAMAYA <br /></p>
-    <p class="centered2">TOURS</p>
-    
-    <img src="../../../assets/img/home.png" alt="Planea tu viaje" />
-    <button class="btn">PLANEA TU VIAJE AHORA</button>
+  <div class="video">
+    <h1 class="centered1">GUACAMAYA TOURS</h1>
   </div>
+
 
   <div class="slider">
     <ngb-carousel *ngIf="images">
@@ -32,47 +29,31 @@
   </div>
 
 
-  <h4 class="vacaciones">PLANEA TUS PRÓXIMAS VACACIONES</h4>
+  <h3 class="vacaciones">PLANEA TUS PRÓXIMAS VACACIONES</h3>
+  <h5 class="vacaciones1">Vive aventuras y experiencias únicas en toda Venezuela, <br>
+   descubre cada rincón con muchísimas actividades que esperan por ti</h5>
+
   <div class="container-fluid row mat_card">
-    <div class= "col-sm-6 col-md-6 col-lg-3 margin" *ngFor="let actividad of destinos[0].actividades">
+    <div class= "col-sm-6 col-md-6 col-lg-6 col-xl-3 margin" *ngFor="let actividad of actividades">
         <mat-card >
            
-            <img mat-card-image class="mat-card-image "src="{{actividad.imagen}}" >
+            <a routerLink="/destinos"><img mat-card-image class="mat-card-image "src="{{actividad.imagen}}" ></a>
     
-            <mat-card-actions>
-              
-             <button mat-button>{{actividad.nombre}}</button>
-            </mat-card-actions>
+
           </mat-card>
     </div>
-    <div class= "col-sm-6 col-md-6 col-lg-3 margin" *ngFor="let actividad of destinos[1].actividades">
-        <mat-card >
-            
-            <img mat-card-image class="mat-card-image "src="{{actividad.imagen}}" >
     
-            <mat-card-actions>
-              
-             <button mat-button>{{actividad.nombre}}</button>
-            </mat-card-actions>
-          </mat-card>
-    </div>
   </div>
  
 
-  <div class="container-fluid max text-center">
-    <img src="../../../assets/img/algo2.svg" alt="Opciones" class="full" />
-    <h2 class="title1 col-12">HOTELES</h2>
-    <div class="hoteles row container-fluid">
-        
-      <div class="col-4" *ngFor="let hotel of hoteles" >
-          
-            <div *ngIf="hotel.deshabilitar === false">
-              <a routerLink="/hoteles/{{ hotel.id }}"><img [src]="hotel.imagen" class="hotel"/></a>
-              <h5>{{ hotel.nombre }}</h5>
-            </div>
-          
-      </div>
+
+  <div class="sky">
+    <div class="Fondo">
+      <h1 class="estilo">Organiza tu plan perfecto</h1>
+      <h5>Planea tu viaje en Venezuela,<br>te traemos las mejores experienicas y los mejores hoteles</h5><br>
+      <button type="button" class="btn btn-outline-light btn-lg" routerLink="/planea">Planea tu viaje</button>
     </div>
+    
   </div>
 
 

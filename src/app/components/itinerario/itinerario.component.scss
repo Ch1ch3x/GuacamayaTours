@@ -1,0 +1,100 @@
+img{
+
+    width: 100%;
+    margin-top:2%;
+}
+
+.titulo{
+    font-family: 'Oswald';
+    color:#002d51;
+    margin-left: 5%;
+    font-size: 340%;
+}
+
+.contenido{
+    width: 60%;
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-bottom: 5%;
+    font-family: 'Oswald';
+    color:#002d51;
+    font-size: 150%;
+    text-align-last: center;
+    align-content: center;
+}
+
+form{
+    text-align-last: center;
+    align-content: center;
+    width: auto;
+}
+
+.header{
+    background-color: #002d51;
+    font-family: Oswald;
+    letter-spacing: 4pt;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-style: normal;
+    font-weight: normal;
+    font-size: 180%;
+}
+
+.btn{
+    background-color: #DA1A29;
+    border: none;
+    margin-left: 2px;
+}
+
+.reservas{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.body{
+    margin-top:0;
+    padding: 0;
+}
+
+.reservaciones{
+    width: 80%;
+    height: auto;   
+    border-radius: 3px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 3%;
+    background: rgb(240, 239, 239);
+    margin-bottom: 5%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+@media screen and(max-width:810px){
+    .contenido{
+        width: 92%;
+    }
+
+    .titulo{
+        font-size: 290%;
+    }
+
+    .input{
+        
+        margin-right: 3px;
+    }
+}
+
+@media screen and(max-width:480px){
+    .titulo{
+        font-size: 240%;
+    }
+
+    .input{
+        width: 19%;
+        margin-right: 11px;
+    }
+}
+
