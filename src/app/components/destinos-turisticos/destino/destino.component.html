@@ -10,8 +10,8 @@
 
   <div class="informacion">
     <div class="centro">
-      <div *ngFor="let actividad of destino.actividades">
-        <div class="card" style="width: 20rem;">
+      <div *ngFor="let actividad of destinoActividades">
+        <div class="card" style="width: 20rem;" *ngIf="actividad.deshabilitar == false">
           <img src="{{ actividad.imagen }}" class="card-img-top" alt="..." />
           <div class="card-body">
             <p class="card-text text-center">{{ actividad.nombre }}</p>
