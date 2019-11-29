@@ -100,14 +100,19 @@
       formControlName="nombre"
     />
 
-    <label for="costo">Fotos de la habitación</label>
-    <input
-      type="text"
-      id="fotos"
-      class="form-control mb-4"
-      placeholder="URL"
-      formControlName="imagen"
-    />
+    <label for="Imagenes">Imagenes de la Habitacion</label>    
+    <mat-chip-list #chipList aria-label="Imagenes">
+      <mat-chip *ngFor="let imagen of imagenes" (removed)="removeImagenes(imagen)">
+        {{ imagen }}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+      <input
+        placeholder="Imagenes"
+        [matChipInputFor]="chipList"
+        (matChipInputTokenEnd)="addImagenes($event)"
+      />
+    </mat-chip-list>
+<br> 
 
     <label for="costo">Cantidad Maxima de Personas</label>
     <input
@@ -127,14 +132,19 @@
       formControlName="descripcion"
     />
 
-    <label for="costo">Comodidades</label>
-    <input
-      type="text"
-      id="fotos"
-      class="form-control mb-4"
-      placeholder="Comodidades"
-      formControlName="comodidades"
-    />
+    <label for="Comodidades">Comodidades de la Habitacion</label>    
+    <mat-chip-list #chipList aria-label="Comodidades">
+      <mat-chip *ngFor="let comodidad of comodidades" (removed)="remove(comodidad)">
+        {{ comodidad }}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+      <input
+        placeholder="Comodidades"
+        [matChipInputFor]="chipList"
+        (matChipInputTokenEnd)="add($event)"
+      />
+    </mat-chip-list>
+<br> 
 
     <label for="costo">Vista</label>
     <input

@@ -1,11 +1,13 @@
 import { Component, ViewChild, OnInit } from "@angular/core";
-import { MatTable } from "@angular/material";
+import { MatTable, MatChipInputEvent } from "@angular/material";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { HotelesService } from "../../../../services/firebase/hoteles.service";
 import { CiudadesService } from "src/app/services/firebase/ciudades.service.js";
 import { EstadosService } from "src/app/services/firebase/estados.service.js";
 import { TipoHabitacionService } from "src/app/services/firebase/tipo-habitacion.service";
 import { Title } from "@angular/platform-browser";
+import { FirestoreService } from "src/app/services/firebase/firebase.service";
+
 
 @Component({
   selector: "app-listar-hoteles",
@@ -25,10 +27,13 @@ export class ListarHotelesComponent implements OnInit {
   public estados = [];
   public hotel: any;
   public hoteles = [];
+  public servicios = [];
+  public imagenes = [];
   public filteredCiudades = [];
   public tipoHabitaciones = [];
   public documentId = null;
   public currentStatus = 1;
+
   public newHotelForm = new FormGroup({
     nombre: new FormControl("", Validators.required),
     estrellas: new FormControl(0, Validators.required),
@@ -42,6 +47,7 @@ export class ListarHotelesComponent implements OnInit {
     activo: new FormControl(true, Validators.required),
     tipoHabitaciones: new FormControl("", Validators.required),
     imagen: new FormControl(""),
+    imagenes: new FormControl(""),
     deshabilitar: new FormControl(null)
   });
 
@@ -58,14 +64,17 @@ export class ListarHotelesComponent implements OnInit {
     activo: new FormControl(true, Validators.required),
     tipoHabitaciones: new FormControl("", Validators.required),
     imagen: new FormControl(""),
+    imagenes: new FormControl(""),
     deshabilitar: new FormControl(null)
   });
+
   constructor(
     private HotelSV: HotelesService,
     private CiudadSV: CiudadesService,
     private EstadosSV: EstadosService,
     private tipoHabitacionService: TipoHabitacionService,
-    private titleService: Title
+    private titleService: Title,
+    private firebaseService: FirestoreService
   ) {
     this.newHotelForm.setValue({
       nombre: "",
@@ -80,7 +89,8 @@ export class ListarHotelesComponent implements OnInit {
       activo: null,
       tipoHabitaciones: "",
       imagen: "",
-      deshabilitar: true
+      imagenes: "",
+      deshabilitar: false
     });
     this.editHotelForm.setValue({
       nombre: "",
@@ -95,7 +105,8 @@ export class ListarHotelesComponent implements OnInit {
       activo: null,
       tipoHabitaciones: "",
       imagen: "",
-      deshabilitar: true
+      imagenes: "",
+      deshabilitar: false
     });
     this.titleService.setTitle("Admin: Hoteles");
   }
@@ -131,11 +142,10 @@ export class ListarHotelesComponent implements OnInit {
               .data()
               .tipoHabitaciones.map(
                 tipoH =>
-                  this.tipoHabitaciones.filter(
-                    tH => tH.id === tipoH.tipoHabitacion
-                  )[0].id
+                  tipoH.tipoHabitacion
               ),
             imagen: ordenData.data().imagen,
+            imagenes: ordenData.data().imagenes,
             deshabilitar: ordenData.data().deshabilitar
           });
         });
@@ -192,6 +202,7 @@ export class ListarHotelesComponent implements OnInit {
           }
         ],
         imagen: form.imagen,
+        imagenes: form.imagenes,
         deshabilitar: false
       };
       this.HotelSV.create(data).then(
@@ -210,6 +221,7 @@ export class ListarHotelesComponent implements OnInit {
             costo: 0,
             activo: null,
             imagen: "",
+            imagenes: "",
             deshabilitar: false
           });
           this.getData();
@@ -247,6 +259,7 @@ export class ListarHotelesComponent implements OnInit {
         }
       ],
       imagen: form.imagen,
+      imagenes: form.imagenes,
       deshabilitar: false
     };
     this.HotelSV.update(documentId, data).then(
@@ -265,6 +278,7 @@ export class ListarHotelesComponent implements OnInit {
           costo: 0,
           activo: null,
           imagen: "",
+          imagenes: "",
           deshabilitar: false
         });
         this.getData();
@@ -302,9 +316,9 @@ export class ListarHotelesComponent implements OnInit {
       costo: this.hotel.costoFullday,
       activo: this.hotel.activoFullday,
       imagen: this.hotel.imagen,
+      imagenes: this.hotel.imagenes,
       tipoHabitaciones: this.hotel.tipoHabitaciones[0],
-
-      deshabilitar: true
+      deshabilitar: false
     });
   }
 
@@ -378,6 +392,7 @@ export class ListarHotelesComponent implements OnInit {
         activo: this.hoteles[this.numerito].activoFullday
       },
       imagen: this.hoteles[this.numerito].imagen,
+      imagenes: this.hoteles[this.numerito].imagenes,
       deshabilitar: false
     };
     this.HotelSV.update(documentId, data).then(
@@ -397,8 +412,8 @@ export class ListarHotelesComponent implements OnInit {
             activo: null
           },
           imagen: "",
-
-          deshabilitar: true
+          imagenes: "",
+          deshabilitar: false
         });
       },
       error => {
@@ -449,5 +464,50 @@ export class ListarHotelesComponent implements OnInit {
         console.error(error);
       }
     );
+  }
+  add(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    // Add our chip
+    if ((value || "").trim()) {
+      this.servicios.push(value);
+    }
+
+    // Reset the input value
+    if (input) {
+      input.value = "";
+    }
+  }
+
+  remove(servicio): void {
+    const index = this.servicios.indexOf(servicio);
+
+    if (index >= 0) {
+      this.servicios.splice(index, 1);
+    }
+  }
+
+  addImagenes(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    // Add our chip
+    if ((value || "").trim()) {
+      this.imagenes.push(value);
+    }
+
+    // Reset the input value
+    if (input) {
+      input.value = "";
+    }
+  }
+
+  removeImagenes(imagen): void {
+    const index = this.imagenes.indexOf(imagen);
+
+    if (index >= 0) {
+      this.imagenes.splice(index, 1);
+    }
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { MatTable, MatChipInputEvent } from "@angular/material";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { TipoHabitacionService } from "src/app/services/firebase/tipo-habitacion.service";
 import { Title } from '@angular/platform-browser';
@@ -15,6 +16,8 @@ export class ListarHabitacionesComponent implements OnInit {
 
   selectedRowIndex: any;
 
+  public imagenes = [];
+  public comodidades = [];
   public tipoHabitaciones = [];
   public documentId = null;
   public currentStatus = 1;
@@ -233,5 +236,51 @@ public habilitarHabitacion(documentId) {
         console.error(error);
     });
   };
+
+  addImagenes(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    // Add our chip
+    if ((value || "").trim()) {
+      this.imagenes.push(value);
+    }
+
+    // Reset the input value
+    if (input) {
+      input.value = "";
+    }
+  }
+
+  removeImagenes(imagen): void {
+    const index = this.imagenes.indexOf(imagen);
+
+    if (index >= 0) {
+      this.imagenes.splice(index, 1);
+    }
+  }
+
+  add(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    // Add our chip
+    if ((value || "").trim()) {
+      this.comodidades.push(value);
+    }
+
+    // Reset the input value
+    if (input) {
+      input.value = "";
+    }
+  }
+
+  remove(comodidad): void {
+    const index = this.comodidades.indexOf(comodidad);
+
+    if (index >= 0) {
+      this.comodidades.splice(index, 1);
+    }
+  }
 
 }

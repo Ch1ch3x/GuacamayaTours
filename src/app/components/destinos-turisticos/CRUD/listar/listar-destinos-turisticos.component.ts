@@ -90,7 +90,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
       idEstado: "",
       idCiudad: "",
       imagen: "",
-      deshabilitar: true
+      deshabilitar: false
     });
     this.titleService.setTitle("Admin: Destinos Turisticos");
   }
@@ -196,7 +196,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
       };
       this.DestinoSV.create(data).then(
         () => {
-          console.log("Documento creado exitósamente!");
+          console.log("Documento creado exitosamente!");
           this.newDestinoForm.setValue({
             nombre: "",
             descripcion: "",
