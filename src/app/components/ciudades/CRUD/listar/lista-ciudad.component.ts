@@ -202,12 +202,9 @@ export class ListaCiudadComponent {
 
   public deshabilitarCiudad(documentId) {
     let data = {
-      nombre: this.ciudades[this.numerito].nombre,
-      idEstado: this.ciudades[this.numerito].idEstado,
-      imagen: this.ciudades[this.numerito].imagen,
       deshabilitar: true
     };
-    this.CiudadSV.update(documentId, data).then(
+    this.CiudadSV.actualizar(documentId, data).then(
       () => {
         console.log("Documento modificado exitósamente!");
         this.newCiudadForm.setValue({
@@ -238,12 +235,9 @@ export class ListaCiudadComponent {
 
   public habilitarCiudad(documentId) {
     let data = {
-      nombre: this.ciudades[this.numerito].nombre,
-      idEstado: this.ciudades[this.numerito].idEstado,
-      imagen: this.ciudades[this.numerito].imagen,
       deshabilitar: false
     };
-    this.CiudadSV.update(documentId, data).then(
+    this.CiudadSV.actualizar(documentId, data).then(
       () => {
         console.log("Documento modificado exitósamente!");
         this.newCiudadForm.setValue({

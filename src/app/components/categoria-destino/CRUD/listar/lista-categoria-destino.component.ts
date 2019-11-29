@@ -150,10 +150,9 @@ export class ListaCategoriaDestinoComponent implements OnInit {
 
   public deshabilitarCategoria(documentId) {
     let data = {
-      nombre: this.categorias[this.numerito].nombre,
       deshabilitar: true
     };
-    this.CategoriaSV.update(documentId, data).then(
+    this.CategoriaSV.actualizar(documentId, data).then(
       () => {
         console.log("Documento modificado exitósamente!");
         this.newCategoriaForm.setValue({
@@ -182,10 +181,9 @@ export class ListaCategoriaDestinoComponent implements OnInit {
 
   public habilitarCategoria(documentId) {
     let data = {
-      nombre: this.categorias[this.numerito].nombre,
       deshabilitar: false
     };
-    this.CategoriaSV.update(documentId, data).then(
+    this.CategoriaSV.actualizar(documentId, data).then(
       () => {
         console.log("Documento modificado exitósamente!");
         this.newCategoriaForm.setValue({

@@ -150,10 +150,9 @@ export class ServiciosComponent implements OnInit {
 
   public deshabilitarServicio(documentId) {
     let data = {
-      nombre: this.servicios[this.numerito].nombre,
       deshabilitar: true
     };
-    this.ServicioSV.update(documentId, data).then(
+    this.ServicioSV.actualizar(documentId, data).then(
       () => {
         console.log("Documento modificado exitósamente!");
         this.newServicioForm.setValue({
@@ -182,10 +181,9 @@ export class ServiciosComponent implements OnInit {
 
   public habilitarServicio(documentId) {
     let data = {
-      nombre: this.servicios[this.numerito].nombre,
       deshabilitar: false
     };
-    this.ServicioSV.update(documentId, data).then(
+    this.ServicioSV.actualizar(documentId, data).then(
       () => {
         console.log("Documento modificado exitósamente!");
         this.newServicioForm.setValue({
