@@ -1,9 +1,11 @@
 <app-dashboard></app-dashboard>
 <div [hidden]="formVisibility" class="container-fluid col-12 text-center">
-  <div class= 'botones' role="group" aria-label="Basic example">
+  <div class="botones" role="group" aria-label="Basic example">
     <button
       type="button"
-      class= 'boton' mat-raised-button color="primary"
+      class="boton"
+      mat-raised-button
+      color="primary"
       name="button"
       (click)="openCrear()"
     >
@@ -11,7 +13,9 @@
     </button>
     <button
       type="button"
-      class= 'boton' mat-raised-button color="primary"
+      class="boton"
+      mat-raised-button
+      color="primary"
       name="button"
       (click)="openModificar()"
     >
@@ -19,7 +23,9 @@
     </button>
     <button
       type="button"
-      class= 'boton' mat-raised-button color="primary"
+      class="boton"
+      mat-raised-button
+      color="primary"
       name="button"
       (click)="habilitar()"
     >
@@ -27,7 +33,9 @@
     </button>
     <button
       type="button"
-      class= 'boton' mat-raised-button color="primary"
+      class="boton"
+      mat-raised-button
+      color="primary"
       name="button"
       (click)="deshabilitar()"
     >
@@ -35,7 +43,9 @@
     </button>
     <button
       type="button"
-      class= 'boton' mat-raised-button color="primary"
+      class="boton"
+      mat-raised-button
+      color="primary"
       name="button"
       (click)="soltar()"
     >
@@ -58,6 +68,7 @@
         <th scope="col">Costo FullDay</th>
         <th scope="col">Activo FullDay</th>
         <th scope="col">Imagen</th>
+        <th scope="col">Imagenes Grandes</th>
         <th scope="col">Vigencia</th>
       </tr>
     </thead>
@@ -82,6 +93,7 @@
         <td>{{ dato.costoFullday }}</td>
         <td>{{ dato.activoFullday }}</td>
         <td>{{ dato.imagen }}</td>
+        <td>{{ dato.imagenes }}</td>
         <td>{{ dato.deshabilitar }}</td>
       </tr>
     </tbody>
@@ -127,7 +139,7 @@
     <label for="Ciudad">Ciudad donde se ubica el Hotel</label>
     <select formControlName="idCiudad" class="form-control mb-4" id="Ciudad">
       <option>Elije la ciudad</option>
-      <option *ngFor="let ciudad of filteredCiudades">{{
+      <option *ngFor="let ciudad of filteredCiudades" [value]="ciudad.id">{{
         ciudad.nombre
       }}</option>
     </select>
@@ -146,14 +158,19 @@
       <option value="5">5 estrellas</option>
     </select>
 
-    <label for="Servicios">Servicios que ofrece el Hotel</label>
-    <input
-      formControlName="servicios"
-      type="text"
-      id="Servicios"
-      class="form-control mb-4"
-      placeholder="Servicios"
-    />
+    <label for="Servicios">Servicios del Hotel</label>
+    <mat-chip-list #chipList aria-label="Servicios">
+      <mat-chip *ngFor="let servicio of servicios" (removed)="remove(servicio)">
+        {{ servicio }}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+      <input
+        placeholder="Servicios del Hotel"
+        [matChipInputFor]="chipList"
+        (matChipInputTokenEnd)="add($event)"
+      />
+    </mat-chip-list>
+    <br />
     <label for="Latitud">Latitud del Hotel</label>
     <input
       formControlName="latitud"
@@ -197,7 +214,7 @@
       />
     </div>
 
-    <label for="costo">Fotos del hotel</label>
+    <label for="Imagen">Foto Miniatura del Hotel</label>
     <input
       formControlName="imagen"
       type="text"
@@ -206,6 +223,29 @@
       placeholder="URL"
     />
 
+    <label for="Imagenes">Imagenes Grandes del Hotel</label>
+    <mat-chip-list #chipList aria-label="Imagenes">
+      <mat-chip
+        *ngFor="let imagen of imagenes"
+        (removed)="removeImagenes(imagen)"
+      >
+        {{ imagen }}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+      <input
+        placeholder="Imagenes Grandes del Hotel"
+        [matChipInputFor]="chipList"
+        (matChipInputTokenEnd)="addImagenes($event)"
+      />
+    </mat-chip-list>
+    <br />
+    <mat-chip-list aria-label="Lista tipo habitaciones">
+      <mat-chip
+        *ngFor="let tipoHabitacion of tipoHabs"
+        (click)="removeTipoHabitacion(tipoHabitacion)"
+        >{{ tipoHabitacion.nombre }}</mat-chip
+      >
+    </mat-chip-list>
     <label for="tipo-habitacion">Tipo de Habitacion</label>
     <select
       class="form-control mb-4"
@@ -218,12 +258,64 @@
       }}</option>
     </select>
 
+    <label for="costoHab">Costo de la Habitacion</label>
+    <input
+      formControlName="costoHab"
+      type="text"
+      id="costoHab"
+      class="form-control mb-4"
+      placeholder="Costo Habitacion"
+    />
+
+    <mat-form-field class="calendario">
+      <label class="labelBoton">Llegada</label>
+      <input
+        matInput
+        [matDatepicker]="myDatepicker"
+        [(ngModel)]="llegada"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="myDatepicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #myDatepicker></mat-datepicker>
+    </mat-form-field>
+
+    <br />
+
+    <mat-form-field class="calendario">
+      <label class="labelBoton">Salida</label>
+      <input
+        matInput
+        [matDatepicker]="myDatepicker2"
+        [(ngModel)]="salida"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="myDatepicker2"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #myDatepicker2></mat-datepicker>
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="addTipoHab(1)"
+      type="button"
+    >
+      Agregar
+    </button>
+
     <button class="btn btn-info btn-block" (click)="crearHotel()" type="submit">
       Crear Hotel
     </button>
     <button class="btn btn-info btn-block" (click)="close()">Cancelar</button>
   </form>
 </div>
+
+<!----------MODIFICAR---------------------->
 <div [hidden]="!modificarformVisibility" id="form">
   <form
     class="border border-light p-5"
@@ -263,7 +355,7 @@
     <label for="Ciudad">Ciudad donde se ubica el Hotel</label>
     <select formControlName="idCiudad" class="form-control mb-4" id="Ciudad">
       <option>Elije la ciudad</option>
-      <option *ngFor="let ciudad of filteredCiudades">{{
+      <option *ngFor="let ciudad of filteredCiudades" [value]="ciudad.id">{{
         ciudad.nombre
       }}</option>
     </select>
@@ -282,14 +374,20 @@
       <option value="5">5 estrellas</option>
     </select>
 
-    <label for="Servicios">Servicios que ofrece el Hotel</label>
-    <input
-      formControlName="servicios"
-      type="text"
-      id="Servicios"
-      class="form-control mb-4"
-      placeholder="Servicios"
-    />
+    <label for="Servicios">Servicios del Hotel</label>
+    <mat-chip-list #chipList aria-label="Servicios">
+      <mat-chip *ngFor="let servicio of servicios" (removed)="remove(servicio)">
+        {{ servicio }}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+      <input
+        placeholder="Servicios del Hotel"
+        [matChipInputFor]="chipList"
+        (matChipInputTokenEnd)="add($event)"
+      />
+    </mat-chip-list>
+    <br />
+
     <label for="Latitud">Latitud del Hotel</label>
     <input
       formControlName="latitud"
@@ -333,7 +431,7 @@
       />
     </div>
 
-    <label for="costo">Fotos del hotel</label>
+    <label for="Imagen">Foto Miniatura del Hotel</label>
     <input
       formControlName="imagen"
       type="text"
@@ -342,6 +440,30 @@
       placeholder="URL"
     />
 
+    <label for="Imagenes">Imagenes Grandes del Hotel</label>
+    <mat-chip-list #chipList aria-label="Imagenes">
+      <mat-chip
+        *ngFor="let imagen of imagenes"
+        (removed)="removeImagenes(imagen)"
+      >
+        {{ imagen }}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+      <input
+        placeholder="Imagenes Grandes del Hotel"
+        [matChipInputFor]="chipList"
+        (matChipInputTokenEnd)="addImagenes($event)"
+      />
+    </mat-chip-list>
+    <br />
+
+    <mat-chip-list aria-label="Lista tipo habitaciones">
+      <mat-chip
+        *ngFor="let tipoHabitacion of tipoHabs"
+        (click)="removeTipoHabitacion(tipoHabitacion)"
+        >{{ tipoHabitacion.nombre }}</mat-chip
+      >
+    </mat-chip-list>
     <label for="tipo-habitacion">Tipo de Habitacion</label>
     <select
       class="form-control mb-4"
@@ -353,6 +475,56 @@
         th.nombre
       }}</option>
     </select>
+
+    <label for="costoHab">Costo de la Habitacion</label>
+    <input
+      formControlName="costoHab"
+      type="text"
+      id="costoHab"
+      class="form-control mb-4"
+      placeholder="Costo Habitacion"
+    />
+
+    <mat-form-field class="calendario">
+      <label class="labelBoton">Llegada</label>
+      <input
+        matInput
+        [matDatepicker]="myDatepicker3"
+        [(ngModel)]="llegada"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="myDatepicker3"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #myDatepicker3></mat-datepicker>
+    </mat-form-field>
+
+    <br />
+
+    <mat-form-field class="calendario">
+      <label class="labelBoton">Salida</label>
+      <input
+        matInput
+        [matDatepicker]="myDatepicker4"
+        [(ngModel)]="salida"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="myDatepicker4"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #myDatepicker4></mat-datepicker>
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="addTipoHab(2)"
+      type="button"
+    >
+      Agregar
+    </button>
 
     <button
       class="btn btn-info btn-block"

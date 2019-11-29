@@ -39,6 +39,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
 
   public ciudades = [];
   public servicios = [];
+  public actividades = [];
   public estados = [];
   public filteredCiudades = [];
   public categorias = [];
@@ -94,7 +95,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
       idEstado: "",
       idCiudad: "",
       imagen: "",
-      deshabilitar: true
+      deshabilitar: false
     });
     this.titleService.setTitle("Admin: Destinos Turisticos");
   }
@@ -113,9 +114,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
           descripcion: destinoData.data().descripcion,
           categorias: destinoData.data().categorias,
           servicios: destinoData.data().servicios,
-          actividades: destinoData
-            .data()
-            .actividades.map(actividad => actividad.nombre),
+          actividades: destinoData.data().actividades,
           latitud: destinoData.data().latitud,
           longitud: destinoData.data().longitud,
           idEstado: destinoData.data().idEstado,
@@ -166,6 +165,13 @@ export class ListarDestinosTuristicosComponent implements OnInit {
         id: serv.id
       }));
     });
+
+    this.firebaseService.getAll("actividades").subscribe(actividades => {
+      this.actividades = actividades.docs.map(act => ({
+        ...act.data(),
+        id: act.id
+      }));
+    });
   }
 
   onChangeEstado(event) {
@@ -176,13 +182,12 @@ export class ListarDestinosTuristicosComponent implements OnInit {
 
   public newDestino(form, documentId = this.documentId) {
     if (this.currentStatus == 1) {
-      debugger;
       let data = {
         nombre: form.nombre,
         descripcion: form.descripcion,
         categorias: form.categorias,
-        servicios: this.servicios,
-        actividades: [{ nombre: form.actividades, imagen: "" }],
+        servicios: form.servicios,
+        actividades: form.actividades,
         latitud: form.latitud,
         longitud: form.longitud,
         idEstado: form.idEstado,
@@ -193,7 +198,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
       };
       this.DestinoSV.create(data).then(
         () => {
-          console.log("Documento creado exitósamente!");
+          console.log("Documento creado exitosamente!");
           this.newDestinoForm.setValue({
             nombre: "",
             descripcion: "",
@@ -223,8 +228,8 @@ export class ListarDestinosTuristicosComponent implements OnInit {
         nombre: form.nombre,
         descripcion: form.descripcion,
         categorias: form.categorias,
-        servicios: this.servicios,
-        actividades: [{ nombre: form.actividades, imagen: "" }],
+        servicios: form.servicios,
+        actividades: form.actividades,
         latitud: form.latitud,
         longitud: form.longitud,
         idEstado: form.idEstado,
@@ -272,7 +277,6 @@ export class ListarDestinosTuristicosComponent implements OnInit {
     this.crearformVisibility = false;
   }
   openModificar() {
-    debugger;
     this.formVisibility = true;
     this.modificarformVisibility = true;
     this.currentStatus = 2;
@@ -290,7 +294,6 @@ export class ListarDestinosTuristicosComponent implements OnInit {
       imagen: this.destinoImagen,
       deshabilitar: true
     });
-    this.servicios = this.destinoServicio;
   }
   modificarDestino() {
     this.modificarformVisibility = false;
@@ -313,7 +316,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
     this.destinoCategorias = dato.categorias;
     this.destinoServicio = dato.servicios;
     this.destinoDescripcion = dato.descripcion;
-    this.destinoActividad = dato.actividades[0];
+    this.destinoActividad = dato.actividades;
     this.destinoDireccion = dato.direccion;
     this.destinoLatitud = dato.latitud;
   }
@@ -383,7 +386,7 @@ export class ListarDestinosTuristicosComponent implements OnInit {
     };
     this.DestinoSV.actualizar(documentId, data).then(
       () => {
-        console.log("Documento modificado exitósamente!");
+        console.log("Documento modificado exitosamente!");
         this.newDestinoForm.setValue({
           nombre: "",
           descripcion: "",

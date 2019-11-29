@@ -125,7 +125,6 @@ export class PlanearViajeComponent implements OnInit {
   }
 
   onChangeDestinos(destino) {
-    debugger;
     this.destinoFilter = destino;
     this.filtrar();
   }
