@@ -30,13 +30,31 @@
           [ngModelOptions]="{ standalone: true }"
         />
       </div>
-      <button type="button" class="btn btn-primary mb-2" (click)="buscar()">
+      <button type="button" class="btn btn-primary mb-2 btn-lg" (click)="buscar()">
         Buscar
       </button>
     </form>
   </div>
-  <div class="reservaciones">
-    <div class="reserva"></div>
+  <div class="reservaciones" *ngIf="reservacion == true">
+    <div class="reserva" >
+      <h3>Datos de la reserva: </h3> <br>
+      <h4>La reservación esta a nombre de: {{ reserva.nombreCliente }}, C.I. {{ reserva.cedula }}.</h4>
+      <h4>Teléfono: {{ reserva.telefono }}</h4>
+      <h4>Correo electrónico: {{ reserva.correo }}</h4>
+      <h4>Dirección: {{ reserva.direccion }} </h4><br>
+
+      <h3>Hoteles reservados: </h3> <br>
+      <div *ngFor="let hotel of reserva.itinerario" class="hotel">
+        <h4>Hotel: </h4>
+        <h4>Costo: {{ hotel.costo }}</h4>
+        <h4>Integrantes: {{ hotel.integrantes }}</h4>
+        <h4>Fecha de llegada: {{ hotel.fechaLlegada }}</h4>
+        <h4>Fecha de salida: {{ hotel.fechaSalida }}</h4>
+
+        <br>
+      </div>
+
+    </div>
   </div>
 </div>
 
