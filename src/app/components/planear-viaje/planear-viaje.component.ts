@@ -77,6 +77,12 @@ export class PlanearViajeComponent implements OnInit {
     });
   }
 
+  delete(reserva) {
+    const index = this.reservas.indexOf(reserva);
+    this.reservas.splice(index, 1);
+    sessionStorage.setItem("reservas", JSON.stringify(this.reservas));
+  }
+
   openDialog(hotel) {
     this.dialogTipoHabitaciones = hotel.tipoHabitaciones;
     this.dialogTipoHabitaciones = this.tipoHabitaciones.filter(th =>

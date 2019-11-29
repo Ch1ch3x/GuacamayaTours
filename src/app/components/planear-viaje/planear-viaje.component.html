@@ -39,6 +39,12 @@
     <div class="reservas" *ngIf="reservas.length > 0">
       <p *ngFor="let reserva of reservas" class="reservaciones">
         {{ reserva.hotel.nombre }}, {{ reserva.tipoHabitacion.nombre }}
+        <img
+          src="../../../assets/x.png"
+          class="delete"
+          alt="delete"
+          (click)="delete(reserva)"
+        />
       </p>
       <button
         id="buscar"
