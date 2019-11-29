@@ -43,9 +43,13 @@
       <h4>Correo electrónico: {{ reserva.correo }}</h4>
       <h4>Dirección: {{ reserva.direccion }} </h4><br>
 
+      
+
       <h3>Hoteles reservados: </h3> <br>
-      <div *ngFor="let hotel of reserva.itinerario" class="hotel">
-        <h4>Hotel: </h4>
+      <div *ngFor="let hotel of reserva.itinerario; index as i" class="hotel">
+        
+            <h4>Hotel: {{ hoteles[i].nombre}} </h4>
+        
         <h4>Costo: {{ hotel.costo }}</h4>
         <h4>Integrantes: {{ hotel.integrantes }}</h4>
         <h4>Fecha de llegada: {{ hotel.fechaLlegada }}</h4>
