@@ -10,7 +10,7 @@ export class ItinerarioComponent implements OnInit {
   public localizador: string;
   public reserva: any;
   public reservacion: boolean = false;
-  public hoteles: any [] = [];
+  public hoteles: any[] = [];
   constructor(private fireService: FirestoreService) {}
 
   ngOnInit() {}
@@ -20,21 +20,25 @@ export class ItinerarioComponent implements OnInit {
       this.reserva = reservas.docs.filter(
         r => r.data().localizador === this.localizador
       )[0];
-      if (this.reserva) this.reserva = this.reserva.data(), this.reservacion = true;
-      
-      else alert("No existe ninguna reserva asociada a este localizador");
+      if (this.reserva) {
+        (this.reserva = this.reserva.data()), (this.reservacion = true);
+      } else alert("No existe ninguna reserva asociada a este localizador");
 
       this.fireService.getAll("hoteles").subscribe(hoteles => {
         this.hoteles = hoteles.docs.map(hotel => ({
-          ...hotel.data(), id: hotel.id 
-        }))
-      
-        this.hoteles = this.hoteles.filter(hotel => this.reserva.itinerario.some(i => i.hotelId == hotel.id));
-        console.log(this.hoteles);
-      })
-    
-    });
-    
+          ...hotel.data(),
+          id: hotel.id
+        }));
 
+        this.hoteles = this.hoteles.filter(hotel =>
+          this.reserva.itinerario.some(i => i.hotelId == hotel.id)
+        );
+        if (this.reserva)
+          this.reserva.itinerario = this.reserva.itinerario.map(i => ({
+            ...i,
+            nombreHotel: this.hoteles.filter(h => h.id == i.hotelId)[0].nombre
+          }));
+      });
+    });
   }
 }
