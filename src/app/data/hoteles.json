@@ -1,0 +1,64 @@
+[
+  {
+    "id": 0,
+    "nombre": "kkkkkkkkk",
+    "estrellas": 3,
+    "latitud": "jjjjjjjjj",
+    "longitud": "oooooooooo",
+    "direccion": "000000000",
+    "estado": "jkbbjk",
+    "fotos": ["jbkk"],
+    "ciudad": "jbkbj;k",
+    "fullDay": {
+      "disponible": true,
+      "precioXPersona": "20$"
+    },
+    "servicios": [],
+    "tipoHabitaciones": [
+      {
+        "nombre": "",
+        "fotos": [],
+        "tipoVista": "",
+        "maximoPersonas": "",
+        "comodidades": [],
+        "costoXNoche": 0
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "nombre": "Hotel Villa Mar Suites",
+    "estrellas": 4,
+    "latitud": 11.6955996,
+    "longitud": -70.1995697,
+    "direccion": "Av. Coro No 75 con Av. Alta Vista. Urb. Santa Irene Urb. Santa Irene, Punto Fijo, Península de Paraguaná 4102 Venezuela",
+    "estado": "Falcon",
+    "fotos": [
+      "..assets/JSON/hotel/villa-mar/hotel.jpg",
+      "..assets/JSON/hotel/villa-mar/hotel1.jpg",
+      "..assets/JSON/hotel/villa-mar/hotel2.jpg"
+    ],
+    "ciudad": "Punto Fijo",
+    "fullDay": {
+      "disponible": false,
+      "precioXPersona": "0$"
+    },
+    "servicios": [
+      "Estacionamiento gratis",
+      "wifi gratis",
+      "Desayuno gratis",
+      "Piscina",
+      "Bar-Restaurant"
+    ],
+    "costoXNoche": "40$",
+    "tipoHabitaciones": [
+      {
+        "nombre": "Standard",
+        "fotos": ["..assets/JSON/hotel/villa-mar/hab.jpg"],
+        "tipoVista": "Vista hacia la piscina",
+        "maximoPersonas": "4",
+        "comodidades": ["Televisor", "Cocina"]
+      }
+    ]
+  }
+]

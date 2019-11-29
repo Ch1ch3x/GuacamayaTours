@@ -1,0 +1,154 @@
+<app-navbar></app-navbar>
+
+<div class="containe">
+  <img src="../../../assets/img/mochima.png" alt="Mochima" class="header" />
+  <h1 class="centered">HOTELES</h1>
+</div>
+
+<div class="contenedor container-fluid">
+  <div class="side">
+     
+    <p>FILTROS</p>
+    <div class="filtros">
+      <form>
+        <div clas="form-group">
+          <div class="seleccion">
+            <select
+              class="custom-select"
+              id="inlineFormCustomSelect"
+              [ngModel]="precioFilter"
+              [ngModelOptions]="{ standalone: true }"
+              (ngModelChange)="onChangePrice($event)"
+            >
+              <option disabled value="0">Precios</option>
+              <option value="1">Mayor a Menor precio</option>
+              <option value="2">Menor a Mayor precio</option>
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="right">
+    <form>
+      <div class="contenedorBotones">
+        <div class="btn-group">
+          <button type="button" class="btn btn-danger" color="warn">
+            DESTINOS
+          </button>
+          <button
+            type="button"
+            class="btn btn-danger dropdown-toggle dropdown-toggle-split"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            color="warn"
+          >
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+
+          <div class="dropdown-menu">
+            <span class="dropdown-item" *ngFor="let destino of destinos">
+              <span (click)="onChangeDestinos(destino.id)">{{
+                destino.nombre
+              }}</span>
+            </span>
+          </div>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-danger" color="warn">
+            CANTIDAD DE PERSONAS
+          </button>
+          <button
+            type="button"
+            class="btn btn-danger dropdown-toggle dropdown-toggle-split"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            color="warn"
+          >
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <div class="dropdown-menu">
+            <span class="dropdown-item" (click)="onChangePersonas(1)">
+              1
+            </span>
+            <span class="dropdown-item" (click)="onChangePersonas(2)">
+              2
+            </span>
+            <span class="dropdown-item" (click)="onChangePersonas(3)">
+              3
+            </span>
+            <span class="dropdown-item" (click)="onChangePersonas(4)">
+              4
+            </span>
+          </div>
+        </div>
+        <mat-form-field class="calendario">
+          <label class="labelBoton">Llegada</label>
+          <input
+            matInput
+            [matDatepicker]="myDatepicker"
+            [ngModel]="llegada"
+            [ngModelOptions]="{ standalone: true }"
+            (ngModelChange)="onChangeLlegada($event)"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="myDatepicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #myDatepicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="calendario">
+          <label class="labelBoton">Salida</label>
+          <input
+            matInput
+            [matDatepicker]="myDatepicker2"
+            [ngModel]="salida"
+            [ngModelOptions]="{ standalone: true }"
+            (ngModelChange)="onChangeSalida($event)"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="myDatepicker2"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #myDatepicker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </form>
+    <div *ngFor="let hotel of filteredHoteles">
+      <div *ngIf="hotel.deshabilitar == false">
+        <div class="contenido">
+          <div id="imagen" class="img">
+            <img src="{{ hotel.imagen }}" class="hotelImg" />
+          </div>
+          <div id="informacion" class="informacion">
+            <div class="info">
+              <h3>{{ hotel.nombre }}</h3>
+              <h5 class="text-left">
+                {{ hotel.direccion }}, {{ hotel.estado }}
+              </h5>
+
+              <br />
+              <h6>Servicios: {{ hotel.servicios }}</h6>
+            </div>
+            <div class="precio">
+              <h5>${{ hotel.fullday.costo }}</h5>
+
+              <button
+                type="button"
+                id="mas"
+                routerLink="/hoteles/{{ hotel.id }}"
+                class="btn btn-danger"
+                color="warn"
+              >
+                VER MAS
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

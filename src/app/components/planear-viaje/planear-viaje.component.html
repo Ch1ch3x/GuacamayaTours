@@ -1,0 +1,204 @@
+<app-navbar></app-navbar>
+<div class="containe">
+  <div class="">
+    <img class="back" src="../../../assets/img/saltoangel.jpg" />
+    <img class="mountains" src="./assets/img/mountains-svg.svg" />
+    <h1 class="centered">Planea tu viaje</h1>
+    <div class="select row">
+      <mat-form-field class="col">
+        <mat-label>Estado</mat-label>
+        <mat-select [ngModel]="estado" (ngModelChange)="onChangeEstado($event)">
+          <mat-option *ngFor="let estado of estados" [value]="estado.id">
+            {{ estado.nombre }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="col">
+        <mat-label>Ciudad</mat-label>
+        <mat-select [ngModel]="ciudad" (ngModelChange)="onChangeCiudad($event)">
+          <mat-option
+            *ngFor="let ciudad of filteredCiudades"
+            [value]="ciudad.id"
+          >
+            {{ ciudad.nombre }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-flat-button color="warn" (click)="filtrar()">
+        FILTRAR
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="contenedor container-fluid">
+  <div class="side">
+    <p *ngIf="reservas.length > 0">RESERVACIONES</p>
+    <div class="reservas" *ngIf="reservas.length > 0">
+      <p *ngFor="let reserva of reservas" class="reservaciones">
+        {{ reserva.hotel.nombre }}, {{ reserva.tipoHabitacion.nombre }}
+      </p>
+      <button
+        id="buscar"
+        class="btn btn-outline-secondary pagar"
+        (click)="pagar()"
+        color="warm"
+      >
+        <i class="fa fa-paypal" aria-hidden="true"></i> Pagar
+      </button>
+    </div>
+    <p>FILTROS</p>
+    <div class="filtros">
+      <form>
+        <div clas="form-group">
+          <div class="seleccion">
+            <select
+              class="custom-select"
+              id="inlineFormCustomSelect"
+              [ngModel]="precioFilter"
+              [ngModelOptions]="{ standalone: true }"
+              (ngModelChange)="onChangePrice($event)"
+            >
+              <option disabled value="0">Precios</option>
+              <option value="1">Mayor a Menor precio</option>
+              <option value="2">Menor a Mayor precio</option>
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="right">
+    <form>
+      <div class="contenedorBotones">
+        <div class="btn-group">
+          <button type="button" class="btn btn-danger" color="warn">
+            DESTINOS
+          </button>
+          <button
+            type="button"
+            class="btn btn-danger dropdown-toggle dropdown-toggle-split"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            color="warn"
+          >
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+
+          <div class="dropdown-menu">
+            <span class="dropdown-item" *ngFor="let destino of destinos">
+              <span (click)="onChangeDestinos(destino.id)">{{
+                destino.nombre
+              }}</span>
+            </span>
+          </div>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-danger" color="warn">
+            CANTIDAD DE PERSONAS
+          </button>
+          <button
+            type="button"
+            class="btn btn-danger dropdown-toggle dropdown-toggle-split"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            color="warn"
+          >
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <div class="dropdown-menu">
+            <span class="dropdown-item" (click)="onChangePersonas(1)">
+              1
+            </span>
+            <span class="dropdown-item" (click)="onChangePersonas(2)">
+              2
+            </span>
+            <span class="dropdown-item" (click)="onChangePersonas(3)">
+              3
+            </span>
+            <span class="dropdown-item" (click)="onChangePersonas(4)">
+              4
+            </span>
+          </div>
+        </div>
+        <mat-form-field class="calendario">
+          <label class="labelBoton">Llegada</label>
+          <input
+            matInput
+            [matDatepicker]="myDatepicker"
+            [ngModel]="llegada"
+            [ngModelOptions]="{ standalone: true }"
+            (ngModelChange)="onChangeLlegada($event)"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="myDatepicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #myDatepicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="calendario">
+          <label class="labelBoton">Salida</label>
+          <input
+            matInput
+            [matDatepicker]="myDatepicker2"
+            [ngModel]="salida"
+            [ngModelOptions]="{ standalone: true }"
+            (ngModelChange)="onChangeSalida($event)"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="myDatepicker2"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #myDatepicker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </form>
+    <div *ngFor="let hotel of filteredHoteles">
+      <div *ngIf="hotel.deshabilitar == false">
+        <div class="contenido">
+          <div class="img">
+            <img src="{{ hotel.imagen }}" class="hotelImg" />
+          </div>
+          <div class="informacion">
+            <div class="info">
+              <h3>{{ hotel.nombre }}</h3>
+              <h5 class="text-left">
+                {{ hotel.direccion }}, {{ hotel.estado }}
+              </h5>
+              <br />
+              <h6>{{ hotel.servicios }}</h6>
+            </div>
+            <div class="precio">
+              <h5>${{ hotel.fullday.costo }}</h5>
+              <button
+                (click)="openDialog(hotel)"
+                type="button"
+                id="mas"
+                class="btn btn-danger"
+                color="warn"
+              >
+                RESERVAR
+              </button>
+
+              <button
+                type="button"
+                id="mas"
+                routerLink="/hoteles/{{ hotel.id }}"
+                class="btn btn-danger"
+                color="warn"
+              >
+                VER MAS
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

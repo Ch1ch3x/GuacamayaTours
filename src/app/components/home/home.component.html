@@ -1,0 +1,62 @@
+<app-navbar> </app-navbar>
+<div class="body">
+  <div class="video">
+    <h1 class="centered1">GUACAMAYA TOURS</h1>
+  </div>
+
+
+  <div class="slider">
+    <ngb-carousel *ngIf="images">
+      <ng-template ngbSlide *ngFor="let destino of destinos">
+        <div class="picsum-img-wrapper">
+          <img [src]="destino.imagen" alt="" class="maximo" />
+        </div>
+        <div class="carousel-caption">
+          <a routerLink="/destinos/{{ destino.id}}"
+            ><h3 class="sliderNombre">{{ destino.nombre }}</h3></a
+          >
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+  
+  <div>
+    <h1 class="text-center nueva" >CONOCE VENEZUELA</h1>
+    <h5 class="text-center introduccion">  Aventuras únicas pueden ser encontradas en cada rincón de Venezuela,
+    cielos azules, montañas, ríos y playas te darán una experiencia inolvidable </h5>
+    <img src="../../../assets/roraima.png" alt="" class="imitacion" />
+    
+  </div>
+
+
+  <h3 class="vacaciones">PLANEA TUS PRÓXIMAS VACACIONES</h3>
+  <h5 class="vacaciones1">Vive aventuras y experiencias únicas en toda Venezuela, <br>
+   descubre cada rincón con muchísimas actividades que esperan por ti</h5>
+
+  <div class="container-fluid row mat_card">
+    <div class= "col-sm-6 col-md-6 col-lg-6 col-xl-3 margin" *ngFor="let actividad of actividades">
+        <mat-card >
+           
+            <a routerLink="/destinos"><img mat-card-image class="mat-card-image "src="{{actividad.imagen}}" ></a>
+    
+
+          </mat-card>
+    </div>
+    
+  </div>
+ 
+
+
+  <div class="sky">
+    <div class="Fondo">
+      <h1 class="estilo">Organiza tu plan perfecto</h1>
+      <h5>Planea tu viaje en Venezuela,<br>te traemos las mejores experienicas y los mejores hoteles</h5><br>
+      <button type="button" class="btn btn-outline-light btn-lg" routerLink="/planea">Planea tu viaje</button>
+    </div>
+    
+  </div>
+
+
+</div>
+
+<app-footer></app-footer>
