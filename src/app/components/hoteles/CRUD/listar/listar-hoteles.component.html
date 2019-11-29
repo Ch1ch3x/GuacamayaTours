@@ -1,9 +1,11 @@
 <app-dashboard></app-dashboard>
 <div [hidden]="formVisibility" class="container-fluid col-12 text-center">
-  <div class= 'botones' role="group" aria-label="Basic example">
+  <div class="botones" role="group" aria-label="Basic example">
     <button
       type="button"
-      class= 'boton' mat-raised-button color="primary"
+      class="boton"
+      mat-raised-button
+      color="primary"
       name="button"
       (click)="openCrear()"
     >
@@ -11,7 +13,9 @@
     </button>
     <button
       type="button"
-      class= 'boton' mat-raised-button color="primary"
+      class="boton"
+      mat-raised-button
+      color="primary"
       name="button"
       (click)="openModificar()"
     >
@@ -19,7 +23,9 @@
     </button>
     <button
       type="button"
-      class= 'boton' mat-raised-button color="primary"
+      class="boton"
+      mat-raised-button
+      color="primary"
       name="button"
       (click)="habilitar()"
     >
@@ -27,7 +33,9 @@
     </button>
     <button
       type="button"
-      class= 'boton' mat-raised-button color="primary"
+      class="boton"
+      mat-raised-button
+      color="primary"
       name="button"
       (click)="deshabilitar()"
     >
@@ -35,7 +43,9 @@
     </button>
     <button
       type="button"
-      class= 'boton' mat-raised-button color="primary"
+      class="boton"
+      mat-raised-button
+      color="primary"
       name="button"
       (click)="soltar()"
     >
@@ -129,7 +139,7 @@
     <label for="Ciudad">Ciudad donde se ubica el Hotel</label>
     <select formControlName="idCiudad" class="form-control mb-4" id="Ciudad">
       <option>Elije la ciudad</option>
-      <option *ngFor="let ciudad of filteredCiudades">{{
+      <option *ngFor="let ciudad of filteredCiudades" [value]="ciudad.id">{{
         ciudad.nombre
       }}</option>
     </select>
@@ -148,7 +158,7 @@
       <option value="5">5 estrellas</option>
     </select>
 
-    <label for="Servicios">Servicios del Hotel</label>    
+    <label for="Servicios">Servicios del Hotel</label>
     <mat-chip-list #chipList aria-label="Servicios">
       <mat-chip *ngFor="let servicio of servicios" (removed)="remove(servicio)">
         {{ servicio }}
@@ -160,7 +170,7 @@
         (matChipInputTokenEnd)="add($event)"
       />
     </mat-chip-list>
-<br> 
+    <br />
     <label for="Latitud">Latitud del Hotel</label>
     <input
       formControlName="latitud"
@@ -213,9 +223,12 @@
       placeholder="URL"
     />
 
-    <label for="Imagenes">Imagenes Grandes del Hotel</label>    
+    <label for="Imagenes">Imagenes Grandes del Hotel</label>
     <mat-chip-list #chipList aria-label="Imagenes">
-      <mat-chip *ngFor="let imagen of imagenes" (removed)="removeImagenes(imagen)">
+      <mat-chip
+        *ngFor="let imagen of imagenes"
+        (removed)="removeImagenes(imagen)"
+      >
         {{ imagen }}
         <mat-icon matChipRemove>cancel</mat-icon>
       </mat-chip>
@@ -225,8 +238,14 @@
         (matChipInputTokenEnd)="addImagenes($event)"
       />
     </mat-chip-list>
-<br> 
-
+    <br />
+    <mat-chip-list aria-label="Lista tipo habitaciones">
+      <mat-chip
+        *ngFor="let tipoHabitacion of tipoHabs"
+        (click)="removeTipoHabitacion(tipoHabitacion)"
+        >{{ tipoHabitacion.nombre }}</mat-chip
+      >
+    </mat-chip-list>
     <label for="tipo-habitacion">Tipo de Habitacion</label>
     <select
       class="form-control mb-4"
@@ -249,33 +268,29 @@
     />
 
     <mat-form-field class="calendario">
-      <label class="labelBoton" >Llegada</label>
+      <label class="labelBoton">Llegada</label>
       <input
         matInput
-        
         [matDatepicker]="myDatepicker"
-        [ngModel]="llegada"
+        [(ngModel)]="llegada"
         [ngModelOptions]="{ standalone: true }"
-        (ngModelChange)="onChangeLlegada($event)"
       />
       <mat-datepicker-toggle
         matSuffix
-        
         [for]="myDatepicker"
       ></mat-datepicker-toggle>
       <mat-datepicker #myDatepicker></mat-datepicker>
     </mat-form-field>
 
-    <br>
+    <br />
 
     <mat-form-field class="calendario">
       <label class="labelBoton">Salida</label>
       <input
         matInput
         [matDatepicker]="myDatepicker2"
-        [ngModel]="salida"
+        [(ngModel)]="salida"
         [ngModelOptions]="{ standalone: true }"
-        (ngModelChange)="onChangeSalida($event)"
       />
       <mat-datepicker-toggle
         matSuffix
@@ -284,7 +299,14 @@
       <mat-datepicker #myDatepicker2></mat-datepicker>
     </mat-form-field>
 
-    <button mat-raised-button color="accent" (click)="addTipoHab">Agregar</button>
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="addTipoHab(1)"
+      type="button"
+    >
+      Agregar
+    </button>
 
     <button class="btn btn-info btn-block" (click)="crearHotel()" type="submit">
       Crear Hotel
@@ -292,7 +314,6 @@
     <button class="btn btn-info btn-block" (click)="close()">Cancelar</button>
   </form>
 </div>
-
 
 <!----------MODIFICAR---------------------->
 <div [hidden]="!modificarformVisibility" id="form">
@@ -334,7 +355,7 @@
     <label for="Ciudad">Ciudad donde se ubica el Hotel</label>
     <select formControlName="idCiudad" class="form-control mb-4" id="Ciudad">
       <option>Elije la ciudad</option>
-      <option *ngFor="let ciudad of filteredCiudades">{{
+      <option *ngFor="let ciudad of filteredCiudades" [value]="ciudad.id">{{
         ciudad.nombre
       }}</option>
     </select>
@@ -353,7 +374,7 @@
       <option value="5">5 estrellas</option>
     </select>
 
-    <label for="Servicios">Servicios del Hotel</label>    
+    <label for="Servicios">Servicios del Hotel</label>
     <mat-chip-list #chipList aria-label="Servicios">
       <mat-chip *ngFor="let servicio of servicios" (removed)="remove(servicio)">
         {{ servicio }}
@@ -365,7 +386,7 @@
         (matChipInputTokenEnd)="add($event)"
       />
     </mat-chip-list>
-<br> 
+    <br />
 
     <label for="Latitud">Latitud del Hotel</label>
     <input
@@ -419,9 +440,12 @@
       placeholder="URL"
     />
 
-    <label for="Imagenes">Imagenes Grandes del Hotel</label>    
+    <label for="Imagenes">Imagenes Grandes del Hotel</label>
     <mat-chip-list #chipList aria-label="Imagenes">
-      <mat-chip *ngFor="let imagen of imagenes" (removed)="removeImagenes(imagen)">
+      <mat-chip
+        *ngFor="let imagen of imagenes"
+        (removed)="removeImagenes(imagen)"
+      >
         {{ imagen }}
         <mat-icon matChipRemove>cancel</mat-icon>
       </mat-chip>
@@ -431,8 +455,15 @@
         (matChipInputTokenEnd)="addImagenes($event)"
       />
     </mat-chip-list>
-<br> 
+    <br />
 
+    <mat-chip-list aria-label="Lista tipo habitaciones">
+      <mat-chip
+        *ngFor="let tipoHabitacion of tipoHabs"
+        (click)="removeTipoHabitacion(tipoHabitacion)"
+        >{{ tipoHabitacion.nombre }}</mat-chip
+      >
+    </mat-chip-list>
     <label for="tipo-habitacion">Tipo de Habitacion</label>
     <select
       class="form-control mb-4"
@@ -455,42 +486,45 @@
     />
 
     <mat-form-field class="calendario">
-      <label class="labelBoton" >Llegada</label>
+      <label class="labelBoton">Llegada</label>
       <input
         matInput
-        
-        [matDatepicker]="myDatepicker"
-        [ngModel]="llegada"
+        [matDatepicker]="myDatepicker3"
+        [(ngModel)]="llegada"
         [ngModelOptions]="{ standalone: true }"
-        (ngModelChange)="onChangeLlegada($event)"
       />
       <mat-datepicker-toggle
         matSuffix
-        
-        [for]="myDatepicker"
+        [for]="myDatepicker3"
       ></mat-datepicker-toggle>
-      <mat-datepicker #myDatepicker></mat-datepicker>
+      <mat-datepicker #myDatepicker3></mat-datepicker>
     </mat-form-field>
 
-    <br>
+    <br />
 
     <mat-form-field class="calendario">
       <label class="labelBoton">Salida</label>
       <input
         matInput
-        [matDatepicker]="myDatepicker2"
-        [ngModel]="salida"
+        [matDatepicker]="myDatepicker4"
+        [(ngModel)]="salida"
         [ngModelOptions]="{ standalone: true }"
-        (ngModelChange)="onChangeSalida($event)"
       />
       <mat-datepicker-toggle
         matSuffix
-        [for]="myDatepicker2"
+        [for]="myDatepicker4"
       ></mat-datepicker-toggle>
-      <mat-datepicker #myDatepicker2></mat-datepicker>
+      <mat-datepicker #myDatepicker4></mat-datepicker>
     </mat-form-field>
 
-    <button mat-raised-button color="accent" (click)="addTipoHab">Agregar</button>
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="addTipoHab(2)"
+      type="button"
+    >
+      Agregar
+    </button>
 
     <button
       class="btn btn-info btn-block"

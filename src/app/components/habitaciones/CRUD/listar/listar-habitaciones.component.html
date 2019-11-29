@@ -4,7 +4,9 @@
   <div role="group" aria-label="Basic example">
     <button
       type="button"
-      class= 'boton' mat-raised-button color="primary"
+      class="boton"
+      mat-raised-button
+      color="primary"
       name="button"
       (click)="openCrear()"
     >
@@ -12,15 +14,19 @@
     </button>
     <button
       type="button"
-      class= 'boton' mat-raised-button color="primary"
+      class="boton"
+      mat-raised-button
+      color="primary"
       name="button"
-      (click)="openCrear()"
+      (click)="openModificar()"
     >
       Modificar Habitacion
     </button>
     <button
       type="button"
-      class= 'boton' mat-raised-button color="primary"
+      class="boton"
+      mat-raised-button
+      color="primary"
       name="button"
       (click)="habilitar()"
     >
@@ -28,7 +34,9 @@
     </button>
     <button
       type="button"
-      class= 'boton' mat-raised-button color="primary"
+      class="boton"
+      mat-raised-button
+      color="primary"
       name="button"
       (click)="deshabilitar()"
     >
@@ -36,7 +44,9 @@
     </button>
     <button
       type="button"
-      class= 'boton' mat-raised-button color="primary"
+      class="boton"
+      mat-raised-button
+      color="primary"
       name="button"
       (click)="soltar()"
     >
@@ -100,9 +110,12 @@
       formControlName="nombre"
     />
 
-    <label for="Imagenes">Imagenes de la Habitacion</label>    
+    <label for="Imagenes">Imagenes de la Habitacion</label>
     <mat-chip-list #chipList aria-label="Imagenes">
-      <mat-chip *ngFor="let imagen of imagenes" (removed)="removeImagenes(imagen)">
+      <mat-chip
+        *ngFor="let imagen of imagenes"
+        (removed)="removeImagenes(imagen)"
+      >
         {{ imagen }}
         <mat-icon matChipRemove>cancel</mat-icon>
       </mat-chip>
@@ -112,7 +125,7 @@
         (matChipInputTokenEnd)="addImagenes($event)"
       />
     </mat-chip-list>
-<br> 
+    <br />
 
     <label for="costo">Cantidad Maxima de Personas</label>
     <input
@@ -132,9 +145,12 @@
       formControlName="descripcion"
     />
 
-    <label for="Comodidades">Comodidades de la Habitacion</label>    
+    <label for="Comodidades">Comodidades de la Habitacion</label>
     <mat-chip-list #chipList aria-label="Comodidades">
-      <mat-chip *ngFor="let comodidad of comodidades" (removed)="remove(comodidad)">
+      <mat-chip
+        *ngFor="let comodidad of comodidades"
+        (removed)="remove(comodidad)"
+      >
         {{ comodidad }}
         <mat-icon matChipRemove>cancel</mat-icon>
       </mat-chip>
@@ -144,7 +160,7 @@
         (matChipInputTokenEnd)="add($event)"
       />
     </mat-chip-list>
-<br> 
+    <br />
 
     <label for="costo">Vista</label>
     <input
@@ -170,6 +186,110 @@
       type="submit"
     >
       Crear Habitación
+    </button>
+    <button class="btn btn-info btn-block" (click)="close()">Cancelar</button>
+  </form>
+</div>
+
+<div [hidden]="!modificarformVisibility" id="form">
+  <form
+    class="border border-light p-5"
+    [formGroup]="newHabitacionForm"
+    (ngSubmit)="editHabitacion(newHabitacionForm.value)"
+  >
+    <div class="text-center">
+      <p class="h4 mb-4">Ingrese los Datos de la Habitación</p>
+
+      <p>
+        Coloque en la casilla correspondiente la información de la habitación.
+      </p>
+    </div>
+
+    <label for="Nombre">Nombre de la habitación</label>
+    <input
+      type="text"
+      id="Nombre"
+      class="form-control mb-4"
+      placeholder="Nombre de la habitación"
+      formControlName="nombre"
+    />
+
+    <label for="Imagenes">Imagenes de la Habitacion</label>
+    <mat-chip-list #chipList aria-label="Imagenes">
+      <mat-chip
+        *ngFor="let imagen of imagenes"
+        (removed)="removeImagenes(imagen)"
+      >
+        {{ imagen }}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+      <input
+        placeholder="Imagenes"
+        [matChipInputFor]="chipList"
+        (matChipInputTokenEnd)="addImagenes($event)"
+      />
+    </mat-chip-list>
+    <br />
+
+    <label for="costo">Cantidad Maxima de Personas</label>
+    <input
+      type="text"
+      id="fotos"
+      class="form-control mb-4"
+      placeholder="Max Personas"
+      formControlName="max"
+    />
+
+    <label for="costo">Descripcion</label>
+    <input
+      type="text"
+      id="fotos"
+      class="form-control mb-4"
+      placeholder="Descripcion"
+      formControlName="descripcion"
+    />
+
+    <label for="Comodidades">Comodidades de la Habitacion</label>
+    <mat-chip-list #chipList aria-label="Comodidades">
+      <mat-chip
+        *ngFor="let comodidad of comodidades"
+        (removed)="remove(comodidad)"
+      >
+        {{ comodidad }}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+      <input
+        placeholder="Comodidades"
+        [matChipInputFor]="chipList"
+        (matChipInputTokenEnd)="add($event)"
+      />
+    </mat-chip-list>
+    <br />
+
+    <label for="costo">Vista</label>
+    <input
+      type="text"
+      id="fotos"
+      class="form-control mb-4"
+      placeholder="Vista"
+      formControlName="vista"
+    />
+
+    <label for="costo">Descripcion</label>
+    <input
+      type="text"
+      id="fotos"
+      class="form-control mb-4"
+      placeholder="Descripcion"
+      formControlName="descripcion"
+    />
+
+    <button
+      class="btn btn-info btn-block"
+      (click)="editarHabitacion()"
+      type="submit"
+    >
+      Modificar Habitación
     </button>
     <button class="btn btn-info btn-block" (click)="close()">Cancelar</button>
   </form>

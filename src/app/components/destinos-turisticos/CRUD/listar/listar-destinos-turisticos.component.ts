@@ -118,7 +118,6 @@ export class ListarDestinosTuristicosComponent implements OnInit {
           imagen: destinoData.data().imagen,
           deshabilitar: destinoData.data().deshabilitar
         });
-
       });
     });
     this.EstadosSV.getAll().subscribe(estadosSnapshot => {
@@ -161,15 +160,14 @@ export class ListarDestinosTuristicosComponent implements OnInit {
         id: serv.id
       }));
     });
-  
 
-  this.firebaseService.getAll("actividades").subscribe(actividades => {
-    this.actividades = actividades.docs.map(act => ({
-      ...act.data(),
-      id: act.id
-    }));
-  });
-}
+    this.firebaseService.getAll("actividades").subscribe(actividades => {
+      this.actividades = actividades.docs.map(act => ({
+        ...act.data(),
+        id: act.id
+      }));
+    });
+  }
 
   onChangeEstado(event) {
     this.filteredCiudades = this.ciudades.filter(
@@ -179,7 +177,6 @@ export class ListarDestinosTuristicosComponent implements OnInit {
 
   public newDestino(form, documentId = this.documentId) {
     if (this.currentStatus == 1) {
-      debugger;
       let data = {
         nombre: form.nombre,
         descripcion: form.descripcion,
@@ -275,7 +272,6 @@ export class ListarDestinosTuristicosComponent implements OnInit {
     this.crearformVisibility = false;
   }
   openModificar() {
-    debugger;
     this.formVisibility = true;
     this.modificarformVisibility = true;
     this.currentStatus = 2;
