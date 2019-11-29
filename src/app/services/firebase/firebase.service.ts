@@ -32,4 +32,11 @@ export class FirestoreService {
       .doc(documentId)
       .set(data);
   }
+
+  public actualizar(collection, documentId: string, data: any) {
+    return this.fireStoreSV
+      .collection(collection)
+      .doc(documentId)
+      .update(data);
+  }
 }

@@ -29,4 +29,8 @@ export class HotelesService {
   public update(documentId: string, data: any) {
     return this.fireStroreSV.update(this.collectionPath, documentId, data);
   }
+
+  public actualizar(documentId: string, data: any) {
+    return this.fireStroreSV.actualizar(this.collectionPath, documentId, data);
+  }
 }

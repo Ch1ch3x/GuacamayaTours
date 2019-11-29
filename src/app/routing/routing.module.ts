@@ -22,6 +22,7 @@ import { ListarHabitacionesComponent } from "../components/habitaciones/CRUD/lis
 import { DestinoComponent } from "../components/destinos-turisticos/destino/destino.component";
 import { ActividadesComponent } from "../components/actividades/actividades.component";
 import { ServiciosComponent } from "../components/servicios/servicios.component";
+import { ReservasComponent } from "../components/itinerario/CRUD/reservas/reservas.component";
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
@@ -42,6 +43,7 @@ const routes: Routes = [
   { path: "admin/servicios", component: ServiciosComponent },
   { path: "admin/habitaciones", component: ListarHabitacionesComponent },
   { path: "itinerario", component: ItinerarioComponent },
+  { path: "admin/reservas", component: ReservasComponent },
   { path: "nosotros", component: NosotrosComponent },
   { path: "contactanos", component: ContactanosComponent },
   { path: "", redirectTo: "/home", pathMatch: "full" },

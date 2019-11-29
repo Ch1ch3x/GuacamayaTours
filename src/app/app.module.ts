@@ -62,6 +62,7 @@ import { ActividadesComponent } from "./components/actividades/actividades.compo
 import { ServiciosComponent } from "./components/servicios/servicios.component";
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
+import { ReservasComponent } from './components/itinerario/CRUD/reservas/reservas.component';
 
 @NgModule({
   declarations: [
@@ -108,7 +109,8 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
     DialogComponent,
     DinamicoComponent,
     ActividadesComponent,
-    ServiciosComponent
+    ServiciosComponent,
+    ReservasComponent
   ],
   imports: [
     BrowserModule,
