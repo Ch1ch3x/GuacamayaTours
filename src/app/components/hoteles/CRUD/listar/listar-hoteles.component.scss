@@ -19,16 +19,19 @@
     font-size: x-small;
     padding-top: 10%;
   }
-  .btn-group{
+  .boton{
     margin-bottom: 2%;
+    margin-right: 2%;
+  }
+  .botones{
+    padding-left: 20%;
   }
   .container-fluid{
-    width: 80%;
+    width: 100%;
     padding-top: 10%;
     padding-left: 30%;
-    padding-right: 5%;
+    padding-right: 0%;
     margin:0;
-    margin-right: 10%;
     text-align: center;
   }
   .agregar{

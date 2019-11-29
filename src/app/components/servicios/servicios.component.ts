@@ -35,7 +35,7 @@ export class ServiciosComponent implements OnInit {
 
   ngOnInit() {
     this.obtenerServicios();
-    this.titleService.setTitle("Admin: Categorias de Destinos");
+    this.titleService.setTitle("Admin: Servicios");
   }
 
   obtenerServicios() {
