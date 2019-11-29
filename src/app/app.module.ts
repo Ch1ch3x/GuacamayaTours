@@ -5,6 +5,7 @@ import { NavbarComponent } from "./components/navbar/navbar.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { NgImageSliderModule } from "ng-image-slider";
 import { CommonModule } from "@angular/common";
+import { NgxPayPalModule } from "ngx-paypal";
 import { HomeComponent } from "./components/home/home.component";
 import { AppRoutingModule } from "./routing/routing.module";
 import { HeaderComponent } from "./components/header/header.component";
@@ -54,12 +55,12 @@ import { FirestoreService } from "./services/firebase/firebase.service";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { HotelComponent } from "./components/hoteles/hotel/hotel.component";
 import { DestinoComponent } from "./components/destinos-turisticos/destino/destino.component";
-import { Observable } from "rxjs";
 import { DialogComponent } from "./components/planear-viaje/dialog/dialog.component";
 import { ChartsModule } from "ng2-charts";
 import { DinamicoComponent } from "./components/graficos/dinamico/dinamico.component";
 import { ActividadesComponent } from "./components/actividades/actividades.component";
 import { ServiciosComponent } from "./components/servicios/servicios.component";
+import { ReservasComponent } from './components/itinerario/CRUD/reservas/reservas.component';
 
 @NgModule({
   declarations: [
@@ -106,7 +107,8 @@ import { ServiciosComponent } from "./components/servicios/servicios.component";
     DialogComponent,
     DinamicoComponent,
     ActividadesComponent,
-    ServiciosComponent
+    ServiciosComponent,
+    ReservasComponent
   ],
   imports: [
     BrowserModule,
@@ -124,7 +126,8 @@ import { ServiciosComponent } from "./components/servicios/servicios.component";
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     NgbModule,
-    ChartsModule
+    ChartsModule,
+    NgxPayPalModule
   ],
   providers: [FirestoreService, AngularFirestore, Title],
   entryComponents: [DialogComponent],

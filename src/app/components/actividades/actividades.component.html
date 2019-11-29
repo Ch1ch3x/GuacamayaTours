@@ -1,1 +1,79 @@
-<p>actividades works!</p>
+<app-dashboard></app-dashboard>
+<div [hidden]="formVisibility" class="container-fluid col-12 text-center">
+  <div role="group" aria-label="Basic example">
+    <button class= 'boton' mat-raised-button color="primary" type="button" name="button" (click)="openCrear()">Nueva Actividad
+    </button>
+    <button class= 'boton' mat-raised-button color="primary" type="button" name="button" (click)="openModificar()">Modificar Actividad
+    </button>
+    <button class= 'boton' mat-raised-button color="primary" type="button" name="button" (click)="habilitar()">Habilitar Actividad
+    </button>
+    <button class= 'boton' mat-raised-button color="primary" type="button" name="button" (click)="deshabilitar()">Deshabilitar Actividad
+    </button>
+    <button class= 'boton' mat-raised-button color="primary" type="button" name="button" (click)="soltar()">Quitar Seleccion
+    </button>
+  </div>
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Imagen</th>
+        <th scope="col">Vigencia</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let dato of actividades">
+      <tr [ngClass]="{'highlight': selectedRowIndex == dato.id,
+        'highlight2': dato.deshabilitar == true,
+        'highlight3': selectedRowIndex == dato.id && dato.deshabilitar == true}" (click)="highlight(dato)">
+        <td>{{dato.nombre}}</td>
+        <td>{{dato.imagen}}</td>
+        <td>{{dato.deshabilitar}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div [hidden]="!crearformVisibility" id="form">
+  <form class="border border-light p-5" [formGroup]="newActividadForm"
+    (ngSubmit)="newActividad(newActividadForm.value)">
+    <div class="text-center">
+      <p class="h4 mb-4">Ingrese los Datos de la nueva Actividad</p>
+
+      <p>
+        Coloque en la casilla correspondiente la información de la actividad.
+      </p>
+    </div>
+
+    <label for="Nombre">Nombre de la Actividad</label>
+    <input type="text" id="Nombre" class="form-control mb-4" placeholder="Nombre de la actividad"
+      formControlName="nombre" />
+    <label for="Imagen">Imagen de la Actividad</label>
+    <input type="text" id="Imagen" class="form-control mb-4" placeholder="URL"
+        formControlName="imagen" />
+
+    <button class="btn btn-info btn-block" (click)="crearActividad()" type="submit">Crear Actividad</button>
+    <button class="btn btn-info btn-block" (click)="close()">Cancelar</button>
+  </form>
+</div>
+
+
+<div [hidden]="!modificarformVisibility" id="form">
+  <form class="border border-light p-5" [formGroup]="newActividadForm"
+    (ngSubmit)="editActividad(newActividadForm.value)">
+    <div class="text-center">
+      <p class="h4 mb-4">Modifique los Datos de la Actividad</p>
+
+      <p>
+        Coloque en la casilla correspondiente la información de la actividad.
+      </p>
+    </div>
+
+    <label for="Nombre">Nombre de la Actividad</label>
+    <input formControlName="nombre" [(ngModel)]="nombreActividad" type="text" id="Nombre" class="form-control mb-4" />
+    <label for="Imagen">Imagen de la Actividad</label>
+    <input formControlName="imagen" [(ngModel)]="imagenActividad" type="text" id="Imagen" class="form-control mb-4" />
+
+    <button class="btn btn-info btn-block" (click)="modificarActividad()">Modificar Actividad</button>
+    <button class="btn btn-info btn-block" (click)="close()">Cancelar</button>
+  </form>
+</div>

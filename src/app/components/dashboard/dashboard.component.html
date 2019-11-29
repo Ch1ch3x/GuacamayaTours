@@ -26,7 +26,7 @@
       <li  >
         <a routerLink="/admin/estados"
           (click)= 'setTitle("Admin: Estados")'
-          
+
           ><i class="fa fa-map-pin img" aria-hidden="true"></i>Estados</a
         >
       </li>
@@ -62,8 +62,19 @@
           ><i class="fa fa-suitcase img" aria-hidden="true"></i>Habitaciones</a
         >
       </li>
+      <li>
+        <a routerLink="/admin/actividades"
+        (click)='setTitle("Admin: Actividades")'
+        ><i class="fa fa-map-pin img" aria-hidden="true"></i>Actividades</a>
+      </li>
+      <li>
+        <a routerLink="/admin/servicios"
+        (click)='setTitle("Admin: Servicios")'
+        ><i class="fa fa-asterisk img" aria-hidden="true"></i>Servicios</a>
+      </li>
       <li  >
-        <a routerLink="/admin/**"
+        <a routerLink="/admin/reservas"
+        (click)='setTitle("Admin: Reservas")'
           ><i class="fa fa-check img" aria-hidden="true"></i>Reservas</a
         >
       </li>
