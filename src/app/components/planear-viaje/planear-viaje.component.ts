@@ -2,8 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Router } from "@angular/router";
 import { MatDialog } from "@angular/material";
-import { IPayPalConfig, ICreateOrderRequest } from "ngx-paypal";
-import { FirestoreService } from "src/app/services/firebase/firebase.service";
+import { FirestoreService } from "../../services/firebase/firebase.service";
 import { DialogComponent } from "./dialog/dialog.component";
 
 @Component({
@@ -12,8 +11,9 @@ import { DialogComponent } from "./dialog/dialog.component";
   styleUrls: ["./planear-viaje.component.scss"]
 })
 export class PlanearViajeComponent implements OnInit {
-  public payPalConfig?: IPayPalConfig;
-  private reservas: any[] = [];
+  private reservas: any[] = sessionStorage.getItem("reservas")
+    ? JSON.parse(sessionStorage.getItem("reservas"))
+    : [];
   private destinos: any[] = [];
   private hoteles: any[] = [];
   private filteredHoteles: any[] = [];
@@ -39,7 +39,6 @@ export class PlanearViajeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.initConfig([]);
     this.fireStoreService.getAll("destinos").subscribe(destinos => {
       destinos.docs.map(destino => {
         this.destinos.push({ ...destino.data(), id: destino.id });
@@ -47,7 +46,7 @@ export class PlanearViajeComponent implements OnInit {
     });
     this.fireStoreService.getAll("hoteles").subscribe(hoteles => {
       hoteles.docs.map(hotel => {
-        this.hoteles.push(hotel.data());
+        this.hoteles.push({ ...hotel.data(), id: hotel.id });
       });
       this.filteredHoteles = this.hoteles;
     });
@@ -76,71 +75,6 @@ export class PlanearViajeComponent implements OnInit {
     reservas.map(reserva => {
       total += reserva.hotel.fullday.costo;
     });
-    this.payPalConfig = {
-      currency: "USD",
-      clientId: "sb",
-      createOrderOnClient: data =>
-        <ICreateOrderRequest>{
-          intent: "CAPTURE",
-          purchase_units: [
-            {
-              amount: {
-                currency_code: "USD",
-                value: `${total}`,
-                breakdown: {
-                  item_total: {
-                    currency_code: "USD",
-                    value: `${total}`
-                  }
-                }
-              },
-              items: reservas.map(reserva => ({
-                name: `${reserva.hotel.nombre}, ${reserva.tipoHabitacion.nombre}`,
-                quantity: "1",
-                category: "DIGITAL_GOODS",
-                unit_amount: {
-                  currency_code: "USD",
-                  value: `${reserva.hotel.fullday.costo}`
-                }
-              }))
-            }
-          ]
-        },
-      advanced: {
-        commit: "true"
-      },
-      style: {
-        label: "paypal",
-        layout: "vertical"
-      },
-      onApprove: (data, actions) => {
-        console.log(
-          "onApprove - transaction was approved, but not authorized",
-          data,
-          actions
-        );
-        actions.order.get().then(details => {
-          console.log(
-            "onApprove - you can get full order details inside onApprove: ",
-            details
-          );
-        });
-      },
-      onClientAuthorization: data => {
-        console.log(
-          "onClientAuthorization - you should probably inform your server about completed transaction at this point",
-          data
-        );
-
-        this.fireStoreService.create("reservas", data);
-      },
-      onCancel: (data, actions) => {
-        console.log("OnCancel", data, actions);
-      },
-      onError: err => {
-        console.log("OnError", err);
-      }
-    };
   }
 
   openDialog(hotel) {
@@ -154,13 +88,23 @@ export class PlanearViajeComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.reservas.push({
-          hotel,
+          ...result,
+          hotel: hotel,
+          costo: hotel.tipoHabitaciones.filter(
+            th => th.tipoHabitacion === result.tipoHabitacion
+          )[0].costo,
           tipoHabitacion: this.dialogTipoHabitaciones.filter(
-            tH => tH.id === result
+            tH => tH.id === result.tipoHabitacion
           )[0]
         });
-        this.initConfig(this.reservas);
+        sessionStorage.setItem("reservas", JSON.stringify(this.reservas));
       }
+    });
+  }
+
+  pagar() {
+    this.router.navigateByUrl("ordenes", {
+      state: { reservas: this.reservas }
     });
   }
 

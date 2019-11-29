@@ -40,7 +40,14 @@
       <p *ngFor="let reserva of reservas" class="reservaciones">
         {{ reserva.hotel.nombre }}, {{ reserva.tipoHabitacion.nombre }}
       </p>
-      <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+      <button
+        id="buscar"
+        class="btn btn-outline-secondary pagar"
+        (click)="pagar()"
+        color="warm"
+      >
+        <i class="fa fa-paypal" aria-hidden="true"></i> Pagar
+      </button>
     </div>
     <p>FILTROS</p>
     <div class="filtros">
