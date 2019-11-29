@@ -365,22 +365,9 @@ export class ListarHotelesComponent implements OnInit {
 
   public habilitarHotel(documentId) {
     let data = {
-      nombre: this.hoteles[this.numerito].nombre,
-      estrellas: this.hoteles[this.numerito].estrellas,
-      servicios: this.hoteles[this.numerito].servicios,
-      latitud: this.hoteles[this.numerito].latitud,
-      longitud: this.hoteles[this.numerito].longitud,
-      idEstado: this.hoteles[this.numerito].idEstado,
-      idCiudad: this.hoteles[this.numerito].idCiudad,
-      direccion: this.hoteles[this.numerito].direccion,
-      fullDay: {
-        costo: this.hoteles[this.numerito].costoFullday,
-        activo: this.hoteles[this.numerito].activoFullday
-      },
-      imagen: this.hoteles[this.numerito].imagen,
       deshabilitar: false
     };
-    this.HotelSV.update(documentId, data).then(
+    this.HotelSV.actualizar(documentId, data).then(
       () => {
         console.log("Documento modificado exitósamente!");
         this.newHotelForm.setValue({
@@ -409,22 +396,9 @@ export class ListarHotelesComponent implements OnInit {
 
   public deshabilitarHotel(documentId) {
     let data = {
-      nombre: this.hoteles[this.numerito].nombre,
-      estrellas: this.hoteles[this.numerito].estrellas,
-      servicios: this.hoteles[this.numerito].servicios,
-      latitud: this.hoteles[this.numerito].latitud,
-      longitud: this.hoteles[this.numerito].longitud,
-      idEstado: this.hoteles[this.numerito].idEstado,
-      idCiudad: this.hoteles[this.numerito].idCiudad,
-      direccion: this.hoteles[this.numerito].direccion,
-      fullDay: {
-        costo: this.hoteles[this.numerito].costoFullday,
-        activo: this.hoteles[this.numerito].activoFullday
-      },
-      imagen: this.hoteles[this.numerito].imagen,
       deshabilitar: true
     };
-    this.HotelSV.update(documentId, data).then(
+    this.HotelSV.actualizar(documentId, data).then(
       () => {
         console.log("Documento modificado exitósamente!");
         this.newHotelForm.setValue({

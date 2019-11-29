@@ -333,20 +333,9 @@ export class ListarDestinosTuristicosComponent implements OnInit {
 
   public deshabilitarDestino(documentId) {
     let data = {
-      nombre: this.destinos[this.numerito].nombre,
-      descripcion: this.destinos[this.numerito].descripcion,
-      categorias: this.destinos[this.numerito].categorias,
-      servicios: this.destinos[this.numerito].servicios,
-      actividades: this.destinos[this.numerito].actividades,
-      latitud: this.destinos[this.numerito].latitud,
-      longitud: this.destinos[this.numerito].longitud,
-      idEstado: this.destinos[this.numerito].idEstado,
-      idCiudad: this.destinos[this.numerito].idCiudad,
-      direccion: this.destinos[this.numerito].direccion,
-      imagen: this.destinos[this.numerito].imagen,
       deshabilitar: true
     };
-    this.DestinoSV.update(documentId, data).then(
+    this.DestinoSV.actualizar(documentId, data).then(
       () => {
         console.log("Documento modificado exitósamente!");
         this.newDestinoForm.setValue({
@@ -385,20 +374,9 @@ export class ListarDestinosTuristicosComponent implements OnInit {
 
   public habilitarDestino(documentId) {
     let data = {
-      nombre: this.destinos[this.numerito].nombre,
-      descripcion: this.destinos[this.numerito].descripcion,
-      categorias: this.destinos[this.numerito].categorias,
-      servicios: this.destinos[this.numerito].servicios,
-      actividades: this.destinos[this.numerito].actividades,
-      latitud: this.destinos[this.numerito].latitud,
-      longitud: this.destinos[this.numerito].longitud,
-      idEstado: this.destinos[this.numerito].idEstado,
-      idCiudad: this.destinos[this.numerito].idCiudad,
-      direccion: this.destinos[this.numerito].direccion,
-      imagen: this.destinos[this.numerito].imagen,
       deshabilitar: false
     };
-    this.DestinoSV.update(documentId, data).then(
+    this.DestinoSV.actualizar(documentId, data).then(
       () => {
         console.log("Documento modificado exitósamente!");
         this.newDestinoForm.setValue({
