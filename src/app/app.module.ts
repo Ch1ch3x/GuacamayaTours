@@ -60,6 +60,7 @@ import { ChartsModule } from "ng2-charts";
 import { DinamicoComponent } from "./components/graficos/dinamico/dinamico.component";
 import { ActividadesComponent } from "./components/actividades/actividades.component";
 import { ServiciosComponent } from "./components/servicios/servicios.component";
+import { ReservasComponent } from './components/itinerario/CRUD/reservas/reservas.component';
 
 @NgModule({
   declarations: [
@@ -106,7 +107,8 @@ import { ServiciosComponent } from "./components/servicios/servicios.component";
     DialogComponent,
     DinamicoComponent,
     ActividadesComponent,
-    ServiciosComponent
+    ServiciosComponent,
+    ReservasComponent
   ],
   imports: [
     BrowserModule,

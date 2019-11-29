@@ -153,10 +153,10 @@ export class ActividadesComponent implements OnInit {
         continue;
       }
     }
-    this.deshabilitarCategoria(this.selectedRowIndex);
+    this.deshabilitarActividades(this.selectedRowIndex);
   }
 
-  public deshabilitarCategoria(documentId) {
+  public deshabilitarActividades(documentId) {
     let data = {
       nombre: this.actividades[this.numerito].nombre,
       imagen: this.actividades[this.numerito].imagen,
@@ -187,10 +187,10 @@ export class ActividadesComponent implements OnInit {
         continue;
       }
     }
-    this.habilitarCategoria(this.selectedRowIndex);
+    this.habilitarActividades(this.selectedRowIndex);
   }
 
-  public habilitarCategoria(documentId) {
+  public habilitarActividades(documentId) {
     let data = {
       nombre: this.actividades[this.numerito].nombre,
       imagen: this.actividades[this.numerito].imagen,
