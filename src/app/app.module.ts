@@ -56,6 +56,7 @@ import { HotelComponent } from './components/hoteles/hotel/hotel.component';
 import { DestinoComponent } from './components/destinos-turisticos/destino/destino.component';
 import { Observable } from 'rxjs';
 import { DialogComponent } from './components/planear-viaje/dialog/dialog.component';
+import { Hotel1Component } from './components/hoteles/hotel1/hotel1.component';
 
 
 
@@ -102,6 +103,7 @@ import { DialogComponent } from './components/planear-viaje/dialog/dialog.compon
     HotelComponent,
     DestinoComponent,
     DialogComponent,
+    Hotel1Component,
   ],
   imports: [
     BrowserModule,

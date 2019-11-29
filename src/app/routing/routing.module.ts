@@ -20,13 +20,15 @@ import { ListaCategoriaDestinoComponent } from "../components/categoria-destino/
 import { HotelComponent } from '../components/hoteles/hotel/hotel.component';
 import { ListarHabitacionesComponent } from '../components/habitaciones/CRUD/listar/listar-habitaciones.component';
 import { DestinoComponent } from '../components/destinos-turisticos/destino/destino.component';
+import { Hotel1Component } from '../components/hoteles/hotel1/hotel1.component';
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "destinos", component: DestinosTuristicosComponent },
   { path: "hoteles", component: HotelesComponent},
   { path: "planea", component: PlanearViajeComponent},
-  { path: "hoteles/:id", component: HotelComponent},
+  { path: "planea/:id", component: HotelComponent},
+  { path: "hoteles/:id", component: Hotel1Component},
   { path: "destinos/:id", component: DestinoComponent},
   { path: "admin/hoteles", component: ListarHotelesComponent },
   { path: "admin/destinos", component: ListarDestinosTuristicosComponent },
