@@ -106,6 +106,9 @@ export class OrdenesComponent implements OnInit {
           estatus: true,
           localizador: data.id
         });
+        alert("Reservacion realizada con exito, su localizador es: " + data.id);
+        sessionStorage.removeItem("reservas");
+        this.router.navigate(["/"]);
       },
       onCancel: (data, actions) => {
         console.log("OnCancel", data, actions);
