@@ -236,51 +236,53 @@ export class ListarHotelesComponent implements OnInit {
   }
 
   public editHotel(form, documentId = this.selectedRowIndex) {
-    let data = {
-      nombre: form.nombre,
-      estrellas: form.estrellas,
-      servicios: this.servicios,
-      latitud: form.latitud,
-      longitud: form.longitud,
-      idEstado: form.idEstado,
-      idCiudad: form.idCiudad,
-      direccion: form.direccion,
-      fullday: {
-        costo: Number.parseInt(form.costo),
-        activo: form.activo == "true" ? true : false
-      },
-      tipoHabitaciones: this.tipoHabs,
-      imagen: form.imagen,
-      imagenes: this.imagenes,
-      deshabilitar: false
-    };
-    this.HotelSV.update(documentId, data).then(
-      () => {
-        console.log("Documento modificado exitósamente!");
-        this.editHotelForm.setValue({
-          nombre: "",
-          estrellas: 0,
-          direccion: "",
-          servicios: "",
-          latitud: "",
-          longitud: "",
-          idEstado: "",
-          idCiudad: "",
-          costo: 0,
-          activo: null,
-          tipoHabitaciones: "",
-          imagen: "",
-          imagenes: "",
-          deshabilitar: false,
-          costoHab: 0
-        });
-        this.getData();
-        this.close();
-      },
-      error => {
-        console.error(error);
-      }
-    );
+    if (this.currentStatus == 2) {
+      let data = {
+        nombre: form.nombre,
+        estrellas: form.estrellas,
+        servicios: this.servicios,
+        latitud: form.latitud,
+        longitud: form.longitud,
+        idEstado: form.idEstado,
+        idCiudad: form.idCiudad,
+        direccion: form.direccion,
+        fullday: {
+          costo: Number.parseInt(form.costo),
+          activo: form.activo == "true" ? true : false
+        },
+        tipoHabitaciones: this.tipoHabs,
+        imagen: form.imagen,
+        imagenes: this.imagenes,
+        deshabilitar: false
+      };
+      this.HotelSV.update(documentId, data).then(
+        () => {
+          console.log("Documento modificado exitósamente!");
+          this.editHotelForm.setValue({
+            nombre: "",
+            estrellas: 0,
+            direccion: "",
+            servicios: "",
+            latitud: "",
+            longitud: "",
+            idEstado: "",
+            idCiudad: "",
+            costo: 0,
+            activo: null,
+            tipoHabitaciones: "",
+            imagen: "",
+            imagenes: "",
+            deshabilitar: false,
+            costoHab: 0
+          });
+          this.getData();
+          this.close();
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    }
   }
 
   addTipoHab(whichForm) {
@@ -429,20 +431,6 @@ export class ListarHotelesComponent implements OnInit {
 
   public habilitarHotel(documentId) {
     let data = {
-      nombre: this.hoteles[this.numerito].nombre,
-      estrellas: this.hoteles[this.numerito].estrellas,
-      servicios: this.hoteles[this.numerito].servicios,
-      latitud: this.hoteles[this.numerito].latitud,
-      longitud: this.hoteles[this.numerito].longitud,
-      idEstado: this.hoteles[this.numerito].idEstado,
-      idCiudad: this.hoteles[this.numerito].idCiudad,
-      direccion: this.hoteles[this.numerito].direccion,
-      fullDay: {
-        costo: this.hoteles[this.numerito].costoFullday,
-        activo: this.hoteles[this.numerito].activoFullday
-      },
-      imagen: this.hoteles[this.numerito].imagen,
-      imagenes: this.hoteles[this.numerito].imagenes,
       deshabilitar: false
     };
     this.HotelSV.actualizar(documentId, data).then(

@@ -70,67 +70,71 @@ export class ListarHabitacionesComponent implements OnInit {
     });
   }
   public newHabitacion(form, documentId = this.documentId) {
-    let data = {
-      nombre: form.nombre,
-      max: Number.parseInt(form.max),
-      comodidades: this.comodidades,
-      descripcion: form.descripcion,
-      vista: form.vista,
-      imagen: this.imagenes,
-      deshabilitar: false
-    };
-    this.tipoHabitacionSV.create(data).then(
-      () => {
-        console.log("Documento creado exitósamente!");
-        this.newHabitacionForm.setValue({
-          nombre: "",
-          max: "",
-          imagen: "",
-          comodidades: "",
-          descripcion: "",
-          vista: "",
+      if (this.currentStatus == 1) {
+        let data = {
+          nombre: form.nombre,
+          max: Number.parseInt(form.max),
+          comodidades: this.comodidades,
+          descripcion: form.descripcion,
+          vista: form.vista,
+          imagen: this.imagenes,
           deshabilitar: false
-        });
+        };
+        this.tipoHabitacionSV.create(data).then(
+          () => {
+            console.log("Documento creado exitósamente!");
+            this.newHabitacionForm.setValue({
+              nombre: "",
+              max: "",
+              imagen: "",
+              comodidades: "",
+              descripcion: "",
+              vista: "",
+              deshabilitar: false
+            });
 
-        this.getData();
-      },
-      error => {
-        console.error(error);
+            this.getData();
+          },
+          error => {
+            console.error(error);
+          }
+        );
+
+        this.tipoHabitaciones.push(data);
       }
-    );
-
-      this.tipoHabitaciones.push(data);
     }
 
   public editHabitacion(form, documentId = this.documentId) {
-    let data = {
-      nombre: form.nombre,
-      max: Number.parseInt(form.max),
-      comodidades: this.comodidades,
-      descripcion: form.descripcion,
-      vista: form.vista,
-      imagen: this.imagenes,
-      deshabilitar: false
-    };
-    this.tipoHabitacionSV.update(documentId, data).then(
-      () => {
-        console.log("Documento creado exitósamente!");
-        this.newHabitacionForm.setValue({
-          nombre: "",
-          max: "",
-          imagen: "",
-          comodidades: "",
-          descripcion: "",
-          vista: "",
-          deshabilitar: false
-        });
+    if(this.currentStatus == 2){
+      let data = {
+        nombre: form.nombre,
+        max: Number.parseInt(form.max),
+        comodidades: this.comodidades,
+        descripcion: form.descripcion,
+        vista: form.vista,
+        imagen: this.imagenes,
+        deshabilitar: false
+      };
+      this.tipoHabitacionSV.update(documentId, data).then(
+        () => {
+          console.log("Documento creado exitósamente!");
+          this.newHabitacionForm.setValue({
+            nombre: "",
+            max: "",
+            imagen: "",
+            comodidades: "",
+            descripcion: "",
+            vista: "",
+            deshabilitar: false
+          });
 
-        this.getData();
-      },
-      error => {
-        console.error(error);
-      }
-    );
+          this.getData();
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    }
   }
 
   openCrear() {
@@ -210,16 +214,9 @@ export class ListarHabitacionesComponent implements OnInit {
 
   public deshabilitarHabitacion(documentId) {
     let data = {
-      id: documentId,
-      nombre: this.tipoHabitaciones[this.numerito].nombre,
-      imagen: this.tipoHabitaciones[this.numerito].imagen,
-      comodidades: this.tipoHabitaciones[this.numerito].comodidades,
-      descripcion: this.tipoHabitaciones[this.numerito].descripcion,
-      vista: this.tipoHabitaciones[this.numerito].vista,
-      max: this.tipoHabitaciones[this.numerito].max,
       deshabilitar: true
     };
-    this.tipoHabitacionSV.update(documentId, data).then(
+    this.tipoHabitacionSV.actualizar(documentId, data).then(
       () => {
         console.log("Documento modificado exitósamente!");
         this.newHabitacionForm.setValue({
@@ -252,16 +249,9 @@ export class ListarHabitacionesComponent implements OnInit {
 
   public habilitarHabitacion(documentId) {
     let data = {
-      id: documentId,
-      nombre: this.tipoHabitaciones[this.numerito].nombre,
-      imagen: this.tipoHabitaciones[this.numerito].imagen,
-      comodidades: this.tipoHabitaciones[this.numerito].comodidades,
-      descripcion: this.tipoHabitaciones[this.numerito].descripcion,
-      vista: this.tipoHabitaciones[this.numerito].vista,
-      max: this.tipoHabitaciones[this.numerito].max,
       deshabilitar: false
     };
-    this.tipoHabitacionSV.update(documentId, data).then(
+    this.tipoHabitacionSV.actualizar(documentId, data).then(
       () => {
         console.log("Documento modificado exitósamente!");
         this.newHabitacionForm.setValue({
