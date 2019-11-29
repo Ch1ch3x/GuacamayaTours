@@ -8,17 +8,15 @@
     <ul class="list-unstyled components">
       <li >
         <a
-          routerLink="/admin/dashboard"
-          (click)= 'setTitle("Admin: Dashboard")'
+          routerLink="/admin/home"
+          (click)= 'setTitle("Admin: Home")'
           data-toggle="collapse"
           aria-expanded="false"
-          (click) = "aparecerGraficos()"
           ><i class="fa fa-home img" aria-hidden="true" ></i>Home</a
         >
       </li>
       <li>
         <a routerLink="/admin/dashboard"
-        (click) = "aparecerGraficos()"
         (click)= 'setTitle("Admin: Dashboard")'
           ><i class="fa fa-bar-chart img" aria-hidden="true"></i>Dashboard</a
         >
@@ -96,25 +94,4 @@
   </nav>
 </body>
 
-<div [hidden] = "esconder">
-<body>
-  <div class = "tabla">
-      <div style="display: block">
-          <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
-          [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)"
-          (chartClick)="chartClicked($event)"></canvas>
-          <button mat-button mat-raised-button color="primary" (click)="randomize()" class="boton">Cambiar Forma</button>
-      </div>
-  </div>
-  <div class="tabla">
-      <div style="display: block">
-          <canvas baseChart
-            [data]="polarAreaChartData"
-            [labels]="polarAreaChartLabels"
-            [legend]="polarAreaLegend"
-            [chartType]="polarAreaChartType">
-          </canvas>
-        </div>
-  </div>
-</body>
-</div>
+

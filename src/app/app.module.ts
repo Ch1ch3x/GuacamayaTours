@@ -61,6 +61,7 @@ import { DinamicoComponent } from "./components/graficos/dinamico/dinamico.compo
 import { ActividadesComponent } from "./components/actividades/actividades.component";
 import { ServiciosComponent } from "./components/servicios/servicios.component";
 import { ReservasComponent } from './components/itinerario/CRUD/reservas/reservas.component';
+import { GraficosComponent } from './components/dashboard/graficos/graficos.component';
 
 @NgModule({
   declarations: [
@@ -108,7 +109,8 @@ import { ReservasComponent } from './components/itinerario/CRUD/reservas/reserva
     DinamicoComponent,
     ActividadesComponent,
     ServiciosComponent,
-    ReservasComponent
+    ReservasComponent,
+    GraficosComponent
   ],
   imports: [
     BrowserModule,

@@ -23,6 +23,7 @@ import { DestinoComponent } from "../components/destinos-turisticos/destino/dest
 import { ActividadesComponent } from "../components/actividades/actividades.component";
 import { ServiciosComponent } from "../components/servicios/servicios.component";
 import { ReservasComponent } from "../components/itinerario/CRUD/reservas/reservas.component";
+import { GraficosComponent } from "../components/dashboard/graficos/graficos.component";
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
@@ -32,12 +33,13 @@ const routes: Routes = [
   { path: "hoteles/:id", component: HotelComponent },
   { path: "destinos/:id", component: DestinoComponent },
   { path: "admin/hoteles", component: ListarHotelesComponent },
+  { path: "admin/dashboard", component: GraficosComponent },
   { path: "admin/destinos", component: ListarDestinosTuristicosComponent },
   { path: "admin/categorias", component: ListaCategoriaDestinoComponent },
   { path: "ordenes", component: OrdenesComponent },
   { path: "admin/ciudades", component: ListaCiudadComponent },
   { path: "admin/estados", component: ListarEstadoComponent },
-  { path: "admin/dashboard", component: DashboardComponent },
+  { path: "admin/home", component: DashboardComponent },
   { path: "admin/habitaciones", component: ListarHabitacionesComponent },
   { path: "admin/actividades", component: ActividadesComponent },
   { path: "admin/servicios", component: ServiciosComponent },
