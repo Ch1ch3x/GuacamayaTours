@@ -124,7 +124,7 @@ import { ServiciosComponent } from "./components/servicios/servicios.component";
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     NgbModule,
-    ChartsModule
+    ChartsModule,
     NgxPayPalModule
   ],
   providers: [FirestoreService, AngularFirestore, Title],
