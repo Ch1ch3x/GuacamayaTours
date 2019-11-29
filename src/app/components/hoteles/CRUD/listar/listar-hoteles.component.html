@@ -154,6 +154,20 @@
       class="form-control mb-4"
       placeholder="Servicios"
     />
+
+    <label for="Servicios">Servicios del Destino</label>    
+    <mat-chip-list #chipList aria-label="Servicios">
+      <mat-chip *ngFor="let servicio of servicios" (removed)="remove(servicio)">
+        {{ servicio }}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+      <input
+        placeholder="Servicios del Destino"
+        [matChipInputFor]="chipList"
+        (matChipInputTokenEnd)="add($event)"
+      />
+    </mat-chip-list>
+
     <label for="Latitud">Latitud del Hotel</label>
     <input
       formControlName="latitud"
