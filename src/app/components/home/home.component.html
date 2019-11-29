@@ -3,6 +3,7 @@
   <div class="containe">
     <p class="centered1">GUACAMAYA <br /></p>
     <p class="centered2">TOURS</p>
+    
     <img src="../../../assets/img/home.png" alt="Planea tu viaje" />
     <button class="btn">PLANEA TU VIAJE AHORA</button>
   </div>
@@ -15,31 +16,45 @@
         </div>
         <div class="carousel-caption">
           <a routerLink="/destinos/{{ destino.id}}"
-            ><h3>{{ destino.nombre }}</h3></a
+            ><h3 class="sliderNombre">{{ destino.nombre }}</h3></a
           >
         </div>
       </ng-template>
     </ngb-carousel>
   </div>
+  
+  <div>
+    <h1 class="text-center nueva" >CONOCE VENEZUELA</h1>
+    <h5 class="text-center introduccion">  Aventuras únicas pueden ser encontradas en cada rincón de Venezuela,
+    cielos azules, montañas, ríos y playas te darán una experiencia inolvidable </h5>
+    <img src="../../../assets/roraima.png" alt="" class="imitacion" />
+    
+  </div>
 
-  <div class="actividades container-fluid">
-    <div class="">
-      <h2 class="">ACTIVIDADES</h2>
+
+  <h4 class="vacaciones">PLANEA TUS PRÓXIMAS VACACIONES</h4>
+  <div class="container-fluid row mat_card">
+    <div class= "col-sm-6 col-md-6 col-lg-3 margin" *ngFor="let actividad of destinos[0].actividades">
+        <mat-card >
+           
+            <img mat-card-image class="mat-card-image "src="{{actividad.imagen}}" >
+    
+            <mat-card-actions>
+              
+             <button mat-button>{{actividad.nombre}}</button>
+            </mat-card-actions>
+          </mat-card>
     </div>
-
-    <div class="actividades1 container-fluid">
-      <div class="contenedor" *ngIf="destinos.length > 0">
-        <div class="elemento" *ngFor="let actividad of destinos[0].actividades">
-          <a routerLink="/destinos/{{destinos[0].id}}"><img [src]="actividad.imagen" class="act " /></a>
-          <p class="hover centered3">{{ actividad.nombre }}</p>
-        </div>
-      </div>
-      <div class="contenedor" *ngIf="destinos.length > 0">
-        <div class="elemento" *ngFor="let actividad of destinos[1].actividades">
-          <a routerLink="/destinos/{{destinos[1].id}}"><img [src]="actividad.imagen" class="act " /></a>
-          <p class="hover centered3">{{ actividad.nombre }}</p>
-        </div>
-      </div>
+    <div class= "col-sm-6 col-md-6 col-lg-3 margin" *ngFor="let actividad of destinos[1].actividades">
+        <mat-card >
+            
+            <img mat-card-image class="mat-card-image "src="{{actividad.imagen}}" >
+    
+            <mat-card-actions>
+              
+             <button mat-button>{{actividad.nombre}}</button>
+            </mat-card-actions>
+          </mat-card>
     </div>
   </div>
  
