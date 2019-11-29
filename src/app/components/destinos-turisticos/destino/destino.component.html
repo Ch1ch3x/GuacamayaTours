@@ -51,8 +51,8 @@
 
     <div class="servicios">
       <p class="text-center">SERVICIOS</p>
-      <p *ngFor="let serv of destino.servicios" class="reservaciones">
-        <i class="fa fa-circle-o" aria-hidden="true"></i>{{ serv }}
+      <p *ngFor="let serv of destinoServicios" class="reservaciones">
+        <i class="fa fa-circle-o" aria-hidden="true"></i>{{ serv.nombre }}
       </p>
     </div>
 

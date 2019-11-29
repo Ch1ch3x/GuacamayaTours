@@ -14,6 +14,7 @@ export class DestinoComponent implements OnInit {
   estado: any;
   private destinoId: any;
   private destinoActividades: any[] = [];
+  private destinoServicios: any[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -30,6 +31,7 @@ export class DestinoComponent implements OnInit {
         this.fireStoreService.getAll("categorias").subscribe(categorias => {
           this.destino = { ...destino.payload.data(), id: destino.payload.id };
           this.destinoActividades = this.destino.actividades;
+          this.destinoServicios = this.destino.servicios;
           this.fireStoreService
             .getDoc("ciudades", this.destino.idCiudad)
             .subscribe((ciudad: any) => {
@@ -56,6 +58,18 @@ export class DestinoComponent implements OnInit {
                 id: destinoActividad.id
               }));
             console.log(this.destinoActividades);
+          });
+
+          this.fireStoreService.getAll("servicios").subscribe(servicios => {
+            this.destinoServicios = servicios.docs
+              .filter(servicio =>
+                this.destinoServicios.some(da => da === servicio.id)
+              )
+              .map(destinoServicio => ({
+                ...destinoServicio.data(),
+                id: destinoServicio.id
+              }));
+            console.log(this.destinoServicios);
           });
         });
       });
