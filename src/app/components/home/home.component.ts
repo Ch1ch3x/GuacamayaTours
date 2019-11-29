@@ -13,13 +13,10 @@ export class HomeComponent implements OnInit {
     "../../../assets/img/roraima(2).png",
     "../../../assets/img/juangriego.jpg"
   ];
-  actividades = [
-    "../../../assets/img/roques.jpg",
-    "../../../assets/img/telefericojpg.jpg"
-  ];
 
   private destinos: any[] = [];
-  private hoteles: any [] = [];
+  private actividades: any[] = [];
+  private hoteles: any[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -43,6 +40,13 @@ export class HomeComponent implements OnInit {
       this.hoteles = hoteles.docs.map(hotel => ({
         ...hotel.data(),
         id: hotel.id
+      }));
+    });
+
+    this.fireStoreService.getAll("actividades").subscribe(actividades => {
+      this.actividades = actividades.docs.map(actividad => ({
+        ...actividad.data(),
+        id: actividad.id
       }));
     });
   }
