@@ -60,6 +60,8 @@ import { ChartsModule } from "ng2-charts";
 import { DinamicoComponent } from "./components/graficos/dinamico/dinamico.component";
 import { ActividadesComponent } from "./components/actividades/actividades.component";
 import { ServiciosComponent } from "./components/servicios/servicios.component";
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+
 import { ReservasComponent } from './components/itinerario/CRUD/reservas/reservas.component';
 import { GraficosComponent } from './components/dashboard/graficos/graficos.component';
 
@@ -129,9 +131,10 @@ import { GraficosComponent } from './components/dashboard/graficos/graficos.comp
     AngularFireModule.initializeApp(environment.firebase),
     NgbModule,
     ChartsModule,
-    NgxPayPalModule
+    NgxPayPalModule,
   ],
-  providers: [FirestoreService, AngularFirestore, Title],
+  providers: [FirestoreService, AngularFirestore, Title, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService],
   entryComponents: [DialogComponent],
   bootstrap: [AppComponent]
 })

@@ -8,7 +8,10 @@ export class AdminService {
   constructor() {}
   //password is Guacamayacustica123.
   login(password) {
-    if (admin.secretKey === password) return true;
-    return false;
+    if (admin.secretKey === password) {
+      localStorage.setItem("admin", admin.secretKey)
+      return true;
+    }
+    else {return false;}
   }
 }
