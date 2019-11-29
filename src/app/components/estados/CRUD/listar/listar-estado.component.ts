@@ -171,11 +171,9 @@ export class ListarEstadoComponent implements OnInit {
 
   deshabilitarEstado(documentId) {
     let data = {
-      nombre: this.estados[this.numerito].nombre,
-      imagen: this.estados[this.numerito].imagen,
       deshabilitar: true
     };
-    this.EstadoSV.update(documentId, data).then(
+    this.EstadoSV.actualizar(documentId, data).then(
       () => {
         console.log("Documento modificado exitósamente!");
         this.newEstadoForm.setValue({
@@ -205,11 +203,9 @@ export class ListarEstadoComponent implements OnInit {
 
   public habilitarEstado(documentId) {
     let data = {
-      nombre: this.estados[this.numerito].nombre,
-      imagen: this.estados[this.numerito].imagen,
       deshabilitar: false
     };
-    this.EstadoSV.update(documentId, data).then(
+    this.EstadoSV.actualizar(documentId, data).then(
       () => {
         console.log("Documento modificado exitósamente!");
         this.newEstadoForm.setValue({

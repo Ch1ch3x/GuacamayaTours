@@ -158,11 +158,9 @@ export class ActividadesComponent implements OnInit {
 
   public deshabilitarActividades(documentId) {
     let data = {
-      nombre: this.actividades[this.numerito].nombre,
-      imagen: this.actividades[this.numerito].imagen,
       deshabilitar: true
     };
-    this.ActividadesSV.update(documentId, data).then(
+    this.ActividadesSV.actualizar(documentId, data).then(
       () => {
         console.log("Documento modificado exitósamente!");
         this.newActividadForm.setValue({
@@ -192,11 +190,9 @@ export class ActividadesComponent implements OnInit {
 
   public habilitarActividades(documentId) {
     let data = {
-      nombre: this.actividades[this.numerito].nombre,
-      imagen: this.actividades[this.numerito].imagen,
       deshabilitar: false
     };
-    this.ActividadesSV.update(documentId, data).then(
+    this.ActividadesSV.actualizar(documentId, data).then(
       () => {
         console.log("Documento modificado exitósamente!");
         this.newActividadForm.setValue({
